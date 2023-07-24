@@ -5,10 +5,10 @@ interface TrendArrowProps {
 }
 
 const TrendArrow: React.FC<TrendArrowProps> = ({ change }) => {
-  if (change === 0) return ''
+  if (change === 0) return <div></div>
 
   return (
-    <div className='flex gap-2'>
+    <div className='flex items-center gap-2'>
       {change > 0 ? (
         <ChevronUp size={16} color='green' />
       ) : (
