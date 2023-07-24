@@ -19,3 +19,8 @@ export interface StatisticsSchema {
   androidDownloads: number
   iosDownloads: number
 }
+
+export interface QueryOutput extends GameSchema, StatisticsSchema {
+  game?: GameSchema
+  previousMonth?: StatisticsSchema
+}

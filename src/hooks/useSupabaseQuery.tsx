@@ -1,16 +1,11 @@
 import supabase from '@/config/supabase'
-import { GameSchema, StatisticsSchema } from '@/types/supabase'
+import { QueryOutput } from '@/types/supabase'
 import { useEffect, useState } from 'react'
 
 interface SupabaseQueryProps {
   mainTable: string
   otherTables?: string[]
   sorting?: { column: string; ascending: boolean }
-}
-
-export interface QueryOutput extends GameSchema, StatisticsSchema {
-  game?: GameSchema
-  previousMonth?: StatisticsSchema
 }
 
 const useSupabaseQuery = ({
