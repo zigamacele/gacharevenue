@@ -45,7 +45,7 @@ const useSupabaseQuery = ({
       }
     }
 
-    getOutput()
+    void getOutput()
   }, [])
 
   return { data: output, loading }

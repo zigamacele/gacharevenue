@@ -1,9 +1,13 @@
 import useSupabaseQuery from '@/hooks/useSupabaseQuery'
+import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
 
 const Home: React.FC = () => {
   const { data, loading } = useSupabaseQuery({
-    mainTable: '7-2023',
-    otherTables: ['game:games ( * )', 'previousMonth:6-2023 ( * )'],
+    mainTable: currentMonthYear(),
+    otherTables: [
+      'game:games ( * )',
+      `previousMonth:${previousMonthYear()} ( * )`,
+    ],
     sorting: { column: 'totalRevenue', ascending: false },
   })
   return (
