@@ -8,12 +8,14 @@ import { QueryOutput } from '@/types/supabase'
 interface MonthlyRevTableRowProps {
   data: QueryOutput
   index: number
+  isMobile: boolean
   previousMonth: { [key: string]: number }
 }
 
 const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   data,
   index,
+  isMobile,
   previousMonth,
 }) => {
   const region = getRegion(data.game?.['region'])
@@ -21,17 +23,22 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   const previousRevenue = data.previousMonth?.['totalRevenue'] ?? 0
 
   return (
-    <TableRow key={data.id}>
-      <TableCell className='flex items-center justify-center'>
-        <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
-      </TableCell>
-      <TableCell className='p-0'>
-        <img
-          src={data.game?.background ?? ''}
-          alt={data.en_name}
-          className='hidden h-9 w-full object-cover sm:block'
-        />
-      </TableCell>
+    <TableRow>
+      {!isMobile && (
+        <>
+          <TableCell className='flex items-center justify-center'>
+            <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
+          </TableCell>
+
+          <TableCell className='p-0'>
+            <img
+              src={data.game?.background ?? ''}
+              alt={data.en_name}
+              className='h-9 w-full object-cover'
+            />
+          </TableCell>
+        </>
+      )}
       <TableCell className={`text-center ${region.color}`}>
         {region.emoji}
       </TableCell>

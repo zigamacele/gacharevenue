@@ -2,6 +2,7 @@ import { Table, TableBody, TableHeader } from '@/lib/shadcn/ui/table'
 import { previousMonthSort } from '@/utils/sorting'
 import { useMemo } from 'react'
 
+import useCurrentDevice from '@/hooks/useCurrentDevice'
 import { QueryOutput } from '@/types/supabase'
 import MonthlyRevTableHeader from './MonthlyRevenueTable/MonthlyRevTableHeader'
 import MonthlyRevTableRow from './MonthlyRevenueTable/MonthlyRevTableRow'
@@ -16,19 +17,22 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
   loading,
 }) => {
   const previousMonth = useMemo(() => previousMonthSort(data), [data])
+  const isMobile = useCurrentDevice()
 
   return (
     <section className='m-2'>
       <Table className='w-full border sm:w-[60em]'>
         <TableHeader>
-          <MonthlyRevTableHeader />
+          <MonthlyRevTableHeader isMobile={isMobile} />
         </TableHeader>
         <TableBody>
           {!loading &&
             data.map((game, index) => (
               <MonthlyRevTableRow
+                key={game.id}
                 data={game}
                 index={index}
+                isMobile={isMobile}
                 previousMonth={previousMonth}
               />
             ))}
