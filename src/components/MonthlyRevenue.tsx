@@ -2,7 +2,7 @@ import useSupabaseQuery from '@/hooks/useSupabaseQuery'
 import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
 import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
-const MonthlyRevenue = () => {
+const MonthlyRevenue: React.FC = () => {
   const { data, loading } = useSupabaseQuery({
     mainTable: currentMonthYear(),
     otherTables: [
