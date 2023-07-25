@@ -2,7 +2,7 @@ import MonthlyRevenue from '@/components/MonthlyRevenue'
 
 const Home: React.FC = () => {
   return (
-    <main>
+    <main className='flex justify-center'>
       <MonthlyRevenue />
     </main>
   )

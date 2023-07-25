@@ -1,7 +1,7 @@
 import { QueryOutput } from '@/types/supabase'
 
-interface PreviousMonthIndexes {
-  [key: number]: number
+export interface PreviousMonthIndexes {
+  [key: string]: number
 }
 
 export const previousMonthSort = (data: QueryOutput[]) => {
