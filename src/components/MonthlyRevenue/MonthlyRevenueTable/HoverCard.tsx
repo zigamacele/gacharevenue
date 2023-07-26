@@ -12,7 +12,7 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
       <HoverCardContent className='flex gap-2'>
         <img
           src={data.game?.icon ?? ''}
-          className='w-20 rounded border object-cover'
+          className='w-20 rounded border border-neutral-600 object-cover'
         />
         <div className='items-between flex flex-col justify-between'>
           <div className='flex flex-col gap-0.5'>

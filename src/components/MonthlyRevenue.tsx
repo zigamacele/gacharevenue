@@ -1,10 +1,9 @@
 import useSupabaseQuery from '@/hooks/useSupabaseQuery'
-import { Toggle } from '@/lib/shadcn/ui/toggle'
 import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
 import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
-import { ArrowDown10, ArrowUp10 } from 'lucide-react'
 import { useState } from 'react'
+import SortingToggle from './MonthlyRevenue/SortingToggle'
 
 const MonthlyRevenue: React.FC = () => {
   const [sortingToggle, setSortingToggle] = useState(false)
@@ -19,14 +18,12 @@ const MonthlyRevenue: React.FC = () => {
 
   return (
     <section className='flex flex-col gap-2'>
-      <Toggle
-        className='p-1'
-        onClick={() => {
-          setSortingToggle(!sortingToggle)
-        }}
-      >
-        {sortingToggle ? <ArrowUp10 /> : <ArrowDown10 />}
-      </Toggle>
+      <div className='flex justify-end'>
+        <SortingToggle
+          sortingToggle={sortingToggle}
+          setSortingToggle={setSortingToggle}
+        />
+      </div>
 
       <MonthlyRevenueTable data={data} loading={loading} />
     </section>

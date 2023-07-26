@@ -32,11 +32,11 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
             <TableCell className='flex items-center justify-center'>
               <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
             </TableCell>
-            <TableCell className='p-0'>
+            <TableCell className=' border-l border-r border-neutral-950 p-0'>
               <img
                 src={data.game?.background ?? ''}
                 alt={data.en_name}
-                className='h-9 w-60 object-cover'
+                className='flex h-9 w-60 items-center object-cover'
               />
             </TableCell>
           </>
@@ -47,12 +47,12 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
         <TableCell className='text-xs sm:text-sm'>
           <HoverCardComp data={data} />
         </TableCell>
-        <TableCell className='text-right'>
+        <TableCell className='text-right text-neutral-200/80'>
           {formatCurrency(previousRevenue)}
         </TableCell>
         <TableCell
-          className={`text-right ${
-            currentRevenue >= previousRevenue ? 'bg-green-600 ' : 'bg-red-500'
+          className={`border-l border-neutral-950 text-right ${
+            currentRevenue >= previousRevenue ? 'bg-green-600 ' : 'bg-red-600'
           }`}
         >
           {formatCurrency(currentRevenue)}
