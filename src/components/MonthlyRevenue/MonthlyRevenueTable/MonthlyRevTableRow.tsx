@@ -4,7 +4,9 @@ import { getRegion } from '@/utils/region'
 
 import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
 import { HoverCard } from '@/lib/shadcn/ui/hover-card'
+import { SelectedSections } from '@/types/monthlyRevenue'
 import { QueryOutput } from '@/types/supabase'
+import EditSection from './EditSection'
 import HoverCardComp from './HoverCard'
 
 interface MonthlyRevTableRowProps {
@@ -12,6 +14,11 @@ interface MonthlyRevTableRowProps {
   index: number
   isMobile: boolean
   previousMonth: { [key: string]: number }
+  showEditSection: boolean
+  selected: SelectedSections
+  setSelected: (
+    updateState: (value: SelectedSections) => SelectedSections,
+  ) => void
 }
 
 const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
@@ -19,6 +26,9 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   index,
   isMobile,
   previousMonth,
+  showEditSection,
+  selected,
+  setSelected,
 }) => {
   const region = getRegion(data.game?.['region'])
   const currentRevenue = data.totalRevenue
@@ -30,7 +40,15 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
         {!isMobile && (
           <>
             <TableCell className='flex items-center justify-center'>
-              <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
+              {showEditSection ? (
+                <EditSection
+                  data={data}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+              ) : (
+                <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
+              )}
             </TableCell>
             <TableCell className=' border-l border-r border-neutral-950 p-0'>
               <img
