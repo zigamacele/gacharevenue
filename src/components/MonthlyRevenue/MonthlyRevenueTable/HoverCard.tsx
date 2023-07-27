@@ -31,7 +31,9 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
           </div>
         </div>
       </HoverCardContent>
-      <HoverCardTrigger>{data.game?.['en_name']}</HoverCardTrigger>
+      <HoverCardTrigger className='cursor-pointer'>
+        {data.game?.['en_name']}
+      </HoverCardTrigger>
     </>
   )
 }

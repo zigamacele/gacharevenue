@@ -27,9 +27,9 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   const region = getRegion(data.game?.['region'])
   const currentRevenue = data.totalRevenue
   const previousRevenue = data.previousMonth?.['totalRevenue'] ?? 0
-  const { removed } = useMonthlyTableControls()
+  const { removed, showPinned } = useMonthlyTableControls()
 
-  const isSectionRemoved = removed.includes(data.id)
+  const isSectionRemoved = removed.includes(data.id) && !showPinned
 
   return (
     <HoverCard>
