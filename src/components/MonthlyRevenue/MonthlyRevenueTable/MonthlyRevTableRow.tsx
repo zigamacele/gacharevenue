@@ -4,6 +4,7 @@ import { getRegion } from '@/utils/region'
 
 import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
 import { HoverCard } from '@/lib/shadcn/ui/hover-card'
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
 import EditSection from './EditSection'
 import HoverCardComp from './HoverCard'
@@ -26,10 +27,13 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   const region = getRegion(data.game?.['region'])
   const currentRevenue = data.totalRevenue
   const previousRevenue = data.previousMonth?.['totalRevenue'] ?? 0
+  const { removed } = useMonthlyTableControls()
+
+  const isSectionRemoved = removed.includes(data.id)
 
   return (
     <HoverCard>
-      <TableRow>
+      <TableRow className={isSectionRemoved ? 'opacity-60' : ''}>
         {!isMobile && (
           <>
             <TableCell className='flex items-center justify-center'>

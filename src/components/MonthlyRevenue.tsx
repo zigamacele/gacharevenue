@@ -3,6 +3,7 @@ import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
 import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import { queryFilterSort } from '@/utils/sorting'
 import {
   ArrowDown10,
   ArrowUp10,
@@ -31,30 +32,6 @@ const MonthlyRevenue: React.FC = () => {
     sorting: { column: 'totalRevenue', ascending: sortAscending },
   })
 
-  const filtered = data.filter((game) => {
-    const gameId = game.id
-    const isPinned = pinned.includes(gameId)
-    const isRemoved = removed.includes(gameId)
-
-    if (showPinned && isPinned) {
-      return true
-    }
-
-    if (isRemoved && !showEditSection) {
-      return false
-    }
-
-    return showPinned ? false : true
-  })
-
-  const sorting = [...filtered].sort((a, b) => {
-    if (sortAscending) {
-      return a.totalRevenue - b.totalRevenue
-    }
-
-    return b.totalRevenue - a.totalRevenue
-  })
-
   return (
     <main className='my-4 flex flex-col gap-2'>
       <section className='flex justify-between'>
@@ -75,7 +52,14 @@ const MonthlyRevenue: React.FC = () => {
         </div>
       </section>
       <MonthlyRevenueTable
-        data={sorting}
+        data={queryFilterSort({
+          data,
+          pinned,
+          removed,
+          showPinned,
+          showEditSection,
+          sortAscending,
+        })}
         loading={loading}
         showEditSection={showEditSection}
       />
