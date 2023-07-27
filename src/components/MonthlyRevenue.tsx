@@ -2,6 +2,7 @@ import useSupabaseQuery from '@/hooks/useSupabaseQuery'
 import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
 import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
+import useSelectedSections from '@/hooks/useSelectedSections'
 import {
   ArrowDown10,
   ArrowUp10,
@@ -13,6 +14,7 @@ import { useState } from 'react'
 import Toggle from './MonthlyRevenue/Toggle'
 
 const MonthlyRevenue: React.FC = () => {
+  const { selected, setSelected } = useSelectedSections()
   const [sortingToggle, setSortingToggle] = useState(false)
   const [showPinned, setPinned] = useState(false)
   const [showEditSection, setEditSection] = useState(false)
@@ -24,6 +26,30 @@ const MonthlyRevenue: React.FC = () => {
       `previousMonth:${previousMonthYear()} ( * )`,
     ],
     sorting: { column: 'totalRevenue', ascending: sortingToggle },
+  })
+
+  const filtered = data.filter((game) => {
+    const gameId = String(game.id)
+    const isPinned = selected.pinned.includes(gameId)
+    const isRemoved = selected.removed.includes(gameId)
+
+    if (showPinned && isPinned) {
+      return true
+    }
+
+    if (isRemoved && !showEditSection) {
+      return false
+    }
+
+    return showPinned ? false : true
+  })
+
+  const sorting = [...filtered].sort((a, b) => {
+    if (sortingToggle) {
+      return a.totalRevenue - b.totalRevenue
+    }
+
+    return b.totalRevenue - a.totalRevenue
   })
 
   return (
@@ -46,9 +72,11 @@ const MonthlyRevenue: React.FC = () => {
         </div>
       </section>
       <MonthlyRevenueTable
-        data={data}
+        data={sorting}
         loading={loading}
         showEditSection={showEditSection}
+        selected={selected}
+        setSelected={setSelected}
       />
     </main>
   )
