@@ -1,45 +1,22 @@
-import { SelectedSections } from '@/types/monthlyRevenue'
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
 import { CheckCircle2, Pin, PinOff, XCircle } from 'lucide-react'
 
 interface EditSectionProps {
   data: QueryOutput
-  selected: SelectedSections
-  setSelected: (
-    updateState: (value: SelectedSections) => SelectedSections,
-  ) => void
 }
 
-const EditSection: React.FC<EditSectionProps> = ({
-  data,
-  selected,
-  setSelected,
-}) => {
-  const handleSelect = (type: string) => {
-    const gameId = String(data.id)
-    if (selected[type as keyof SelectedSections].includes(gameId)) {
-      setSelected((prev) => ({
-        ...prev,
-        [type]: prev[type as keyof SelectedSections].filter(
-          (id) => id !== gameId,
-        ),
-      }))
-    } else {
-      setSelected((prev) => ({
-        ...prev,
-        [type]: [...prev[type as keyof SelectedSections], gameId],
-      }))
-    }
-  }
+const EditSection: React.FC<EditSectionProps> = ({ data }) => {
+  const { pinned, removed, setState } = useMonthlyTableControls()
 
   return (
     <div className='mt-1 flex gap-2'>
       <div
         onClick={() => {
-          handleSelect('pinned')
+          setState('pinned', data.id)
         }}
       >
-        {selected.pinned.includes(String(data.game?.id)) ? (
+        {pinned.includes(data.id) ? (
           <PinOff size={15} opacity={0.5} />
         ) : (
           <Pin size={15} />
@@ -47,10 +24,10 @@ const EditSection: React.FC<EditSectionProps> = ({
       </div>
       <div
         onClick={() => {
-          handleSelect('removed')
+          setState('removed', data.id)
         }}
       >
-        {selected.removed.includes(String(data.game?.id)) ? (
+        {removed.includes(data.id) ? (
           <XCircle size={15} opacity={0.5} />
         ) : (
           <CheckCircle2 size={15} />

@@ -3,7 +3,6 @@ import { previousMonthSort } from '@/utils/sorting'
 import { useMemo } from 'react'
 
 import useCurrentDevice from '@/hooks/useCurrentDevice'
-import { SelectedSections } from '@/types/monthlyRevenue'
 import { QueryOutput } from '@/types/supabase'
 import MonthlyRevTableHeader from './MonthlyRevenueTable/MonthlyRevTableHeader'
 import MonthlyRevTableRow from './MonthlyRevenueTable/MonthlyRevTableRow'
@@ -12,18 +11,12 @@ interface MonthlyRevenueTableProps {
   data: QueryOutput[]
   loading: boolean
   showEditSection: boolean
-  selected: SelectedSections
-  setSelected: (
-    updateState: (value: SelectedSections) => SelectedSections,
-  ) => void
 }
 
 const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
   data,
   loading,
   showEditSection,
-  selected,
-  setSelected,
 }) => {
   const previousMonth = useMemo(() => previousMonthSort(data), [data])
   const isMobile = useCurrentDevice()
@@ -44,8 +37,6 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
                 isMobile={isMobile}
                 previousMonth={previousMonth}
                 showEditSection={showEditSection}
-                selected={selected}
-                setSelected={setSelected}
               />
             ))}
         </TableBody>

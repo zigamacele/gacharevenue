@@ -2,7 +2,7 @@ import useSupabaseQuery from '@/hooks/useSupabaseQuery'
 import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
 import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
-import useSelectedSections from '@/hooks/useSelectedSections'
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import {
   ArrowDown10,
   ArrowUp10,
@@ -10,14 +10,17 @@ import {
   Pin,
   PinOff,
 } from 'lucide-react'
-import { useState } from 'react'
 import Toggle from './MonthlyRevenue/Toggle'
 
 const MonthlyRevenue: React.FC = () => {
-  const { selected, setSelected } = useSelectedSections()
-  const [sortingToggle, setSortingToggle] = useState(false)
-  const [showPinned, setPinned] = useState(false)
-  const [showEditSection, setEditSection] = useState(false)
+  const {
+    sortAscending,
+    pinned,
+    removed,
+    showPinned,
+    showEditSection,
+    toggle,
+  } = useMonthlyTableControls()
 
   const { data, loading } = useSupabaseQuery({
     mainTable: currentMonthYear(),
@@ -25,13 +28,13 @@ const MonthlyRevenue: React.FC = () => {
       'game:games ( * )',
       `previousMonth:${previousMonthYear()} ( * )`,
     ],
-    sorting: { column: 'totalRevenue', ascending: sortingToggle },
+    sorting: { column: 'totalRevenue', ascending: sortAscending },
   })
 
   const filtered = data.filter((game) => {
-    const gameId = String(game.id)
-    const isPinned = selected.pinned.includes(gameId)
-    const isRemoved = selected.removed.includes(gameId)
+    const gameId = game.id
+    const isPinned = pinned.includes(gameId)
+    const isRemoved = removed.includes(gameId)
 
     if (showPinned && isPinned) {
       return true
@@ -45,7 +48,7 @@ const MonthlyRevenue: React.FC = () => {
   })
 
   const sorting = [...filtered].sort((a, b) => {
-    if (sortingToggle) {
+    if (sortAscending) {
       return a.totalRevenue - b.totalRevenue
     }
 
@@ -55,15 +58,15 @@ const MonthlyRevenue: React.FC = () => {
   return (
     <main className='my-4 flex flex-col gap-2'>
       <section className='flex justify-between'>
-        <Toggle onClick={setEditSection}>
+        <Toggle onClick={() => toggle('showEditSection')}>
           <ClipboardEdit size={20} />
         </Toggle>
         <div className='flex justify-end gap-2'>
-          <Toggle onClick={setPinned}>
+          <Toggle onClick={() => toggle('showPinned')}>
             {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
           </Toggle>
-          <Toggle onClick={setSortingToggle}>
-            {sortingToggle ? (
+          <Toggle onClick={() => toggle('sortAscending')}>
+            {sortAscending ? (
               <ArrowUp10 size={22} />
             ) : (
               <ArrowDown10 size={22} />
@@ -75,8 +78,6 @@ const MonthlyRevenue: React.FC = () => {
         data={sorting}
         loading={loading}
         showEditSection={showEditSection}
-        selected={selected}
-        setSelected={setSelected}
       />
     </main>
   )
