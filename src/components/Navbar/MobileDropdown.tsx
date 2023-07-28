@@ -1,3 +1,4 @@
+import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from '@/lib/shadcn/ui/dropdown-menu'
 import { MoreHorizontal } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const MobileDropdown = () => {
   return (
@@ -14,9 +16,21 @@ const MobileDropdown = () => {
           <MoreHorizontal size={22} />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>Revenue</DropdownMenuItem>
-          <DropdownMenuItem>Charts</DropdownMenuItem>
-          <DropdownMenuItem>Feedback</DropdownMenuItem>
+          <DropdownMenuItem className='cursor-pointer'>
+            <Link to={REVENUE}>
+              <span>Revenue</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className='cursor-pointer'>
+            <Link to={CHARTS}>
+              <span>Charts</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className='cursor-pointer'>
+            <Link to={FEEDBACK}>
+              <span>Feedback</span>
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </section>

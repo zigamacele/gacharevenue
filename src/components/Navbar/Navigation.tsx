@@ -1,21 +1,21 @@
-import { useLocation } from 'react-router-dom'
+import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links'
+import { Link } from 'react-router-dom'
 
 const Navigation = () => {
-  const { pathname } = useLocation()
-
   return (
     <section className='hidden gap-3 sm:flex'>
-      <span
-        className={`cursor-pointer opacity-40 hover:opacity-80 ${
-          pathname === '/' && 'opacity-100'
-        }`}
+      <Link to={REVENUE} className='cursor-pointer opacity-40 hover:opacity-80'>
+        <span>Revenue</span>
+      </Link>
+      <Link to={CHARTS} className='cursor-pointer opacity-40 hover:opacity-80'>
+        <span>Charts</span>
+      </Link>
+      <Link
+        to={FEEDBACK}
+        className='cursor-pointer opacity-40 hover:opacity-80'
       >
-        Revenue
-      </span>
-      <span className='cursor-pointer opacity-40 hover:opacity-80'>Charts</span>
-      <span className='cursor-pointer opacity-40 hover:opacity-80'>
-        Feedback
-      </span>
+        <span>Feedback</span>
+      </Link>
     </section>
   )
 }
