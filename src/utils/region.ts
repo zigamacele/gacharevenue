@@ -3,9 +3,9 @@ export const getRegion = (region: string | undefined) => {
     case 'GLOBAL':
       return { emoji: '🌐', color: 'bg-blue-500' }
     case 'JAPAN':
-      return { emoji: '🇯🇵', color: 'bg-red-500' }
+      return { emoji: '🇯🇵', color: 'bg-red-600' }
     case 'KOREA':
-      return { emoji: '🇰🇷', color: 'bg-gray-500' }
+      return { emoji: '🇰🇷', color: 'bg-gray-600' }
     default:
       return { emoji: '', color: 'bg-gray-500' }
   }

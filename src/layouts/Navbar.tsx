@@ -1,0 +1,24 @@
+import logo from '@/assets/logo.svg'
+import MobileDropdown from '@/components/Navbar/MobileDropdown'
+import Navigation from '@/components/Navbar/Navigation'
+import SocialLinks from '@/components/Navbar/SocialLinks'
+import { Separator } from '@/lib/shadcn/ui/separator'
+
+const Navbar: React.FC = () => {
+  return (
+    <nav className='fixed flex h-14 w-full items-center justify-between border-b border-neutral-700 bg-neutral-900 px-4 text-sm sm:px-28'>
+      <div className='flex cursor-pointer items-center gap-2 hover:opacity-60'>
+        <img src={logo} alt='logo' className='h-6 w-6' />
+        <span className='text-lg'>Gashapon</span>
+      </div>
+      <div className='flex items-center gap-5'>
+        <Navigation />
+        <MobileDropdown />
+        <Separator orientation='vertical' className='h-4' />
+        <SocialLinks />
+      </div>
+    </nav>
+  )
+}
+
+export default Navbar

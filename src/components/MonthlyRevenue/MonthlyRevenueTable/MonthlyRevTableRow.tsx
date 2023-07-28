@@ -36,7 +36,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
       <TableRow className={isSectionRemoved ? 'opacity-60' : ''}>
         {!isMobile && (
           <>
-            <TableCell className='flex items-center justify-center'>
+            <TableCell className='flex w-14 items-center justify-center'>
               {showEditSection ? (
                 <EditSection data={data} />
               ) : (
