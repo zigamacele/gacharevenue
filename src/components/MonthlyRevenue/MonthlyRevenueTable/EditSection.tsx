@@ -17,9 +17,12 @@ const EditSection: React.FC<EditSectionProps> = ({ data }) => {
         }}
       >
         {pinned.includes(data.id) ? (
-          <PinOff size={15} opacity={0.5} />
+          <PinOff
+            size={15}
+            className='cursor-pointer opacity-40 hover:opacity-20'
+          />
         ) : (
-          <Pin size={15} />
+          <Pin size={15} className='cursor-pointer hover:opacity-60' />
         )}
       </div>
       <div
@@ -28,9 +31,12 @@ const EditSection: React.FC<EditSectionProps> = ({ data }) => {
         }}
       >
         {removed.includes(data.id) ? (
-          <XCircle size={15} opacity={0.5} />
+          <XCircle
+            size={15}
+            className='cursor-pointer opacity-40 hover:opacity-20'
+          />
         ) : (
-          <CheckCircle2 size={15} />
+          <CheckCircle2 size={15} className='cursor-pointer hover:opacity-60' />
         )}
       </div>
     </div>

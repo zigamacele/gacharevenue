@@ -43,7 +43,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
                 <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
               )}
             </TableCell>
-            <TableCell className=' border-l border-r border-neutral-950 p-0'>
+            <TableCell className=' border-l border-r border-neutral-800 p-0'>
               <img
                 src={data.game?.background ?? ''}
                 alt={data.en_name}
@@ -62,7 +62,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
           {formatCurrency(previousRevenue)}
         </TableCell>
         <TableCell
-          className={`border-l border-neutral-950 text-right ${
+          className={`border-l border-neutral-800 text-right ${
             currentRevenue >= previousRevenue ? 'bg-green-600 ' : 'bg-red-600'
           }`}
         >
