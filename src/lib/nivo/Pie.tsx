@@ -1,3 +1,4 @@
+import theme from '@/styles/nivo-theme.json'
 import { BarDatum } from '@/types/nivo'
 import { formatCurrencyCompact } from '@/utils/currency'
 import { ResponsivePie } from '@nivo/pie'
@@ -9,12 +10,14 @@ interface PieProps {
 const Pie: React.FC<PieProps> = ({ data }) => (
   <ResponsivePie
     data={data}
-    margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+    theme={theme}
+    margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
     innerRadius={0.5}
     padAngle={0.7}
     cornerRadius={3}
     activeOuterRadiusOffset={8}
     borderWidth={1}
+    darkMode={true}
     valueFormat={(value) => formatCurrencyCompact(value)}
     borderColor={{
       from: 'color',

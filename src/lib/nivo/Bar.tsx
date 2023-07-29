@@ -1,3 +1,4 @@
+import theme from '@/styles/nivo-theme.json'
 import { BarDatum } from '@/types/nivo'
 import { formatCurrencyCompact } from '@/utils/currency'
 import { ResponsiveBar } from '@nivo/bar'
@@ -14,6 +15,7 @@ const Bar: React.FC<BarProps> = ({ data }) => {
       keys={allKeys}
       indexBy='month'
       margin={{ top: 50, right: 60, bottom: 50, left: 100 }}
+      theme={theme}
       padding={0.3}
       valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}

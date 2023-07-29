@@ -1,3 +1,4 @@
+import theme from '@/styles/nivo-theme.json'
 import { formatCurrencyCompact } from '@/utils/currency'
 import { ResponsiveLine } from '@nivo/line'
 
@@ -9,12 +10,22 @@ const Line: React.FC<LineProps> = ({ data }) => (
   <ResponsiveLine
     data={data}
     margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
-    tooltip={({ point }) => (
-      <div className='flex gap-2'>
-        <span>{point.serieId}</span>
-        <span>{formatCurrencyCompact(point.data.y as number)}</span>
-      </div>
-    )}
+    theme={theme}
+    tooltip={({ point }) => {
+      return (
+        <div className='flex items-center gap-2 bg-neutral-900 px-2 py-1 text-xs'>
+          <div
+            style={{ backgroundColor: point.serieColor }}
+            className='h-3 w-3'
+          ></div>
+          <span>{point.serieId}</span>
+          <span>-</span>
+          <span className='font-semibold'>
+            {formatCurrencyCompact(point.data.y as number)}
+          </span>
+        </div>
+      )
+    }}
     xScale={{ type: 'point' }}
     yScale={{
       type: 'linear',
@@ -38,7 +49,7 @@ const Line: React.FC<LineProps> = ({ data }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: 'revenue',
+      legend: 'total revenue',
       legendOffset: -50,
       legendPosition: 'middle',
       format: (revenue: number) => formatCurrencyCompact(revenue),
