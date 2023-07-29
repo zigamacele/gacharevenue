@@ -1,13 +1,17 @@
 import dayjs from 'dayjs'
 
 export const currentMonthYear = () => {
-  return `${dayjs().month() + 1}-${dayjs().year()}`
+  return `${dayjs().month()}-${dayjs().year()}`
 }
 
 export const previousMonthYear = () => {
   if (!dayjs().month()) {
-    return `12-${dayjs().year() - 1}`
+    return `10-${dayjs().year() - 1}`
   }
 
-  return `${dayjs().month()}-${dayjs().year()}`
+  if (dayjs().month() === 1) {
+    return `11-${dayjs().year() - 1}`
+  }
+
+  return `${dayjs().month() - 1}-${dayjs().year()}`
 }
