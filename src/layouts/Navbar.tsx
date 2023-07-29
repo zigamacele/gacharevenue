@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
   return (
-    <nav className='fixed flex h-14 w-full items-center justify-between border-b border-neutral-700 bg-neutral-900 px-4 text-sm sm:px-28'>
+    <nav className='fixed z-50 flex h-14 w-full items-center justify-between border-b border-neutral-700 bg-neutral-900 px-4 text-sm sm:px-28'>
       <Link
         to='/'
         className='flex cursor-pointer items-center gap-2 hover:opacity-60'

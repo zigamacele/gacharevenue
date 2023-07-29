@@ -423,31 +423,35 @@ const Charts = () => {
   ]
   return (
     <>
-      <div className='mx-6 my-4 flex justify-end gap-1'>
-        <Button
-          onClick={() => setSelectedChart('pie')}
-          className={`text-opacity-40 hover:text-opacity-80 ${
-            selectedChart === 'pie' && 'text-opacity-100'
-          }`}
-        >
-          <PieChart width={22} />
-        </Button>
-        <Button
-          onClick={() => setSelectedChart('line')}
-          className={`text-opacity-40 hover:text-opacity-80 ${
-            selectedChart === 'line' && 'text-opacity-100'
-          }`}
-        >
-          <LineChart width={22} />
-        </Button>
-        <Button
-          onClick={() => setSelectedChart('bar')}
-          className={`text-opacity-40 hover:text-opacity-80 ${
-            selectedChart === 'bar' && 'text-opacity-100'
-          }`}
-        >
-          <BarChart3 width={22} />
-        </Button>
+      <div className='mx-6 my-4 flex justify-between '>
+        <div className='flex gap-2'>
+          <Button
+            onClick={() => setSelectedChart('pie')}
+            className={`text-opacity-40 hover:text-opacity-80 ${
+              selectedChart === 'pie' && 'text-opacity-100'
+            }`}
+          >
+            <PieChart width={22} />
+          </Button>
+          <Button
+            onClick={() => setSelectedChart('line')}
+            className={`text-opacity-40 hover:text-opacity-80 ${
+              selectedChart === 'line' && 'text-opacity-100'
+            }`}
+          >
+            <LineChart width={22} />
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={() => setSelectedChart('bar')}
+            className={`text-opacity-40 hover:text-opacity-80 ${
+              selectedChart === 'bar' && 'text-opacity-100'
+            }`}
+          >
+            <BarChart3 width={22} />
+          </Button>
+        </div>
       </div>
       <div className='h-[60vh] w-full'>
         {selectedChart === 'pie' && <Pie data={pie} />}

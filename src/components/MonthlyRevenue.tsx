@@ -26,7 +26,7 @@ const MonthlyRevenue: React.FC = () => {
   const { data, loading } = useSupabaseQuery({
     mainTable: currentMonthYear(),
     otherTables: [
-      'game:games ( * )',
+      'game:games2 ( * )',
       `previousMonth:${previousMonthYear()} ( * )`,
     ],
     sorting: { column: 'totalRevenue', ascending: sortAscending },
