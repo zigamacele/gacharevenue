@@ -11,3 +11,11 @@ export const formatCurrency = (value: number | undefined) => {
 
   return USDollar.format(value)
 }
+
+export const formatCurrencyCompact = (value: number | undefined) => {
+  if (!value) {
+    return ''
+  }
+
+  return Intl.NumberFormat('en', { notation: 'compact' }).format(value)
+}
