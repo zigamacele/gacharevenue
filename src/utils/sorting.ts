@@ -1,3 +1,4 @@
+import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { QueryOutput } from '@/types/supabase'
 
 export interface PreviousMonthIndexes {
@@ -7,8 +8,8 @@ export interface PreviousMonthIndexes {
 export const previousMonthSort = (data: QueryOutput[]) => {
   const sortedPreviousMonth = [...data].sort(
     (a, b) =>
-      (b.previousMonth?.totalRevenue || 0) -
-      (a.previousMonth?.totalRevenue || 0),
+      (b[PREVIOUS_TABLE]?.totalRevenue ?? 0) -
+      (a[PREVIOUS_TABLE]?.totalRevenue ?? 0),
   )
 
   const previousMonthIndexes: PreviousMonthIndexes = {}
@@ -53,11 +54,14 @@ export const queryFilterSort = ({
   })
 
   const sorting = [...filtered].sort((a, b) => {
+    const aRevenue = a[CURRENT_TABLE]?.totalRevenue ?? 0
+    const bRevenue = b[CURRENT_TABLE]?.totalRevenue ?? 0
+
     if (sortAscending) {
-      return a.totalRevenue - b.totalRevenue
+      return aRevenue - bRevenue
     }
 
-    return b.totalRevenue - a.totalRevenue
+    return bRevenue - aRevenue
   })
 
   return sorting

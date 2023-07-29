@@ -1,7 +1,7 @@
 import useSupabaseQuery from '@/hooks/useSupabaseQuery'
-import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
 import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
+import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { queryFilterSort } from '@/utils/sorting'
 import {
@@ -24,12 +24,8 @@ const MonthlyRevenue: React.FC = () => {
   } = useMonthlyTableControls()
 
   const { data, loading } = useSupabaseQuery({
-    mainTable: currentMonthYear(),
-    otherTables: [
-      'game:games2 ( * )',
-      `previousMonth:${previousMonthYear()} ( * )`,
-    ],
-    sorting: { column: 'totalRevenue', ascending: sortAscending },
+    mainTable: 'games2',
+    otherTables: [`${CURRENT_TABLE} ( * )`, `${PREVIOUS_TABLE} ( * )`],
   })
 
   return (

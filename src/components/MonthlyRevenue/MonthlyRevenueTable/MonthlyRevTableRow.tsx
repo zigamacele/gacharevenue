@@ -3,6 +3,7 @@ import { formatCurrency } from '@/utils/currency'
 import { getRegion } from '@/utils/region'
 
 import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
+import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { HoverCard } from '@/lib/shadcn/ui/hover-card'
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
@@ -24,9 +25,9 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   previousMonth,
   showEditSection,
 }) => {
-  const region = getRegion(data.game?.['region'])
-  const currentRevenue = data.totalRevenue
-  const previousRevenue = data.previousMonth?.['totalRevenue'] ?? 0
+  const region = getRegion(data['region'])
+  const currentRevenue = data[CURRENT_TABLE]?.totalRevenue ?? 0
+  const previousRevenue = data[PREVIOUS_TABLE]?.totalRevenue ?? 0
   const { removed, showPinned } = useMonthlyTableControls()
 
   const isSectionRemoved = removed.includes(data.id) && !showPinned
@@ -45,7 +46,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
             </TableCell>
             <TableCell className=' border-l border-r border-neutral-800 p-0'>
               <img
-                src={data.game?.background ?? ''}
+                src={data.background ?? ''}
                 alt={data.en_name}
                 className='flex h-9 w-60 items-center object-cover'
               />

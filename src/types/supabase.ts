@@ -20,7 +20,4 @@ export interface StatisticsSchema {
   iosDownloads: number
 }
 
-export interface QueryOutput extends GameSchema, StatisticsSchema {
-  game?: GameSchema
-  previousMonth?: StatisticsSchema
-}
+export type QueryOutput = GameSchema & { [key: string]: StatisticsSchema }

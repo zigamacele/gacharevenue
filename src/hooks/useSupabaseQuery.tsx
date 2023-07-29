@@ -5,14 +5,9 @@ import { useEffect, useState } from 'react'
 interface SupabaseQueryProps {
   mainTable: string
   otherTables?: string[]
-  sorting?: { column: string; ascending: boolean }
 }
 
-const useSupabaseQuery = ({
-  mainTable,
-  otherTables,
-  sorting,
-}: SupabaseQueryProps) => {
+const useSupabaseQuery = ({ mainTable, otherTables }: SupabaseQueryProps) => {
   const [output, setOutput] = useState<QueryOutput[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -20,15 +15,9 @@ const useSupabaseQuery = ({
     const getOutput = async () => {
       setLoading(true)
 
-      let query = supabase
+      const { data, error } = await supabase
         .from(mainTable)
         .select(`* ${otherTables && `, ${otherTables.join(', ')}`}}`)
-
-      if (sorting) {
-        query = query.order(sorting.column, { ascending: sorting.ascending })
-      }
-
-      const { data, error } = await query
 
       if (data) {
         setOutput(data as unknown as QueryOutput[])
