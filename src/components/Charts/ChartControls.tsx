@@ -12,7 +12,7 @@ const ChartControls: React.FC<ChartControlsProps> = ({
   setSelectedChart,
 }) => {
   return (
-    <div className='flex w-full items-center justify-between sm:w-[60vw]'>
+    <div className='flex w-full items-center justify-between sm:w-[80vw]'>
       <div className='flex gap-2'>
         <Tooltip text='Pie Chart'>
           <Button

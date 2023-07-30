@@ -27,7 +27,7 @@ const Charts: React.FC = () => {
         selectedChart={selectedChart}
         setSelectedChart={setSelectedChart}
       />
-      <div className='h-[60vh] w-full rounded-lg border border-neutral-700 bg-neutral-900 sm:w-[60vw]'>
+      <div className='h-[60vh] w-full rounded-lg border border-neutral-700 bg-neutral-900 sm:w-[80vw]'>
         {selectedChart === 'pie' && <Pie data={preparePieChartData(data)} />}
         {selectedChart === 'line' && <Line data={prepareLineChartData(data)} />}
         {selectedChart === 'bar' && <Bar data={prepareBarChartData(data)} />}

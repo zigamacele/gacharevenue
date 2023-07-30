@@ -1,3 +1,4 @@
+import { Button } from '@/lib/shadcn/ui/button'
 import { HoverCardContent, HoverCardTrigger } from '@/lib/shadcn/ui/hover-card'
 import { QueryOutput } from '@/types/supabase'
 import { CalendarDaysIcon } from 'lucide-react'
@@ -31,8 +32,10 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
           </div>
         </div>
       </HoverCardContent>
-      <HoverCardTrigger className='cursor-pointer'>
-        {data.en_name}
+      <HoverCardTrigger className='cursor-pointer hover:underline'>
+        <Button variant='link' size='revenue'>
+          {data.en_name}
+        </Button>
       </HoverCardTrigger>
     </>
   )

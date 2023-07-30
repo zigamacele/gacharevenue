@@ -1,4 +1,9 @@
 import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 export const currentMonthYear = () => {
   return `${dayjs().month()}-${dayjs().year()}`
@@ -14,4 +19,14 @@ export const previousMonthYear = () => {
   }
 
   return `${dayjs().month() - 1}-${dayjs().year()}`
+}
+
+export const formatTimestampz = (timestampz: string) => {
+  return dayjs(timestampz).tz('UTC').format('YYYY-MM-DD HH:mm')
+}
+
+export const humanizeTable = (table: string) => {
+  return dayjs(`${table.split('-')[0]}.01.${table.split('-')[1]}`).format(
+    'MMM YYYY',
+  )
 }

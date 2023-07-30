@@ -1,6 +1,7 @@
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { BarDatum } from '@/types/nivo'
 import { QueryOutput } from '@/types/supabase'
+import { humanizeTable } from './timeDate'
 
 export const preparePieChartData = (data: QueryOutput[]) => {
   const pieData = data.map((game) => {
@@ -17,17 +18,15 @@ export const preparePieChartData = (data: QueryOutput[]) => {
 export const prepareLineChartData = (data: QueryOutput[]) => {
   const lineData = data.map((game) => {
     return {
-      id: game.name,
+      id: `${game.en_name} (${game.region})`,
       data: [
         {
-          x: CURRENT_TABLE,
-          label: game.en_name,
-          y: game[CURRENT_TABLE]?.totalRevenue ?? 0,
+          x: humanizeTable(PREVIOUS_TABLE),
+          y: game[PREVIOUS_TABLE]?.totalRevenue ?? 0,
         },
         {
-          x: PREVIOUS_TABLE,
-          label: game.en_name,
-          y: game[PREVIOUS_TABLE]?.totalRevenue ?? 0,
+          x: humanizeTable(CURRENT_TABLE),
+          y: game[CURRENT_TABLE]?.totalRevenue ?? 0,
         },
       ],
     }
@@ -38,9 +37,9 @@ export const prepareLineChartData = (data: QueryOutput[]) => {
 
 export const prepareBarChartData = (data: QueryOutput[]) => {
   const currentMonth: BarDatum = {
-    month: CURRENT_TABLE,
+    month: humanizeTable(CURRENT_TABLE),
   }
-  const previousMonth: BarDatum = { month: PREVIOUS_TABLE }
+  const previousMonth: BarDatum = { month: humanizeTable(PREVIOUS_TABLE) }
   const allKeys = []
 
   for (const game of data) {
