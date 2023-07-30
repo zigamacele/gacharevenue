@@ -1,5 +1,5 @@
 import { TableCell, TableRow } from '@/lib/shadcn/ui/table'
-import { formatCurrency } from '@/utils/currency'
+import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
 import { getRegion } from '@/utils/region'
 
 import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
@@ -35,23 +35,21 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   return (
     <HoverCard>
       <TableRow className={isSectionRemoved ? 'opacity-60' : ''}>
+        <TableCell className='flex w-14 items-center justify-center'>
+          {showEditSection ? (
+            <EditSection data={data} />
+          ) : (
+            <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
+          )}
+        </TableCell>
         {!isMobile && (
-          <>
-            <TableCell className='flex w-14 items-center justify-center'>
-              {showEditSection ? (
-                <EditSection data={data} />
-              ) : (
-                <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
-              )}
-            </TableCell>
-            <TableCell className=' border-l border-r border-neutral-800 p-0'>
-              <img
-                src={data.background ?? ''}
-                alt={data.en_name}
-                className='flex h-9 w-60 items-center object-cover'
-              />
-            </TableCell>
-          </>
+          <TableCell className=' border-l border-r border-neutral-800 p-0'>
+            <img
+              src={data.background ?? ''}
+              alt={data.en_name}
+              className='flex h-9 w-60 items-center object-cover'
+            />
+          </TableCell>
         )}
         <TableCell className={`text-center ${region.color}`}>
           {region.emoji}
@@ -60,14 +58,18 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
           <HoverCardComp data={data} />
         </TableCell>
         <TableCell className='text-right text-neutral-200/80'>
-          {formatCurrency(previousRevenue)}
+          {!isMobile
+            ? formatCurrency(previousRevenue)
+            : formatCurrencyCompact(previousRevenue)}
         </TableCell>
         <TableCell
           className={`border-l border-neutral-800 text-right ${
             currentRevenue >= previousRevenue ? 'bg-green-600 ' : 'bg-red-600'
           }`}
         >
-          {formatCurrency(currentRevenue)}
+          {!isMobile
+            ? formatCurrency(currentRevenue)
+            : formatCurrencyCompact(currentRevenue)}
         </TableCell>
       </TableRow>
     </HoverCard>

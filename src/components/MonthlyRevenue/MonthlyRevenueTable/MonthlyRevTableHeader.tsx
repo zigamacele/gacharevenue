@@ -9,16 +9,12 @@ const MonthlyRevTableHeader: React.FC<MonthlyRevTableHeaderProps> = ({
 }) => {
   return (
     <TableRow>
-      {!isMobile && (
-        <>
-          <TableHead></TableHead>
-          <TableHead></TableHead>
-        </>
-      )}
+      <TableHead></TableHead>
+      {!isMobile && <TableHead></TableHead>}
       <TableHead>Region</TableHead>
       <TableHead>Game</TableHead>
-      <TableHead className='text-right'>Jun 2023</TableHead>
-      <TableHead className='text-right'>Jul 2023</TableHead>
+      <TableHead className='whitespace-nowrap text-right'>Jun 2023</TableHead>
+      <TableHead className='whitespace-nowrap text-right'>Jul 2023</TableHead>
     </TableRow>
   )
 }
