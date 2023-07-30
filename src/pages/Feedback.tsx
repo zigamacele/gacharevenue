@@ -1,25 +1,11 @@
 import FeedbackForm from '@/components/Feedback/FeedbackForm'
-import useFeedbackChanges from '@/hooks/useFeedbackChanges'
+import FeedbackMessages from '@/components/Feedback/FeedbackMessages'
 
 const Feedback = () => {
-  const { data, loading } = useFeedbackChanges()
-
   return (
-    <main className='mt-4 flex flex-col items-center'>
+    <main className='my-4 flex flex-col items-center gap-4'>
       <FeedbackForm />
-      <section>
-        {!loading && (
-          <div>
-            {data.map((feedback) => {
-              return (
-                <div key={feedback.id} className='flex gap-2'>
-                  {feedback.name || 'Anonymous'} {feedback.content}
-                </div>
-              )
-            })}
-          </div>
-        )}
-      </section>
+      <FeedbackMessages />
     </main>
   )
 }

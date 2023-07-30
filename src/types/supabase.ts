@@ -24,7 +24,7 @@ export type QueryOutput = GameSchema & { [key: string]: StatisticsSchema }
 
 export interface FeedbackOutput {
   id: number
-  created_at: Date
+  created_at: string
   content: string
   response: string | null
   name: string | null

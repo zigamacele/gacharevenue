@@ -10,6 +10,7 @@ import {
   FormMessage,
 } from '@/lib/shadcn/ui/form'
 import { Input } from '@/lib/shadcn/ui/input'
+import { Textarea } from '@/lib/shadcn/ui/textarea'
 import { formSchema } from '@/utils/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -64,7 +65,11 @@ const FeedbackForm: React.FC = () => {
               <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <Input placeholder='Message..' {...field} />
+                  <Textarea
+                    className='bg-neutral-800'
+                    placeholder='Message..'
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription>
                   Enter a message that you wish to be displayed publicly.
@@ -73,7 +78,7 @@ const FeedbackForm: React.FC = () => {
               </FormItem>
             )}
           />
-          <Button type='submit' className='bg-neutral-950'>
+          <Button type='submit' className='bg-neutral-950/40'>
             Submit
           </Button>
         </form>
