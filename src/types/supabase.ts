@@ -21,3 +21,12 @@ export interface StatisticsSchema {
 }
 
 export type QueryOutput = GameSchema & { [key: string]: StatisticsSchema }
+
+export interface FeedbackOutput {
+  id: number
+  created_at: Date
+  content: string
+  response: string | null
+  name: string | null
+  seen: boolean | null
+}
