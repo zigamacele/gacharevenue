@@ -15,7 +15,7 @@ const SocialLinks = () => {
         <img
           src={reddit}
           alt='r/gachagaming'
-          className='h-[22px] w-[22px] hover:opacity-60'
+          className='h-[26px] w-[26px] hover:opacity-60'
         />
       </Link>
       <Link to={SENSORTOWER_URL} target='_blank'>

@@ -1,3 +1,4 @@
+import Tooltip from '@/components/Tooltip'
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
 import { CheckCircle2, Pin, PinOff, XCircle } from 'lucide-react'
@@ -16,28 +17,35 @@ const EditSection: React.FC<EditSectionProps> = ({ data }) => {
           setState('pinned', data.id)
         }}
       >
-        {pinned.includes(data.id) ? (
-          <PinOff
-            size={15}
-            className='cursor-pointer opacity-40 hover:opacity-20'
-          />
-        ) : (
-          <Pin size={15} className='cursor-pointer hover:opacity-60' />
-        )}
+        <Tooltip text={!pinned.includes(data.id) ? 'Pin' : 'Unpin'}>
+          {pinned.includes(data.id) ? (
+            <PinOff
+              size={15}
+              className='cursor-pointer opacity-40 hover:opacity-20'
+            />
+          ) : (
+            <Pin size={15} className='cursor-pointer hover:opacity-60' />
+          )}
+        </Tooltip>
       </div>
       <div
         onClick={() => {
           setState('removed', data.id)
         }}
       >
-        {removed.includes(data.id) ? (
-          <XCircle
-            size={15}
-            className='cursor-pointer opacity-40 hover:opacity-20'
-          />
-        ) : (
-          <CheckCircle2 size={15} className='cursor-pointer hover:opacity-60' />
-        )}
+        <Tooltip text={!removed.includes(data.id) ? 'Remove' : 'Restore '}>
+          {removed.includes(data.id) ? (
+            <XCircle
+              size={15}
+              className='cursor-pointer opacity-40 hover:opacity-20'
+            />
+          ) : (
+            <CheckCircle2
+              size={15}
+              className='cursor-pointer hover:opacity-60'
+            />
+          )}
+        </Tooltip>
       </div>
     </div>
   )
