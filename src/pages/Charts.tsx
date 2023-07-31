@@ -1,9 +1,8 @@
 import ChartControls from '@/components/Charts/ChartControls'
-import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
-import useSupabaseQuery from '@/hooks/useSupabaseQuery'
 import Bar from '@/lib/nivo/Bar'
 import Line from '@/lib/nivo/Line'
 import Pie from '@/lib/nivo/Pie'
+import useSupabaseStore from '@/stores/supabase-store'
 
 import {
   prepareBarChartData,
@@ -16,10 +15,7 @@ import { useState } from 'react'
 const Charts: React.FC = () => {
   const [selectedChart, setSelectedChart] = useState('pie')
 
-  const { data } = useSupabaseQuery({
-    mainTable: 'games2',
-    otherTables: [`${CURRENT_TABLE} ( * )`, `${PREVIOUS_TABLE} ( * )`],
-  })
+  const { storage } = useSupabaseStore()
 
   return (
     <section className='mt-4 flex flex-col items-center gap-2'>
@@ -28,9 +24,11 @@ const Charts: React.FC = () => {
         setSelectedChart={setSelectedChart}
       />
       <div className='h-[60vh] w-full rounded-lg border border-neutral-700 bg-neutral-900 sm:w-[80vw]'>
-        {selectedChart === 'pie' && <Pie data={preparePieChartData(data)} />}
-        {selectedChart === 'line' && <Line data={prepareLineChartData(data)} />}
-        {selectedChart === 'bar' && <Bar data={prepareBarChartData(data)} />}
+        {selectedChart === 'pie' && <Pie data={preparePieChartData(storage)} />}
+        {selectedChart === 'line' && (
+          <Line data={prepareLineChartData(storage)} />
+        )}
+        {selectedChart === 'bar' && <Bar data={prepareBarChartData(storage)} />}
       </div>
     </section>
   )

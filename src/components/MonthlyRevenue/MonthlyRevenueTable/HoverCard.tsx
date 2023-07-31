@@ -32,7 +32,7 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
           </div>
         </div>
       </HoverCardContent>
-      <HoverCardTrigger className='cursor-pointer hover:underline'>
+      <HoverCardTrigger className='cursor-pointer'>
         <Button variant='link' size='revenue'>
           {data.en_name}
         </Button>

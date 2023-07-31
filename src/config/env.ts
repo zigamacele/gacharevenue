@@ -2,6 +2,7 @@ const config = {
   database: {
     HOST: getConfig('VITE_SUPABASE_URL'),
     ANON_KEY: getConfig('VITE_SUPABASE_ANON_KEY'),
+    GAMES_TABLE: getConfig('VITE_SUPABASE_GAMES_TABLE'),
   },
 }
 

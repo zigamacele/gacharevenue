@@ -1,14 +1,5 @@
+import { TableControlsState } from '@/types/zustand'
 import { create } from 'zustand'
-
-interface TableControlsState {
-  pinned: number[]
-  removed: number[]
-  sortAscending: boolean
-  showPinned: boolean
-  showEditSection: boolean
-  toggle: (prop: string) => void
-  setState: (prop: string, value: number) => void
-}
 
 const useMonthlyTableControls = create<TableControlsState>()((set) => ({
   pinned: JSON.parse(window.localStorage.getItem('pinned') ?? '[]') as number[],

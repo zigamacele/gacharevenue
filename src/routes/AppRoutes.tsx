@@ -1,3 +1,4 @@
+import useSupabaseRelay from '@/hooks/useSupabaseRelay'
 import Navbar from '@/layouts/Navbar'
 import Charts from '@/pages/Charts'
 import Feedback from '@/pages/Feedback'
@@ -5,6 +6,8 @@ import Home from '@/pages/Home'
 import { Route, Routes } from 'react-router-dom'
 
 const AppRoutes = () => {
+  useSupabaseRelay()
+
   return (
     <>
       <Navbar />
