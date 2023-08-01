@@ -1,7 +1,7 @@
-import { Button } from '@/lib/shadcn/ui/button'
 import { HoverCardContent, HoverCardTrigger } from '@/lib/shadcn/ui/hover-card'
 import { QueryOutput } from '@/types/supabase'
 import { CalendarDaysIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 interface HoverOverProps {
   data: QueryOutput
@@ -13,7 +13,7 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
       <HoverCardContent className='flex flex-col gap-2'>
         <div className='flex gap-2'>
           <img
-            src={data.icon ?? ''}
+            src={data.icon}
             className='h-20 w-20 rounded border border-neutral-600 object-cover'
           />
           <div className='items-between flex flex-col justify-between'>
@@ -32,10 +32,8 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
           </div>
         </div>
       </HoverCardContent>
-      <HoverCardTrigger className='cursor-pointer'>
-        <Button variant='link' size='revenue'>
-          {data.en_name}
-        </Button>
+      <HoverCardTrigger className='cursor-pointer hover:opacity-60'>
+        <Link to={`/game/${data.id}`}>{data.en_name}</Link>
       </HoverCardTrigger>
     </>
   )

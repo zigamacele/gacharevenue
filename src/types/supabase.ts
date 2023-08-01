@@ -6,8 +6,8 @@ export interface GameSchema {
   developer: string
   release_date: string
   region: string
-  icon: string | null
-  background: string | null
+  icon: string
+  background: string
 }
 
 export interface StatisticsSchema {
