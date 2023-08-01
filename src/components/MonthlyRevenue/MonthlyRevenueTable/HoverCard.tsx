@@ -1,6 +1,6 @@
+import ReleaseDate from '@/layouts/ReleaseDate'
 import { HoverCardContent, HoverCardTrigger } from '@/lib/shadcn/ui/hover-card'
 import { QueryOutput } from '@/types/supabase'
-import { CalendarDaysIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 interface HoverOverProps {
@@ -23,12 +23,10 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
                 {data.publisher}
               </span>
             </div>
-            <div className='flex items-center gap-2'>
-              <CalendarDaysIcon size={16} />
-              <span className='truncate text-xs font-light'>
-                {data.release_date}
-              </span>
-            </div>
+            <ReleaseDate
+              releaseDate={data.release_date}
+              className='truncate text-xs font-light'
+            />
           </div>
         </div>
       </HoverCardContent>

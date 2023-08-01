@@ -45,7 +45,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
         {!isMobile && (
           <TableCell className=' border-l border-r border-neutral-800 p-0'>
             <img
-              src={data.background ?? ''}
+              src={data.background}
               alt={data.en_name}
               className='flex h-10 w-60 items-center object-cover'
             />
