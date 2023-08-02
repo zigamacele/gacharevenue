@@ -11,7 +11,7 @@ interface GameHeaderProps {
 
 const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
   return (
-    <div className='rounded-lg border border-neutral-700 bg-neutral-900 p-3'>
+    <div className='w-screen rounded-t-lg border border-b-0 border-neutral-700 bg-neutral-900 p-3 sm:w-[40em]'>
       <CoverImage currentGame={currentGame} />
       <div className='my-2 flex justify-between'>
         <div className='flex gap-4'>
@@ -22,14 +22,16 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
           />
           <div className='flex flex-col justify-between'>
             <div className='flex flex-col'>
-              <span className='text-xl font-semibold'>{currentGame.name}</span>
-              <span className='text-sm font-light opacity-40'>
+              <span className='w-60 truncate text-xl font-semibold sm:w-80'>
+                {currentGame.name}
+              </span>
+              <span className='w-60 truncate text-sm font-light opacity-40 sm:w-80'>
                 {currentGame.name !== currentGame.en_name &&
                   currentGame.en_name}
               </span>
             </div>
             <div className='flex flex-col gap-1'>
-              <span className='font-light opacity-40'>
+              <span className='text-sm font-light opacity-40'>
                 {currentGame.publisher}
               </span>
               <ReleaseDate
@@ -39,9 +41,9 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
             </div>
           </div>
         </div>
-        <div className='flex flex-col gap-2 text-right text-sm'>
+        <div className='hidden flex-col gap-2 text-right text-sm sm:flex'>
           <span className='text-xs'>{currentGame.region}</span>
-          <div className='flex items-center gap-4 '>
+          <div className='flex items-center gap-4'>
             <MonthlyStatistics
               currentGame={currentGame}
               table={PREVIOUS_TABLE}

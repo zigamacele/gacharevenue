@@ -1,4 +1,5 @@
 import GameHeader from '@/components/Game/GameHeader'
+import GameSwitcher from '@/components/Game/GameSwitcher'
 import useSupabaseStore from '@/stores/supabase-store'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
@@ -18,6 +19,7 @@ const Game: React.FC = () => {
       {!loading && currentGame && (
         <>
           <GameHeader currentGame={currentGame} />
+          <GameSwitcher currentGame={currentGame} />
         </>
       )}
     </main>
