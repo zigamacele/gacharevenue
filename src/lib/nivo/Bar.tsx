@@ -14,7 +14,7 @@ const Bar: React.FC<BarProps> = ({ data }) => {
       data={barData}
       keys={allKeys}
       indexBy='month'
-      margin={{ top: 20, right: 20, bottom: 20, left: 80 }}
+      margin={{ top: 20, right: 20, bottom: 40, left: 80 }}
       theme={theme}
       padding={0.3}
       valueScale={{ type: 'linear' }}

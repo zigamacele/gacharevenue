@@ -11,13 +11,12 @@ const Pie: React.FC<PieProps> = ({ data }) => (
   <ResponsivePie
     data={data}
     theme={theme}
-    margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
+    margin={{ top: 40, right: 40, bottom: 40, left: 60 }}
     innerRadius={0.5}
     padAngle={0.7}
     cornerRadius={3}
     activeOuterRadiusOffset={8}
     borderWidth={1}
-    darkMode={true}
     valueFormat={(value) => formatCurrencyCompact(value)}
     borderColor={{
       from: 'color',

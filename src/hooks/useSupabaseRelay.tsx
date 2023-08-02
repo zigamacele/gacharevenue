@@ -1,6 +1,7 @@
 import config from '@/config/env'
 import supabase from '@/config/supabase'
 import useSupabaseStore from '@/stores/supabase-store'
+import { QueryOutput } from '@/types/supabase'
 import { useEffect } from 'react'
 
 const useSupabaseRelay = () => {
@@ -30,7 +31,7 @@ const useSupabaseRelay = () => {
       .from(config.database.GAMES_TABLE)
       .select(`*, ${tables.join(', ')}}`)
     if (data) {
-      setStorage(data)
+      setStorage(data as unknown as QueryOutput[])
     }
     if (error) {
       console.error(error)

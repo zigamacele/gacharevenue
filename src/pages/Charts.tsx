@@ -15,7 +15,7 @@ import { useState } from 'react'
 const Charts: React.FC = () => {
   const [selectedChart, setSelectedChart] = useState('pie')
 
-  const { storage } = useSupabaseStore()
+  const { storage, tables } = useSupabaseStore()
 
   return (
     <section className='mt-4 flex flex-col items-center gap-2'>
@@ -26,9 +26,11 @@ const Charts: React.FC = () => {
       <div className='h-[60vh] w-full rounded-lg border border-neutral-700 bg-neutral-900 sm:w-[80vw]'>
         {selectedChart === 'pie' && <Pie data={preparePieChartData(storage)} />}
         {selectedChart === 'line' && (
-          <Line data={prepareLineChartData(storage)} />
+          <Line data={prepareLineChartData(storage, tables)} />
         )}
-        {selectedChart === 'bar' && <Bar data={prepareBarChartData(storage)} />}
+        {selectedChart === 'bar' && (
+          <Bar data={prepareBarChartData(storage, tables)} />
+        )}
       </div>
     </section>
   )

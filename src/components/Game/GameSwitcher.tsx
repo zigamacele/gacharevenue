@@ -8,9 +8,10 @@ import { prepareBarChartData, prepareLineChartData } from '@/utils/charts'
 
 interface GameSwitcherProps {
   currentGame: QueryOutput
+  tables: string[]
 }
 
-const GameSwitcher: React.FC<GameSwitcherProps> = ({ currentGame }) => {
+const GameSwitcher: React.FC<GameSwitcherProps> = ({ currentGame, tables }) => {
   return (
     <div className='w-screen rounded-b-lg border border-t-0 border-neutral-700 bg-neutral-900 px-3 pb-6 pt-3 sm:w-[40em]'>
       <Separator className='mb-4 w-full opacity-40' />
@@ -27,10 +28,10 @@ const GameSwitcher: React.FC<GameSwitcherProps> = ({ currentGame }) => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value='bar' className='h-80 w-full'>
-          <Bar data={prepareBarChartData([currentGame])} />
+          <Bar data={prepareBarChartData([currentGame], tables)} />
         </TabsContent>
         <TabsContent value='line' className='h-80 w-full'>
-          <Line data={prepareLineChartData([currentGame])} />
+          <Line data={prepareLineChartData([currentGame], tables)} />
         </TabsContent>
         <TabsContent value='comments'>Your comments go here</TabsContent>
       </Tabs>

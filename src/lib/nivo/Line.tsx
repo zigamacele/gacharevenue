@@ -9,7 +9,7 @@ interface LineProps {
 const Line: React.FC<LineProps> = ({ data }) => (
   <ResponsiveLine
     data={data}
-    margin={{ top: 20, right: 20, bottom: 20, left: 60 }}
+    margin={{ top: 20, right: 20, bottom: 40, left: 60 }}
     theme={theme}
     tooltip={({ point }) => {
       return (

@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 const Game: React.FC = () => {
   const { id } = useParams()
 
-  const { storage, loading } = useSupabaseStore()
+  const { storage, loading, tables } = useSupabaseStore()
 
   const currentGame = useMemo(
     () => storage.find((game) => game.id === Number(id)),
@@ -19,7 +19,7 @@ const Game: React.FC = () => {
       {!loading && currentGame && (
         <>
           <GameHeader currentGame={currentGame} />
-          <GameSwitcher currentGame={currentGame} />
+          <GameSwitcher currentGame={currentGame} tables={tables} />
         </>
       )}
     </main>
