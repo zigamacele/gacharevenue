@@ -42,7 +42,7 @@ const Line: React.FC<LineProps> = ({ data }) => (
       tickPadding: 5,
       tickRotation: 0,
       legend: 'month',
-      legendOffset: 36,
+      legendOffset: 35,
       legendPosition: 'middle',
     }}
     axisLeft={{
@@ -50,7 +50,7 @@ const Line: React.FC<LineProps> = ({ data }) => (
       tickPadding: 5,
       tickRotation: 0,
       legend: 'total revenue',
-      legendOffset: -50,
+      legendOffset: -45,
       legendPosition: 'middle',
       format: (revenue: number) => formatCurrencyCompact(revenue),
     }}

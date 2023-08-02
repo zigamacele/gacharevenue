@@ -8,7 +8,7 @@ const TrendArrow: React.FC<TrendArrowProps> = ({ change }) => {
   if (change === 0) return <span className='text-neutral-400'>-</span>
 
   return (
-    <div className='flex w-10 items-center gap-1'>
+    <div className='flex w-10 items-center justify-center gap-1'>
       {change > 0 ? (
         <ChevronUp size={16} color='#22c55e' />
       ) : (

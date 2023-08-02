@@ -11,7 +11,7 @@ interface GameHeaderProps {
 
 const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
   return (
-    <div className='w-screen rounded-t-lg border border-b-0 border-neutral-700 bg-neutral-900 p-3 sm:w-[40em]'>
+    <div className='w-screen rounded-t-lg border border-b-0 border-neutral-700 bg-neutral-900 p-3 pb-1 sm:w-[40em]'>
       <CoverImage currentGame={currentGame} />
       <div className='my-2 flex justify-between'>
         <div className='flex gap-4'>

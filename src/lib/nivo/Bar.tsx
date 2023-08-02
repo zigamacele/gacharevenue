@@ -14,7 +14,7 @@ const Bar: React.FC<BarProps> = ({ data }) => {
       data={barData}
       keys={allKeys}
       indexBy='month'
-      margin={{ top: 20, right: 20, bottom: 40, left: 80 }}
+      margin={{ top: 20, right: 20, bottom: 40, left: 60 }}
       theme={theme}
       padding={0.3}
       valueScale={{ type: 'linear' }}
@@ -33,7 +33,7 @@ const Bar: React.FC<BarProps> = ({ data }) => {
         tickRotation: 0,
         legend: 'month',
         legendPosition: 'middle',
-        legendOffset: 32,
+        legendOffset: 35,
       }}
       axisLeft={{
         tickSize: 5,
@@ -41,7 +41,7 @@ const Bar: React.FC<BarProps> = ({ data }) => {
         tickRotation: 0,
         legend: 'total revenue',
         legendPosition: 'middle',
-        legendOffset: -60,
+        legendOffset: -45,
         format: (revenue: number) => formatCurrencyCompact(revenue),
       }}
       labelSkipWidth={12}
