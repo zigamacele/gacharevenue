@@ -22,7 +22,7 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
   const isMobile = useCurrentDevice()
 
   return (
-    <section className='rounded-md border border-neutral-700/80 bg-neutral-900 pb-4 pt-2 sm:px-4'>
+    <section className='pb-4 pt-2 sm:px-2'>
       <Table>
         <TableHeader>
           <MonthlyRevTableHeader isMobile={isMobile} />

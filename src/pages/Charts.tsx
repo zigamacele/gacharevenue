@@ -2,6 +2,7 @@ import ChartControls from '@/components/Charts/ChartControls'
 import Bar from '@/lib/nivo/Bar'
 import Line from '@/lib/nivo/Line'
 import Pie from '@/lib/nivo/Pie'
+import { Separator } from '@/lib/shadcn/ui/separator'
 import useSupabaseStore from '@/stores/supabase-store'
 
 import {
@@ -19,11 +20,12 @@ const Charts: React.FC = () => {
 
   return (
     <section className='mt-4 flex flex-col items-center gap-2'>
-      <ChartControls
-        selectedChart={selectedChart}
-        setSelectedChart={setSelectedChart}
-      />
-      <div className='h-[60vh] w-full rounded-lg border border-neutral-700 bg-neutral-900 sm:w-[80vw]'>
+      <div className='h-[70vh] w-full rounded-lg border border-neutral-700 bg-neutral-900 px-2 py-2 pb-16 sm:w-[80vw]'>
+        <ChartControls
+          selectedChart={selectedChart}
+          setSelectedChart={setSelectedChart}
+        />
+        <Separator className='mt-2 w-full opacity-40' />
         {selectedChart === 'pie' && <Pie data={preparePieChartData(storage)} />}
         {selectedChart === 'line' && (
           <Line data={prepareLineChartData(storage, tables)} />

@@ -4,6 +4,7 @@ import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { queryFilterSort } from '@/utils/sorting'
 import MonthlyRevenueControls from './MonthlyRevenue/MonthlyRevenueControls'
 import useSupabaseStore from '@/stores/supabase-store'
+import { Separator } from '@/lib/shadcn/ui/separator'
 
 const MonthlyRevenue: React.FC = () => {
   const { sortAscending, pinned, removed, showPinned, showEditSection } =
@@ -12,8 +13,9 @@ const MonthlyRevenue: React.FC = () => {
   const { loading, storage } = useSupabaseStore()
 
   return (
-    <main className='my-4 flex flex-col gap-2'>
+    <main className='my-4 flex flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2'>
       <MonthlyRevenueControls />
+      <Separator className='mt-2 w-full opacity-40' />
       <MonthlyRevenueTable
         data={queryFilterSort({
           data: storage,

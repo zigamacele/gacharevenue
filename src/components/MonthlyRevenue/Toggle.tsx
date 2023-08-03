@@ -8,7 +8,7 @@ interface SrotingToggleProps {
 const Toggle: React.FC<SrotingToggleProps> = ({ onClick, children }) => {
   return (
     <ToggleComp
-      className='w-12 bg-neutral-900'
+      className='w-12 bg-neutral-950'
       onClick={() => {
         onClick((prev) => {
           return !prev

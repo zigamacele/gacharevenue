@@ -41,7 +41,7 @@ const Bar: React.FC<BarProps> = ({ data }) => {
         tickRotation: 0,
         legend: 'total revenue',
         legendPosition: 'middle',
-        legendOffset: -45,
+        legendOffset: -50,
         format: (revenue: number) => formatCurrencyCompact(revenue),
       }}
       labelSkipWidth={12}

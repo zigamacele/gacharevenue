@@ -11,7 +11,7 @@ import Toggle from './Toggle'
 const MonthlyRevenueControls: React.FC = () => {
   const { sortAscending, showPinned, toggle } = useMonthlyTableControls()
   return (
-    <section className='flex justify-between'>
+    <section className='mx-2 mt-2 flex justify-between'>
       <Toggle onClick={() => toggle('showEditSection')}>
         <div>
           <ClipboardEdit size={20} />

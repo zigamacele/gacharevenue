@@ -9,7 +9,7 @@ interface LineProps {
 const Line: React.FC<LineProps> = ({ data }) => (
   <ResponsiveLine
     data={data}
-    margin={{ top: 20, right: 20, bottom: 40, left: 60 }}
+    margin={{ top: 20, right: 30, bottom: 40, left: 60 }}
     theme={theme}
     tooltip={({ point }) => {
       return (
@@ -50,7 +50,7 @@ const Line: React.FC<LineProps> = ({ data }) => (
       tickPadding: 5,
       tickRotation: 0,
       legend: 'total revenue',
-      legendOffset: -45,
+      legendOffset: -50,
       legendPosition: 'middle',
       format: (revenue: number) => formatCurrencyCompact(revenue),
     }}
