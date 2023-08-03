@@ -1,23 +1,22 @@
-import { QueryOutput } from '@/types/supabase'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/lib/shadcn/ui/tabs'
 import Bar from '@/lib/nivo/Bar'
 import Line from '@/lib/nivo/Line'
-import { Separator } from '@/lib/shadcn/ui/separator'
 import { BarChart3, LineChart } from 'lucide-react'
 import { prepareBarChartData, prepareLineChartData } from '@/utils/charts'
 import { useState } from 'react'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+import { QueryOutput } from '@/types/supabase'
 
-interface GameSwitcherProps {
+interface GameBodyProps {
   currentGame: QueryOutput
   tables: string[]
 }
 
-const GameSwitcher: React.FC<GameSwitcherProps> = ({ currentGame, tables }) => {
+const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
   const [tabs, setTabs] = useState<string[]>([PREVIOUS_TABLE, CURRENT_TABLE])
+
   return (
-    <div className='w-screen rounded-b-lg border border-t-0 border-neutral-700 bg-neutral-900 px-3 pb-6 pt-3 sm:w-[40em]'>
-      <Separator className='mb-4 w-full opacity-40' />
+    <section>
       <Tabs
         defaultValue='last'
         className='absolute z-50 flex w-40 flex-col items-start'
@@ -53,8 +52,8 @@ const GameSwitcher: React.FC<GameSwitcherProps> = ({ currentGame, tables }) => {
           <Line data={prepareLineChartData([currentGame], tabs)} />
         </TabsContent>
       </Tabs>
-    </div>
+    </section>
   )
 }
 
-export default GameSwitcher
+export default GameBody

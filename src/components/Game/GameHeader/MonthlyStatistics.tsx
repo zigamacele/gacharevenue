@@ -14,10 +14,10 @@ const MonthlyStatistics: React.FC<MonthlyStatisticsProps> = ({
 }) => {
   return (
     <div className='flex flex-col'>
-      <span className='mb-0.5 whitespace-nowrap opacity-40'>
+      <span className='mb-1 whitespace-nowrap opacity-40'>
         {humanizeTable(table)}
       </span>
-      <div className='flex items-center justify-end gap-1'>
+      <div className='flex items-center justify-end gap-1.5'>
         <Download width={14} className='opacity-60' />
         <span>{formatCurrencyCompact(currentGame[table]?.totalDownloads)}</span>
       </div>
