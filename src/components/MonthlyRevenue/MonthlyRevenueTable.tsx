@@ -6,6 +6,7 @@ import useCurrentDevice from '@/hooks/useCurrentDevice'
 import { QueryOutput } from '@/types/supabase'
 import MonthlyRevTableHeader from './MonthlyRevenueTable/MonthlyRevTableHeader'
 import MonthlyRevTableRow from './MonthlyRevenueTable/MonthlyRevTableRow'
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
 
 interface MonthlyRevenueTableProps {
   data: QueryOutput[]
@@ -18,7 +19,11 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
   loading,
   showEditSection,
 }) => {
-  const previousMonth = useMemo(() => previousMonthSort(data), [data])
+  const { sortAscending } = useMonthlyTableControls()
+  const previousMonth = useMemo(
+    () => previousMonthSort(data, sortAscending),
+    [data],
+  )
   const isMobile = useCurrentDevice()
 
   return (

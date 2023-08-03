@@ -5,12 +5,16 @@ export interface PreviousMonthIndexes {
   [key: string]: number
 }
 
-export const previousMonthSort = (data: QueryOutput[]) => {
-  const sortedPreviousMonth = [...data].sort(
-    (a, b) =>
-      (b[PREVIOUS_TABLE]?.totalRevenue ?? 0) -
-      (a[PREVIOUS_TABLE]?.totalRevenue ?? 0),
-  )
+export const previousMonthSort = (
+  data: QueryOutput[],
+  sortAscending: boolean,
+) => {
+  const sortedPreviousMonth = [...data].sort((a, b) => {
+    const aRevenue: number = a[PREVIOUS_TABLE]?.totalRevenue ?? 0
+    const bRevenue: number = b[PREVIOUS_TABLE]?.totalRevenue ?? 0
+
+    return sortAscending ? aRevenue - bRevenue : bRevenue - aRevenue
+  })
 
   const previousMonthIndexes: PreviousMonthIndexes = {}
   sortedPreviousMonth.forEach((GameSchema, index) => {
@@ -57,11 +61,7 @@ export const queryFilterSort = ({
     const aRevenue = a[CURRENT_TABLE]?.totalRevenue ?? 0
     const bRevenue = b[CURRENT_TABLE]?.totalRevenue ?? 0
 
-    if (sortAscending) {
-      return aRevenue - bRevenue
-    }
-
-    return bRevenue - aRevenue
+    return sortAscending ? aRevenue - bRevenue : bRevenue - aRevenue
   })
 
   return sorting
