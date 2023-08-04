@@ -35,7 +35,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   return (
     <HoverCard>
       <TableRow className={isSectionRemoved ? 'opacity-60' : ''}>
-        <TableCell className='mt-1 flex w-14 items-center justify-center'>
+        <TableCell className='flex w-14 items-center justify-center gap-1'>
           {showEditSection ? (
             <EditSection data={data} />
           ) : (

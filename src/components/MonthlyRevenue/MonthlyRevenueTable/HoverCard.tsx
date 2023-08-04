@@ -35,7 +35,7 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
         className='cursor-pointer hover:opacity-60'
         onClick={() => navigate(`/game/${data.id}`)}
       >
-        {data.en_name}
+        <div className='w-24 truncate sm:w-full'>{data.en_name}</div>
       </HoverCardTrigger>
     </>
   )
