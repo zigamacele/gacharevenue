@@ -1,13 +1,14 @@
 import ReleaseDate from '@/layouts/ReleaseDate'
 import { HoverCardContent, HoverCardTrigger } from '@/lib/shadcn/ui/hover-card'
 import { QueryOutput } from '@/types/supabase'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface HoverOverProps {
   data: QueryOutput
 }
 
 const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
+  const navigate = useNavigate()
   return (
     <>
       <HoverCardContent className='flex flex-col gap-2'>
@@ -30,8 +31,11 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
           </div>
         </div>
       </HoverCardContent>
-      <HoverCardTrigger className='cursor-pointer hover:opacity-60'>
-        <Link to={`/game/${data.id}`}>{data.en_name}</Link>
+      <HoverCardTrigger
+        className='cursor-pointer hover:opacity-60'
+        onClick={() => navigate(`/game/${data.id}`)}
+      >
+        {data.en_name}
       </HoverCardTrigger>
     </>
   )

@@ -3,9 +3,11 @@ import supabase from '@/config/supabase'
 import useSupabaseStore from '@/stores/supabase-store'
 import { QueryOutput } from '@/types/supabase'
 import { useEffect } from 'react'
+import { useErrorBoundary } from 'react-error-boundary'
 
 const useSupabaseRelay = () => {
   const { setTables, setLoading, setStorage } = useSupabaseStore()
+  const { showBoundary } = useErrorBoundary()
 
   const getConfig = async () => {
     const localOutput: string[] = []
@@ -20,7 +22,7 @@ const useSupabaseRelay = () => {
       )
     }
     if (error) {
-      console.error(error)
+      showBoundary(error)
     }
 
     return localOutput
@@ -34,7 +36,7 @@ const useSupabaseRelay = () => {
       setStorage(data as unknown as QueryOutput[])
     }
     if (error) {
-      console.error(error)
+      showBoundary(error)
     }
   }
 
