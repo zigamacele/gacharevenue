@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 const MobileDropdown = () => {
   return (
-    <section className='flex items-center sm:hidden'>
+    <section className='z-50 flex items-center sm:hidden'>
       <DropdownMenu>
         <DropdownMenuTrigger>
           <MoreHorizontal size={22} />
