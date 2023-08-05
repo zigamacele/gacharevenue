@@ -20,6 +20,6 @@ export interface SupabaseStore {
 }
 
 export interface BackgroundStore {
-  background: string
+  background: string | null
   setBackground: (background: string) => void
 }

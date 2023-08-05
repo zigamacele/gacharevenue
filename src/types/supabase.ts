@@ -30,3 +30,9 @@ export interface FeedbackOutput {
   name: string | null
   seen: boolean | null
 }
+
+export interface ConfigData {
+  id: number
+  tables: string[]
+  background: string
+}

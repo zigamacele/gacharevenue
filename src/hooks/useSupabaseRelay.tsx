@@ -1,25 +1,28 @@
 import config from '@/config/env'
 import supabase from '@/config/supabase'
+import useBackgroundStore from '@/stores/background-store'
 import useSupabaseStore from '@/stores/supabase-store'
-import { QueryOutput } from '@/types/supabase'
+import { ConfigData, QueryOutput } from '@/types/supabase'
 import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 
 const useSupabaseRelay = () => {
   const { setTables, setLoading, setStorage } = useSupabaseStore()
+  const { setBackground } = useBackgroundStore()
   const { showBoundary } = useErrorBoundary()
 
   const getConfig = async () => {
     const localOutput: string[] = []
-    const { data, error } = await supabase.from('config').select('table')
+    const { data, error } = await supabase.from('config').select().eq('id', 1)
 
     if (data) {
-      setTables(
-        data.map((table: { table: string }) => {
-          localOutput.push(`${table.table} ( * )`)
-          return table.table
-        }),
-      )
+      const config = data[0] as ConfigData
+
+      setBackground(config.background)
+      setTables(config.tables)
+      config.tables.forEach((table: string) => {
+        localOutput.push(`${table} ( * )`)
+      })
     }
     if (error) {
       showBoundary(error)
