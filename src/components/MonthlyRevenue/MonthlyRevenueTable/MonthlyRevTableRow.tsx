@@ -5,6 +5,7 @@ import { getRegion } from '@/utils/region'
 import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { HoverCard } from '@/lib/shadcn/ui/hover-card'
+import useBackgroundStore from '@/stores/background-store'
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
 import EditSection from './EditSection'
@@ -32,9 +33,14 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
 
   const isSectionRemoved = removed.includes(data.id) && !showPinned
 
+  const { setBackground } = useBackgroundStore()
+
   return (
     <HoverCard>
-      <TableRow className={isSectionRemoved ? 'opacity-60' : ''}>
+      <TableRow
+        className={isSectionRemoved ? 'opacity-60' : ''}
+        onMouseEnter={() => setBackground(data.background)}
+      >
         <TableCell className='flex w-14 items-center justify-center gap-1'>
           {showEditSection ? (
             <EditSection data={data} />

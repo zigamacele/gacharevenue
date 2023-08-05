@@ -1,14 +1,18 @@
 import useSupabaseStore from '@/stores/supabase-store'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
-import GameHeader from '@/components/Game/GameHeader'
 import GameBody from '@/components/Game/GameBody'
+import GameHeader from '@/components/Game/GameHeader'
+import useBackgroundStore from '@/stores/background-store'
+import { useErrorBoundary } from 'react-error-boundary'
 
 const Game: React.FC = () => {
   const { id } = useParams()
+  const { setBackground } = useBackgroundStore()
+  const { showBoundary } = useErrorBoundary()
 
   const { storage, loading, tables } = useSupabaseStore()
 
@@ -16,6 +20,14 @@ const Game: React.FC = () => {
     () => storage.find((game) => game.id === Number(id)),
     [storage, id],
   )
+
+  useEffect(() => {
+    if (currentGame) {
+      setBackground(currentGame.background)
+    } else {
+      showBoundary('Game not found')
+    }
+  }, [currentGame])
 
   return (
     <main className='mt-4 flex justify-center'>

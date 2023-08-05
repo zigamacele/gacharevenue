@@ -1,4 +1,5 @@
 import useSupabaseRelay from '@/hooks/useSupabaseRelay'
+import Background from '@/layouts/Background'
 import Navbar from '@/layouts/Navbar'
 import Charts from '@/pages/Charts'
 import Feedback from '@/pages/Feedback'
@@ -13,7 +14,7 @@ const AppRoutes = () => {
   return (
     <>
       <Navbar />
-      <div className='pt-14'>
+      <div className='absolute left-0 right-0 z-40 pt-14'>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/charts' element={<Charts />} />
@@ -22,6 +23,7 @@ const AppRoutes = () => {
           <Route path='/game/:id' element={<Game />} />
         </Routes>
       </div>
+      <Background />
     </>
   )
 }

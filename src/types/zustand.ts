@@ -18,3 +18,8 @@ export interface SupabaseStore {
   setStorage: (storage: QueryOutput[]) => void
   setLoading: (loading: boolean) => void
 }
+
+export interface BackgroundStore {
+  background: string
+  setBackground: (background: string) => void
+}
