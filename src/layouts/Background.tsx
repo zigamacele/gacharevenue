@@ -1,6 +1,6 @@
 import useBackgroundStore from '@/stores/background-store'
 
-const Background = () => {
+const Background: React.FC = () => {
   const { background } = useBackgroundStore()
   return (
     <>
