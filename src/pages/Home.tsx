@@ -1,29 +1,23 @@
-import logo from '@/assets/logo.png'
+import Alerts from '@/components/Home/Alerts'
+import Hero from '@/components/Home/Hero'
 import Overview from '@/components/Home/Overview'
-import { Button } from '@/lib/shadcn/ui/button'
-import { useNavigate } from 'react-router-dom'
+import useSupabaseStore from '@/stores/supabase-store'
 
 const Home: React.FC = () => {
-  const navigate = useNavigate()
+  const { alerts } = useSupabaseStore()
+
   return (
-    <div className='mb-4 mt-20 flex flex-col items-center gap-2'>
-      <img src={logo} alt='logo' className='w-28 sm:w-32' />
-      <div className='mb-10 flex flex-col items-center gap-2'>
-        <span className='text-lg font-semibold sm:text-2xl'>
-          Easiest way to check gacha game revenue
-        </span>
-        <span className='mx-4 break-words text-center opacity-60 sm:mx-0 '>
-          Ever wondered how much money your favorite gacha game makes? Is it
-          dying? EOS soon?
-        </span>
-        <div className='mt-4 flex gap-3'>
-          <Button onClick={() => navigate('/revenue')}>Revenue</Button>
-          <Button onClick={() => navigate('/charts')}>Charts</Button>
-          <Button onClick={() => navigate('/feedback')}>Feedback</Button>
-        </div>
-      </div>
-      <Overview />
-    </div>
+    <>
+      {alerts.length > 0 && <Alerts />}
+      <main
+        className={`mb-4 ${
+          alerts.length ? 'mt-28 sm:mt-24' : 'mt-16 sm:mt-20'
+        } flex flex-col items-center gap-14`}
+      >
+        <Hero />
+        <Overview />
+      </main>
+    </>
   )
 }
 

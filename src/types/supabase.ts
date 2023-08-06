@@ -33,6 +33,7 @@ export interface FeedbackOutput {
 
 export interface ConfigData {
   id: number
+  alerts: string[] | null
   tables: string[]
   background: string
 }

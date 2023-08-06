@@ -3,12 +3,13 @@ import supabase from '@/config/supabase'
 import useBackgroundStore from '@/stores/background-store'
 import useSupabaseStore from '@/stores/supabase-store'
 import { ConfigData, QueryOutput } from '@/types/supabase'
+import { SetAlerts } from '@/types/zustand'
 import { generateRandomNumber } from '@/utils/globals'
 import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 
 const useSupabaseRelay = () => {
-  const { setTables, setLoading, setStorage } = useSupabaseStore()
+  const { setTables, setLoading, setStorage, setAlerts } = useSupabaseStore()
   const { setBackground } = useBackgroundStore()
   const { showBoundary } = useErrorBoundary()
 
@@ -18,6 +19,13 @@ const useSupabaseRelay = () => {
 
     if (data) {
       const config = data[0] as ConfigData
+
+      if (config.alerts) {
+        const parsedAlerts: SetAlerts[] = config.alerts.map(
+          (alert) => JSON.parse(alert) as SetAlerts,
+        )
+        setAlerts(parsedAlerts)
+      }
 
       setTables(config.tables)
       config.tables.forEach((table: string) => {

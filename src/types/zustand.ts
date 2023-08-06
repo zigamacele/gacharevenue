@@ -10,10 +10,17 @@ export interface TableControlsState {
   setState: (prop: string, value: number) => void
 }
 
+export interface SetAlerts {
+  title: string
+  message: string
+}
+
 export interface SupabaseStore {
+  alerts: SetAlerts[]
   tables: string[]
   storage: QueryOutput[]
   loading: boolean
+  setAlerts: (alerts: SetAlerts[]) => void
   setTables: (tables: string[]) => void
   setStorage: (storage: QueryOutput[]) => void
   setLoading: (loading: boolean) => void
