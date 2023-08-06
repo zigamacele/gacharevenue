@@ -3,6 +3,7 @@ import supabase from '@/config/supabase'
 import useBackgroundStore from '@/stores/background-store'
 import useSupabaseStore from '@/stores/supabase-store'
 import { ConfigData, QueryOutput } from '@/types/supabase'
+import { generateRandomNumber } from '@/utils/globals'
 import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 
@@ -18,7 +19,6 @@ const useSupabaseRelay = () => {
     if (data) {
       const config = data[0] as ConfigData
 
-      setBackground(config.background)
       setTables(config.tables)
       config.tables.forEach((table: string) => {
         localOutput.push(`${table} ( * )`)
@@ -36,7 +36,11 @@ const useSupabaseRelay = () => {
       .from(config.database.GAMES_TABLE)
       .select(`*, ${tables.join(', ')}}`)
     if (data) {
-      setStorage(data as unknown as QueryOutput[])
+      const dataType = data as unknown as QueryOutput[]
+      const RANDOM_GAME = generateRandomNumber(0, data.length - 1)
+
+      setStorage(dataType)
+      setBackground(dataType[RANDOM_GAME]?.background ?? '')
     }
     if (error) {
       showBoundary(error)
