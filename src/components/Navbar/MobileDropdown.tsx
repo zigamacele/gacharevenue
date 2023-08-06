@@ -16,21 +16,21 @@ const MobileDropdown = () => {
           <MoreHorizontal size={22} />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem className='cursor-pointer'>
-            <Link to={REVENUE}>
+          <Link to={REVENUE}>
+            <DropdownMenuItem className='cursor-pointer'>
               <span>Revenue</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='cursor-pointer'>
-            <Link to={CHARTS}>
+            </DropdownMenuItem>
+          </Link>
+          <Link to={CHARTS}>
+            <DropdownMenuItem className='cursor-pointer'>
               <span>Charts</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='cursor-pointer'>
-            <Link to={FEEDBACK}>
+            </DropdownMenuItem>
+          </Link>
+          <Link to={FEEDBACK}>
+            <DropdownMenuItem className='cursor-pointer'>
               <span>Feedback</span>
-            </Link>
-          </DropdownMenuItem>
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuContent>
       </DropdownMenu>
     </section>

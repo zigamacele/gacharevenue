@@ -1,5 +1,4 @@
-import { QueryOutput } from '@/types/supabase'
-import { SetAlerts, SupabaseStore } from '@/types/zustand'
+import { SupabaseStore, SupabaseStoreState } from '@/types/zustand'
 import { create } from 'zustand'
 
 const useSupabaseStore = create<SupabaseStore>()((set) => ({
@@ -8,10 +7,10 @@ const useSupabaseStore = create<SupabaseStore>()((set) => ({
   storage: [],
   loading: false,
 
-  setAlerts: (alerts: SetAlerts[]) => set(() => ({ alerts })),
-  setTables: (tables: string[]) => set(() => ({ tables })),
-  setStorage: (storage: QueryOutput[]) => set(() => ({ storage })),
-  setLoading: (loading: boolean) => set(() => ({ loading })),
+  setProperty: <T extends keyof SupabaseStoreState>(
+    key: T,
+    payload: SupabaseStoreState[T],
+  ) => set(() => ({ [key]: payload })),
 }))
 
 export default useSupabaseStore

@@ -15,15 +15,18 @@ export interface SetAlerts {
   message: string
 }
 
-export interface SupabaseStore {
+export interface SupabaseStoreState {
   alerts: SetAlerts[]
   tables: string[]
   storage: QueryOutput[]
   loading: boolean
-  setAlerts: (alerts: SetAlerts[]) => void
-  setTables: (tables: string[]) => void
-  setStorage: (storage: QueryOutput[]) => void
-  setLoading: (loading: boolean) => void
+}
+
+export interface SupabaseStore extends SupabaseStoreState {
+  setProperty: <T extends keyof SupabaseStoreState>(
+    key: T,
+    payload: SupabaseStoreState[T],
+  ) => void
 }
 
 export interface BackgroundStore {

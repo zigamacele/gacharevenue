@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
 
 const useSupabaseRelay = () => {
-  const { setTables, setLoading, setStorage, setAlerts } = useSupabaseStore()
+  const { setProperty } = useSupabaseStore()
   const { setBackground } = useBackgroundStore()
   const { showBoundary } = useErrorBoundary()
 
@@ -24,10 +24,10 @@ const useSupabaseRelay = () => {
         const parsedAlerts: SetAlerts[] = config.alerts.map(
           (alert) => JSON.parse(alert) as SetAlerts,
         )
-        setAlerts(parsedAlerts)
+        setProperty('alerts', parsedAlerts)
       }
 
-      setTables(config.tables)
+      setProperty('tables', config.tables)
       config.tables.forEach((table: string) => {
         localOutput.push(`${table} ( * )`)
       })
@@ -47,7 +47,7 @@ const useSupabaseRelay = () => {
       const dataType = data as unknown as QueryOutput[]
       const RANDOM_GAME = generateRandomNumber(0, data.length - 1)
 
-      setStorage(dataType)
+      setProperty('storage', dataType)
       setBackground(dataType[RANDOM_GAME]?.background ?? '')
     }
     if (error) {
@@ -56,12 +56,12 @@ const useSupabaseRelay = () => {
   }
 
   const fetchData = async () => {
-    setLoading(true)
+    setProperty('loading', true)
     const tables = await getConfig()
 
     void getGachaInformation(tables)
 
-    setLoading(false)
+    setProperty('loading', false)
   }
 
   useEffect(() => {
