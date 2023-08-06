@@ -1,4 +1,4 @@
-import logo from '@/assets/logo.svg'
+import logo from '@/assets/logo.png'
 import { Button } from '@/lib/shadcn/ui/button'
 import { Disc2, Undo2 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
@@ -17,7 +17,7 @@ const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({
       <span className=' text-neutral-600'>
         Oops! Looks like your luck ran out..
       </span>
-      <div className='flex gap-5'>
+      <div className='flex gap-3'>
         <Button
           className='flex gap-2'
           onClick={() => {

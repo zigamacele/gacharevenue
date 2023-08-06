@@ -1,4 +1,4 @@
-import logo from '@/assets/logo.svg'
+import logo from '@/assets/logo.png'
 import MobileDropdown from '@/components/Navbar/MobileDropdown'
 import Navigation from '@/components/Navbar/Navigation'
 import SocialLinks from '@/components/Navbar/SocialLinks'

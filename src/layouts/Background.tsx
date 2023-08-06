@@ -5,7 +5,6 @@ const Background: React.FC = () => {
   return (
     <>
       <div className='absolute top-14 z-10 h-60 w-full bg-gradient-to-t from-neutral-950 to-transparent opacity-100'></div>
-
       {background && (
         <img
           src={background}
