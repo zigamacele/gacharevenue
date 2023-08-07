@@ -8,6 +8,7 @@ export interface GameSchema {
   region: string
   icon: string
   background: string
+  pc_client: boolean | null
 }
 
 export interface StatisticsSchema {

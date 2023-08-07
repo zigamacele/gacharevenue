@@ -4,6 +4,7 @@ import MonthlyStatistics from '@/components/Game/GameHeader/MonthlyStatistics'
 import { QueryOutput } from '@/types/supabase'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { Separator } from '@/lib/shadcn/ui/separator'
+import { Monitor } from 'lucide-react'
 
 interface GameHeaderProps {
   currentGame: QueryOutput
@@ -41,8 +42,13 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
             </div>
           </div>
         </div>
-        <div className='hidden flex-col gap-2 text-right text-sm sm:flex'>
-          <span className='text-xs'>{currentGame.region}</span>
+        <div className='hidden flex-col justify-end gap-3 text-right text-sm sm:flex'>
+          {currentGame.pc_client && (
+            <div className='flex items-center justify-end gap-2 text-xs'>
+              <Monitor size={14} />
+              <span className='text-neutral-400'>PC Revenue Not Included</span>
+            </div>
+          )}
           <div className='flex items-center gap-4'>
             <MonthlyStatistics
               currentGame={currentGame}
