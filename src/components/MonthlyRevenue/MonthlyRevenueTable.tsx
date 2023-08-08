@@ -28,13 +28,13 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
 
   return (
     <section className='pb-4 pt-2 sm:px-2'>
-      <Table>
-        <TableHeader>
-          <MonthlyRevTableHeader isMobile={isMobile} />
-        </TableHeader>
-        <TableBody>
-          {!loading &&
-            data.map((game, index) => (
+      {!loading && (
+        <Table>
+          <TableHeader>
+            <MonthlyRevTableHeader isMobile={isMobile} />
+          </TableHeader>
+          <TableBody>
+            {data.map((game, index) => (
               <MonthlyRevTableRow
                 key={game.id}
                 data={game}
@@ -44,8 +44,9 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
                 showEditSection={showEditSection}
               />
             ))}
-        </TableBody>
-      </Table>
+          </TableBody>
+        </Table>
+      )}
     </section>
   )
 }
