@@ -9,11 +9,7 @@ const Home: React.FC = () => {
   return (
     <>
       {alerts.length > 0 && <Alerts />}
-      <main
-        className={`mb-4 ${
-          alerts.length ? 'mt-28 sm:mt-24' : 'mt-16 sm:mt-20'
-        } flex flex-col items-center gap-14`}
-      >
+      <main className='mb-4 mt-28 flex flex-col items-center gap-14 sm:mt-24'>
         <Hero />
         <Overview />
       </main>

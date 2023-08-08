@@ -38,7 +38,7 @@ const FeedbackForm: React.FC = () => {
   }
 
   return (
-    <section className='w-full rounded-lg border border-neutral-700 bg-neutral-900 px-6 py-4 sm:w-[35em]'>
+    <section className='w-full rounded-lg border border-neutral-700 bg-neutral-900 px-6 py-4 fade-in sm:w-[35em]'>
       <Form {...form}>
         <form
           onSubmit={(event) => void form.handleSubmit(onSubmit)(event)}

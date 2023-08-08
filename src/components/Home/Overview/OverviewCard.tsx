@@ -1,3 +1,4 @@
+import MotionInView from '@/lib/framer-motion/MotionInView'
 import PercentageBox from './OverviewCard/PercentageBox'
 
 type OverviewCardProps = {
@@ -16,7 +17,11 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
   difference,
 }) => {
   return (
-    <div className='flex h-48 w-80 flex-col justify-between rounded-lg  bg-neutral-900 px-4 py-5 hover:shadow-lg hover:shadow-neutral-700/20'>
+    <MotionInView
+      y={100}
+      duration={0.8}
+      styles='flex h-48 w-80 flex-col justify-between rounded-lg  bg-neutral-900 px-4 py-5 hover:shadow-lg hover:shadow-neutral-700/20'
+    >
       <div className='flex h-10 w-10 items-center justify-center rounded-md bg-neutral-950 text-2xl'>
         <span>{icon}</span>
       </div>
@@ -28,7 +33,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
         </div>
         <span className='text-sm opacity-40'>{desc}</span>
       </div>
-    </div>
+    </MotionInView>
   )
 }
 

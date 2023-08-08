@@ -6,6 +6,7 @@ import { Separator } from '@/lib/shadcn/ui/separator'
 
 import GameBody from '@/components/Game/GameBody'
 import GameHeader from '@/components/Game/GameHeader'
+import MotionInView from '@/lib/framer-motion/MotionInView'
 import useBackgroundStore from '@/stores/background-store'
 import { useErrorBoundary } from 'react-error-boundary'
 
@@ -30,7 +31,7 @@ const Game: React.FC = () => {
   }, [currentGame])
 
   return (
-    <main className='mt-4 flex justify-center'>
+    <MotionInView styles='mt-4 flex justify-center'>
       {!loading && currentGame && (
         <div className='flex w-screen flex-col gap-3 rounded-lg border border-neutral-700 bg-neutral-900 p-3 sm:w-[40em]'>
           <GameHeader currentGame={currentGame} />
@@ -38,7 +39,7 @@ const Game: React.FC = () => {
           <GameBody currentGame={currentGame} tables={tables} />
         </div>
       )}
-    </main>
+    </MotionInView>
   )
 }
 

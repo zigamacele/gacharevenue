@@ -1,4 +1,5 @@
 import useFeedbackChanges from '@/hooks/useFeedbackChanges'
+import MotionInView from '@/lib/framer-motion/MotionInView'
 import { formatTimestampz } from '@/utils/timeDate'
 import { Clock } from 'lucide-react'
 
@@ -10,9 +11,11 @@ const FeedbackMessages: React.FC = () => {
         <div className='flex w-screen flex-col justify-between gap-2 text-sm sm:w-[40em]'>
           {data.map((feedback) => {
             return (
-              <div
+              <MotionInView
                 key={feedback.id}
-                className='flex flex-col gap-2 rounded border border-neutral-700 bg-neutral-900 px-4 py-2'
+                y={-50}
+                duration={0.8}
+                styles='flex flex-col gap-2 rounded border border-neutral-700 bg-neutral-900 px-4 py-2'
               >
                 <div className='flex justify-between'>
                   <span>{feedback.name || 'Anonymous'}</span>
@@ -28,7 +31,7 @@ const FeedbackMessages: React.FC = () => {
                 <span className='break-words opacity-60'>
                   {feedback.content}
                 </span>
-              </div>
+              </MotionInView>
             )
           })}
         </div>
