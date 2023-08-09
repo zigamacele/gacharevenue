@@ -6,6 +6,7 @@ interface MotionInViewProps {
   duration?: number
   styles?: string
   bounce?: boolean
+  delay?: number
 }
 
 const MotionInView: React.FC<MotionInViewProps> = ({
@@ -14,6 +15,7 @@ const MotionInView: React.FC<MotionInViewProps> = ({
   duration = 1,
   styles,
   bounce,
+  delay = 0,
 }) => {
   return (
     <motion.div
@@ -25,6 +27,7 @@ const MotionInView: React.FC<MotionInViewProps> = ({
           type: 'spring',
           bounce: bounce ? 0.4 : 0,
           duration,
+          delay,
         },
       }}
       className={styles}

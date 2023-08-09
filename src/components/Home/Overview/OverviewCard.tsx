@@ -20,6 +20,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
     <MotionInView
       y={100}
       duration={0.8}
+      delay={0.2}
       styles='flex h-48 w-80 flex-col justify-between rounded-lg  bg-neutral-900 px-4 py-5 hover:shadow-lg hover:shadow-neutral-700/20'
     >
       <div className='flex h-10 w-10 items-center justify-center rounded-md bg-neutral-950 text-2xl'>
