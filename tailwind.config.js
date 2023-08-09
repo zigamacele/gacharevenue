@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      height: {
+        screen: ['100vh', '100dvh'],
+      },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },

@@ -16,7 +16,7 @@ const MonthlyRevenue: React.FC = () => {
   return (
     <MotionInView
       delay={0.2}
-      styles='my-4 flex flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2'
+      styles='my-4 flex flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 w-full sm:w-auto'
     >
       <MonthlyRevenueControls />
       <Separator className='mt-2 w-full opacity-40' />

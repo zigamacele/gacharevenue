@@ -3,10 +3,10 @@ import { previousMonthSort } from '@/utils/sorting'
 import { useMemo } from 'react'
 
 import useCurrentDevice from '@/hooks/useCurrentDevice'
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
 import MonthlyRevTableHeader from './MonthlyRevenueTable/MonthlyRevTableHeader'
 import MonthlyRevTableRow from './MonthlyRevenueTable/MonthlyRevTableRow'
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
 
 interface MonthlyRevenueTableProps {
   data: QueryOutput[]
