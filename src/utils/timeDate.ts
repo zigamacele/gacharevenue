@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
-import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -26,7 +26,7 @@ export const formatTimestampz = (timestampz: string) => {
 }
 
 export const humanizeTable = (table: string) => {
-  return dayjs(`${table.split('-')[0]}.01.${table.split('-')[1]}`).format(
-    'MMM YYYY',
-  )
+  const splitTable = table.split('-')
+
+  return dayjs(`${splitTable[1]}-${splitTable[0]}-01`).format('MMM YYYY')
 }
