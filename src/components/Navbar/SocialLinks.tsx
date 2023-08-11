@@ -1,6 +1,6 @@
-import github from '@/assets/github.svg'
-import reddit from '@/assets/reddit.svg'
-import sensorTower from '@/assets/sensor-tower.svg'
+import github from '@/assets/icons/github.svg'
+import reddit from '@/assets/icons/reddit.svg'
+import sensorTower from '@/assets/icons/sensor-tower.svg'
 import {
   GACHAGAMING_URL,
   GITHUB_PROJECT_URL,
