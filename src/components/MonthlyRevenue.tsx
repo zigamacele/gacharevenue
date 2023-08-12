@@ -6,6 +6,7 @@ import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
 import { combineSameGameRevenue } from '@/utils/filters'
 import { queryFilterSort } from '@/utils/sorting'
+import { useMemo } from 'react'
 import MonthlyRevenueControls from './MonthlyRevenue/MonthlyRevenueControls'
 
 const MonthlyRevenue: React.FC = () => {
@@ -17,8 +18,13 @@ const MonthlyRevenue: React.FC = () => {
     showEditSection,
     showCombinedRevenue,
   } = useMonthlyTableControls()
-
   const { loading, storage } = useSupabaseStore()
+
+  const combinedRevenue = useMemo(() => {
+    return combineSameGameRevenue(storage)
+  }, [storage])
+
+  const TableData = showCombinedRevenue ? combinedRevenue : storage
 
   return (
     <MotionInView
@@ -29,7 +35,7 @@ const MonthlyRevenue: React.FC = () => {
       <Separator className='mt-2 w-full opacity-40' />
       <MonthlyRevenueTable
         data={queryFilterSort({
-          data: showCombinedRevenue ? combineSameGameRevenue(storage) : storage,
+          data: TableData,
           pinned,
           removed,
           showPinned,

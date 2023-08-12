@@ -66,3 +66,35 @@ export const queryFilterSort = ({
 
   return sorting
 }
+
+interface QueryFilterProps {
+  data: QueryOutput[]
+  pinned: number[]
+  removed: number[]
+  showPinned: boolean
+}
+
+export const queryFilter = ({
+  data,
+  pinned,
+  removed,
+  showPinned,
+}: QueryFilterProps) => {
+  const filtered = data.filter((game) => {
+    const gameId = game.id
+    const isPinned = pinned.includes(gameId)
+    const isRemoved = removed.includes(gameId)
+
+    if (showPinned && isPinned) {
+      return true
+    }
+
+    if (isRemoved) {
+      return false
+    }
+
+    return showPinned ? false : true
+  })
+
+  return filtered
+}

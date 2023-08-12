@@ -12,12 +12,28 @@ import {
 } from '@/utils/charts'
 
 import MotionInView from '@/lib/framer-motion/MotionInView'
-import { useState } from 'react'
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import { combineSameGameRevenue } from '@/utils/filters'
+import { queryFilter } from '@/utils/sorting'
+import { useMemo, useState } from 'react'
 
 const Charts: React.FC = () => {
   const [selectedChart, setSelectedChart] = useState('pie')
 
   const { storage, tables } = useSupabaseStore()
+  const { showCombinedRevenue, pinned, removed, showPinned } =
+    useMonthlyTableControls()
+
+  const combinedRevenue = useMemo(() => {
+    return combineSameGameRevenue(storage)
+  }, [storage])
+
+  const ChartsData = queryFilter({
+    data: showCombinedRevenue ? combinedRevenue : storage,
+    pinned,
+    removed,
+    showPinned,
+  })
 
   return (
     <MotionInView styles='mt-4 flex flex-col items-center gap-2'>
@@ -27,12 +43,14 @@ const Charts: React.FC = () => {
           setSelectedChart={setSelectedChart}
         />
         <Separator className='mt-2 w-full opacity-40' />
-        {selectedChart === 'pie' && <Pie data={preparePieChartData(storage)} />}
+        {selectedChart === 'pie' && (
+          <Pie data={preparePieChartData(ChartsData)} />
+        )}
         {selectedChart === 'line' && (
-          <Line data={prepareLineChartData(storage, tables)} />
+          <Line data={prepareLineChartData(ChartsData, tables)} />
         )}
         {selectedChart === 'bar' && (
-          <Bar data={prepareBarChartData(storage, tables)} />
+          <Bar data={prepareBarChartData(ChartsData, tables)} />
         )}
       </div>
     </MotionInView>

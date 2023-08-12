@@ -3,6 +3,7 @@ import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
 import { getRegion } from '@/utils/region'
 
 import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
+import Tooltip from '@/components/Tooltip'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { HoverCard } from '@/lib/shadcn/ui/hover-card'
 import useBackgroundStore from '@/stores/background-store'
@@ -10,7 +11,6 @@ import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
 import EditSection from './EditSection'
 import HoverCardComp from './HoverCard'
-import Tooltip from '@/components/Tooltip'
 
 interface MonthlyRevTableRowProps {
   data: QueryOutput
