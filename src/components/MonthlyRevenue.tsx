@@ -4,14 +4,11 @@ import MotionInView from '@/lib/framer-motion/MotionInView'
 import { Separator } from '@/lib/shadcn/ui/separator'
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
-import { QueryOutput } from '@/types/supabase'
 import { combineSameGameRevenue } from '@/utils/filters'
 import { queryFilterSort } from '@/utils/sorting'
-import { useState } from 'react'
 import MonthlyRevenueControls from './MonthlyRevenue/MonthlyRevenueControls'
 
 const MonthlyRevenue: React.FC = () => {
-  const [storageTest] = useState<QueryOutput[]>([])
   const {
     sortAscending,
     pinned,
@@ -32,9 +29,7 @@ const MonthlyRevenue: React.FC = () => {
       <Separator className='mt-2 w-full opacity-40' />
       <MonthlyRevenueTable
         data={queryFilterSort({
-          data: showCombinedRevenue
-            ? combineSameGameRevenue(storage)
-            : storageTest,
+          data: showCombinedRevenue ? combineSameGameRevenue(storage) : storage,
           pinned,
           removed,
           showPinned,

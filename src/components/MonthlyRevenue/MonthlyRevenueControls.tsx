@@ -10,7 +10,7 @@ import {
 import Toggle from './Toggle'
 
 const MonthlyRevenueControls: React.FC = () => {
-  const { sortAscending, showPinned, toggle, pinned } =
+  const { sortAscending, showPinned, toggle, pinned, showCombinedRevenue } =
     useMonthlyTableControls()
   return (
     <section className='mx-2 mt-2 flex justify-between'>
@@ -23,7 +23,10 @@ const MonthlyRevenueControls: React.FC = () => {
         <Toggle onClick={() => toggle('showPinned')} disabled={!pinned.length}>
           {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
         </Toggle>
-        <Toggle onClick={() => toggle('showCombinedRevenue')}>
+        <Toggle
+          onClick={() => toggle('showCombinedRevenue')}
+          pressed={showCombinedRevenue}
+        >
           <Combine size={18} />
         </Toggle>
         <Toggle onClick={() => toggle('sortAscending')}>
