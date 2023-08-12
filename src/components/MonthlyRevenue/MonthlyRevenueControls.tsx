@@ -3,6 +3,7 @@ import {
   ArrowDown10,
   ArrowUp10,
   ClipboardEdit,
+  Combine,
   Pin,
   PinOff,
 } from 'lucide-react'
@@ -22,9 +23,9 @@ const MonthlyRevenueControls: React.FC = () => {
         <Toggle onClick={() => toggle('showPinned')} disabled={!pinned.length}>
           {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
         </Toggle>
-        {/* <Toggle onClick={() => toggle('showPinned')} disabled>
+        <Toggle onClick={() => toggle('showCombinedRevenue')}>
           <Combine size={18} />
-        </Toggle> */}
+        </Toggle>
         <Toggle onClick={() => toggle('sortAscending')}>
           {sortAscending ? <ArrowUp10 size={22} /> : <ArrowDown10 size={22} />}
         </Toggle>

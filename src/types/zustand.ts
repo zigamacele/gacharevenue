@@ -6,6 +6,7 @@ export interface TableControlsState {
   sortAscending: boolean
   showPinned: boolean
   showEditSection: boolean
+  showCombinedRevenue: boolean
   toggle: (prop: string) => void
   setState: (prop: string, value: number) => void
 }

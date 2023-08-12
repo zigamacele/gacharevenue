@@ -9,9 +9,13 @@ export const combineSameGameRevenue = (data: QueryOutput[]) => {
 
     if (output[key]) {
       if (output[key]?.region !== 'COMBINED') {
-        const gameObject = output[key] as QueryOutput
-        const currentTable = output[key]?.[CURRENT_TABLE] as StatisticsSchema
-        const previousTable = output[key]?.[PREVIOUS_TABLE] as StatisticsSchema
+        const gameObject = { ...output[key] } as QueryOutput
+        const currentTable = {
+          ...output[key]?.[CURRENT_TABLE],
+        } as StatisticsSchema
+        const previousTable = {
+          ...output[key]?.[PREVIOUS_TABLE],
+        } as StatisticsSchema
 
         gameObject.region = 'COMBINED'
 
@@ -20,6 +24,11 @@ export const combineSameGameRevenue = (data: QueryOutput[]) => {
 
         previousTable.totalRevenue =
           previousTable.totalRevenue + (game[PREVIOUS_TABLE]?.totalRevenue ?? 0)
+
+        gameObject[CURRENT_TABLE] = currentTable
+        gameObject[PREVIOUS_TABLE] = previousTable
+
+        output[key] = gameObject
       }
     } else {
       output[key] = game

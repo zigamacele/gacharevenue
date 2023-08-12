@@ -9,6 +9,7 @@ const useMonthlyTableControls = create<TableControlsState>()((set) => ({
   sortAscending: false,
   showPinned: false,
   showEditSection: false,
+  showCombinedRevenue: false,
 
   toggle: (prop: string) =>
     set((state) => ({ [prop]: !state[prop as keyof TableControlsState] })),

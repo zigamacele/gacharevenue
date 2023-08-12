@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
         to='/'
         className='flex cursor-pointer items-center gap-2 hover:opacity-60'
       >
-        <img src={logo} alt='logo' className='mt-1 h-9 w-9' />
+        <img src={logo} alt='logo' className='mt-1 h-9' />
         <span className='text-lg font-bold tracking-widest'>GASHAPON</span>
       </Link>
       <div className='flex items-center gap-5'>
