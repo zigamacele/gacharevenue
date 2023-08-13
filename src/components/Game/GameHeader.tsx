@@ -1,7 +1,6 @@
 import CoverImage from '@/components/Game/GameHeader/CoverImage'
 import MonthlyStatistics from '@/components/Game/GameHeader/MonthlyStatistics'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
-import useCurrentDevice from '@/hooks/useCurrentDevice'
 import ReleaseDate from '@/layouts/ReleaseDate'
 import { Separator } from '@/lib/shadcn/ui/separator'
 import { QueryOutput } from '@/types/supabase'
@@ -14,7 +13,7 @@ interface GameHeaderProps {
 }
 
 const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
-  const [showAdvancedView, setShowAdvancedView] = useState(useCurrentDevice())
+  const [showAdvancedView, setShowAdvancedView] = useState(false)
 
   return (
     <section>

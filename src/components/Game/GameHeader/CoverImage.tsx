@@ -1,3 +1,4 @@
+import Tooltip from '@/components/Tooltip'
 import PinButton from '@/layouts/Buttons/PinButton'
 import RemoveButton from '@/layouts/Buttons/RemoveButton'
 import { QueryOutput } from '@/types/supabase'
@@ -26,21 +27,25 @@ const CoverImage: React.FC<CoverImageProps> = ({
         <PinButton data={currentGame} iconSize={20} />
         <RemoveButton data={currentGame} iconSize={20} />
       </div>
-      <div className='absolute right-0 top-16 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 py-1.5 pr-2'>
-        <PanelBottom
-          size={20}
-          onClick={() => setShowAdvancedView(true)}
-          className={`${
-            showAdvancedView ? 'opacity-100' : 'opacity-60'
-          } cursor-pointer`}
-        />
-        <PanelRight
-          size={20}
-          onClick={() => setShowAdvancedView(false)}
-          className={`${
-            !showAdvancedView ? 'opacity-100' : 'opacity-60'
-          } cursor-pointer`}
-        />
+      <div className='absolute right-0 top-14 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 py-1.5 pr-2'>
+        <Tooltip text='Advanced View'>
+          <PanelBottom
+            size={20}
+            onClick={() => setShowAdvancedView(true)}
+            className={`${
+              showAdvancedView ? 'opacity-100' : 'opacity-60'
+            } cursor-pointer`}
+          />
+        </Tooltip>
+        <Tooltip text='Simple View'>
+          <PanelRight
+            size={20}
+            onClick={() => setShowAdvancedView(false)}
+            className={`${
+              !showAdvancedView ? 'opacity-100' : 'opacity-60'
+            } cursor-pointer`}
+          />
+        </Tooltip>
       </div>
     </div>
   )

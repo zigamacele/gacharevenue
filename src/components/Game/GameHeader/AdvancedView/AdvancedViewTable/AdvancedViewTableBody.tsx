@@ -16,23 +16,23 @@ const AdvancedViewTableBody = () => {
   return (
     <TableBody>
       {tables.map((table: string) => (
-        <TableRow key={table}>
-          <TableCell className='whitespace-nowrap'>
+        <TableRow key={table} className='text-center'>
+          <TableCell className='whitespace-nowrap opacity-60'>
             {humanizeTable(table)}
           </TableCell>
-          <TableCell className='text-center'>
+          <TableCell>
             {formatCurrencyCompact(currentGame?.[table]?.androidDownloads)}
           </TableCell>
           <TableCell>
             {formatCurrency(currentGame?.[table]?.androidRevenue)}
           </TableCell>
-          <TableCell className='text-center'>
+          <TableCell>
             {formatCurrencyCompact(currentGame?.[table]?.iosDownloads)}
           </TableCell>
           <TableCell>
             {formatCurrency(currentGame?.[table]?.iosRevenue)}
           </TableCell>
-          <TableCell className='text-center'>
+          <TableCell>
             {formatCurrencyCompact(currentGame?.[table]?.totalDownloads)}
           </TableCell>
           <TableCell>
