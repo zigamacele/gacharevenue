@@ -1,19 +1,28 @@
 import CoverImage from '@/components/Game/GameHeader/CoverImage'
-import ReleaseDate from '@/layouts/ReleaseDate'
 import MonthlyStatistics from '@/components/Game/GameHeader/MonthlyStatistics'
-import { QueryOutput } from '@/types/supabase'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+import useCurrentDevice from '@/hooks/useCurrentDevice'
+import ReleaseDate from '@/layouts/ReleaseDate'
 import { Separator } from '@/lib/shadcn/ui/separator'
+import { QueryOutput } from '@/types/supabase'
 import { Monitor } from 'lucide-react'
+import { useState } from 'react'
+import AdvancedView from './GameHeader/AdvancedView'
 
 interface GameHeaderProps {
   currentGame: QueryOutput
 }
 
 const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
+  const [showAdvancedView, setShowAdvancedView] = useState(useCurrentDevice())
+
   return (
     <section>
-      <CoverImage currentGame={currentGame} />
+      <CoverImage
+        currentGame={currentGame}
+        showAdvancedView={showAdvancedView}
+        setShowAdvancedView={setShowAdvancedView}
+      />
       <div className='my-2 flex justify-between'>
         <div className='flex gap-4'>
           <img
@@ -62,6 +71,8 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
           </div>
         </div>
       </div>
+
+      {showAdvancedView && <AdvancedView />}
     </section>
   )
 }

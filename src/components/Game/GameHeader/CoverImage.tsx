@@ -1,12 +1,19 @@
 import PinButton from '@/layouts/Buttons/PinButton'
 import RemoveButton from '@/layouts/Buttons/RemoveButton'
 import { QueryOutput } from '@/types/supabase'
+import { PanelBottom, PanelRight } from 'lucide-react'
 
 interface CoverImageProps {
   currentGame: QueryOutput
+  showAdvancedView: boolean
+  setShowAdvancedView: (value: boolean) => void
 }
 
-const CoverImage: React.FC<CoverImageProps> = ({ currentGame }) => {
+const CoverImage: React.FC<CoverImageProps> = ({
+  currentGame,
+  showAdvancedView,
+  setShowAdvancedView,
+}) => {
   return (
     <div className='relative'>
       <img
@@ -18,6 +25,22 @@ const CoverImage: React.FC<CoverImageProps> = ({ currentGame }) => {
       <div className='absolute right-0 top-4 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 pr-2 pt-2'>
         <PinButton data={currentGame} iconSize={20} />
         <RemoveButton data={currentGame} iconSize={20} />
+      </div>
+      <div className='absolute right-0 top-16 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 py-1.5 pr-2'>
+        <PanelBottom
+          size={20}
+          onClick={() => setShowAdvancedView(true)}
+          className={`${
+            showAdvancedView ? 'opacity-100' : 'opacity-60'
+          } cursor-pointer`}
+        />
+        <PanelRight
+          size={20}
+          onClick={() => setShowAdvancedView(false)}
+          className={`${
+            !showAdvancedView ? 'opacity-100' : 'opacity-60'
+          } cursor-pointer`}
+        />
       </div>
     </div>
   )
