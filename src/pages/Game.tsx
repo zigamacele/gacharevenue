@@ -8,12 +8,10 @@ import GameBody from '@/components/Game/GameBody'
 import GameHeader from '@/components/Game/GameHeader'
 import MotionInView from '@/lib/framer-motion/MotionInView'
 import useBackgroundStore from '@/stores/background-store'
-import { useErrorBoundary } from 'react-error-boundary'
 
 const Game: React.FC = () => {
   const { id } = useParams()
   const { setBackground } = useBackgroundStore()
-  const { showBoundary } = useErrorBoundary()
 
   const { storage, loading, tables } = useSupabaseStore()
 
@@ -25,8 +23,6 @@ const Game: React.FC = () => {
   useEffect(() => {
     if (currentGame) {
       setBackground(currentGame.background)
-    } else {
-      showBoundary('Game not found')
     }
   }, [currentGame])
 
