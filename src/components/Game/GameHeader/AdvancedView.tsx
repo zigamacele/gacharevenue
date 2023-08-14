@@ -1,7 +1,7 @@
 import { Separator } from '@/lib/shadcn/ui/separator'
 import AdvancedViewTable from './AdvancedView/AdvancedViewTable'
 
-const AdvancedView = () => {
+const AdvancedView: React.FC = () => {
   return (
     <section>
       <Separator className='my-2 w-full opacity-40' />

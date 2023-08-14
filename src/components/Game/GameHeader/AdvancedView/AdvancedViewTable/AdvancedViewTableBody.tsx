@@ -5,7 +5,7 @@ import { humanizeTable } from '@/utils/timeDate'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
-const AdvancedViewTableBody = () => {
+const AdvancedViewTableBody: React.FC = () => {
   const { id } = useParams()
   const { tables, storage } = useSupabaseStore()
   const currentGame = useMemo(
