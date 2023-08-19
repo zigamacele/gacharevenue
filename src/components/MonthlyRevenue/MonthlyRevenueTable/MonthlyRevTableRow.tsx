@@ -11,6 +11,7 @@ import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { QueryOutput } from '@/types/supabase'
 import EditSection from './EditSection'
 import HoverCardComp from './HoverCard'
+import { cn } from '@/lib/shadcn/utils'
 
 interface MonthlyRevTableRowProps {
   data: QueryOutput
@@ -58,7 +59,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
             />
           </TableCell>
         )}
-        <TableCell className={`text-center ${region.color}`}>
+        <TableCell className={cn('text-center', region.color)}>
           <Tooltip text={region.text}>{region.emoji}</Tooltip>
         </TableCell>
         <TableCell className='text-xs sm:text-sm'>
@@ -70,9 +71,10 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
             : formatCurrencyCompact(previousRevenue)}
         </TableCell>
         <TableCell
-          className={`border-l border-neutral-800 text-right ${
-            currentRevenue >= previousRevenue ? 'bg-green-600 ' : 'bg-red-600'
-          }`}
+          className={cn(
+            'border-l border-neutral-800 bg-red-600 text-right',
+            currentRevenue >= previousRevenue && 'bg-green-600',
+          )}
         >
           {!isMobile
             ? formatCurrency(currentRevenue)

@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import Toggle from '../MonthlyRevenue/Toggle'
 import Tooltip from '../Tooltip'
+import { cn } from '@/lib/shadcn/utils'
 
 interface ChartControlsProps {
   selectedChart: string
@@ -29,9 +30,10 @@ const ChartControls: React.FC<ChartControlsProps> = ({
         <Tooltip text='Pie Chart'>
           <Button
             onClick={() => setSelectedChart('pie')}
-            className={`text-opacity-40 hover:text-opacity-80 ${
-              selectedChart === 'pie' && 'border-neutral-400 text-opacity-100'
-            }`}
+            className={cn(
+              'text-opacity-40 hover:text-opacity-80',
+              selectedChart === 'pie' && 'border-neutral-400 text-opacity-100',
+            )}
           >
             <PieChart width={20} />
           </Button>
@@ -39,9 +41,10 @@ const ChartControls: React.FC<ChartControlsProps> = ({
         <Tooltip text='Bar Chart'>
           <Button
             onClick={() => setSelectedChart('bar')}
-            className={`text-opacity-40 hover:text-opacity-80 ${
-              selectedChart === 'bar' && 'border-neutral-400 text-opacity-100'
-            }`}
+            className={cn(
+              'text-opacity-40 hover:text-opacity-80',
+              selectedChart === 'bar' && 'border-neutral-400 text-opacity-100',
+            )}
           >
             <BarChart3 width={20} />
           </Button>
@@ -49,9 +52,10 @@ const ChartControls: React.FC<ChartControlsProps> = ({
         <Tooltip text='Line Chart'>
           <Button
             onClick={() => setSelectedChart('line')}
-            className={`text-opacity-40 hover:text-opacity-80 ${
-              selectedChart === 'line' && 'border-neutral-400 text-opacity-100'
-            }`}
+            className={cn(
+              'text-opacity-40 hover:text-opacity-80',
+              selectedChart === 'line' && 'border-neutral-400 text-opacity-100',
+            )}
           >
             <LineChart width={20} />
           </Button>

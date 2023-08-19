@@ -1,3 +1,4 @@
+import { cn } from '@/lib/shadcn/utils'
 import { TrendingDown, TrendingUp } from 'lucide-react'
 
 interface PercentageBoxProps {
@@ -7,9 +8,10 @@ interface PercentageBoxProps {
 const PercentageBox: React.FC<PercentageBoxProps> = ({ percentage }) => {
   return (
     <div
-      className={`flex items-center gap-2 rounded-lg ${
-        percentage > 0 ? 'bg-green-500/20' : 'bg-red-500/20'
-      }  px-2.5 py-1`}
+      className={cn(
+        'flex items-center gap-2 rounded-lg bg-red-500/20 px-2.5 py-1',
+        percentage > 0 && 'bg-green-500/20',
+      )}
     >
       {percentage > 0 ? (
         <TrendingUp width={16} className='text-green-500' />
