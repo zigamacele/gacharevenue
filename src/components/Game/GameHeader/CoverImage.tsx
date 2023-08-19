@@ -23,7 +23,7 @@ const CoverImage: React.FC<CoverImageProps> = ({
         className='h-40 w-full rounded-t-md object-cover'
       />
       <div className='absolute top-0 h-full w-full rounded-t-md bg-gradient-to-t from-neutral-900 to-transparent opacity-100'></div>
-      <div className='absolute right-0 top-4 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 pr-2 pt-2'>
+      <div className='absolute right-0 top-4 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 py-1.5 pr-2'>
         <PinButton data={currentGame} iconSize={20} />
         <RemoveButton data={currentGame} iconSize={20} />
       </div>

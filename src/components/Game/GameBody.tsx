@@ -6,6 +6,7 @@ import { prepareBarChartData, prepareLineChartData } from '@/utils/charts'
 import { useState } from 'react'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { QueryOutput } from '@/types/supabase'
+import Tooltip from '../Tooltip'
 
 interface GameBodyProps {
   currentGame: QueryOutput
@@ -39,10 +40,14 @@ const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
       >
         <TabsList className='center flex'>
           <TabsTrigger value='bar'>
-            <BarChart3 width={16} height={18} />
+            <Tooltip text='Bar Chart'>
+              <BarChart3 width={16} height={18} />
+            </Tooltip>
           </TabsTrigger>
           <TabsTrigger value='line'>
-            <LineChart width={16} height={18} />
+            <Tooltip text='Line Chart'>
+              <LineChart width={16} height={18} />
+            </Tooltip>
           </TabsTrigger>
         </TabsList>
         <TabsContent value='bar' className='h-80 w-full'>
