@@ -9,7 +9,7 @@ const MotionOpacity: React.FC<MotionOpacityProps> = ({ children }) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1, delay: 0.15 }}
+      transition={{ duration: 1 }}
     >
       {children}
     </motion.div>
