@@ -18,9 +18,12 @@ const Navbar: React.FC = () => {
         className='flex cursor-pointer items-center gap-2 hover:opacity-60'
       >
         <img src={logo} alt='logo' className='mt-1 h-9' />
-        <span className='text-lg font-bold tracking-widest'>GASHAPON</span>
+        <div className='text-lg font-bold tracking-widest'>
+          <span>GACHA</span>
+          <span className='opacity-60'>REVENUE</span>
+        </div>
       </Link>
-      <div className='flex items-center gap-5'>
+      <div className='flex items-center gap-3 sm:gap-5'>
         <Navigation />
         <MobileDropdown />
         <Separator orientation='vertical' className='h-4' />

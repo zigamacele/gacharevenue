@@ -2,7 +2,7 @@
 
 <img src="https://i.imgur.com/SL2D8RY.png" width="200">
 
-# GASHAPON
+# GACHAREVENUE
 
 an easy way to check gacha game revenue
 

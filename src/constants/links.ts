@@ -1,4 +1,4 @@
-export const GITHUB_PROJECT_URL = 'https://github.com/zigamacele/gashapon'
+export const GITHUB_PROJECT_URL = 'https://github.com/zigamacele/gacharevenue'
 export const SENSORTOWER_URL = 'https://sensortower.com/'
 export const GACHAGAMING_URL = 'https://www.reddit.com/r/gachagaming/'
 

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 const SocialLinks = () => {
   return (
     <section className='flex items-center gap-3'>
-      <Link to={GACHAGAMING_URL} target='_blank'>
+      <Link to={GACHAGAMING_URL} target='_blank' className='hidden sm:block'>
         <img
           src={reddit}
           alt='r/gachagaming'
