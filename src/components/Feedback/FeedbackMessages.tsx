@@ -18,7 +18,9 @@ const FeedbackMessages: React.FC = () => {
                 styles='flex flex-col gap-2 rounded border border-neutral-700 bg-neutral-900 px-4 py-2'
               >
                 <div className='flex justify-between'>
-                  <span>{feedback.name || 'Anonymous'}</span>
+                  <span className='max-w-[14em] truncate'>
+                    {feedback.name || 'Anonymous'}
+                  </span>
                   <div className='flex flex-col items-end'>
                     <div className='flex items-center gap-1.5 opacity-40'>
                       <Clock size={14} />
