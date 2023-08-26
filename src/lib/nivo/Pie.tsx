@@ -23,7 +23,7 @@ const Pie: React.FC<PieProps> = ({ data }) => (
       modifiers: [['darker', 0.2]],
     }}
     arcLinkLabelsSkipAngle={10}
-    arcLinkLabelsTextColor='#333333'
+    arcLinkLabelsTextColor='#525252'
     arcLinkLabelsThickness={2}
     arcLinkLabelsColor={{ from: 'color' }}
     arcLabelsSkipAngle={10}

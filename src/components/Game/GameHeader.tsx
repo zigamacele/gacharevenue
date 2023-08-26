@@ -57,12 +57,16 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
               <span className='text-neutral-400'>PC Revenue Not Included</span>
             </div>
           )}
-          <div className='flex items-center gap-4'>
-            <MonthlyStatistics
-              currentGame={currentGame}
-              table={PREVIOUS_TABLE}
-            />
-            <Separator orientation='vertical' className='h-16 opacity-40' />
+          <div className='flex items-center justify-end gap-4'>
+            {currentGame[PREVIOUS_TABLE]?.totalRevenue && (
+              <>
+                <MonthlyStatistics
+                  currentGame={currentGame}
+                  table={PREVIOUS_TABLE}
+                />
+                <Separator orientation='vertical' className='h-16 opacity-40' />
+              </>
+            )}
             <MonthlyStatistics
               currentGame={currentGame}
               table={CURRENT_TABLE}

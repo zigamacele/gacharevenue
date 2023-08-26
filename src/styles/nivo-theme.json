@@ -16,7 +16,7 @@
     "legend": {
       "text": {
         "fontSize": 12,
-        "fill": "#333333",
+        "fill": "#737373",
         "outlineWidth": 0,
         "outlineColor": "transparent"
       }
@@ -28,7 +28,7 @@
       },
       "text": {
         "fontSize": 11,
-        "fill": "#333333",
+        "fill": "#525252",
         "outlineWidth": 0,
         "outlineColor": "transparent"
       }
