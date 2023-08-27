@@ -6,7 +6,7 @@
 
 an easy way to check gacha game revenue
 
-[SensorTower](https://www.typescriptlang.org/) ・ [Reddit](https://www.reddit.com/r/gachagaming/)
+[SensorTower](https://sensortower.com/) ・ [Reddit](https://www.reddit.com/r/gachagaming/)
 
 </div>
 
