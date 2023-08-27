@@ -15,7 +15,7 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'prettier'],
   rules: {
     '@typescript-eslint/no-confusing-void-expression': 0,
     'react-refresh/only-export-components': [

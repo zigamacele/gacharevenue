@@ -8,9 +8,22 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix --ignore-path ./.gitignore",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=0",
+      "prettier -w"
+    ],
+    "**/*.{json,css,scss,md,webmanifest}": [
+      "prettier -w"
+    ]
   },
   "dependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@hookform/resolvers": "^3.2.0",
     "@nivo/bar": "^0.83.0",
     "@nivo/core": "^0.83.0",
@@ -28,6 +41,7 @@
     "clsx": "^2.0.0",
     "dayjs": "^1.11.9",
     "framer-motion": "^10.15.1",
+    "lint-staged": "^14.0.1",
     "lucide-react": "^0.263.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -46,8 +60,11 @@
     "autoprefixer": "^10.4.14",
     "class-variance-authority": "^0.7.0",
     "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^8.0.0",
     "postcss": "^8.4.27",
     "prettier": "^3.0.1",
     "prettier-plugin-tailwindcss": "^0.4.1",
