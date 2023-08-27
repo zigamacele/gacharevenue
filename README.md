@@ -14,7 +14,18 @@ an easy way to check gacha game revenue
 
 ## Preview
 
+https://github.com/zigamacele/gacharevenue/assets/19758116/dee4c649-7e22-4f62-9880-b3bdc900f6be
+
 ## Screenshots
+
+<img src="https://i.imgur.com/dYI5qKd.png" >
+<img src="https://i.imgur.com/OmeDAyM.png" >
+<img src="https://i.imgur.com/hp1bggl.png" >
+<img src="https://i.imgur.com/YnqsxVo.png" >
+
+
+
+
 
 ## Technologies
 
@@ -26,3 +37,6 @@ an easy way to check gacha game revenue
 - [shadcn/ui](https://ui.shadcn.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Framer Motion](https://www.framer.com/motion/)
+
+
+
