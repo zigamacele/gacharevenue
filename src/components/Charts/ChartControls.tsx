@@ -32,7 +32,8 @@ const ChartControls: React.FC<ChartControlsProps> = ({
             onClick={() => setSelectedChart('pie')}
             className={cn(
               'text-opacity-40 hover:text-opacity-80',
-              selectedChart === 'pie' && 'border-neutral-400 text-opacity-100',
+              selectedChart === 'pie' &&
+                'border-neutral-400 bg-neutral-800 text-opacity-100',
             )}
           >
             <PieChart width={20} />
@@ -43,7 +44,8 @@ const ChartControls: React.FC<ChartControlsProps> = ({
             onClick={() => setSelectedChart('bar')}
             className={cn(
               'text-opacity-40 hover:text-opacity-80',
-              selectedChart === 'bar' && 'border-neutral-400 text-opacity-100',
+              selectedChart === 'bar' &&
+                'border-neutral-400 bg-neutral-800 text-opacity-100',
             )}
           >
             <BarChart3 width={20} />
@@ -54,7 +56,8 @@ const ChartControls: React.FC<ChartControlsProps> = ({
             onClick={() => setSelectedChart('line')}
             className={cn(
               'text-opacity-40 hover:text-opacity-80',
-              selectedChart === 'line' && 'border-neutral-400 text-opacity-100',
+              selectedChart === 'line' &&
+                'border-neutral-400 bg-neutral-800 text-opacity-100',
             )}
           >
             <LineChart width={20} />
