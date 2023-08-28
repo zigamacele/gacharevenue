@@ -35,6 +35,7 @@ const MonthlyRevenueControls: React.FC = () => {
           <Toggle
             onClick={() => toggle('showPinned')}
             disabled={!pinned.length && !showPinned}
+            pressed={showPinned}
           >
             {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
           </Toggle>
