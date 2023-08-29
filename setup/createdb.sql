@@ -12,8 +12,9 @@ create table
     icon text null,
     background text null,
     pc_client boolean null,
-    constraint games_pkey primary key (id),
-    constraint games_name_key unique (name)
+    eos boolean null,
+    constraint games3_pkey primary key (id),
+    constraint games3_name_key unique (name)
   ) tablespace pg_default;
 
 -- MONTHLY DATA

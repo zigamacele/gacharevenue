@@ -43,6 +43,8 @@ const useSupabaseRelay = () => {
     const { data, error } = await supabase
       .from(config.database.GAMES_TABLE)
       .select(`*, ${tables.join(', ')}}`)
+      .neq('eos', true)
+
     if (data) {
       const dataType = data as unknown as QueryOutput[]
       const RANDOM_GAME = generateRandomNumber(0, data.length - 1)
