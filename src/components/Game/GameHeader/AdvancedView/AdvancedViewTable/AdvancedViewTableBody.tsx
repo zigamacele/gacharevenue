@@ -15,31 +15,37 @@ const AdvancedViewTableBody: React.FC = () => {
 
   return (
     <TableBody>
-      {tables.map((table: string) => (
-        <TableRow key={table} className='text-center'>
-          <TableCell className='whitespace-nowrap opacity-60'>
-            {humanizeTable(table)}
-          </TableCell>
-          <TableCell>
-            {formatCurrencyCompact(currentGame?.[table]?.androidDownloads)}
-          </TableCell>
-          <TableCell>
-            {formatCurrency(currentGame?.[table]?.androidRevenue)}
-          </TableCell>
-          <TableCell>
-            {formatCurrencyCompact(currentGame?.[table]?.iosDownloads)}
-          </TableCell>
-          <TableCell>
-            {formatCurrency(currentGame?.[table]?.iosRevenue)}
-          </TableCell>
-          <TableCell>
-            {formatCurrencyCompact(currentGame?.[table]?.totalDownloads)}
-          </TableCell>
-          <TableCell>
-            {formatCurrency(currentGame?.[table]?.totalRevenue)}
-          </TableCell>
-        </TableRow>
-      ))}
+      {tables.map((table: string) => {
+        if (!currentGame?.[table]?.totalRevenue) {
+          return null
+        }
+
+        return (
+          <TableRow key={table} className='text-center'>
+            <TableCell className='whitespace-nowrap opacity-60'>
+              {humanizeTable(table)}
+            </TableCell>
+            <TableCell>
+              {formatCurrencyCompact(currentGame[table]?.androidDownloads)}
+            </TableCell>
+            <TableCell>
+              {formatCurrency(currentGame[table]?.androidRevenue)}
+            </TableCell>
+            <TableCell>
+              {formatCurrencyCompact(currentGame[table]?.iosDownloads)}
+            </TableCell>
+            <TableCell>
+              {formatCurrency(currentGame[table]?.iosRevenue)}
+            </TableCell>
+            <TableCell>
+              {formatCurrencyCompact(currentGame[table]?.totalDownloads)}
+            </TableCell>
+            <TableCell>
+              {formatCurrency(currentGame[table]?.totalRevenue)}
+            </TableCell>
+          </TableRow>
+        )
+      })}
     </TableBody>
   )
 }

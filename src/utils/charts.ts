@@ -18,6 +18,10 @@ export const preparePieChartData = (data: QueryOutput[]) => {
 export const prepareLineChartData = (data: QueryOutput[], tables: string[]) => {
   const lineData = data.map((game) => {
     const lineHistory = tables.map((table) => {
+      if (game[table]?.totalRevenue === 0) {
+        return
+      }
+
       return {
         x: humanizeTable(table),
         y: game[table]?.totalRevenue ?? 0,
@@ -25,7 +29,7 @@ export const prepareLineChartData = (data: QueryOutput[], tables: string[]) => {
     })
     return {
       id: `${game.en_name} (${game.region})`,
-      data: lineHistory,
+      data: lineHistory as unknown as { x: string; y: number }[],
     }
   })
 
@@ -41,6 +45,9 @@ export const prepareBarChartData = (data: QueryOutput[], tables: string[]) => {
     allKeys.push(`${game.en_name} (${game.region})`)
 
     for (const table of tables) {
+      if (game[table]?.totalRevenue === 0) {
+        continue
+      }
       output[table] = {
         ...output[table],
         month: humanizeTable(table),

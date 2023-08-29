@@ -14,7 +14,20 @@ interface GameBodyProps {
 }
 
 const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
-  const [tabs, setTabs] = useState<string[]>([PREVIOUS_TABLE, CURRENT_TABLE])
+  const setTabsHelper = (tables: string[]) => {
+    const newTabs = []
+    for (const table of tables) {
+      if (currentGame[table]?.totalRevenue) {
+        newTabs.push(table)
+      }
+    }
+
+    return newTabs
+  }
+
+  const [tabs, setTabs] = useState<string[]>(
+    setTabsHelper([PREVIOUS_TABLE, CURRENT_TABLE]),
+  )
 
   return (
     <section>
@@ -25,11 +38,16 @@ const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
         <TabsList className='center flex'>
           <TabsTrigger
             value='last'
-            onClick={() => setTabs([PREVIOUS_TABLE, CURRENT_TABLE])}
+            onClick={() =>
+              setTabs(setTabsHelper([PREVIOUS_TABLE, CURRENT_TABLE]))
+            }
           >
             Last
           </TabsTrigger>
-          <TabsTrigger value='all' onClick={() => setTabs(tables)}>
+          <TabsTrigger
+            value='all'
+            onClick={() => setTabs(setTabsHelper(tables))}
+          >
             All
           </TabsTrigger>
         </TabsList>
