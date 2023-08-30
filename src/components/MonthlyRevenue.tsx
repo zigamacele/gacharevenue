@@ -1,6 +1,5 @@
 import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
-import MotionInView from '@/lib/framer-motion/MotionInView'
 import { Separator } from '@/lib/shadcn/ui/separator'
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
@@ -27,10 +26,7 @@ const MonthlyRevenue: React.FC = () => {
   const TableData = showCombinedRevenue ? combinedRevenue : storage
 
   return (
-    <MotionInView
-      delay={0.2}
-      styles='my-4 flex flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 w-full sm:w-auto'
-    >
+    <section className='slide-from-bottom my-4 flex w-full flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 sm:w-auto'>
       <MonthlyRevenueControls />
       <Separator className='mt-2 w-full opacity-40' />
       <MonthlyRevenueTable
@@ -45,7 +41,7 @@ const MonthlyRevenue: React.FC = () => {
         loading={loading}
         showEditSection={showEditSection}
       />
-    </MotionInView>
+    </section>
   )
 }
 

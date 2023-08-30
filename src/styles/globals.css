@@ -53,3 +53,17 @@ body::-webkit-scrollbar {
     opacity: 1;
   }
 }
+
+.slide-from-bottom {
+  animation: slide-from-bottom 1s ease;
+}
+@keyframes slide-from-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

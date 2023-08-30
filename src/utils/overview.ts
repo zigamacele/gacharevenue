@@ -47,7 +47,7 @@ export const compareRevenue = (data: QueryOutput[]) => {
     const percentage =
       ((currentRevenue - previousRevenue) / previousRevenue) * 100
 
-    if (percentage !== Infinity) {
+    if (percentage !== Infinity && previousRevenue) {
       output.push({ name: game.en_name, difference, percentage })
     }
   })
