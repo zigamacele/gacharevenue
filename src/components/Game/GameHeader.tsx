@@ -24,11 +24,13 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
       />
       <div className='my-2 flex justify-between'>
         <div className='flex gap-4'>
-          <img
-            src={currentGame.icon}
-            alt={currentGame.en_name}
-            className='h-24 w-24 rounded-lg border border-neutral-700 object-cover'
-          />
+          <div className='relative'>
+            <img
+              src={currentGame.icon}
+              alt={currentGame.en_name}
+              className='h-24 w-24 rounded-lg border border-neutral-700 object-cover'
+            />
+          </div>
           <div className='flex flex-col justify-between'>
             <div className='flex flex-col'>
               <span className='w-60 truncate text-xl font-semibold sm:w-80'>

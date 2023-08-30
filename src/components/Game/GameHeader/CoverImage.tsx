@@ -4,6 +4,7 @@ import RemoveButton from '@/layouts/Buttons/RemoveButton'
 import { cn } from '@/lib/shadcn/utils'
 import { QueryOutput } from '@/types/supabase'
 import { PanelBottom, PanelRight } from 'lucide-react'
+import RegionTooltip from './CoverImage/RegionTooltip'
 
 interface CoverImageProps {
   currentGame: QueryOutput
@@ -23,6 +24,7 @@ const CoverImage: React.FC<CoverImageProps> = ({
         alt={currentGame.en_name}
         className='h-40 w-full rounded-t-md object-cover'
       />
+      <RegionTooltip gameRegion={currentGame.region} />
       <div className='absolute top-0 h-full w-full rounded-t-md bg-gradient-to-t from-neutral-900 to-transparent opacity-100'></div>
       <div className='absolute right-0 top-4 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 py-1.5 pr-2'>
         <PinButton data={currentGame} iconSize={20} />
