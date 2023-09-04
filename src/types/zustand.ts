@@ -8,7 +8,7 @@ export interface TableControlsState {
   showEditSection: boolean
   showCombinedRevenue: boolean
   toggle: (prop: string) => void
-  setState: (prop: string, value: number) => void
+  setState: (prop: string, value: number | boolean) => void
 }
 
 export interface SetAlerts {

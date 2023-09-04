@@ -29,7 +29,10 @@ const Charts: React.FC = () => {
   }, [storage])
 
   const ChartsData = queryFilter({
-    data: showCombinedRevenue ? combinedRevenue : storage,
+    data:
+      showCombinedRevenue && selectedChart === 'pie'
+        ? combinedRevenue
+        : storage,
     pinned,
     removed,
     showPinned,

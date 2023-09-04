@@ -54,6 +54,20 @@ body::-webkit-scrollbar {
   }
 }
 
+.fade-out {
+  opacity: 0;
+  animation: fadeOut 250ms ease-in forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .slide-from-bottom {
   animation: slide-from-bottom 1s ease;
 }
@@ -65,5 +79,19 @@ body::-webkit-scrollbar {
   60% {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+.slide-from-left {
+  animation: from-slide-left 500ms ease;
+}
+@keyframes from-slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }

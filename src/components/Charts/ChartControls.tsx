@@ -11,6 +11,7 @@ import {
 import Toggle from '../MonthlyRevenue/Toggle'
 import Tooltip from '../Tooltip'
 import { cn } from '@/lib/shadcn/utils'
+import { SlideDirection } from '@/utils/enums'
 
 interface ChartControlsProps {
   selectedChart: string
@@ -74,20 +75,24 @@ const ChartControls: React.FC<ChartControlsProps> = ({
             {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
           </Toggle>
         </Tooltip>
-        <Tooltip
-          text={
-            !showCombinedRevenue
-              ? 'Combine Region Revenue'
-              : 'Separate Region Revenue'
-          }
-        >
-          <Toggle
-            onClick={() => toggle('showCombinedRevenue')}
-            pressed={showCombinedRevenue}
+
+        {selectedChart === 'pie' && (
+          <Tooltip
+            text={
+              !showCombinedRevenue
+                ? 'Combine Region Revenue'
+                : 'Separate Region Revenue'
+            }
           >
-            <Combine size={18} />
-          </Toggle>
-        </Tooltip>
+            <Toggle
+              onClick={() => toggle('showCombinedRevenue')}
+              pressed={showCombinedRevenue}
+              slideFrom={SlideDirection.LEFT}
+            >
+              <Combine size={18} />
+            </Toggle>
+          </Tooltip>
+        )}
       </div>
     </div>
   )
