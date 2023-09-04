@@ -40,7 +40,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   return (
     <HoverCard>
       <TableRow
-        className={isSectionRemoved ? 'opacity-60' : ''}
+        className={cn('fade-in', isSectionRemoved && 'opacity-60')}
         onMouseEnter={() => setBackground(data.background)}
       >
         <TableCell className='flex w-14 items-center justify-center gap-1'>

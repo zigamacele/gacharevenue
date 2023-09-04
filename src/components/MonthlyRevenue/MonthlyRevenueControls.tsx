@@ -37,7 +37,7 @@ const MonthlyRevenueControls: React.FC = () => {
             disabled={!pinned.length && !showPinned}
             pressed={showPinned}
           >
-            {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
+            {showPinned ? <PinOff size={18} /> : <Pin size={18} />}
           </Toggle>
         </Tooltip>
         <Tooltip

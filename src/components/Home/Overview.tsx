@@ -15,7 +15,7 @@ const Overview: React.FC = () => {
   const sortedByPercentage = useMemo(() => compareRevenue(storage), [storage])
 
   return (
-    <section className='flex flex-col gap-4 lg:flex-row'>
+    <section className='flex flex-col gap-4 xl:flex-row'>
       <OverviewCard
         icon='💰'
         title='Total Revenue'
