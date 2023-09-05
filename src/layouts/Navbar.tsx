@@ -1,10 +1,10 @@
-import logo from '@/assets/logo.png'
 import MobileDropdown from '@/components/Navbar/MobileDropdown'
 import Navigation from '@/components/Navbar/Navigation'
 import SocialLinks from '@/components/Navbar/SocialLinks'
 import MotionInView from '@/lib/framer-motion/MotionInView'
 import { Separator } from '@/lib/shadcn/ui/separator'
 import { Link } from 'react-router-dom'
+import Logo from './Logo'
 
 const Navbar: React.FC = () => {
   return (
@@ -17,11 +17,7 @@ const Navbar: React.FC = () => {
         to='/'
         className='flex cursor-pointer items-center gap-2 hover:opacity-60'
       >
-        <img src={logo} alt='logo' className='mt-1 h-9' />
-        <div className='text-lg font-bold tracking-widest'>
-          <span>GACHA</span>
-          <span className='opacity-60'>REVENUE</span>
-        </div>
+        <Logo logoProps='mt-1' />
       </Link>
       <div className='flex items-center gap-3 sm:gap-5'>
         <Navigation />
