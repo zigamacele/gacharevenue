@@ -52,5 +52,6 @@ create table
     tables text[] null,
     background text null,
     alerts text[] null,
+    maintenance boolean null default false,
     constraint config_pkey primary key (id)
   ) tablespace pg_default;

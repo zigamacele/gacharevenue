@@ -37,4 +37,5 @@ export interface ConfigData {
   alerts: string[] | null
   tables: string[]
   background: string
+  maintenance: boolean
 }

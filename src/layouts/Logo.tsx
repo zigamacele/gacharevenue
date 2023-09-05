@@ -16,7 +16,7 @@ const Logo: React.FC<LogoProps> = ({ textProps, logoProps, gap }) => {
       )}
     >
       <img src={logo} alt='logo' className={cn('h-9', logoProps)} />
-      <div className={cn('font-bold tracking-widest', textProps)}>
+      <div className={cn('text-lg font-bold tracking-widest', textProps)}>
         <span>GACHA</span>
         <span className='opacity-60'>REVENUE</span>
       </div>

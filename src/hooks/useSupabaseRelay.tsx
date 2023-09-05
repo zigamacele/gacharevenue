@@ -20,6 +20,10 @@ const useSupabaseRelay = () => {
     if (data) {
       const config = data[0] as ConfigData
 
+      if (config.maintenance) {
+        showBoundary('maintenance')
+      }
+
       if (config.alerts) {
         const parsedAlerts: SetAlerts[] = config.alerts.map(
           (alert) => JSON.parse(alert) as SetAlerts,
