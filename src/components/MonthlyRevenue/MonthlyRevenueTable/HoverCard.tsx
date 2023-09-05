@@ -12,7 +12,7 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
   return (
     <>
       <HoverCardContent className='flex flex-col gap-2'>
-        <div className='flex gap-2'>
+        <div className='z-50 flex gap-2'>
           <img
             src={data.icon}
             className='h-20 w-20 rounded border border-neutral-600 object-cover'

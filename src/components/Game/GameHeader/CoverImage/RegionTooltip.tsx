@@ -13,7 +13,7 @@ const RegionTooltip: React.FC<RegionTooltipProps> = ({ gameRegion }) => {
   return (
     <div
       className={cn(
-        'absolute left-1 top-1 z-50 flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border-2 border-neutral-800 bg-neutral-900 text-sm',
+        'absolute left-1 top-1 z-50 flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border-2 border-neutral-800 bg-neutral-900 text-xs',
         region.color,
       )}
     >
