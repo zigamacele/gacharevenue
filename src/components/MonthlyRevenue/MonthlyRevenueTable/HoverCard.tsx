@@ -1,11 +1,14 @@
-import ReleaseDate from '@/layouts/ReleaseDate'
+import { useNavigate } from 'react-router-dom'
+
 import {
+  HoverCard as HoverCardComp,
   HoverCardContent,
   HoverCardTrigger,
-  HoverCard as HoverCardComp,
 } from '@/lib/shadcn/ui/hover-card'
+
+import ReleaseDate from '@/layouts/ReleaseDate'
+
 import { QueryOutput } from '@/types/supabase'
-import { useNavigate } from 'react-router-dom'
 
 interface HoverOverProps {
   data: QueryOutput

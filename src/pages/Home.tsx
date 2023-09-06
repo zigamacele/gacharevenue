@@ -1,6 +1,7 @@
 import Alerts from '@/components/Home/Alerts'
 import Hero from '@/components/Home/Hero'
 import Overview from '@/components/Home/Overview'
+
 import useSupabaseStore from '@/stores/supabase-store'
 
 const Home: React.FC = () => {

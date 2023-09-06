@@ -1,5 +1,6 @@
-import { TableControlsState } from '@/types/zustand'
 import { create } from 'zustand'
+
+import { TableControlsState } from '@/types/zustand'
 
 const useMonthlyTableControls = create<TableControlsState>()((set) => ({
   pinned: JSON.parse(window.localStorage.getItem('pinned') ?? '[]') as number[],

@@ -1,12 +1,17 @@
-import CoverImage from '@/components/Game/GameHeader/CoverImage'
-import MonthlyStatistics from '@/components/Game/GameHeader/MonthlyStatistics'
-import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
-import ReleaseDate from '@/layouts/ReleaseDate'
-import { Separator } from '@/lib/shadcn/ui/separator'
-import { QueryOutput } from '@/types/supabase'
 import { Monitor } from 'lucide-react'
 import { useState } from 'react'
+
+import { Separator } from '@/lib/shadcn/ui/separator'
+
+import CoverImage from '@/components/Game/GameHeader/CoverImage'
+import MonthlyStatistics from '@/components/Game/GameHeader/MonthlyStatistics'
+
+import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+import ReleaseDate from '@/layouts/ReleaseDate'
+
 import AdvancedView from './GameHeader/AdvancedView'
+
+import { QueryOutput } from '@/types/supabase'
 
 interface GameHeaderProps {
   currentGame: QueryOutput

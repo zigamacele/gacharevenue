@@ -1,7 +1,10 @@
-import Tooltip from '@/components/Tooltip'
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
-import { QueryOutput } from '@/types/supabase'
 import { CheckCircle2, XCircle } from 'lucide-react'
+
+import Tooltip from '@/components/Tooltip'
+
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
+
+import { QueryOutput } from '@/types/supabase'
 
 interface RemoveButtonProps {
   data: QueryOutput

@@ -1,7 +1,10 @@
-import useFeedbackChanges from '@/hooks/useFeedbackChanges'
-import MotionInView from '@/lib/framer-motion/MotionInView'
-import { formatTimestampz } from '@/utils/timeDate'
 import { Clock } from 'lucide-react'
+
+import MotionInView from '@/lib/framer-motion/MotionInView'
+
+import useFeedbackChanges from '@/hooks/useFeedbackChanges'
+
+import { formatTimestampz } from '@/utils/timeDate'
 
 const FeedbackMessages: React.FC = () => {
   const { data, loading } = useFeedbackChanges()

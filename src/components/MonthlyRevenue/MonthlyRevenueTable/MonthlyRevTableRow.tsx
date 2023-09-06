@@ -1,16 +1,20 @@
 import { TableCell, TableRow } from '@/lib/shadcn/ui/table'
-import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
-import { getRegion } from '@/utils/region'
+import { cn } from '@/lib/shadcn/utils'
 
 import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
 import Tooltip from '@/components/Tooltip'
-import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+
 import useBackgroundStore from '@/stores/background-store'
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
-import { QueryOutput } from '@/types/supabase'
+
+import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
+import { getRegion } from '@/utils/region'
+
 import EditSection from './EditSection'
 import HoverCard from './HoverCard'
-import { cn } from '@/lib/shadcn/utils'
+
+import { QueryOutput } from '@/types/supabase'
 
 interface MonthlyRevTableRowProps {
   data: QueryOutput

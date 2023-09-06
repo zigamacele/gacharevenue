@@ -1,12 +1,14 @@
-import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links'
+import { MoreHorizontal } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/lib/shadcn/ui/dropdown-menu'
-import { MoreHorizontal } from 'lucide-react'
-import { Link } from 'react-router-dom'
+
+import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links'
 
 const MobileDropdown = () => {
   return (

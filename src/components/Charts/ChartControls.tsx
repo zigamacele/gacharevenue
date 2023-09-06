@@ -1,5 +1,3 @@
-import { Button } from '@/lib/shadcn/ui/button'
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import {
   BarChart3,
   Combine,
@@ -8,10 +6,16 @@ import {
   Pin,
   PinOff,
 } from 'lucide-react'
+
+import { Button } from '@/lib/shadcn/ui/button'
+import { cn } from '@/lib/shadcn/utils'
+
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
+
+import { SlideDirection } from '@/utils/enums'
+
 import Toggle from '../MonthlyRevenue/Toggle'
 import Tooltip from '../Tooltip'
-import { cn } from '@/lib/shadcn/utils'
-import { SlideDirection } from '@/utils/enums'
 
 interface ChartControlsProps {
   selectedChart: string

@@ -1,5 +1,6 @@
-import { SupabaseStore, SupabaseStoreState } from '@/types/zustand'
 import { create } from 'zustand'
+
+import { SupabaseStore, SupabaseStoreState } from '@/types/zustand'
 
 const useSupabaseStore = create<SupabaseStore>()((set) => ({
   tables: [],

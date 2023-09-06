@@ -1,6 +1,7 @@
-import { Button } from '@/lib/shadcn/ui/button'
 import { Disc2, Undo2 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+
+import { Button } from '@/lib/shadcn/ui/button'
 
 interface ErrorNavigationProps {
   resetErrorBoundary: () => void

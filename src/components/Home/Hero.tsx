@@ -1,6 +1,8 @@
-import logo from '@/assets/logo.png'
-import { Button } from '@/lib/shadcn/ui/button'
 import { useNavigate } from 'react-router-dom'
+
+import { Button } from '@/lib/shadcn/ui/button'
+
+import logo from '@/assets/logo.png'
 
 const Hero: React.FC = () => {
   const navigate = useNavigate()

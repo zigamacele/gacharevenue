@@ -1,12 +1,15 @@
-import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
+import { useMemo } from 'react'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
+
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
+
 import { combineSameGameRevenue } from '@/utils/filters'
 import { queryFilterSort } from '@/utils/sorting'
-import { useMemo } from 'react'
+
 import MonthlyRevenueControls from './MonthlyRevenue/MonthlyRevenueControls'
+import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 
 const MonthlyRevenue: React.FC = () => {
   const {

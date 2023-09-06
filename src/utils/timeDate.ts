@@ -1,9 +1,9 @@
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
+import dayjs, { extend } from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
 
-dayjs.extend(utc)
-dayjs.extend(timezone)
+extend(utc)
+extend(timezone)
 
 export const currentMonthYear = () => {
   return `${dayjs().month()}-${dayjs().year()}`

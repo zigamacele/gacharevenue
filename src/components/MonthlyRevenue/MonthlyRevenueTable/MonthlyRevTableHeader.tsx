@@ -1,5 +1,6 @@
-import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { TableHead, TableRow } from '@/lib/shadcn/ui/table'
+
+import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { humanizeTable } from '@/utils/timeDate'
 
 interface MonthlyRevTableHeaderProps {

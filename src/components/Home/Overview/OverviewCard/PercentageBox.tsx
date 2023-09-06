@@ -1,5 +1,6 @@
-import { cn } from '@/lib/shadcn/utils'
 import { TrendingDown, TrendingUp } from 'lucide-react'
+
+import { cn } from '@/lib/shadcn/utils'
 
 interface PercentageBoxProps {
   percentage: number

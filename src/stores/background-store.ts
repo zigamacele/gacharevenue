@@ -1,5 +1,6 @@
-import { BackgroundStore } from '@/types/zustand'
 import { create } from 'zustand'
+
+import { BackgroundStore } from '@/types/zustand'
 
 const useBackgroundStore = create<BackgroundStore>()((set) => ({
   background: null,

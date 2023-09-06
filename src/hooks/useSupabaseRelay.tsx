@@ -1,12 +1,15 @@
-import config from '@/config/env'
-import supabase from '@/config/supabase'
-import useBackgroundStore from '@/stores/background-store'
-import useSupabaseStore from '@/stores/supabase-store'
-import { ConfigData, QueryOutput } from '@/types/supabase'
-import { SetAlerts } from '@/types/zustand'
-import { generateRandomNumber } from '@/utils/globals'
 import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
+
+import useBackgroundStore from '@/stores/background-store'
+import useSupabaseStore from '@/stores/supabase-store'
+
+import config from '@/config/env'
+import supabase from '@/config/supabase'
+import { generateRandomNumber } from '@/utils/globals'
+
+import { ConfigData, QueryOutput } from '@/types/supabase'
+import { SetAlerts } from '@/types/zustand'
 
 const useSupabaseRelay = () => {
   const { setProperty } = useSupabaseStore()

@@ -1,12 +1,15 @@
+import { Route, Routes } from 'react-router-dom'
+
 import useSupabaseRelay from '@/hooks/useSupabaseRelay'
-import Background from '@/layouts/Background'
-import Navbar from '@/layouts/Navbar'
+
 import Charts from '@/pages/Charts'
 import Feedback from '@/pages/Feedback'
 import Game from '@/pages/Game'
 import Home from '@/pages/Home'
 import Revenue from '@/pages/Revenue'
-import { Route, Routes } from 'react-router-dom'
+
+import Background from '@/layouts/Background'
+import Navbar from '@/layouts/Navbar'
 
 const AppRoutes = () => {
   useSupabaseRelay()

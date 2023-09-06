@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom'
+
 import github from '@/assets/icons/github.svg'
 import reddit from '@/assets/icons/reddit.svg'
 import sensorTower from '@/assets/icons/sensor-tower.svg'
+
 import {
   GACHAGAMING_URL,
   GITHUB_PROJECT_URL,
   SENSORTOWER_URL,
 } from '@/constants/links'
-import { Link } from 'react-router-dom'
 
 const SocialLinks = () => {
   return (

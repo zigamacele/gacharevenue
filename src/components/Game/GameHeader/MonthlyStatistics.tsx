@@ -1,7 +1,9 @@
-import { QueryOutput } from '@/types/supabase'
+import { Download } from 'lucide-react'
+
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
 import { humanizeTable } from '@/utils/timeDate'
-import { Download } from 'lucide-react'
+
+import { QueryOutput } from '@/types/supabase'
 
 interface MonthlyStatisticsProps {
   currentGame: QueryOutput

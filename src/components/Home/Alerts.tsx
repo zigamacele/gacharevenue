@@ -1,5 +1,7 @@
 import MotionInView from '@/lib/framer-motion/MotionInView'
+
 import useSupabaseStore from '@/stores/supabase-store'
+
 import Alert from './Alerts/Alert'
 
 const Alerts: React.FC = () => {

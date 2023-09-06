@@ -1,6 +1,7 @@
+import { ResponsiveLine } from '@nivo/line'
+
 import theme from '@/styles/nivo-theme.json'
 import { formatCurrencyCompact } from '@/utils/currency'
-import { ResponsiveLine } from '@nivo/line'
 
 interface LineProps {
   data: { id: string; data: { x: string; y: number }[] }[]

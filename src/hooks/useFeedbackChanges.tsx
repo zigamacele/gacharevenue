@@ -1,6 +1,8 @@
-import supabase from '@/config/supabase'
-import { FeedbackOutput } from '@/types/supabase'
 import { useEffect, useState } from 'react'
+
+import supabase from '@/config/supabase'
+
+import { FeedbackOutput } from '@/types/supabase'
 
 const useFeedbackChanges = () => {
   const [output, setOutput] = useState<FeedbackOutput[]>([])

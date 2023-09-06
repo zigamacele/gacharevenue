@@ -1,7 +1,9 @@
 import { CURRENT_TABLE } from '@/constants/tables'
+
+import { humanizeTable } from './timeDate'
+
 import { BarDatum } from '@/types/nivo'
 import { QueryOutput } from '@/types/supabase'
-import { humanizeTable } from './timeDate'
 
 export const preparePieChartData = (data: QueryOutput[]) => {
   const pieData = data.map((game) => {

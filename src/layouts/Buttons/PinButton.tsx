@@ -1,7 +1,10 @@
+import { Pin, PinOff } from 'lucide-react'
+
 import Tooltip from '@/components/Tooltip'
+
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
+
 import { QueryOutput } from '@/types/supabase'
-import { PinOff, Pin } from 'lucide-react'
 
 interface PinButtonProps {
   data: QueryOutput

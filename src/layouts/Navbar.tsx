@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom'
+
+import MotionInView from '@/lib/framer-motion/MotionInView'
+import { Separator } from '@/lib/shadcn/ui/separator'
+
 import MobileDropdown from '@/components/Navbar/MobileDropdown'
 import Navigation from '@/components/Navbar/Navigation'
 import SocialLinks from '@/components/Navbar/SocialLinks'
-import MotionInView from '@/lib/framer-motion/MotionInView'
-import { Separator } from '@/lib/shadcn/ui/separator'
-import { Link } from 'react-router-dom'
+
 import Logo from './Logo'
 
 const Navbar: React.FC = () => {

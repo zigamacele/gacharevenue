@@ -1,9 +1,10 @@
+import { AlertCircle } from 'lucide-react'
+
 import {
   Alert as AlertComp,
   AlertDescription,
   AlertTitle,
 } from '@/lib/shadcn/ui/alert'
-import { AlertCircle } from 'lucide-react'
 
 interface AlertProps {
   title: string

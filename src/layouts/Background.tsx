@@ -1,6 +1,8 @@
-import useBackgroundStore from '@/stores/background-store'
-import MotionOpacity from '@/lib/framer-motion/MotionOpacity'
 import { Fragment } from 'react'
+
+import MotionOpacity from '@/lib/framer-motion/MotionOpacity'
+
+import useBackgroundStore from '@/stores/background-store'
 
 const Background: React.FC = () => {
   const { background } = useBackgroundStore()

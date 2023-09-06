@@ -1,12 +1,17 @@
-import { Table, TableBody, TableHeader } from '@/lib/shadcn/ui/table'
-import { previousMonthSort } from '@/utils/sorting'
 import { useMemo } from 'react'
 
+import { Table, TableBody, TableHeader } from '@/lib/shadcn/ui/table'
+
 import useCurrentDevice from '@/hooks/useCurrentDevice'
+
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
-import { QueryOutput } from '@/types/supabase'
+
+import { previousMonthSort } from '@/utils/sorting'
+
 import MonthlyRevTableHeader from './MonthlyRevenueTable/MonthlyRevTableHeader'
 import MonthlyRevTableRow from './MonthlyRevenueTable/MonthlyRevTableRow'
+
+import { QueryOutput } from '@/types/supabase'
 
 interface MonthlyRevenueTableProps {
   data: QueryOutput[]

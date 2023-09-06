@@ -1,4 +1,5 @@
 import { Separator } from '@/lib/shadcn/ui/separator'
+
 import AdvancedViewTable from './AdvancedView/AdvancedViewTable'
 
 const AdvancedView: React.FC = () => {

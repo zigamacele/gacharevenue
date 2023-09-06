@@ -1,5 +1,8 @@
-import { CURRENT_TABLE } from '@/constants/tables'
+import { useMemo } from 'react'
+
 import useSupabaseStore from '@/stores/supabase-store'
+
+import { CURRENT_TABLE } from '@/constants/tables'
 import { formatCurrency } from '@/utils/currency'
 import {
   compareMonths,
@@ -7,7 +10,7 @@ import {
   formatNumber,
   getTotalStatistics,
 } from '@/utils/overview'
-import { useMemo } from 'react'
+
 import OverviewCard from './Overview/OverviewCard'
 
 const Overview: React.FC = () => {

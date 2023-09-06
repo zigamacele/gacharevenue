@@ -1,5 +1,6 @@
 import PinButton from '@/layouts/Buttons/PinButton'
 import RemoveButton from '@/layouts/Buttons/RemoveButton'
+
 import { QueryOutput } from '@/types/supabase'
 
 interface EditSectionProps {

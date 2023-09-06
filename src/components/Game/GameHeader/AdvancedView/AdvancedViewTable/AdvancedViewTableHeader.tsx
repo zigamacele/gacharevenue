@@ -1,5 +1,6 @@
-import { TableHead, TableHeader, TableRow } from '@/lib/shadcn/ui/table'
 import { Fragment } from 'react'
+
+import { TableHead, TableHeader, TableRow } from '@/lib/shadcn/ui/table'
 
 const AdvancedViewTableHeader: React.FC = () => {
   const platforms = ['Android', 'iOS', 'Total']

@@ -1,10 +1,15 @@
+import { PanelBottom, PanelRight } from 'lucide-react'
+
+import { cn } from '@/lib/shadcn/utils'
+
 import Tooltip from '@/components/Tooltip'
+
 import PinButton from '@/layouts/Buttons/PinButton'
 import RemoveButton from '@/layouts/Buttons/RemoveButton'
-import { cn } from '@/lib/shadcn/utils'
-import { QueryOutput } from '@/types/supabase'
-import { PanelBottom, PanelRight } from 'lucide-react'
+
 import RegionTooltip from './CoverImage/RegionTooltip'
+
+import { QueryOutput } from '@/types/supabase'
 
 interface CoverImageProps {
   currentGame: QueryOutput

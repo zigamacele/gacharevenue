@@ -1,13 +1,14 @@
-import useSupabaseStore from '@/stores/supabase-store'
 import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
+import MotionInView from '@/lib/framer-motion/MotionInView'
 import { Separator } from '@/lib/shadcn/ui/separator'
 
 import GameBody from '@/components/Game/GameBody'
 import GameHeader from '@/components/Game/GameHeader'
-import MotionInView from '@/lib/framer-motion/MotionInView'
+
 import useBackgroundStore from '@/stores/background-store'
+import useSupabaseStore from '@/stores/supabase-store'
 
 const Game: React.FC = () => {
   const { id } = useParams()

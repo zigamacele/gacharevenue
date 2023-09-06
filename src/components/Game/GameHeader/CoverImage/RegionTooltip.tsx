@@ -1,7 +1,8 @@
-import Tooltip from '@/components/Tooltip'
 import { cn } from '@/lib/shadcn/utils'
+
+import Tooltip from '@/components/Tooltip'
+
 import { getRegion } from '@/utils/region'
-import React from 'react'
 
 interface RegionTooltipProps {
   gameRegion: string

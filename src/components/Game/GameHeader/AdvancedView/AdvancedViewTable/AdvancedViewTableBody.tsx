@@ -1,9 +1,12 @@
-import { TableBody, TableCell, TableRow } from '@/lib/shadcn/ui/table'
-import useSupabaseStore from '@/stores/supabase-store'
-import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
-import { humanizeTable } from '@/utils/timeDate'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
+
+import { TableBody, TableCell, TableRow } from '@/lib/shadcn/ui/table'
+
+import useSupabaseStore from '@/stores/supabase-store'
+
+import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
+import { humanizeTable } from '@/utils/timeDate'
 
 const AdvancedViewTableBody: React.FC = () => {
   const { id } = useParams()

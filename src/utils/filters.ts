@@ -1,4 +1,5 @@
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+
 import { QueryOutput, StatisticsSchema } from '@/types/supabase'
 
 export const combineSameGameRevenue = (data: QueryOutput[]) => {

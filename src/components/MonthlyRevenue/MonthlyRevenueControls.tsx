@@ -1,4 +1,3 @@
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import {
   ArrowDown10,
   ArrowUp10,
@@ -7,6 +6,9 @@ import {
   Pin,
   PinOff,
 } from 'lucide-react'
+
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
+
 import Toggle from './Toggle'
 import Tooltip from '../Tooltip'
 

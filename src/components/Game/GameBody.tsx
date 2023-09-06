@@ -1,12 +1,16 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/lib/shadcn/ui/tabs'
+import { BarChart3, LineChart } from 'lucide-react'
+import { useState } from 'react'
+
 import Bar from '@/lib/nivo/Bar'
 import Line from '@/lib/nivo/Line'
-import { BarChart3, LineChart } from 'lucide-react'
-import { prepareBarChartData, prepareLineChartData } from '@/utils/charts'
-import { useState } from 'react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/lib/shadcn/ui/tabs'
+
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
-import { QueryOutput } from '@/types/supabase'
+import { prepareBarChartData, prepareLineChartData } from '@/utils/charts'
+
 import Tooltip from '../Tooltip'
+
+import { QueryOutput } from '@/types/supabase'
 
 interface GameBodyProps {
   currentGame: QueryOutput

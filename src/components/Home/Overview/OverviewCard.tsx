@@ -1,4 +1,5 @@
 import MotionInView from '@/lib/framer-motion/MotionInView'
+
 import PercentageBox from './OverviewCard/PercentageBox'
 
 type OverviewCardProps = {

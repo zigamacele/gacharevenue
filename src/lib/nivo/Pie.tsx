@@ -1,7 +1,9 @@
-import theme from '@/styles/nivo-theme.json'
-import { BarDatum } from '@/types/nivo'
-import { formatCurrencyCompact } from '@/utils/currency'
 import { ResponsivePie } from '@nivo/pie'
+
+import theme from '@/styles/nivo-theme.json'
+import { formatCurrencyCompact } from '@/utils/currency'
+
+import { BarDatum } from '@/types/nivo'
 
 interface PieProps {
   data: BarDatum[]

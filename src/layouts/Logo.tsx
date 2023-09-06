@@ -1,5 +1,6 @@
-import logo from '@/assets/logo.png'
 import { cn } from '@/lib/shadcn/utils'
+
+import logo from '@/assets/logo.png'
 
 interface LogoProps {
   textProps?: string

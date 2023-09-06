@@ -1,5 +1,5 @@
-import ErrorNavigation from './ErrorBoundary/ErrorNavigation'
 import ErrorMessage from './ErrorBoundary/ErrorMessage'
+import ErrorNavigation from './ErrorBoundary/ErrorNavigation'
 import Logo from './Logo'
 
 interface ErrorBoundaryProps {

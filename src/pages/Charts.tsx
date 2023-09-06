@@ -1,8 +1,14 @@
-import ChartControls from '@/components/Charts/ChartControls'
+import { useMemo, useState } from 'react'
+
+import MotionInView from '@/lib/framer-motion/MotionInView'
 import Bar from '@/lib/nivo/Bar'
 import Line from '@/lib/nivo/Line'
 import Pie from '@/lib/nivo/Pie'
 import { Separator } from '@/lib/shadcn/ui/separator'
+
+import ChartControls from '@/components/Charts/ChartControls'
+
+import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
 
 import {
@@ -10,12 +16,8 @@ import {
   prepareLineChartData,
   preparePieChartData,
 } from '@/utils/charts'
-
-import MotionInView from '@/lib/framer-motion/MotionInView'
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
 import { combineSameGameRevenue } from '@/utils/filters'
 import { queryFilter } from '@/utils/sorting'
-import { useMemo, useState } from 'react'
 
 const Charts: React.FC = () => {
   const [selectedChart, setSelectedChart] = useState('pie')

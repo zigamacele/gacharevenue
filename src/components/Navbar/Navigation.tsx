@@ -1,5 +1,6 @@
-import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links'
 import { Link } from 'react-router-dom'
+
+import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links'
 
 const Navigation = () => {
   return (
