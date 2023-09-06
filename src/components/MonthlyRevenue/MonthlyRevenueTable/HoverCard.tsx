@@ -23,24 +23,22 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
           {data.en_name}
         </div>
       </HoverCardTrigger>
-      <HoverCardContent className='flex flex-col gap-2'>
-        <div className='flex gap-2'>
-          <img
-            src={data.icon}
-            className='h-20 w-20 rounded border border-neutral-600 object-cover'
-          />
-          <div className='items-between flex flex-col justify-between'>
-            <div className='flex flex-col gap-0.5'>
-              <span>{data.en_name}</span>
-              <span className='text-xs font-light opacity-80'>
-                {data.publisher}
-              </span>
-            </div>
-            <ReleaseDate
-              releaseDate={data.release_date}
-              className='truncate text-xs font-light'
-            />
+      <HoverCardContent className='flex gap-2'>
+        <img
+          src={data.icon}
+          className='h-20 w-20 rounded border border-neutral-600 object-cover'
+        />
+        <div className='items-between flex flex-col justify-between'>
+          <div className='flex flex-col gap-0.5'>
+            <span>{data.en_name}</span>
+            <span className='text-xs font-light opacity-80'>
+              {data.publisher}
+            </span>
           </div>
+          <ReleaseDate
+            releaseDate={data.release_date}
+            className='truncate text-xs font-light'
+          />
         </div>
       </HoverCardContent>
     </HoverCardComp>
