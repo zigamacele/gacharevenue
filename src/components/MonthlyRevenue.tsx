@@ -29,22 +29,25 @@ const MonthlyRevenue: React.FC = () => {
   const TableData = showCombinedRevenue ? combinedRevenue : storage
 
   return (
-    <section className='slide-from-bottom my-4 flex w-full flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 sm:w-auto'>
-      <MonthlyRevenueControls />
-      <Separator className='mt-2 w-full opacity-40' />
-      <MonthlyRevenueTable
-        data={queryFilterSort({
-          data: TableData,
-          pinned,
-          removed,
-          showPinned,
-          showEditSection,
-          sortAscending,
-        })}
-        loading={loading}
-        showEditSection={showEditSection}
-      />
-    </section>
+    <>
+      {!loading && !!(storage.length > 0) && (
+        <section className='slide-from-bottom my-4 flex w-full flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 sm:w-auto'>
+          <MonthlyRevenueControls />
+          <Separator className='mt-2 w-full opacity-40' />
+          <MonthlyRevenueTable
+            data={queryFilterSort({
+              data: TableData,
+              pinned,
+              removed,
+              showPinned,
+              showEditSection,
+              sortAscending,
+            })}
+            showEditSection={showEditSection}
+          />
+        </section>
+      )}
+    </>
   )
 }
 

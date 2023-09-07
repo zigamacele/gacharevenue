@@ -7,8 +7,8 @@ const maintenanceMsg = (
     <h2 className='mb-1 text-xl font-medium text-neutral-200'>
       Maintenance Alert
     </h2>
-    <p>Sorry we are currenlty down for scheduled monthly maintenance.</p>
-    <p>We should be back around 12:00 CEST</p>
+    <p>Sorry we are currenlty down for scheduled maintenance.</p>
+    <p>We should be back shortly!</p>
   </>
 )
 
