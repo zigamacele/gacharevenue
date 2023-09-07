@@ -1,4 +1,12 @@
-import { currentMonthYear, previousMonthYear } from '@/utils/timeDate'
+import useSupabaseStore from '@/stores/supabase-store'
 
-export const CURRENT_TABLE = currentMonthYear()
-export const PREVIOUS_TABLE = previousMonthYear()
+const { currentTable, previousTable } = useSupabaseStore.getState()
+
+export let CURRENT_TABLE = currentTable
+export let PREVIOUS_TABLE = previousTable
+
+useSupabaseStore.subscribe((state) => {
+  const { currentTable, previousTable } = state
+  CURRENT_TABLE = currentTable
+  PREVIOUS_TABLE = previousTable
+})

@@ -9,6 +9,8 @@ import {
 
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 
+import MonthSwitcher from '@/layouts/MonthSwitcher'
+
 import Toggle from './Toggle'
 import Tooltip from '../Tooltip'
 
@@ -24,14 +26,17 @@ const MonthlyRevenueControls: React.FC = () => {
 
   return (
     <section className='mx-2 mt-2 flex justify-between'>
-      <Tooltip text={!showEditSection ? 'Edit Chart' : 'Close Editor'}>
-        <Toggle
-          onClick={() => toggle('showEditSection')}
-          pressed={showEditSection}
-        >
-          <ClipboardEdit size={20} />
-        </Toggle>
-      </Tooltip>
+      <div className='flex items-center gap-2'>
+        <Tooltip text={!showEditSection ? 'Edit Chart' : 'Close Editor'}>
+          <Toggle
+            onClick={() => toggle('showEditSection')}
+            pressed={showEditSection}
+          >
+            <ClipboardEdit size={20} />
+          </Toggle>
+        </Tooltip>
+        <MonthSwitcher />
+      </div>
       <div className='flex justify-end gap-2'>
         <Tooltip text={!showPinned ? 'Show Pinned' : 'Hide Pinned'}>
           <Toggle

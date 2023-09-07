@@ -47,12 +47,12 @@ export const queryFilterSort = ({
     const isPinned = pinned.includes(gameId)
     const isRemoved = removed.includes(gameId)
 
-    if (showPinned && isPinned) {
-      return true
+    if (!game[CURRENT_TABLE]?.totalRevenue || (isRemoved && !showEditSection)) {
+      return false
     }
 
-    if (isRemoved && !showEditSection) {
-      return false
+    if (showPinned && isPinned) {
+      return true
     }
 
     return showPinned ? false : true

@@ -20,6 +20,8 @@ export interface SupabaseStoreState {
   alerts: SetAlerts[]
   tables: string[]
   storage: QueryOutput[]
+  currentTable: string
+  previousTable: string
   loading: boolean
 }
 

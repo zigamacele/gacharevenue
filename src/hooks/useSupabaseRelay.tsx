@@ -34,6 +34,8 @@ const useSupabaseRelay = () => {
         setProperty('alerts', parsedAlerts)
       }
 
+      setProperty('currentTable', config.currentTable)
+      setProperty('previousTable', config.previousTable)
       setProperty('tables', config.tables)
       config.tables.forEach((table: string) => {
         localOutput.push(`${table} ( * )`)
