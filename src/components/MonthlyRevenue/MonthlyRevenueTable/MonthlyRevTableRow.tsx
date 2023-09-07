@@ -49,7 +49,11 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
         {showEditSection ? (
           <EditSection data={data} />
         ) : (
-          <TrendArrow change={(previousMonth[data.id] ?? 0) - index} />
+          <TrendArrow
+            change={
+              !previousRevenue ? 'new' : (previousMonth[data.id] ?? 0) - index
+            }
+          />
         )}
       </TableCell>
       {!isMobile && (
