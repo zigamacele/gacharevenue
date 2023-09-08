@@ -7,15 +7,14 @@ import {
   PinOff,
 } from 'lucide-react'
 
-import { Button } from '@/lib/shadcn/ui/button'
 import { cn } from '@/lib/shadcn/utils'
 
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 
+import Button from '@/layouts/Button'
 import { SlideDirection } from '@/utils/enums'
 
 import Toggle from '../MonthlyRevenue/Toggle'
-import Tooltip from '../Tooltip'
 
 interface ChartControlsProps {
   selectedChart: string
@@ -32,70 +31,62 @@ const ChartControls: React.FC<ChartControlsProps> = ({
   return (
     <div className='flex w-full items-center justify-between px-2 sm:w-full'>
       <div className='flex gap-2'>
-        <Tooltip text='Pie Chart'>
-          <Button
-            onClick={() => setSelectedChart('pie')}
-            className={cn(
-              'text-opacity-40 hover:text-opacity-80',
-              selectedChart === 'pie' &&
-                'border-neutral-400 bg-neutral-800 text-opacity-100',
-            )}
-          >
-            <PieChart width={20} />
-          </Button>
-        </Tooltip>
-        <Tooltip text='Bar Chart'>
-          <Button
-            onClick={() => setSelectedChart('bar')}
-            className={cn(
-              'text-opacity-40 hover:text-opacity-80',
-              selectedChart === 'bar' &&
-                'border-neutral-400 bg-neutral-800 text-opacity-100',
-            )}
-          >
-            <BarChart3 width={20} />
-          </Button>
-        </Tooltip>
-        <Tooltip text='Line Chart'>
-          <Button
-            onClick={() => setSelectedChart('line')}
-            className={cn(
-              'text-opacity-40 hover:text-opacity-80',
-              selectedChart === 'line' &&
-                'border-neutral-400 bg-neutral-800 text-opacity-100',
-            )}
-          >
-            <LineChart width={20} />
-          </Button>
-        </Tooltip>
+        <Button
+          onClick={() => setSelectedChart('pie')}
+          className={cn(
+            'text-opacity-40 hover:text-opacity-80',
+            selectedChart === 'pie' &&
+              'border-neutral-400 bg-neutral-800 text-opacity-100',
+          )}
+          tooltip='Pie Chart'
+        >
+          <PieChart width={20} />
+        </Button>
+        <Button
+          onClick={() => setSelectedChart('bar')}
+          className={cn(
+            'text-opacity-40 hover:text-opacity-80',
+            selectedChart === 'bar' &&
+              'border-neutral-400 bg-neutral-800 text-opacity-100',
+          )}
+          tooltip='Bar Chart'
+        >
+          <BarChart3 width={20} />
+        </Button>
+        <Button
+          onClick={() => setSelectedChart('line')}
+          className={cn(
+            'text-opacity-40 hover:text-opacity-80',
+            selectedChart === 'line' &&
+              'border-neutral-400 bg-neutral-800 text-opacity-100',
+          )}
+          tooltip='Line Chart'
+        >
+          <LineChart width={20} />
+        </Button>
       </div>
       <div className='flex gap-2'>
-        <Tooltip text={!showPinned ? 'Show Pinned' : 'Hide Pinned'}>
-          <Toggle
-            onClick={() => toggle('showPinned')}
-            disabled={!pinned.length && !showPinned}
-            pressed={showPinned}
-          >
-            {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
-          </Toggle>
-        </Tooltip>
-
+        <Toggle
+          onClick={() => toggle('showPinned')}
+          disabled={!pinned.length && !showPinned}
+          pressed={showPinned}
+          tooltip={!showPinned ? 'Show Pinned' : 'Hide Pinned'}
+        >
+          {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
+        </Toggle>
         {selectedChart === 'pie' && (
-          <Tooltip
-            text={
+          <Toggle
+            onClick={() => toggle('showCombinedRevenue')}
+            pressed={showCombinedRevenue}
+            slideFrom={SlideDirection.LEFT}
+            tooltip={
               !showCombinedRevenue
                 ? 'Combine Region Revenue'
                 : 'Separate Region Revenue'
             }
           >
-            <Toggle
-              onClick={() => toggle('showCombinedRevenue')}
-              pressed={showCombinedRevenue}
-              slideFrom={SlideDirection.LEFT}
-            >
-              <Combine size={18} />
-            </Toggle>
-          </Tooltip>
+            <Combine size={18} />
+          </Toggle>
         )}
       </div>
     </div>

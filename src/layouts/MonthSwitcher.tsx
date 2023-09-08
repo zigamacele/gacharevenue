@@ -1,11 +1,10 @@
 import { ArrowBigLeft, ArrowBigRight } from 'lucide-react'
 
-import { Button } from '@/lib/shadcn/ui/button'
 import { cn } from '@/lib/shadcn/utils'
 
-import Tooltip from '@/components/Tooltip'
-
 import useSupabaseStore from '@/stores/supabase-store'
+
+import Button from './Button'
 
 const MonthSwitcher: React.FC = () => {
   const { setProperty, tables, currentTable, previousTable } =
@@ -38,24 +37,22 @@ const MonthSwitcher: React.FC = () => {
 
   return (
     <div className='flex gap-2'>
-      <Tooltip text='Previous Month'>
-        <Button
-          disabled={isDisabled(previousTable)}
-          onClick={() => updateTable(currentTable, false)}
-          className={cn('text-opacity-60 hover:text-opacity-100')}
-        >
-          <ArrowBigLeft width={20} />
-        </Button>
-      </Tooltip>
-      <Tooltip text='Next Month'>
-        <Button
-          disabled={isDisabled(currentTable)}
-          onClick={() => updateTable(currentTable, true)}
-          className={cn('text-opacity-60 hover:text-opacity-100')}
-        >
-          <ArrowBigRight width={20} />
-        </Button>
-      </Tooltip>
+      <Button
+        disabled={isDisabled(previousTable)}
+        onClick={() => updateTable(currentTable, false)}
+        className={cn('text-opacity-60 hover:text-opacity-100')}
+        tooltip='Previous Month'
+      >
+        <ArrowBigLeft width={20} />
+      </Button>
+      <Button
+        disabled={isDisabled(currentTable)}
+        onClick={() => updateTable(currentTable, true)}
+        className={cn('text-opacity-60 hover:text-opacity-100')}
+        tooltip='Next Month'
+      >
+        <ArrowBigRight width={20} />
+      </Button>
     </div>
   )
 }
