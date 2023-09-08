@@ -1,12 +1,14 @@
 import { QueryOutput } from './supabase'
 
 export interface TableControlsState {
+  search: string
   pinned: number[]
   removed: number[]
   sortAscending: boolean
   showPinned: boolean
   showEditSection: boolean
   showCombinedRevenue: boolean
+  updateSearch: (value: string) => void
   toggle: (prop: string) => void
   setState: (prop: string, value: number) => void
 }

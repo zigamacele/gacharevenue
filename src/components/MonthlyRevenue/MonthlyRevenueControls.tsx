@@ -7,6 +7,9 @@ import {
   PinOff,
 } from 'lucide-react'
 
+import { Input } from '@/lib/shadcn/ui/input'
+import { Separator } from '@/lib/shadcn/ui/separator'
+
 import useMonthlyTableControls from '@/stores/monthly-table-controls'
 
 import MonthSwitcher from '@/layouts/MonthSwitcher'
@@ -16,6 +19,8 @@ import Tooltip from '../Tooltip'
 
 const MonthlyRevenueControls: React.FC = () => {
   const {
+    search,
+    updateSearch,
     sortAscending,
     showPinned,
     toggle,
@@ -35,9 +40,16 @@ const MonthlyRevenueControls: React.FC = () => {
             <ClipboardEdit size={20} />
           </Toggle>
         </Tooltip>
-        <MonthSwitcher />
+        <Input
+          className='w-40 rounded border-neutral-700/80 bg-neutral-950 sm:w-80'
+          placeholder='Search'
+          value={search}
+          onChange={(event) => updateSearch(event.target.value)}
+        />
       </div>
-      <div className='flex justify-end gap-2'>
+      <div className='hidden items-center gap-2 sm:flex'>
+        <MonthSwitcher />
+        <Separator orientation='vertical' className='h-5 opacity-60' />
         <Tooltip text={!showPinned ? 'Show Pinned' : 'Hide Pinned'}>
           <Toggle
             onClick={() => toggle('showPinned')}

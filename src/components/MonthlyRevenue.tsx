@@ -14,6 +14,7 @@ import MonthlyRevenueTable from './MonthlyRevenue/MonthlyRevenueTable'
 const MonthlyRevenue: React.FC = () => {
   const {
     sortAscending,
+    search,
     pinned,
     removed,
     showPinned,
@@ -37,6 +38,7 @@ const MonthlyRevenue: React.FC = () => {
           <MonthlyRevenueTable
             data={queryFilterSort({
               data: TableData,
+              search,
               pinned,
               removed,
               showPinned,

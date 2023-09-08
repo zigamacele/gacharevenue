@@ -27,6 +27,7 @@ export const previousMonthSort = (
 
 interface QueryFilterSortProps {
   data: QueryOutput[]
+  search: string
   pinned: number[]
   removed: number[]
   showPinned: boolean
@@ -36,6 +37,7 @@ interface QueryFilterSortProps {
 
 export const queryFilterSort = ({
   data,
+  search,
   pinned,
   removed,
   showPinned,
@@ -46,6 +48,15 @@ export const queryFilterSort = ({
     const gameId = game.id
     const isPinned = pinned.includes(gameId)
     const isRemoved = removed.includes(gameId)
+
+    if (search.length) {
+      const gameName = game.en_name.toLowerCase()
+      const searchValue = search.toLowerCase()
+
+      if (!gameName.includes(searchValue)) {
+        return false
+      }
+    }
 
     if (!game[CURRENT_TABLE]?.totalRevenue || (isRemoved && !showEditSection)) {
       return false

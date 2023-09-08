@@ -3,6 +3,7 @@ import { create } from 'zustand'
 import { TableControlsState } from '@/types/zustand'
 
 const useMonthlyTableControls = create<TableControlsState>()((set) => ({
+  search: '',
   pinned: JSON.parse(window.localStorage.getItem('pinned') ?? '[]') as number[],
   removed: JSON.parse(
     window.localStorage.getItem('removed') ?? '[]',
@@ -11,6 +12,8 @@ const useMonthlyTableControls = create<TableControlsState>()((set) => ({
   showPinned: false,
   showEditSection: false,
   showCombinedRevenue: false,
+
+  updateSearch: (value: string) => set(() => ({ search: value })),
 
   toggle: (prop: string) =>
     set((state) => ({ [prop]: !state[prop as keyof TableControlsState] })),
