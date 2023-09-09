@@ -61,7 +61,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
           <img
             src={data.background}
             alt={data.en_name}
-            className='flex h-8 w-60 items-center object-cover'
+            className='flex h-8 w-64 items-center object-cover fade-in'
           />
         </TableCell>
       )}
