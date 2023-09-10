@@ -4,25 +4,25 @@ import { Table, TableBody, TableHeader } from '@/lib/shadcn/ui/table'
 
 import useCurrentDevice from '@/hooks/useCurrentDevice'
 
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { previousMonthSort } from '@/utils/sorting'
 
-import MonthlyRevTableHeader from './MonthlyRevenueTable/MonthlyRevTableHeader'
-import MonthlyRevTableRow from './MonthlyRevenueTable/MonthlyRevTableRow'
+import RevenueTableHeader from './RevenueTable/RevenueTableHeader'
+import RevenueTableRow from './RevenueTable/RevenueTableRow'
 
 import { QueryOutput } from '@/types/supabase'
 
-interface MonthlyRevenueTableProps {
+interface RevenueTableProps {
   data: QueryOutput[]
   showEditSection: boolean
 }
 
-const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
+const RevenueTable: React.FC<RevenueTableProps> = ({
   data,
   showEditSection,
 }) => {
-  const { sortAscending } = useMonthlyTableControls()
+  const { sortAscending } = useRevenueTableControls()
   const previousMonth = useMemo(
     () => previousMonthSort(data, sortAscending),
     [data],
@@ -33,11 +33,11 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
     <section className='pb-4 pt-2 sm:px-2'>
       <Table>
         <TableHeader>
-          <MonthlyRevTableHeader isMobile={isMobile} />
+          <RevenueTableHeader isMobile={isMobile} />
         </TableHeader>
         <TableBody>
           {data.map((game, index) => (
-            <MonthlyRevTableRow
+            <RevenueTableRow
               key={game.id}
               data={game}
               index={index}
@@ -52,4 +52,4 @@ const MonthlyRevenueTable: React.FC<MonthlyRevenueTableProps> = ({
   )
 }
 
-export default MonthlyRevenueTable
+export default RevenueTable

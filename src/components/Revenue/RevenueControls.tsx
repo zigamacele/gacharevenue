@@ -2,15 +2,15 @@ import { ClipboardEdit } from 'lucide-react'
 
 import { Input } from '@/lib/shadcn/ui/input'
 
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
-import MobileRevenuePopover from './MonthlyRevenueControls/MobileRevenuePopover'
-import RightControls from './MonthlyRevenueControls/RightControls'
+import MobileRevenuePopover from './RevenueControls/MobileRevenuePopover'
+import RightControls from './RevenueControls/RightControls'
 import Toggle from './Toggle'
 
-const MonthlyRevenueControls: React.FC = () => {
+const RevenueControls: React.FC = () => {
   const { search, updateSearch, toggle, showEditSection } =
-    useMonthlyTableControls()
+    useRevenueTableControls()
 
   return (
     <section className='mx-2 mt-2 flex items-center justify-between'>
@@ -37,4 +37,4 @@ const MonthlyRevenueControls: React.FC = () => {
   )
 }
 
-export default MonthlyRevenueControls
+export default RevenueControls

@@ -2,7 +2,7 @@ import { Pin, PinOff } from 'lucide-react'
 
 import Tooltip from '@/components/Tooltip'
 
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { QueryOutput } from '@/types/supabase'
 
@@ -12,7 +12,7 @@ interface PinButtonProps {
 }
 
 const PinButton: React.FC<PinButtonProps> = ({ data, iconSize }) => {
-  const { pinned, setState } = useMonthlyTableControls()
+  const { pinned, setState } = useRevenueTableControls()
   return (
     <div
       onClick={() => {

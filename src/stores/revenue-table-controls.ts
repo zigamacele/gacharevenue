@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 import { TableControlsState } from '@/types/zustand'
 
-const useMonthlyTableControls = create<TableControlsState>()((set) => ({
+const useRevenueTableControls = create<TableControlsState>()((set) => ({
   search: '',
   pinned: JSON.parse(window.localStorage.getItem('pinned') ?? '[]') as number[],
   removed: JSON.parse(
@@ -38,4 +38,4 @@ const useMonthlyTableControls = create<TableControlsState>()((set) => ({
     }),
 }))
 
-export default useMonthlyTableControls
+export default useRevenueTableControls

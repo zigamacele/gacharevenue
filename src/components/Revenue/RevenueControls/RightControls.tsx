@@ -2,7 +2,7 @@ import { ArrowDown10, ArrowUp10, Combine, Pin, PinOff } from 'lucide-react'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import MonthSwitcher from '@/layouts/MonthSwitcher'
 
@@ -10,7 +10,7 @@ import Toggle from '../Toggle'
 
 const RightControls: React.FC = () => {
   const { sortAscending, showPinned, toggle, pinned, showCombinedRevenue } =
-    useMonthlyTableControls()
+    useRevenueTableControls()
   return (
     <>
       <MonthSwitcher />

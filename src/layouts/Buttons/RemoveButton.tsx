@@ -2,7 +2,7 @@ import { CheckCircle2, XCircle } from 'lucide-react'
 
 import Tooltip from '@/components/Tooltip'
 
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { QueryOutput } from '@/types/supabase'
 
@@ -12,7 +12,7 @@ interface RemoveButtonProps {
 }
 
 const RemoveButton: React.FC<RemoveButtonProps> = ({ data, iconSize }) => {
-  const { removed, setState } = useMonthlyTableControls()
+  const { removed, setState } = useRevenueTableControls()
 
   return (
     <div

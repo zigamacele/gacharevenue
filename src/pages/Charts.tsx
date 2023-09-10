@@ -8,7 +8,7 @@ import { Separator } from '@/lib/shadcn/ui/separator'
 
 import ChartControls from '@/components/Charts/ChartControls'
 
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
 
 import {
@@ -24,7 +24,7 @@ const Charts: React.FC = () => {
 
   const { storage, tables } = useSupabaseStore()
   const { showCombinedRevenue, pinned, removed, showPinned } =
-    useMonthlyTableControls()
+    useRevenueTableControls()
 
   const combinedRevenue = useMemo(() => {
     return combineSameGameRevenue(storage)

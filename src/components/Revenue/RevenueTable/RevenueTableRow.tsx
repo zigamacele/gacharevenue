@@ -1,11 +1,11 @@
 import { TableCell, TableRow } from '@/lib/shadcn/ui/table'
 import { cn } from '@/lib/shadcn/utils'
 
-import TrendArrow from '@/components/MonthlyRevenue/MonthlyRevenueTable/TrendArrow'
+import TrendArrow from '@/components/Revenue/RevenueTable/TrendArrow'
 import Tooltip from '@/components/Tooltip'
 
 import useBackgroundStore from '@/stores/background-store'
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
@@ -16,7 +16,7 @@ import HoverCard from './HoverCard'
 
 import { QueryOutput } from '@/types/supabase'
 
-interface MonthlyRevTableRowProps {
+interface RevenueTableRowProps {
   data: QueryOutput
   index: number
   isMobile: boolean
@@ -24,7 +24,7 @@ interface MonthlyRevTableRowProps {
   showEditSection: boolean
 }
 
-const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
+const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
   data,
   index,
   isMobile,
@@ -34,7 +34,7 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   const region = getRegion(data['region'])
   const currentRevenue = data[CURRENT_TABLE]?.totalRevenue ?? 0
   const previousRevenue = data[PREVIOUS_TABLE]?.totalRevenue ?? 0
-  const { removed, showPinned } = useMonthlyTableControls()
+  const { removed, showPinned } = useRevenueTableControls()
 
   const isSectionRemoved = removed.includes(data.id) && !showPinned
 
@@ -90,4 +90,4 @@ const MonthlyRevTableRow: React.FC<MonthlyRevTableRowProps> = ({
   )
 }
 
-export default MonthlyRevTableRow
+export default RevenueTableRow

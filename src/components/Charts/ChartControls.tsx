@@ -9,12 +9,12 @@ import {
 
 import { cn } from '@/lib/shadcn/utils'
 
-import useMonthlyTableControls from '@/stores/monthly-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import Button from '@/layouts/Button'
 import { SlideDirection } from '@/utils/enums'
 
-import Toggle from '../MonthlyRevenue/Toggle'
+import Toggle from '../Revenue/Toggle'
 
 interface ChartControlsProps {
   selectedChart: string
@@ -26,10 +26,10 @@ const ChartControls: React.FC<ChartControlsProps> = ({
   setSelectedChart,
 }) => {
   const { toggle, showCombinedRevenue, showPinned, pinned } =
-    useMonthlyTableControls()
+    useRevenueTableControls()
 
   return (
-    <div className='flex w-full items-center justify-between px-2 sm:w-full'>
+    <section className='flex w-full items-center justify-between px-2 sm:w-full'>
       <div className='flex gap-2'>
         <Button
           onClick={() => setSelectedChart('pie')}
@@ -89,7 +89,7 @@ const ChartControls: React.FC<ChartControlsProps> = ({
           </Toggle>
         )}
       </div>
-    </div>
+    </section>
   )
 }
 
