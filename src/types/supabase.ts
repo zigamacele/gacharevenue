@@ -36,6 +36,7 @@ export interface ConfigData {
   id: number
   alerts: string[] | null
   tables: string[]
+  lastUpdated: string
   currentTable: string
   previousTable: string
   maintenance: boolean

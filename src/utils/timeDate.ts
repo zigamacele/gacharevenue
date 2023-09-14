@@ -1,9 +1,11 @@
 import dayjs, { extend } from 'dayjs'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
 import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 
 extend(utc)
 extend(timezone)
+extend(advancedFormat)
 
 export const currentMonthYear = () => {
   return `${dayjs().month()}-${dayjs().year()}`
@@ -29,4 +31,8 @@ export const humanizeTable = (table: string) => {
   const splitTable = table.split('-')
 
   return dayjs(`${splitTable[1]}-${splitTable[0]}-01`).format('MMM YYYY')
+}
+
+export const formatDate = (date: string) => {
+  return dayjs(date).format('Do MMMM, YYYY')
 }

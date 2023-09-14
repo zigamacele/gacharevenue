@@ -1,6 +1,6 @@
 -- GAMES 
 
-create table
+  create table
   public.games (
     id bigserial,
     name text not null,
@@ -54,5 +54,6 @@ create table
     maintenance boolean null default false,
     "currentTable" text null,
     "previousTable" text null,
+    "lastUpdated" date null,
     constraint config_pkey primary key (id)
   ) tablespace pg_default;

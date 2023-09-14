@@ -6,6 +6,7 @@ const useSupabaseStore = create<SupabaseStore>()((set) => ({
   tables: [],
   alerts: [],
   storage: [],
+  lastUpdated: '',
   currentTable: '',
   previousTable: '',
   loading: false,

@@ -68,6 +68,20 @@ body::-webkit-scrollbar {
   }
 }
 
+.slide-from-top {
+  animation: slide-from-top 1s ease;
+}
+@keyframes slide-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 .slide-from-bottom {
   animation: slide-from-bottom 1s ease;
 }

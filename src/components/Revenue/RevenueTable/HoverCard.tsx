@@ -28,6 +28,7 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
       </HoverCardTrigger>
       <HoverCardContent className='flex gap-2'>
         <img
+          alt={data.name}
           src={data.icon}
           className='h-20 w-20 rounded border border-neutral-600 object-cover'
         />
