@@ -9,6 +9,8 @@ export interface GameSchema {
   icon: string
   background: string
   pc_client: boolean | null
+  eos: boolean
+  new_release: boolean
 }
 
 export interface StatisticsSchema {

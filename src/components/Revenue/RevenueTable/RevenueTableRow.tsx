@@ -40,6 +40,16 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
 
   const { setBackground } = useBackgroundStore()
 
+  const positionChange = () => {
+    if (!previousRevenue) {
+      if (data['new_release']) {
+        return 'new'
+      }
+      return 0
+    }
+    return (previousMonth[data.id] ?? 0) - index
+  }
+
   return (
     <TableRow
       className={cn(isSectionRemoved && 'opacity-60')}
@@ -49,11 +59,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
         {showEditSection ? (
           <EditSection data={data} />
         ) : (
-          <TrendArrow
-            change={
-              !previousRevenue ? 'new' : (previousMonth[data.id] ?? 0) - index
-            }
-          />
+          <TrendArrow change={positionChange()} />
         )}
       </TableCell>
       {!isMobile && (
@@ -61,7 +67,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
           <img
             src={data.background}
             alt={data.en_name}
-            className='flex h-8 w-64 items-center object-cover fade-in'
+            className='flex h-8  w-64 items-center bg-neutral-300 object-cover fade-in'
           />
         </TableCell>
       )}

@@ -7,7 +7,7 @@ interface TrendArrowProps {
 const TrendArrow: React.FC<TrendArrowProps> = ({ change }) => {
   if (change === 'new')
     return (
-      <span className='font-italic animate-pulse font-semibold italic text-red-600'>
+      <span className='font-italic animate-pulse text-sm font-semibold italic text-red-600'>
         NEW
       </span>
     )

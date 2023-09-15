@@ -13,6 +13,7 @@
     background text null,
     pc_client boolean null,
     eos boolean null,
+    new_release boolean not null default false,
     constraint games3_pkey primary key (id),
     constraint games3_name_key unique (name)
   ) tablespace pg_default;
