@@ -10,6 +10,7 @@ import Revenue from '@/pages/Revenue'
 
 import Background from '@/layouts/Background'
 import Navbar from '@/layouts/Navbar'
+import PageNotFound from '@/layouts/PageNotFound'
 
 const AppRoutes = () => {
   useSupabaseRelay()
@@ -24,6 +25,7 @@ const AppRoutes = () => {
           <Route path='/revenue' element={<Revenue />} />
           <Route path='/feedback' element={<Feedback />} />
           <Route path='/game/:id' element={<Game />} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
       <Background />

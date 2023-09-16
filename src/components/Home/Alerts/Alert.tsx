@@ -13,7 +13,7 @@ interface AlertProps {
 
 const Alert: React.FC<AlertProps> = ({ title, message }) => {
   return (
-    <AlertComp className='w-[25em] sm:w-full'>
+    <AlertComp className='w-[25em] bg-neutral-950/80 backdrop-blur-[2px] transition-all sm:w-full'>
       <AlertCircle className='h-4 w-4 text-white' />
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
