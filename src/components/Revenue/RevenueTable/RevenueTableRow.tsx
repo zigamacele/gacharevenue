@@ -8,6 +8,7 @@ import useBackgroundStore from '@/stores/background-store'
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+import Image from '@/layouts/Image'
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
 import { getRegion } from '@/utils/region'
 
@@ -64,10 +65,11 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
       </TableCell>
       {!isMobile && (
         <TableCell className=' border-l border-r border-neutral-800 p-0'>
-          <img
-            src={data.background}
-            alt={data.en_name}
-            className='flex h-8  w-64 items-center bg-neutral-300 object-cover fade-in'
+          <Image
+            data={data}
+            height={32}
+            width={240}
+            className='flex h-8 w-64 items-center object-cover'
           />
         </TableCell>
       )}

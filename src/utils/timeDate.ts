@@ -34,5 +34,5 @@ export const humanizeTable = (table: string) => {
 }
 
 export const formatDate = (date: string) => {
-  return dayjs(date).format('Do MMMM, YYYY')
+  return dayjs(date).format('MMMM Do, YYYY')
 }
