@@ -14,8 +14,9 @@
     pc_client boolean null,
     eos boolean null,
     new_release boolean not null default false,
-    constraint games3_pkey primary key (id),
-    constraint games3_name_key unique (name)
+    same_name boolean not null default false,
+    same_slot numeric[] null,
+    constraint games3_pkey primary key (id)
   ) tablespace pg_default;
 
 -- MONTHLY DATA
