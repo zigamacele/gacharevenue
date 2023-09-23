@@ -1,6 +1,6 @@
 import { motion, useScroll, useSpring } from 'framer-motion'
 
-const ProgressBar = () => {
+const ProgressBar: React.FC = () => {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 150,

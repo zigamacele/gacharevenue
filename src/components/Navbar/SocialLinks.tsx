@@ -10,7 +10,7 @@ import {
   SENSORTOWER_URL,
 } from '@/constants/links'
 
-const SocialLinks = () => {
+const SocialLinks: React.FC = () => {
   return (
     <section className='flex items-center gap-3'>
       <Link to={GACHAGAMING_URL} target='_blank' className='hidden sm:block'>

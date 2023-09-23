@@ -12,7 +12,7 @@ import Background from '@/layouts/Background'
 import Navbar from '@/layouts/Navbar'
 import PageNotFound from '@/layouts/PageNotFound'
 
-const AppRoutes = () => {
+const AppRoutes: React.FC = () => {
   useSupabaseRelay()
 
   return (

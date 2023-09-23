@@ -10,7 +10,7 @@ import {
 
 import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links'
 
-const MobileDropdown = () => {
+const MobileDropdown: React.FC = () => {
   return (
     <section className='z-50 flex items-center sm:hidden'>
       <DropdownMenu>

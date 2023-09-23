@@ -1,7 +1,7 @@
 import FeedbackForm from '@/components/Feedback/FeedbackForm'
 import FeedbackMessages from '@/components/Feedback/FeedbackMessages'
 
-const Feedback = () => {
+const Feedback: React.FC = () => {
   return (
     <main className='my-4 flex flex-col items-center gap-4'>
       <FeedbackForm />
