@@ -72,7 +72,7 @@ const ChartControls: React.FC<ChartControlsProps> = ({
           pressed={showPinned}
           tooltip={!showPinned ? 'Show Pinned' : 'Hide Pinned'}
         >
-          {showPinned ? <Pin size={18} /> : <PinOff size={18} />}
+          {showPinned ? <PinOff size={18} /> : <Pin size={18} />}
         </Toggle>
         {selectedChart === 'pie' && (
           <Toggle
