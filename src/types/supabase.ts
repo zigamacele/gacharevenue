@@ -42,4 +42,5 @@ export interface ConfigData {
   currentTable: string
   previousTable: string
   maintenance: boolean
+  newReleases: number[]
 }

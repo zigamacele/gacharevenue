@@ -9,6 +9,7 @@ const useSupabaseStore = create<SupabaseStore>()((set) => ({
   lastUpdated: '',
   currentTable: '',
   previousTable: '',
+  newReleases: [],
   loading: true,
 
   setProperty: <T extends keyof SupabaseStoreState>(

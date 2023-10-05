@@ -65,3 +65,6 @@ export const compareRevenue = (data: QueryOutput[]) => {
 
   return [...output].sort((a, b) => b.percentage - a.percentage)
 }
+export const findInStorage = (storage: QueryOutput[], id: number) => {
+  return storage.find((game) => game.id === id)
+}

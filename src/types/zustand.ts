@@ -25,6 +25,7 @@ export interface SupabaseStoreState {
   lastUpdated: string
   currentTable: string
   previousTable: string
+  newReleases: number[]
   loading: boolean
 }
 

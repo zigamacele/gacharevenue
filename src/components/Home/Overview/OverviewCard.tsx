@@ -62,7 +62,11 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
         className='absolute h-24 w-full rounded-t-lg object-cover opacity-60 transition-opacity group-hover:opacity-100'
       />
       <div className='z-50 m-2 flex h-10 w-10 items-center justify-center rounded-md border border-neutral-700 bg-neutral-950 text-2xl'>
-        <img src={game?.icon} alt={game?.name} className='h-8 w-8 rounded' />
+        <img
+          src={game?.icon}
+          alt={game?.name}
+          className='h-8 w-8 rounded transition-all group-hover:scale-110'
+        />
         <RegionTooltip gameRegion={game?.region} className='right-2 top-2' />
       </div>
       <div className='flex flex-col gap-1 p-3'>
