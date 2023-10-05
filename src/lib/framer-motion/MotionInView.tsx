@@ -7,6 +7,7 @@ interface MotionInViewProps {
   styles?: string
   bounce?: boolean
   delay?: number
+  onClick?: () => void
 }
 
 const MotionInView: React.FC<MotionInViewProps> = ({
@@ -16,9 +17,11 @@ const MotionInView: React.FC<MotionInViewProps> = ({
   styles,
   bounce,
   delay = 0,
+  onClick,
 }) => {
   return (
     <motion.div
+      onClick={onClick}
       initial={{ opacity: 0, y }}
       whileInView={{
         y: 0,

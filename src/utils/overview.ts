@@ -1,5 +1,6 @@
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 
+import { CompareRevenueOutput } from '@/types/monthlyRevenue.ts'
 import { QueryOutput, StatisticsSchema } from '@/types/supabase'
 
 export const isNegative = (value: number) => {
@@ -38,9 +39,10 @@ export const compareMonths = (data: QueryOutput[], key: string) => {
 }
 
 export const compareRevenue = (data: QueryOutput[]) => {
-  const output: { name: string; difference: number; percentage: number }[] = []
+  const output: CompareRevenueOutput[] = []
 
   data.forEach((game: QueryOutput) => {
+    const { en_name, id, icon, background, region } = game
     const currentRevenue = game[CURRENT_TABLE]?.totalRevenue ?? 0
     const previousRevenue = game[PREVIOUS_TABLE]?.totalRevenue ?? 0
 
@@ -49,15 +51,17 @@ export const compareRevenue = (data: QueryOutput[]) => {
       ((currentRevenue - previousRevenue) / previousRevenue) * 100
 
     if (percentage !== Infinity && previousRevenue) {
-      output.push({ name: game.en_name, difference, percentage })
+      output.push({
+        name: en_name,
+        difference,
+        percentage,
+        id,
+        icon,
+        background,
+        region,
+      })
     }
   })
 
-  const sortByPercentage: {
-    name: string
-    difference: number
-    percentage: number
-  }[] = [...output].sort((a, b) => b.percentage - a.percentage)
-
-  return sortByPercentage
+  return [...output].sort((a, b) => b.percentage - a.percentage)
 }

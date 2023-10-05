@@ -64,7 +64,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
         )}
       </TableCell>
       {!isMobile && (
-        <TableCell className=' border-l border-r border-neutral-800 p-0'>
+        <TableCell className='border-l border-r border-neutral-800 p-0'>
           <Image
             data={data}
             height={32}

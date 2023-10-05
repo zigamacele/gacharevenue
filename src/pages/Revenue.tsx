@@ -31,8 +31,8 @@ const Revenue: React.FC = () => {
 
   return (
     <main className='flex justify-center'>
-      {!loading && !!(storage.length > 0) && (
-        <section className='slide-from-bottom my-4 flex w-full flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 sm:w-[52.7em]'>
+      {!loading && storage.length > 0 && (
+        <section className='slide-from-bottom my-2 flex w-full flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 sm:w-[52.7em]'>
           <RevenueControls />
           <Separator className='mt-2 w-full opacity-40' />
           <RevenueTable

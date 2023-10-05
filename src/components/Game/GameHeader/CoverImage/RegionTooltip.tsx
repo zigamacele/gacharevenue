@@ -5,17 +5,22 @@ import Tooltip from '@/components/Tooltip'
 import { getRegion } from '@/utils/region'
 
 interface RegionTooltipProps {
-  gameRegion: string
+  gameRegion?: string
+  className?: string
 }
 
-const RegionTooltip: React.FC<RegionTooltipProps> = ({ gameRegion }) => {
+const RegionTooltip: React.FC<RegionTooltipProps> = ({
+  gameRegion,
+  className = 'left-1 top-1',
+}) => {
   const region = getRegion(gameRegion)
 
   return (
     <div
       className={cn(
-        'absolute left-1 top-1 z-50 flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border-2 border-neutral-800 bg-neutral-900 text-xs',
+        'absolute z-50 flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border-2 border-neutral-800 bg-neutral-900 text-xs',
         region.color,
+        className,
       )}
     >
       <Tooltip text={region.text}>{region.emoji}</Tooltip>
