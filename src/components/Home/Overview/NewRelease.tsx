@@ -43,10 +43,10 @@ const NewRelease: React.FC<OverviewCardProps> = ({ game }) => {
         <div className='flex w-full items-center justify-between'>
           <span className='flex flex-col'>
             <div className='flex items-center gap-3'>
-              <p className='w-48 truncate font-bold xl:w-full'>
+              <p className='w-36 truncate font-bold xl:w-full'>
                 {game?.en_name}
               </p>
-              <span className='font-italic hidden animate-pulse font-semibold italic text-red-600 xl:block'>
+              <span className='font-italic animate-pulse font-semibold italic text-red-600'>
                 NEW
               </span>
             </div>

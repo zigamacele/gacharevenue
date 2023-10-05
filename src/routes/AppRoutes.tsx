@@ -9,6 +9,7 @@ import Home from '@/pages/Home'
 import Revenue from '@/pages/Revenue'
 
 import Background from '@/layouts/Background'
+import LastUpdated from '@/layouts/LastUpdated.tsx'
 import Navbar from '@/layouts/Navbar'
 import PageNotFound from '@/layouts/PageNotFound'
 
@@ -18,6 +19,7 @@ const AppRoutes: React.FC = () => {
   return (
     <>
       <Navbar />
+      <LastUpdated />
       <div className='absolute left-0 right-0 z-40 pt-14'>
         <Routes>
           <Route path='/' element={<Home />} />

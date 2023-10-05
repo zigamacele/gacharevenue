@@ -59,7 +59,7 @@ const Overview: React.FC = () => {
         />
       </div>
       {newReleases.map((id) => (
-        <NewRelease game={findInStorage(storage, id)} />
+        <NewRelease game={findInStorage(storage, id)} key={id} />
       ))}
     </section>
   )
