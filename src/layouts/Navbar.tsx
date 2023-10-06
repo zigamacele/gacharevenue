@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
     <MotionInView
       y={-50}
       duration={0.6}
-      styles='fixed z-50 flex h-14 w-full items-center justify-between border-b border-neutral-700 bg-neutral-900 px-8 text-sm'
+      styles='fixed z-50 flex h-14 w-full items-center justify-between border-b border-neutral-700 bg-neutral-900 px-4 sm:px-8 text-sm'
     >
       <Link
         to='/'
@@ -21,12 +21,9 @@ const Navbar: React.FC = () => {
       >
         <Logo logoProps='mt-1' />
       </Link>
-      <div className='flex items-center'>
+      <div className='flex items-center gap-4'>
         <NavigationMenu />
-        <Separator
-          orientation='vertical'
-          className='mr-4 hidden h-4 xl:block'
-        />
+        <Separator orientation='vertical' className='hidden h-4 xl:block' />
         <SocialLinks />
       </div>
     </MotionInView>
