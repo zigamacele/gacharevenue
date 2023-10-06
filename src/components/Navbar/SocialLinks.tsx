@@ -12,7 +12,7 @@ import {
 
 const SocialLinks: React.FC = () => {
   return (
-    <section className='flex items-center gap-3'>
+    <section className='hidden items-center gap-3 xl:flex'>
       <Link to={GACHAGAMING_URL} target='_blank' className='hidden sm:block'>
         <img
           src={reddit}

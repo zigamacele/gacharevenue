@@ -18,7 +18,7 @@ const Line: React.FC<LineProps> = ({ data }) => (
           <div
             style={{ backgroundColor: point.serieColor }}
             className='h-3 w-3'
-          ></div>
+          />
           <span>{point.serieId}</span>
           <span>-</span>
           <span className='font-semibold'>

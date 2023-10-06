@@ -7,7 +7,7 @@ const AdvancedViewTableHeader: React.FC = () => {
   return (
     <TableHeader>
       <TableRow>
-        <TableHead></TableHead>
+        <TableHead />
         {platforms.map((platform: string) => (
           <TableHead colSpan={2} key={platform} className='text-center text-sm'>
             {platform}
@@ -15,7 +15,7 @@ const AdvancedViewTableHeader: React.FC = () => {
         ))}
       </TableRow>
       <TableRow>
-        <TableHead></TableHead>
+        <TableHead />
         {platforms.map((platform: string) => (
           <Fragment key={platform}>
             <TableHead className='text-center text-opacity-60'>

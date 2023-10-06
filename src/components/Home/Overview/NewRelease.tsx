@@ -25,7 +25,7 @@ const NewRelease: React.FC<OverviewCardProps> = ({ game }) => {
       styles='flex h-16 xl:w-full flex-col group w-80 justify-between group hover:border-neutral-700 rounded-lg bg-neutral-900 relative border cursor-pointer border-neutral-800'
       onClick={() => navigate(`/game/${game?.id}`)}
     >
-      <span className='absolute z-10 h-full w-full rounded-lg bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent'></span>
+      <span className='absolute z-10 h-full w-full rounded-lg bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent' />
       <img
         src={game?.background}
         alt={game?.name}

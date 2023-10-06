@@ -12,8 +12,8 @@ const RevenueTableHeader: React.FC<RevenueTableHeaderProps> = ({
 }) => {
   return (
     <TableRow>
-      <TableHead></TableHead>
-      {!isMobile && <TableHead></TableHead>}
+      <TableHead />
+      {!isMobile && <TableHead />}
       <TableHead>Region</TableHead>
       <TableHead>Game</TableHead>
       <TableHead className='whitespace-nowrap text-right'>

@@ -55,11 +55,11 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
       styles='flex h-52 w-80 flex-col justify-between group hover:border-neutral-700 rounded-lg bg-neutral-900 relative border cursor-pointer border-neutral-800'
       onClick={() => navigate(`/game/${game?.id}`)}
     >
-      <span className='absolute z-10 h-24 w-full bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent'></span>
+      <span className='absolute z-10 h-40 w-full bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent' />
       <img
         src={game?.background}
         alt={game?.name}
-        className='absolute h-24 w-full rounded-t-lg object-cover opacity-60 transition-opacity group-hover:opacity-100'
+        className='absolute h-40 w-full rounded-t-lg object-cover opacity-60 transition-opacity group-hover:opacity-100'
       />
       <div className='z-50 m-2 flex h-10 w-10 items-center justify-center rounded-md border border-neutral-700 bg-neutral-950 text-2xl'>
         <img
@@ -69,7 +69,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
         />
         <RegionTooltip gameRegion={game?.region} className='right-2 top-2' />
       </div>
-      <div className='flex flex-col gap-1 p-3'>
+      <div className='z-50 flex flex-col gap-1 p-3'>
         <p className='opacity-80'>{title}</p>
         <div className='flex h-10 items-center gap-5'>
           <span className='max-w-sm truncate text-2xl font-bold'>{body}</span>
