@@ -11,7 +11,7 @@ interface RegionTooltipProps {
 
 const RegionTooltip: React.FC<RegionTooltipProps> = ({
   gameRegion,
-  className = 'left-1 top-1',
+  className = 'right-1 top-1',
 }) => {
   const region = getRegion(gameRegion)
 

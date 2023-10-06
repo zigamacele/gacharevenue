@@ -28,12 +28,12 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
         setShowAdvancedView={setShowAdvancedView}
       />
       <div className='my-2 flex justify-between'>
-        <div className='flex gap-4'>
-          <div className='flex h-24 w-24 rounded-lg border border-neutral-700 bg-neutral-950'>
+        <div className='flex gap-3'>
+          <div className='flex h-24 w-24 rounded-lg border border-neutral-700 bg-neutral-950 group-hover:border-neutral-600'>
             <img
               src={currentGame.icon}
               alt={currentGame.en_name}
-              className='h-24 w-24 rounded-xl object-cover p-1.5'
+              className='h-24 w-24 rounded-xl object-cover p-1.5 transition-all group-hover:rounded-lg group-hover:p-0.5'
             />
           </div>
           <div className='flex flex-col justify-between'>

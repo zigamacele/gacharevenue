@@ -33,7 +33,7 @@ const Game: React.FC = () => {
     <>
       {!loading && currentGame ? (
         <MotionInView styles='my-2 flex justify-center'>
-          <div className='flex w-screen flex-col gap-3 rounded-lg border border-neutral-700 bg-neutral-900 p-3 sm:w-[40em]'>
+          <div className='group flex w-screen flex-col gap-3 rounded-lg border border-neutral-700 bg-neutral-900 p-3 sm:w-[40em]'>
             <GameHeader currentGame={currentGame} />
             <Separator className='mb-1 w-full opacity-40' />
             <GameBody currentGame={currentGame} tables={tables} />
