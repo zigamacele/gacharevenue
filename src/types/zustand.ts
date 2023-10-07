@@ -1,4 +1,4 @@
-import { QueryOutput } from './supabase'
+import { GraveyardOutput, QueryOutput } from './supabase'
 
 export interface TableControlsState {
   search: string
@@ -39,4 +39,11 @@ export interface SupabaseStore extends SupabaseStoreState {
 export interface BackgroundStore {
   background: string | null
   setBackground: (background: string) => void
+}
+
+export interface GraveyardStore {
+  maintenance: GraveyardOutput[]
+  eos: GraveyardOutput[]
+  loading: boolean
+  getGraveyardData: () => Promise<void>
 }

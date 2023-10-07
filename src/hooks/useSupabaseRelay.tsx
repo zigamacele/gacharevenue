@@ -54,7 +54,7 @@ const useSupabaseRelay = () => {
     const { data, error } = await supabase
       .from(config.database.GAMES_TABLE)
       .select(`*, ${tables.join(', ')}}`)
-      .neq('eos', true)
+      .neq('hidden', true)
 
     if (data) {
       const dataType = data as unknown as QueryOutput[]
