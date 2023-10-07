@@ -5,9 +5,17 @@ import useSupabaseRelay from '@/hooks/useSupabaseRelay'
 import Charts from '@/pages/Charts'
 import Feedback from '@/pages/Feedback'
 import Game from '@/pages/Game'
+import Graveyard from '@/pages/Graveyard.tsx'
 import Home from '@/pages/Home'
 import Revenue from '@/pages/Revenue'
 
+import {
+  CHARTS,
+  FEEDBACK,
+  GRAVEYARD,
+  HOME,
+  REVENUE,
+} from '@/constants/links.ts'
 import Background from '@/layouts/Background'
 import LastUpdated from '@/layouts/LastUpdated.tsx'
 import Navbar from '@/layouts/Navbar'
@@ -22,10 +30,11 @@ const AppRoutes: React.FC = () => {
       <LastUpdated />
       <div className='absolute left-0 right-0 z-40 pt-14'>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/charts' element={<Charts />} />
-          <Route path='/revenue' element={<Revenue />} />
-          <Route path='/feedback' element={<Feedback />} />
+          <Route path={HOME} element={<Home />} />
+          <Route path={CHARTS} element={<Charts />} />
+          <Route path={REVENUE} element={<Revenue />} />
+          <Route path={FEEDBACK} element={<Feedback />} />
+          <Route path={GRAVEYARD} element={<Graveyard />} />
           <Route path='/game/:id' element={<Game />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
