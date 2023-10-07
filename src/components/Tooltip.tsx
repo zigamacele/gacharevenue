@@ -1,15 +1,19 @@
 import * as ToolTip from '@radix-ui/react-tooltip'
+import { ReactNode } from 'react'
+
+import { cn } from '@/lib/shadcn/utils.ts'
 
 interface TooltipProps {
-  children: React.ReactNode
+  children: ReactNode
   text: string
+  className?: string
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ children, text }) => {
+const Tooltip: React.FC<TooltipProps> = ({ children, text, className }) => {
   return (
     <ToolTip.Provider>
       <ToolTip.Root>
-        <ToolTip.Trigger asChild>
+        <ToolTip.Trigger asChild className={cn('cursor-pointer', className)}>
           <span className='cursor-pointer'>{children}</span>
         </ToolTip.Trigger>
         <ToolTip.Portal>
