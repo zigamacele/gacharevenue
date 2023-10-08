@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
-import MotionInView from '@/lib/framer-motion/MotionInView'
+import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
 import { Separator } from '@/lib/shadcn/ui/separator.tsx'
+import { cn } from '@/lib/shadcn/utils.ts'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 
@@ -12,17 +13,25 @@ import { QueryOutput } from '@/types/supabase.ts'
 
 type OverviewCardProps = {
   game?: QueryOutput
+  y?: number
+  glowingText?: string
+  glowingStyle?: string
 }
 
-const NewRelease: React.FC<OverviewCardProps> = ({ game }) => {
+const GameBanner: React.FC<OverviewCardProps> = ({
+  game,
+  y = 100,
+  glowingText = 'NEW',
+  glowingStyle = 'text-red-600 italic',
+}) => {
   const navigate = useNavigate()
 
   return (
     <MotionInView
-      y={100}
+      y={y}
       duration={0.8}
       delay={0.4}
-      styles='flex h-16 xl:w-full flex-col group w-80 justify-between group hover:border-neutral-700 rounded-lg bg-neutral-900 relative border cursor-pointer border-neutral-800'
+      styles='flex h-16 flex-col group w-full justify-between group hover:border-neutral-700 rounded-lg bg-neutral-900 relative border cursor-pointer border-neutral-800'
       onClick={() => navigate(`/game/${game?.id}`)}
     >
       <span className='absolute z-10 h-full w-full rounded-lg bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent' />
@@ -43,11 +52,16 @@ const NewRelease: React.FC<OverviewCardProps> = ({ game }) => {
         <div className='flex w-full items-center justify-between'>
           <span className='flex flex-col'>
             <div className='flex items-center gap-3'>
-              <p className='w-36 truncate font-bold xl:w-full'>
+              <p className='max-w-[9em] truncate font-bold xl:max-w-sm'>
                 {game?.en_name}
               </p>
-              <span className='font-italic animate-pulse font-semibold italic text-red-600'>
-                NEW
+              <span
+                className={cn(
+                  'font-italic animate-pulse font-semibold',
+                  glowingStyle,
+                )}
+              >
+                {glowingText}
               </span>
             </div>
             <div className='flex items-center gap-2 text-sm opacity-60'>
@@ -55,7 +69,7 @@ const NewRelease: React.FC<OverviewCardProps> = ({ game }) => {
                 {game?.publisher}
               </p>
               <Separator orientation='vertical' className='h-3' />
-              <p>{game?.release_date}</p>
+              <p className='whitespace-nowrap'>{game?.release_date}</p>
             </div>
           </span>
           <div className='mr-8 hidden items-center gap-4 xl:flex'>
@@ -84,4 +98,4 @@ const NewRelease: React.FC<OverviewCardProps> = ({ game }) => {
   )
 }
 
-export default NewRelease
+export default GameBanner

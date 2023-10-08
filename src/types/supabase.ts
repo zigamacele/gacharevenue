@@ -49,5 +49,6 @@ export interface GraveyardOutput {
   id: number
   release_date: string
   eos_date: string
-  games: GameSchema[]
+  maintenance: boolean
+  games: GameSchema
 }

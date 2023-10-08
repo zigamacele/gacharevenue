@@ -1,10 +1,9 @@
 import { useMemo } from 'react'
 
-import NewRelease from '@/components/Home/Overview/NewRelease.tsx'
-
 import useSupabaseStore from '@/stores/supabase-store'
 
 import { CURRENT_TABLE } from '@/constants/tables'
+import GameBanner from '@/layouts/GameBanner.tsx'
 import { formatCurrency } from '@/utils/currency'
 import {
   compareMonths,
@@ -59,7 +58,7 @@ const Overview: React.FC = () => {
         />
       </div>
       {newReleases.map((id) => (
-        <NewRelease game={findInStorage(storage, id)} key={id} />
+        <GameBanner game={findInStorage(storage, id)} key={id} />
       ))}
     </section>
   )
