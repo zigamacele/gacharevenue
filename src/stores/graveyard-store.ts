@@ -14,6 +14,7 @@ const useGraveyardStore = create<GraveyardStore>()((set) => ({
     const { data } = await supabase
       .from('graveyard')
       .select(`*,${config.database.GAMES_TABLE} (*)`)
+      .order('eos_date', { ascending: false })
 
     if (data) {
       const graveyardData = data as unknown as GraveyardOutput[]

@@ -36,3 +36,7 @@ export const humanizeTable = (table: string) => {
 export const formatDate = (date: string) => {
   return dayjs(date).format('MMMM Do, YYYY')
 }
+
+export const formatMonthYear = (date: string) => {
+  return dayjs(date).format('MMM YYYY')
+}
