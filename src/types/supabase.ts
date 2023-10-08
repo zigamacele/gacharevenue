@@ -50,5 +50,6 @@ export interface GraveyardOutput {
   release_date: string
   eos_date: string
   maintenance: boolean
+  trailer: string
   games: GameSchema
 }

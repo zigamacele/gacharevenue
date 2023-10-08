@@ -54,6 +54,7 @@
     release_date date null,
     eos_date date null,
     maintenance boolean not null default false,
+    trailer text null,
     constraint graveyard_pkey primary key (id),
     constraint graveyard_id_fkey foreign key (id) references games (id)
   ) tablespace pg_default;
