@@ -11,6 +11,7 @@ export interface GameSchema {
   pc_client: boolean | null
   eos: boolean
   new_release: boolean
+  hidden: boolean
 }
 
 export interface StatisticsSchema {
