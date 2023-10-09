@@ -14,17 +14,15 @@ const Maintenance: React.FC = () => {
     <>
       {maintenance.length > 0 && (
         <MotionInView styles='w-[95vw] rounded-lg border border-neutral-700 bg-neutral-900 px-2 py-2 sm:w-[70vw]'>
-          <div>
-            {maintenance.map(({ id, games }) => (
-              <GameBanner
-                key={id}
-                game={findInStorage(storage, id)}
-                y={0}
-                glowingText='MAINTENANCE'
-                glowingStyle={getRegion(games.region).textColor}
-              />
-            ))}
-          </div>
+          {maintenance.map(({ id, games }) => (
+            <GameBanner
+              key={id}
+              game={findInStorage(storage, id)}
+              y={0}
+              glowingText='MAINTENANCE'
+              glowingStyle={getRegion(games.region).textColor}
+            />
+          ))}
         </MotionInView>
       )}
     </>

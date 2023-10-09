@@ -29,7 +29,7 @@ const Tombstone: React.FC<TombstoneProps> = ({ game }) => {
         />
         <div className='absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-0.5 whitespace-nowrap text-sm'>
           <p className='max-w-[8em] truncate font-bold'>{games.en_name}</p>
-          <div className='flex items-center gap-1 text-xs font-light'>
+          <div className='flex items-center gap-1.5 text-xs font-light'>
             <p>{formatMonthYear(release_date)}</p>
             <span className='opacity-20'>|</span>
             <p>{formatMonthYear(eos_date)}</p>

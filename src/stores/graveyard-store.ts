@@ -9,6 +9,7 @@ import { GraveyardStore } from '@/types/zustand.ts'
 const useGraveyardStore = create<GraveyardStore>()((set) => ({
   maintenance: [],
   eos: [],
+  graveyardBackground: '',
   loading: true,
   getGraveyardData: async () => {
     const { data } = await supabase
@@ -24,6 +25,8 @@ const useGraveyardStore = create<GraveyardStore>()((set) => ({
     }
     set({ loading: false })
   },
+  setGraveyardBackground: (url: string) =>
+    set(() => ({ graveyardBackground: url })),
 }))
 
 export default useGraveyardStore

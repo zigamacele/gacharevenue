@@ -1,11 +1,14 @@
 import { useEffect } from 'react'
 import { useErrorBoundary } from 'react-error-boundary'
+import { useLocation } from 'react-router'
 
 import useBackgroundStore from '@/stores/background-store'
+import useGraveyardStore from '@/stores/graveyard-store.ts'
 import useSupabaseStore from '@/stores/supabase-store'
 
 import config from '@/config/env'
 import supabase from '@/config/supabase'
+import { GRAVEYARD } from '@/constants/links.ts'
 import { generateRandomNumber } from '@/utils/globals'
 
 import { ConfigData, QueryOutput } from '@/types/supabase'
@@ -14,32 +17,45 @@ import { SetAlerts } from '@/types/zustand'
 const useSupabaseRelay = () => {
   const { setProperty } = useSupabaseStore()
   const { setBackground } = useBackgroundStore()
+  const { setGraveyardBackground } = useGraveyardStore()
   const { showBoundary } = useErrorBoundary()
+  const { pathname } = useLocation()
 
   const getConfig = async () => {
     const localOutput: string[] = []
     const { data, error } = await supabase.from('config').select().eq('id', 1)
 
     if (data) {
-      const config = data[0] as ConfigData
+      const {
+        maintenance,
+        alerts,
+        lastUpdated,
+        currentTable,
+        previousTable,
+        newReleases,
+        tables,
+        graveyardBackground,
+      } = data[0] as ConfigData
 
-      if (config.maintenance) {
+      if (maintenance) {
         showBoundary('maintenance')
       }
 
-      if (config.alerts) {
-        const parsedAlerts: SetAlerts[] = config.alerts.map(
+      if (alerts) {
+        const parsedAlerts: SetAlerts[] = alerts.map(
           (alert) => JSON.parse(alert) as SetAlerts,
         )
         setProperty('alerts', parsedAlerts)
       }
 
-      setProperty('lastUpdated', config.lastUpdated)
-      setProperty('currentTable', config.currentTable)
-      setProperty('previousTable', config.previousTable)
-      setProperty('newReleases', config.newReleases)
-      setProperty('tables', config.tables)
-      config.tables.forEach((table: string) => {
+      setProperty('lastUpdated', lastUpdated)
+      setProperty('currentTable', currentTable)
+      setProperty('previousTable', previousTable)
+      setProperty('newReleases', newReleases)
+      setProperty('tables', tables)
+      setGraveyardBackground(graveyardBackground)
+      if (pathname === GRAVEYARD) setBackground(graveyardBackground)
+      tables.forEach((table: string) => {
         localOutput.push(`${table} ( * )`)
       })
     }
@@ -61,7 +77,8 @@ const useSupabaseRelay = () => {
       const RANDOM_GAME = generateRandomNumber(0, data.length - 1)
 
       setProperty('storage', dataType)
-      setBackground(dataType[RANDOM_GAME]?.background ?? '')
+      if (pathname !== GRAVEYARD)
+        setBackground(dataType[RANDOM_GAME]?.background ?? '')
     }
     if (error) {
       showBoundary(error)

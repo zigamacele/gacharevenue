@@ -71,5 +71,6 @@
     "previousTable" text null,
     "lastUpdated" date null,
     "newReleases" numeric[] not null default '{}'::numeric[],
+    "graveyardBackground" text null,
     constraint config_pkey primary key (id)
   ) tablespace pg_default;

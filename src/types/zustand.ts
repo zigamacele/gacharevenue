@@ -44,6 +44,8 @@ export interface BackgroundStore {
 export interface GraveyardStore {
   maintenance: GraveyardOutput[]
   eos: GraveyardOutput[]
+  graveyardBackground: string
   loading: boolean
   getGraveyardData: () => Promise<void>
+  setGraveyardBackground: (url: string) => void
 }

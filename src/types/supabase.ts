@@ -43,6 +43,7 @@ export interface ConfigData {
   previousTable: string
   maintenance: boolean
   newReleases: number[]
+  graveyardBackground: string
 }
 
 export interface GraveyardOutput {
