@@ -16,9 +16,10 @@ import { cn } from '@/lib/shadcn/utils.ts'
 
 import chartsScreenshot from '@/assets/Navmenu/charts.jpeg'
 import feedbackScreenshot from '@/assets/Navmenu/feedback.jpeg'
+import graveyardScreenshot from '@/assets/Navmenu/graveyard.jpeg'
 import revenueScreenshot from '@/assets/Navmenu/revenue.jpeg'
 
-import { CHARTS, FEEDBACK, REVENUE } from '@/constants/links.ts'
+import { CHARTS, FEEDBACK, GRAVEYARD, REVENUE } from '@/constants/links.ts'
 
 const NavigationMenu: React.FC = () => {
   return (
@@ -62,8 +63,12 @@ const NavigationMenu: React.FC = () => {
               >
                 Leave feedback, suggestions or request a feature.
               </ListItem>
-              <ListItem href='#' title='Coming soon'>
-                More features are in the works..
+              <ListItem
+                href={GRAVEYARD}
+                title='Graveyard'
+                image={graveyardScreenshot}
+              >
+                Games that ended its service or are in maintenance mode.
               </ListItem>
             </ul>
           </NavigationMenuContent>
