@@ -1,3 +1,5 @@
+import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
+
 import GraveyardDialog from '@/components/Graveyard/GraveyardDialog.tsx'
 import Tombstone from '@/components/Graveyard/Tombstone.tsx'
 
@@ -10,11 +12,13 @@ const EndOfService: React.FC = () => {
       {eos.length > 0 &&
         eos.map((game) => {
           return (
-            <GraveyardDialog key={game.id} game={game}>
-              <span>
-                <Tombstone game={game} />
-              </span>
-            </GraveyardDialog>
+            <MotionInView delay={0.5} key={game.id}>
+              <GraveyardDialog game={game}>
+                <span>
+                  <Tombstone game={game} />
+                </span>
+              </GraveyardDialog>
+            </MotionInView>
           )
         })}
     </section>
