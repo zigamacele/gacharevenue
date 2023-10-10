@@ -57,18 +57,18 @@ const NavigationMenu: React.FC = () => {
                 Monthly interactive line, bar, pie charts and more.
               </ListItem>
               <ListItem
-                href={FEEDBACK}
-                title='Feedback'
-                image={feedbackScreenshot}
-              >
-                Leave feedback, suggestions or request a feature.
-              </ListItem>
-              <ListItem
                 href={GRAVEYARD}
                 title='Graveyard'
                 image={graveyardScreenshot}
               >
                 Games that ended its service or are in maintenance mode.
+              </ListItem>
+              <ListItem
+                href={FEEDBACK}
+                title='Feedback'
+                image={feedbackScreenshot}
+              >
+                Leave feedback, suggestions or request a feature.
               </ListItem>
             </ul>
           </NavigationMenuContent>
