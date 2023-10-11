@@ -7,6 +7,7 @@ import CoverImage from '@/components/Game/GameHeader/CoverImage'
 import MonthlyStatistics from '@/components/Game/GameHeader/MonthlyStatistics'
 
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
+import ImageComponent from '@/layouts/ImageComponent.tsx'
 import ReleaseDate from '@/layouts/ReleaseDate'
 
 import AdvancedView from './GameHeader/AdvancedView'
@@ -30,7 +31,9 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
       <div className='my-2 flex justify-between'>
         <div className='flex gap-3'>
           <div className='flex h-24 w-24 rounded-lg border border-neutral-700 bg-neutral-950 group-hover:border-neutral-600'>
-            <img
+            <ImageComponent
+              height={96}
+              width={96}
               src={currentGame.icon}
               alt={currentGame.en_name}
               className='h-24 w-24 rounded-xl object-cover p-1.5 transition-all group-hover:rounded-lg group-hover:p-0.5'
