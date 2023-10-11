@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { BlurhashCanvas } from 'react-blurhash'
 
 interface ImageProps {
-  image?: string
+  src?: string
   blurhash?: string | null
   alt?: string
   className?: string
@@ -12,7 +12,7 @@ interface ImageProps {
 
 const ImageComponent: React.FC<ImageProps> = ({
   className,
-  image,
+  src,
   blurhash,
   alt,
   height,
@@ -25,21 +25,19 @@ const ImageComponent: React.FC<ImageProps> = ({
     img.onload = () => {
       setImageLoaded(true)
     }
-    img.src = image ?? ''
-  }, [image])
+    img.src = src ?? ''
+  }, [src])
   return (
     <>
       {!imageLoaded ? (
-        <span className={className}>
-          <BlurhashCanvas
-            hash={blurhash ?? DEFAULT_BLURHASH}
-            height={height}
-            width={width}
-            punch={1}
-          />
-        </span>
+        <BlurhashCanvas
+          hash={blurhash ?? DEFAULT_BLURHASH}
+          height={height}
+          width={width}
+          punch={1}
+        />
       ) : (
-        <img src={image} alt={alt} className={className} />
+        <img src={src} alt={alt} className={className} />
       )}
     </>
   )

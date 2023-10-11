@@ -66,7 +66,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
       {!isMobile && (
         <TableCell className='border-l border-r border-neutral-800 p-0'>
           <ImageComponent
-            image={data.background}
+            src={data.background}
             blurhash={data.blurhash}
             alt={data.name}
             height={32}

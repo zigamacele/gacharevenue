@@ -6,6 +6,7 @@ import {
   HoverCardTrigger,
 } from '@/lib/shadcn/ui/hover-card'
 
+import ImageComponent from '@/layouts/ImageComponent.tsx'
 import ReleaseDate from '@/layouts/ReleaseDate'
 
 import { QueryOutput } from '@/types/supabase'
@@ -27,9 +28,11 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
         </div>
       </HoverCardTrigger>
       <HoverCardContent className='flex gap-2'>
-        <img
-          alt={data.name}
+        <ImageComponent
           src={data.icon}
+          alt={data.name}
+          height={80}
+          width={80}
           className='h-20 w-20 rounded border border-neutral-600 object-cover'
         />
         <div className='items-between flex flex-col justify-between'>

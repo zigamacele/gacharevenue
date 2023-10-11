@@ -58,7 +58,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
     >
       <span className='absolute z-10 h-40 w-full bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent' />
       <ImageComponent
-        image={game?.background}
+        src={game?.background}
         blurhash={game?.blurhash}
         alt={game?.name}
         height={160}
@@ -67,7 +67,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
       />
       <div className='z-50 m-2 flex h-10 w-10 items-center justify-center rounded-md border border-neutral-700 bg-neutral-950 text-2xl'>
         <ImageComponent
-          image={game?.icon}
+          src={game?.icon}
           blurhash={game?.blurhash}
           alt={game?.name}
           height={32}
