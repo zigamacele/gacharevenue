@@ -17,6 +17,7 @@
     same_name boolean not null default false,
     same_slot numeric[] null,
     hidden boolean not null default false,
+    blurhash text null,
     constraint games3_pkey primary key (id)
   ) tablespace pg_default;
 

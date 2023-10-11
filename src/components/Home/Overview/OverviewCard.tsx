@@ -5,6 +5,7 @@ import MotionInView from '@/lib/framer-motion/MotionInView'
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 
 import { REVENUE } from '@/constants/links.ts'
+import ImageComponent from '@/layouts/ImageComponent.tsx'
 
 import PercentageBox from './OverviewCard/PercentageBox'
 
@@ -56,15 +57,21 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
       onClick={() => navigate(`/game/${game?.id}`)}
     >
       <span className='absolute z-10 h-40 w-full bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent' />
-      <img
-        src={game?.background}
+      <ImageComponent
+        image={game?.background}
+        blurhash={game?.blurhash}
         alt={game?.name}
+        height={160}
+        width={320}
         className='absolute h-40 w-full rounded-t-lg object-cover opacity-60 transition-opacity group-hover:opacity-100'
       />
       <div className='z-50 m-2 flex h-10 w-10 items-center justify-center rounded-md border border-neutral-700 bg-neutral-950 text-2xl'>
-        <img
-          src={game?.icon}
+        <ImageComponent
+          image={game?.icon}
+          blurhash={game?.blurhash}
           alt={game?.name}
+          height={32}
+          width={32}
           className='h-8 w-8 rounded transition-all group-hover:scale-110'
         />
         <RegionTooltip gameRegion={game?.region} className='right-2 top-2' />

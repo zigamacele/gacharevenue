@@ -42,7 +42,7 @@ export const compareRevenue = (data: QueryOutput[]) => {
   const output: CompareRevenueOutput[] = []
 
   data.forEach((game: QueryOutput) => {
-    const { en_name, id, icon, background, region } = game
+    const { en_name, id, icon, background, region, blurhash } = game
     const currentRevenue = game[CURRENT_TABLE]?.totalRevenue ?? 0
     const previousRevenue = game[PREVIOUS_TABLE]?.totalRevenue ?? 0
 
@@ -58,6 +58,7 @@ export const compareRevenue = (data: QueryOutput[]) => {
         id,
         icon,
         background,
+        blurhash,
         region,
       })
     }

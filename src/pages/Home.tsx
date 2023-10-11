@@ -6,7 +6,6 @@ import useSupabaseStore from '@/stores/supabase-store'
 
 const Home: React.FC = () => {
   const { alerts } = useSupabaseStore()
-
   return (
     <>
       {alerts.length > 0 && <Alerts />}

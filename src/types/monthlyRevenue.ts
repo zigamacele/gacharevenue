@@ -5,6 +5,7 @@ export interface SelectedSections {
 
 export interface CompareRevenueOutput {
   name?: string
+  blurhash?: string | null
   difference: number
   percentage: number
   id?: number

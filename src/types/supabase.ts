@@ -12,6 +12,7 @@ export interface GameSchema {
   eos: boolean
   new_release: boolean
   hidden: boolean
+  blurhash: string | null
 }
 
 export interface StatisticsSchema {
