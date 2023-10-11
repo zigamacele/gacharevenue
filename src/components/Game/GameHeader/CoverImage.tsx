@@ -31,6 +31,7 @@ const CoverImage: React.FC<CoverImageProps> = ({
         height={160}
         width={350}
         src={currentGame.background}
+        blurhash={currentGame.blurhash}
         alt={currentGame.en_name}
         className='h-40 w-full rounded-t-md object-cover'
       />

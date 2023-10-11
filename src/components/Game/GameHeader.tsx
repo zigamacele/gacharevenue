@@ -35,6 +35,7 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
               height={96}
               width={96}
               src={currentGame.icon}
+              blurhash={currentGame.blurhash}
               alt={currentGame.en_name}
               className='h-24 w-24 rounded-xl object-cover p-1.5 transition-all group-hover:rounded-lg group-hover:p-0.5'
             />

@@ -37,6 +37,7 @@ const GameBanner: React.FC<OverviewCardProps> = ({
     >
       <span className='absolute z-10 h-full w-full rounded-lg bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent' />
       <ImageComponent
+        blurhash={game?.blurhash}
         src={game?.background}
         alt={game?.name}
         height={64}
@@ -46,10 +47,11 @@ const GameBanner: React.FC<OverviewCardProps> = ({
       <div className='z-50 ml-2 mr-4 mt-2.5 flex items-center gap-2'>
         <div className='flex h-10 w-12 items-center justify-center rounded-md border border-neutral-700 bg-neutral-950 text-2xl xl:w-10'>
           <ImageComponent
-            src={game?.icon}
-            alt={game?.name}
             height={28}
             width={28}
+            src={game?.icon}
+            alt={game?.name}
+            blurhash={game?.blurhash}
             className='h-7 w-7 rounded transition-all group-hover:scale-125'
           />
           <RegionTooltip gameRegion={game?.region} className='right-2 top-1' />

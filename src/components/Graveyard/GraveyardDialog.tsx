@@ -33,6 +33,7 @@ const GraveyardDialog: React.FC<DialogProps> = ({
           height={192}
           width={350}
           src={games.background}
+          blurhash={games.blurhash}
           alt={games.name}
           className='absolute top-0 h-48 w-full object-cover opacity-60 transition-opacity group-hover:opacity-100 md:rounded-t'
         />

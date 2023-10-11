@@ -29,10 +29,11 @@ const HoverCard: React.FC<HoverOverProps> = ({ data }) => {
       </HoverCardTrigger>
       <HoverCardContent className='flex gap-2'>
         <ImageComponent
+          width={80}
+          height={80}
           src={data.icon}
           alt={data.name}
-          height={80}
-          width={80}
+          blurhash={data.blurhash}
           className='h-20 w-20 rounded border border-neutral-600 object-cover'
         />
         <div className='items-between flex flex-col justify-between'>
