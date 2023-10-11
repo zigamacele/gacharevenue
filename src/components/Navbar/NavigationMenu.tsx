@@ -20,6 +20,7 @@ import graveyardScreenshot from '@/assets/Navmenu/graveyard.jpeg'
 import revenueScreenshot from '@/assets/Navmenu/revenue.jpeg'
 
 import { CHARTS, FEEDBACK, GRAVEYARD, REVENUE } from '@/constants/links.ts'
+import ImageComponent from '@/layouts/ImageComponent.tsx'
 
 const NavigationMenu: React.FC = () => {
   return (
@@ -36,7 +37,9 @@ const NavigationMenu: React.FC = () => {
                     to={REVENUE}
                   >
                     <span className='via-neutral-[#121212]/80 absolute left-0 top-0 z-10 h-32 w-full rounded-t bg-gradient-to-t from-[#121212] to-transparent sm:h-28 lg:h-48' />
-                    <img
+                    <ImageComponent
+                      height={128}
+                      width={350}
                       src={revenueScreenshot}
                       alt='Revenue screenshot'
                       className='absolute left-0 top-0 h-32 w-full rounded-t object-cover opacity-60 transition-opacity group-hover:opacity-100 sm:h-28 lg:h-48'
@@ -112,7 +115,9 @@ const ListItem: React.FC<ListItemProps> = ({
           {image && (
             <>
               <span className='via-neutral-[#121212]/80 absolute right-0 top-0 z-10 h-full w-20 rounded-r bg-gradient-to-r from-[#121212] to-transparent sm:w-40' />
-              <img
+              <ImageComponent
+                height={80}
+                width={80}
                 src={image}
                 alt={title}
                 className='absolute right-0 top-0 h-full w-20 rounded-r object-cover opacity-60 transition-opacity group-hover:opacity-100 sm:w-40'

@@ -1,4 +1,5 @@
 import { PanelBottom, PanelRight } from 'lucide-react'
+import * as React from 'react'
 
 import { cn } from '@/lib/shadcn/utils'
 
@@ -7,6 +8,7 @@ import Tooltip from '@/components/Tooltip'
 import BackButton from '@/layouts/Buttons/BackButton.tsx'
 import PinButton from '@/layouts/Buttons/PinButton'
 import RemoveButton from '@/layouts/Buttons/RemoveButton'
+import ImageComponent from '@/layouts/ImageComponent.tsx'
 
 import RegionTooltip from './CoverImage/RegionTooltip'
 
@@ -25,8 +27,11 @@ const CoverImage: React.FC<CoverImageProps> = ({
 }) => {
   return (
     <div className='relative'>
-      <img
+      <ImageComponent
+        height={160}
+        width={350}
         src={currentGame.background}
+        blurhash={currentGame.blurhash}
         alt={currentGame.en_name}
         className='h-40 w-full rounded-t-md object-cover'
       />

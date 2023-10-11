@@ -8,6 +8,7 @@ import {
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 
+import ImageComponent from '@/layouts/ImageComponent.tsx'
 import YoutubeEmbed from '@/layouts/YoutubeEmbed.tsx'
 
 import { GraveyardOutput } from '@/types/supabase.ts'
@@ -28,8 +29,11 @@ const GraveyardDialog: React.FC<DialogProps> = ({
         <RegionTooltip gameRegion={games.region} className=' left-2 top-2' />
         <span className='absolute top-0 z-10 h-48 w-full bg-gradient-to-t from-neutral-900 via-neutral-950/80 to-transparent md:rounded-t' />
         <span className='absolute top-[14.44em] z-50 w-full border-b border-neutral-800 group-hover:border-neutral-700'></span>
-        <img
+        <ImageComponent
+          height={192}
+          width={350}
           src={games.background}
+          blurhash={games.blurhash}
           alt={games.name}
           className='absolute top-0 h-48 w-full object-cover opacity-60 transition-opacity group-hover:opacity-100 md:rounded-t'
         />
