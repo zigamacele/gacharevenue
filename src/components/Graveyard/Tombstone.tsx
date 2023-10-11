@@ -1,5 +1,6 @@
 import Tooltip from '@/components/Tooltip.tsx'
 
+import ImageComponent from '@/layouts/ImageComponent.tsx'
 import { formatMonthYear } from '@/utils/timeDate.ts'
 
 import { GraveyardOutput } from '@/types/supabase.ts'
@@ -16,15 +17,19 @@ const Tombstone: React.FC<TombstoneProps> = ({ game }) => {
         {/*  gameRegion={games.region}*/}
         {/*  className=' left-1/2 top-2 -translate-x-1/2'*/}
         {/*/>*/}
-        <img
+        <ImageComponent
           src={games.icon}
           alt={games.name}
+          height={64}
+          width={64}
           className='absolute bottom-16 left-1/2 z-20 h-16 w-16 -translate-x-1/2 rounded border border-neutral-700 bg-neutral-950 object-cover p-1 transition-all group-hover:p-0.5'
         />
         <span className='absolute top-0 z-10 h-full w-full rounded-t-full bg-gradient-to-t from-neutral-900 via-neutral-950/80 to-transparent' />
-        <img
+        <ImageComponent
           src={games.background}
           alt={games.name}
+          height={208}
+          width={144}
           className='absolute top-0 h-full w-full rounded-t-full object-cover opacity-60 transition-opacity group-hover:opacity-100'
         />
         <div className='absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-0.5 whitespace-nowrap text-sm'>
