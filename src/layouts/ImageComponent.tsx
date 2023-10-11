@@ -35,6 +35,7 @@ const ImageComponent: React.FC<ImageProps> = ({
           height={height}
           width={width}
           punch={1}
+          className={className}
         />
       ) : (
         <img src={src} alt={alt} className={className} />
