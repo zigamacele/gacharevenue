@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
 import { Separator } from '@/lib/shadcn/ui/separator.tsx'
+import { Skeleton } from '@/lib/shadcn/ui/skeleton.tsx'
 import { cn } from '@/lib/shadcn/utils.ts'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
@@ -26,6 +27,7 @@ const GameBanner: React.FC<OverviewCardProps> = ({
   glowingStyle = 'text-red-600 italic',
 }) => {
   const navigate = useNavigate()
+  const isLoaded = !!game
 
   return (
     <MotionInView
@@ -59,9 +61,13 @@ const GameBanner: React.FC<OverviewCardProps> = ({
         <div className='flex w-full items-center justify-between'>
           <span className='flex flex-col'>
             <div className='flex items-center gap-3'>
-              <p className='max-w-[9em] truncate font-bold xl:max-w-sm'>
-                {game?.en_name}
-              </p>
+              {isLoaded ? (
+                <p className='max-w-[9em] truncate font-bold xl:max-w-sm'>
+                  {game.en_name}
+                </p>
+              ) : (
+                <Skeleton className='h-4 w-32' />
+              )}
               <span
                 className={cn(
                   'font-italic animate-pulse font-semibold',
@@ -71,12 +77,21 @@ const GameBanner: React.FC<OverviewCardProps> = ({
                 {glowingText}
               </span>
             </div>
+
             <div className='flex items-center gap-2 text-sm opacity-60'>
-              <p className='max-w-[6em] truncate xl:w-full'>
-                {game?.publisher}
-              </p>
+              {isLoaded ? (
+                <p className='max-w-[6em] truncate xl:w-full'>
+                  {game.publisher}
+                </p>
+              ) : (
+                <Skeleton className='h-4 w-10 bg-neutral-500/60' />
+              )}
               <Separator orientation='vertical' className='h-3' />
-              <p className='whitespace-nowrap'>{game?.release_date}</p>
+              {isLoaded ? (
+                <p className='whitespace-nowrap'>{game.release_date}</p>
+              ) : (
+                <Skeleton className='h-4 w-10 bg-neutral-500/60' />
+              )}
             </div>
           </span>
           <div className='mr-8 hidden items-center gap-4 xl:flex'>
@@ -84,19 +99,25 @@ const GameBanner: React.FC<OverviewCardProps> = ({
               <p className='text-right text-sm font-light opacity-60'>
                 Downloads
               </p>
-              <p className='text-right'>
-                {formatCurrencyCompact(
-                  game && game[CURRENT_TABLE]?.totalDownloads,
-                )}
-              </p>
+              {isLoaded ? (
+                <p className='text-right'>
+                  {formatCurrencyCompact(game[CURRENT_TABLE]?.totalDownloads)}
+                </p>
+              ) : (
+                <Skeleton className='h-4 w-24' />
+              )}
             </div>
             <div>
               <p className='text-right text-sm font-light opacity-60'>
                 Revenue
               </p>
-              <p className='text-right'>
-                {formatCurrency(game && game[CURRENT_TABLE]?.totalRevenue)}
-              </p>
+              {isLoaded ? (
+                <p className='text-right'>
+                  {formatCurrency(game[CURRENT_TABLE]?.totalRevenue)}
+                </p>
+              ) : (
+                <Skeleton className='h-4 w-24' />
+              )}
             </div>
           </div>
         </div>

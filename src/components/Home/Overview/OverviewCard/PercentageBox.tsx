@@ -10,7 +10,7 @@ const PercentageBox: React.FC<PercentageBoxProps> = ({ percentage }) => {
   return (
     <div
       className={cn(
-        'flex items-center gap-2 rounded-lg bg-red-500/20 px-2.5 py-1',
+        'flex items-center gap-2 rounded-lg bg-red-500/20 px-2.5 py-1 animate-in slide-in-from-left-1',
         percentage > 0 && 'bg-green-500/20',
       )}
     >

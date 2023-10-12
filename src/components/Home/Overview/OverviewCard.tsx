@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import MotionInView from '@/lib/framer-motion/MotionInView'
+import { Skeleton } from '@/lib/shadcn/ui/skeleton.tsx'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 
@@ -41,8 +42,14 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
       >
         <p className='opacity-80'>{title}</p>
         <div className='flex h-10 items-center gap-5'>
-          <span className='max-w-sm truncate text-2xl font-bold'>{body}</span>
-          {!!difference && <PercentageBox percentage={difference.percentage} />}
+          {Number(body) !== 0 ? (
+            <p className='max-w-sm truncate text-2xl font-bold'>{body}</p>
+          ) : (
+            <Skeleton className='h-4 w-32' />
+          )}
+          {!!difference?.percentage && (
+            <PercentageBox percentage={difference.percentage} />
+          )}
         </div>
       </MotionInView>
     )
@@ -79,7 +86,11 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
       <div className='z-50 flex flex-col gap-1 p-3'>
         <p className='opacity-80'>{title}</p>
         <div className='flex h-10 items-center gap-5'>
-          <span className='max-w-sm truncate text-2xl font-bold'>{body}</span>
+          {body ? (
+            <p className='max-w-sm truncate text-2xl font-bold'>{body}</p>
+          ) : (
+            <Skeleton className='h-4 w-48' />
+          )}
           {!!difference && <PercentageBox percentage={difference.percentage} />}
         </div>
         <p className='text-sm opacity-40'>{desc}</p>
