@@ -25,7 +25,7 @@ const Game: React.FC = () => {
 
   useEffect(() => {
     if (currentGame) {
-      setBackground(currentGame.background)
+      setBackground(currentGame.background, currentGame.blurhash)
     }
   }, [currentGame])
 

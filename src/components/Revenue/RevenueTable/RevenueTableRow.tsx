@@ -54,7 +54,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
   return (
     <TableRow
       className={cn(isSectionRemoved && 'opacity-60')}
-      onMouseEnter={() => setBackground(data.background)}
+      onMouseEnter={() => setBackground(data.background, data.blurhash)}
     >
       <TableCell className='flex w-14 items-center justify-center gap-1'>
         {showEditSection ? (

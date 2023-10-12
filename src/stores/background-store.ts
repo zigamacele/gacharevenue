@@ -4,7 +4,9 @@ import { BackgroundStore } from '@/types/zustand'
 
 const useBackgroundStore = create<BackgroundStore>()((set) => ({
   background: null,
-  setBackground: (background: string) => set(() => ({ background })),
+  blurhash: null,
+  setBackground: (background: string, blurhash?: string | null) =>
+    set(() => ({ background, blurhash })),
 }))
 
 export default useBackgroundStore

@@ -78,7 +78,10 @@ const useSupabaseRelay = () => {
 
       setProperty('storage', dataType)
       if (pathname !== GRAVEYARD)
-        setBackground(dataType[RANDOM_GAME]?.background ?? '')
+        setBackground(
+          dataType[RANDOM_GAME]?.background ?? '',
+          dataType[RANDOM_GAME]?.blurhash,
+        )
     }
     if (error) {
       showBoundary(error)

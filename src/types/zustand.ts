@@ -38,7 +38,8 @@ export interface SupabaseStore extends SupabaseStoreState {
 
 export interface BackgroundStore {
   background: string | null
-  setBackground: (background: string) => void
+  blurhash: string | null
+  setBackground: (background: string, blurhash?: string | null) => void
 }
 
 export interface GraveyardStore {
