@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { BlurhashCanvas } from 'react-blurhash'
 
+import { cn } from '@/lib/shadcn/utils.ts'
+
 interface ImageProps {
   src?: string
   blurhash?: string | null
@@ -35,7 +37,7 @@ const ImageComponent: React.FC<ImageProps> = ({
           height={height}
           width={width}
           punch={1}
-          className={className}
+          className={cn('animate-pulse', className)}
         />
       ) : (
         <img src={src} alt={alt} className={className} />
