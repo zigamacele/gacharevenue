@@ -4,9 +4,11 @@ import {
   DialogTrigger,
 } from '@/lib/shadcn/ui/dialog.tsx'
 
-import LoginButton from '@/components/Navbar/LoginButton.tsx'
+import LoginButton from '@/components/Login/LoginButton.tsx'
+import UserAvatar from '@/components/Login/UserAvatar.tsx'
 
 import useSupabaseStore from '@/stores/supabase-store.ts'
+import useUserStore from '@/stores/user-store.ts'
 
 import ImageComponent from '@/layouts/ImageComponent.tsx'
 import Logo from '@/layouts/Logo.tsx'
@@ -14,7 +16,12 @@ import { generateRandomNumber } from '@/utils/globals.ts'
 
 const Login: React.FC = () => {
   const { storage } = useSupabaseStore()
+  const { user } = useUserStore()
   const RANDOM_GAME = generateRandomNumber(0, storage.length - 1)
+
+  if (user) {
+    return <UserAvatar />
+  }
 
   return (
     <Dialog>

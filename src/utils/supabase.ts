@@ -7,3 +7,7 @@ export const signInWithOAuth = async (provider: Provider) => {
     provider,
   })
 }
+
+export const signOut = async () => {
+  await supabase.auth.signOut()
+}
