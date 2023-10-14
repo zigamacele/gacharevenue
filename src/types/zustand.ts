@@ -1,3 +1,5 @@
+import { User } from '@supabase/supabase-js'
+
 import { GraveyardOutput, QueryOutput } from './supabase'
 
 export interface TableControlsState {
@@ -49,4 +51,9 @@ export interface GraveyardStore {
   loading: boolean
   getGraveyardData: () => Promise<void>
   setGraveyardBackground: (url: string) => void
+}
+
+export interface UserStore {
+  user: User | undefined
+  setUser: (user: User | undefined) => void
 }

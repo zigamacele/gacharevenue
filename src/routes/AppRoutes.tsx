@@ -1,6 +1,9 @@
+import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import useSupabaseRelay from '@/hooks/useSupabaseRelay'
+
+import useUserStore from '@/stores/user-store.ts'
 
 import Charts from '@/pages/Charts'
 import Feedback from '@/pages/Feedback'
@@ -9,6 +12,7 @@ import Graveyard from '@/pages/Graveyard.tsx'
 import Home from '@/pages/Home'
 import Revenue from '@/pages/Revenue'
 
+import supabase from '@/config/supabase.ts'
 import {
   CHARTS,
   FEEDBACK,
@@ -22,7 +26,26 @@ import Navbar from '@/layouts/Navbar'
 import PageNotFound from '@/layouts/PageNotFound'
 
 const AppRoutes: React.FC = () => {
+  const { setUser } = useUserStore()
   useSupabaseRelay()
+
+  const getSession = async () => {
+    await supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user)
+    })
+  }
+
+  useEffect(() => {
+    void getSession()
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
 
   return (
     <>
