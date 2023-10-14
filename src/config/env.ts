@@ -16,4 +16,14 @@ function getConfig(envKey: string): string {
   return envValue
 }
 
+export const getRedirectURL = () => {
+  let url =
+    (import.meta.env['VITE_SITE_URL'] as string | undefined) ??
+    (import.meta.env['VITE_VERCEL_URL'] as string | undefined) ??
+    'http://localhost:5173/'
+  url = url.includes('http') ? url : `https://${url}`
+  url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
+  return url
+}
+
 export default config
