@@ -6,6 +6,8 @@ import { Separator } from '@/lib/shadcn/ui/separator.tsx'
 import NavigationMenu from '@/components/Navbar/NavigationMenu.tsx'
 import SocialLinks from '@/components/Navbar/SocialLinks.tsx'
 
+import Login from '@/layouts/Login.tsx'
+
 import Logo from './Logo'
 
 const Navbar: React.FC = () => {
@@ -19,10 +21,12 @@ const Navbar: React.FC = () => {
         to='/'
         className='flex cursor-pointer items-center gap-2 hover:opacity-60'
       >
-        <Logo logoProps='mt-1' />
+        <Logo logoProps='mt-1' textProps='hidden sm:block' />
       </Link>
       <div className='flex items-center gap-4'>
         <NavigationMenu />
+        <Separator orientation='vertical' className='hidden h-4 xl:block' />
+        <Login />
         <Separator orientation='vertical' className='hidden h-4 xl:block' />
         <SocialLinks />
       </div>

@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter } from 'react-router-dom'
@@ -11,12 +10,12 @@ import AppRoutes from './routes/AppRoutes'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <ErrorBoundary FallbackComponent={FallBackComponent}>
-        <ProgressBar />
-        <AppRoutes />
-      </ErrorBoundary>
-    </BrowserRouter>
-  </StrictMode>,
+  // <StrictMode>
+  <BrowserRouter>
+    <ErrorBoundary FallbackComponent={FallBackComponent}>
+      <ProgressBar />
+      <AppRoutes />
+    </ErrorBoundary>
+  </BrowserRouter>,
+  // </StrictMode>,
 )
