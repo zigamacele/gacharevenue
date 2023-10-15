@@ -13,10 +13,9 @@ import {
 } from '@/lib/shadcn/ui/command'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
+import ImageComponent from '@/components/ImageComponent.tsx'
 
 import useSupabaseStore from '@/stores/supabase-store.ts'
-
-import ImageComponent from '@/layouts/ImageComponent.tsx'
 
 const CommandDialog = () => {
   const [open, setOpen] = useState(false)

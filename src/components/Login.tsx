@@ -4,14 +4,14 @@ import {
   DialogTrigger,
 } from '@/lib/shadcn/ui/dialog.tsx'
 
+import ImageComponent from '@/components/ImageComponent.tsx'
 import LoginButton from '@/components/Login/LoginButton.tsx'
 import UserAvatar from '@/components/Login/UserAvatar.tsx'
+import Logo from '@/components/Logo.tsx'
 
 import useSupabaseStore from '@/stores/supabase-store.ts'
 import useUserStore from '@/stores/user-store.ts'
 
-import ImageComponent from '@/layouts/ImageComponent.tsx'
-import Logo from '@/layouts/Logo.tsx'
 import { generateRandomNumber } from '@/utils/globals.ts'
 
 const Login: React.FC = () => {

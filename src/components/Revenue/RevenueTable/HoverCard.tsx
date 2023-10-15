@@ -6,8 +6,8 @@ import {
   HoverCardTrigger,
 } from '@/lib/shadcn/ui/hover-card'
 
-import ImageComponent from '@/layouts/ImageComponent.tsx'
-import ReleaseDate from '@/layouts/ReleaseDate'
+import ImageComponent from '@/components/ImageComponent.tsx'
+import ReleaseDate from '@/components/ReleaseDate.tsx'
 
 import { QueryOutput } from '@/types/supabase'
 

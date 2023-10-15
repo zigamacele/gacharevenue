@@ -4,9 +4,9 @@ import MotionInView from '@/lib/framer-motion/MotionInView'
 import { Skeleton } from '@/lib/shadcn/ui/skeleton.tsx'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
+import ImageComponent from '@/components/ImageComponent.tsx'
 
 import { REVENUE } from '@/constants/links.ts'
-import ImageComponent from '@/layouts/ImageComponent.tsx'
 
 import PercentageBox from './OverviewCard/PercentageBox'
 

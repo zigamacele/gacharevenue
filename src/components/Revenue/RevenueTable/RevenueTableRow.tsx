@@ -1,6 +1,7 @@
 import { TableCell, TableRow } from '@/lib/shadcn/ui/table'
 import { cn } from '@/lib/shadcn/utils'
 
+import ImageComponent from '@/components/ImageComponent.tsx'
 import TrendArrow from '@/components/Revenue/RevenueTable/TrendArrow'
 import Tooltip from '@/components/Tooltip'
 
@@ -8,7 +9,6 @@ import useBackgroundStore from '@/stores/background-store'
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
-import ImageComponent from '@/layouts/ImageComponent.tsx'
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
 import { getRegion } from '@/utils/region'
 

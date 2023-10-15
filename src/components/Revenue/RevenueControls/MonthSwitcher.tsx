@@ -1,10 +1,10 @@
 import { ArrowBigLeft, ArrowBigRight } from 'lucide-react'
 
-import { cn } from '@/lib/shadcn/utils'
+import { cn } from '@/lib/shadcn/utils.ts'
 
-import useSupabaseStore from '@/stores/supabase-store'
+import useSupabaseStore from '@/stores/supabase-store.ts'
 
-import Button from './Button'
+import Button from '../../Button.tsx'
 
 const MonthSwitcher: React.FC = () => {
   const { setProperty, tables, currentTable, previousTable } =

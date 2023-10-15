@@ -6,9 +6,9 @@ import { Skeleton } from '@/lib/shadcn/ui/skeleton.tsx'
 import { cn } from '@/lib/shadcn/utils.ts'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
+import ImageComponent from '@/components/ImageComponent.tsx'
 
 import { CURRENT_TABLE } from '@/constants/tables.ts'
-import ImageComponent from '@/layouts/ImageComponent.tsx'
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency.ts'
 
 import { QueryOutput } from '@/types/supabase.ts'

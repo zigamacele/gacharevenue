@@ -2,9 +2,9 @@ import { Fragment } from 'react'
 
 import MotionOpacity from '@/lib/framer-motion/MotionOpacity'
 
-import useBackgroundStore from '@/stores/background-store'
+import ImageComponent from '@/components/ImageComponent.tsx'
 
-import ImageComponent from '@/layouts/ImageComponent.tsx'
+import useBackgroundStore from '@/stores/background-store'
 
 const Background: React.FC = () => {
   const { background, blurhash } = useBackgroundStore()

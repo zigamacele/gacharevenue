@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom'
 
-import MotionInView from '@/lib/framer-motion/MotionInView'
+import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
 
+import Login from '@/components/Login.tsx'
 import CommandMenu from '@/components/Navbar/CommandMenu.tsx'
 import NavigationMenu from '@/components/Navbar/NavigationMenu.tsx'
 
-import Login from '@/layouts/Login.tsx'
-
-import Logo from './Logo'
+import Logo from './Logo.tsx'
 
 const Navbar: React.FC = () => {
   return (

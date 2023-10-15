@@ -5,10 +5,10 @@ import { Separator } from '@/lib/shadcn/ui/separator'
 
 import CoverImage from '@/components/Game/GameHeader/CoverImage'
 import MonthlyStatistics from '@/components/Game/GameHeader/MonthlyStatistics'
+import ImageComponent from '@/components/ImageComponent.tsx'
+import ReleaseDate from '@/components/ReleaseDate.tsx'
 
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
-import ImageComponent from '@/layouts/ImageComponent.tsx'
-import ReleaseDate from '@/layouts/ReleaseDate'
 
 import AdvancedView from './GameHeader/AdvancedView'
 

@@ -2,9 +2,9 @@ import { ArrowDown10, ArrowUp10, Combine, Pin, PinOff } from 'lucide-react'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
-import useRevenueTableControls from '@/stores/revenue-table-controls'
+import MonthSwitcher from '@/components/Revenue/RevenueControls/MonthSwitcher.tsx'
 
-import MonthSwitcher from '@/layouts/MonthSwitcher'
+import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import Toggle from '../Toggle'
 

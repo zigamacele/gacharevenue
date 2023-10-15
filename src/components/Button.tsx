@@ -1,6 +1,6 @@
-import { Button as ButtonComp } from '@/lib/shadcn/ui/button'
+import { Button as ButtonComp } from '@/lib/shadcn/ui/button.tsx'
 
-import Tooltip from '@/components/Tooltip'
+import Tooltip from '@/components/Tooltip.tsx'
 
 interface ButtonProps {
   tooltip: string

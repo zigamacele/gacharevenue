@@ -1,5 +1,5 @@
-import PinButton from '@/layouts/Buttons/PinButton'
-import RemoveButton from '@/layouts/Buttons/RemoveButton'
+import PinButton from '@/components/Buttons/PinButton'
+import RemoveButton from '@/components/Buttons/RemoveButton'
 
 import { QueryOutput } from '@/types/supabase'
 

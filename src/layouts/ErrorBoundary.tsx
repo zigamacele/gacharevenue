@@ -1,6 +1,6 @@
 import ErrorMessage from './ErrorBoundary/ErrorMessage'
 import ErrorNavigation from './ErrorBoundary/ErrorNavigation'
-import Logo from './Logo'
+import Logo from '../components/Logo.tsx'
 
 interface ErrorBoundaryProps {
   error: string

@@ -3,12 +3,11 @@ import * as React from 'react'
 
 import { cn } from '@/lib/shadcn/utils'
 
+import BackButton from '@/components/Buttons/BackButton.tsx'
+import PinButton from '@/components/Buttons/PinButton'
+import RemoveButton from '@/components/Buttons/RemoveButton'
+import ImageComponent from '@/components/ImageComponent.tsx'
 import Tooltip from '@/components/Tooltip'
-
-import BackButton from '@/layouts/Buttons/BackButton.tsx'
-import PinButton from '@/layouts/Buttons/PinButton'
-import RemoveButton from '@/layouts/Buttons/RemoveButton'
-import ImageComponent from '@/layouts/ImageComponent.tsx'
 
 import RegionTooltip from './CoverImage/RegionTooltip'
 

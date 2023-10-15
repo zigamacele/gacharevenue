@@ -1,8 +1,9 @@
 import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
 
+import GameBanner from '@/components/GameBanner.tsx'
+
 import useGraveyardStore from '@/stores/graveyard-store.ts'
 
-import GameBanner from '@/layouts/GameBanner.tsx'
 import { getRegion } from '@/utils/region.ts'
 
 const Maintenance: React.FC = () => {

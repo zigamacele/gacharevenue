@@ -1,6 +1,6 @@
+import ImageComponent from '@/components/ImageComponent.tsx'
 import Tooltip from '@/components/Tooltip.tsx'
 
-import ImageComponent from '@/layouts/ImageComponent.tsx'
 import { formatMonthYear } from '@/utils/timeDate.ts'
 
 import { GraveyardOutput } from '@/types/supabase.ts'

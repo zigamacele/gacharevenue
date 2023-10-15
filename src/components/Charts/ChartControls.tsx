@@ -9,9 +9,10 @@ import {
 
 import { cn } from '@/lib/shadcn/utils'
 
+import Button from '@/components/Button.tsx'
+
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
-import Button from '@/layouts/Button'
 import { SlideDirection } from '@/utils/enums'
 
 import Toggle from '../Revenue/Toggle'

@@ -14,13 +14,14 @@ import {
 } from '@/lib/shadcn/ui/navigation-menu.tsx'
 import { cn } from '@/lib/shadcn/utils.ts'
 
+import ImageComponent from '@/components/ImageComponent.tsx'
+
 import chartsScreenshot from '@/assets/Navmenu/charts.jpeg'
 import feedbackScreenshot from '@/assets/Navmenu/feedback.jpeg'
 import graveyardScreenshot from '@/assets/Navmenu/graveyard.jpeg'
 import revenueScreenshot from '@/assets/Navmenu/revenue.jpeg'
 
 import { CHARTS, FEEDBACK, GRAVEYARD, REVENUE } from '@/constants/links.ts'
-import ImageComponent from '@/layouts/ImageComponent.tsx'
 
 const NavigationMenu: React.FC = () => {
   return (

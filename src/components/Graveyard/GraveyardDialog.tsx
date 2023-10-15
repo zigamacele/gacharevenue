@@ -7,9 +7,8 @@ import {
 } from '@/lib/shadcn/ui/dialog.tsx'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
-
-import ImageComponent from '@/layouts/ImageComponent.tsx'
-import YoutubeEmbed from '@/layouts/YoutubeEmbed.tsx'
+import ImageComponent from '@/components/ImageComponent.tsx'
+import YoutubeEmbed from '@/components/YoutubeEmbed.tsx'
 
 import { GraveyardOutput } from '@/types/supabase.ts'
 

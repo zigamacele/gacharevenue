@@ -1,10 +1,10 @@
 import { CheckCircle2, XCircle } from 'lucide-react'
 
-import Tooltip from '@/components/Tooltip'
+import Tooltip from '@/components/Tooltip.tsx'
 
-import useRevenueTableControls from '@/stores/revenue-table-controls'
+import useRevenueTableControls from '@/stores/revenue-table-controls.ts'
 
-import { QueryOutput } from '@/types/supabase'
+import { QueryOutput } from '@/types/supabase.ts'
 
 interface RemoveButtonProps {
   data: QueryOutput

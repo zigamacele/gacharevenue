@@ -1,9 +1,10 @@
 import { useMemo } from 'react'
 
+import GameBanner from '@/components/GameBanner.tsx'
+
 import useSupabaseStore from '@/stores/supabase-store'
 
 import { CURRENT_TABLE } from '@/constants/tables'
-import GameBanner from '@/layouts/GameBanner.tsx'
 import { formatCurrency } from '@/utils/currency'
 import {
   compareMonths,

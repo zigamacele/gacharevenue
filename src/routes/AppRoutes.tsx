@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 
 import useSupabaseRelay from '@/hooks/useSupabaseRelay'
 
+import Navbar from '@/components/Navbar.tsx'
+
 import useUserStore from '@/stores/user-store.ts'
 
 import Charts from '@/pages/Charts'
@@ -22,7 +24,6 @@ import {
 } from '@/constants/links.ts'
 import Background from '@/layouts/Background'
 import LastUpdated from '@/layouts/LastUpdated.tsx'
-import Navbar from '@/layouts/Navbar'
 import PageNotFound from '@/layouts/PageNotFound'
 
 const AppRoutes: React.FC = () => {
