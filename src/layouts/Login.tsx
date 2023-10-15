@@ -47,7 +47,7 @@ const Login: React.FC = () => {
           {/*</p>*/}
           <div className='flex items-center gap-3'>
             <LoginButton provider='google' />
-            <LoginButton provider='discord' />
+            <LoginButton provider='discord' iconClassName='w-8 h-8' />
           </div>
         </section>
       </DialogContent>
