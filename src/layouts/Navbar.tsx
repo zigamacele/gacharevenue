@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom'
 
 import MotionInView from '@/lib/framer-motion/MotionInView'
-import { Separator } from '@/lib/shadcn/ui/separator.tsx'
 
+import CommandMenu from '@/components/Navbar/CommandMenu.tsx'
 import NavigationMenu from '@/components/Navbar/NavigationMenu.tsx'
-import SocialLinks from '@/components/Navbar/SocialLinks.tsx'
 
 import Login from '@/layouts/Login.tsx'
 
@@ -23,12 +22,10 @@ const Navbar: React.FC = () => {
       >
         <Logo logoProps='mt-1' textProps='hidden sm:block' />
       </Link>
-      <div className='flex items-center gap-4'>
+      <div className='flex items-center gap-5'>
+        <CommandMenu />
         <NavigationMenu />
-        <Separator orientation='vertical' className='hidden h-4 xl:block' />
         <Login />
-        <Separator orientation='vertical' className='hidden h-4 xl:block' />
-        <SocialLinks />
       </div>
     </MotionInView>
   )
