@@ -54,5 +54,5 @@ export interface GraveyardOutput {
   eos_date: string
   maintenance: boolean
   trailer: string
-  games: GameSchema
+  games: QueryOutput
 }

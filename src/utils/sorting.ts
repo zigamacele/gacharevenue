@@ -49,10 +49,6 @@ export const queryFilterSort = ({
     const isPinned = pinned.includes(gameId)
     const isRemoved = removed.includes(gameId)
 
-    if (game.hidden) {
-      return false
-    }
-
     if (search.length) {
       const gameName = game.en_name.toLowerCase()
       const searchValue = search.toLowerCase()

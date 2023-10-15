@@ -49,7 +49,7 @@ export interface GraveyardStore {
   eos: GraveyardOutput[]
   graveyardBackground: string
   loading: boolean
-  getGraveyardData: () => Promise<void>
+  getGraveyardData: () => void
   setGraveyardBackground: (url: string) => void
 }
 

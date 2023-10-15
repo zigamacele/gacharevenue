@@ -18,6 +18,7 @@ type OverviewCardProps = {
   y?: number
   glowingText?: string
   glowingStyle?: string
+  disabled?: boolean
 }
 
 const GameBanner: React.FC<OverviewCardProps> = ({
@@ -25,6 +26,7 @@ const GameBanner: React.FC<OverviewCardProps> = ({
   y = 100,
   glowingText = 'NEW',
   glowingStyle = 'text-red-600 italic',
+  disabled,
 }) => {
   const navigate = useNavigate()
   const isLoaded = !!game
@@ -34,8 +36,11 @@ const GameBanner: React.FC<OverviewCardProps> = ({
       y={y}
       duration={0.8}
       delay={0.4}
-      styles='flex h-16 flex-col group w-full justify-between group hover:border-neutral-700 rounded-lg bg-neutral-900 relative border cursor-pointer border-neutral-800'
-      onClick={() => navigate(`/game/${game?.id}`)}
+      styles={cn(
+        'group relative flex h-16 w-full flex-col justify-between rounded-lg border border-neutral-800 bg-neutral-900 hover:border-neutral-700',
+        !disabled && 'cursor-pointer',
+      )}
+      onClick={!disabled ? () => navigate(`/game/${game?.id}`) : undefined}
     >
       <span className='absolute z-10 h-full w-full rounded-lg bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent' />
       <ImageComponent
