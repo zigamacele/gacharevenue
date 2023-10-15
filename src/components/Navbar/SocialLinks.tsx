@@ -1,37 +1,33 @@
-import { Link } from 'react-router-dom'
+import { Github } from 'lucide-react'
+
+import { CommandGroup, CommandItem } from '@/lib/shadcn/ui/command.tsx'
 
 import { iconsLibrary } from '@/constants/icons.ts'
-import {
-  GACHAGAMING_URL,
-  GITHUB_PROJECT_URL,
-  SENSORTOWER_URL,
-} from '@/constants/links'
+import { GITHUB_PROJECT_URL } from '@/constants/links'
 
 const SocialLinks: React.FC = () => {
   return (
-    <section className='hidden items-center gap-3 xl:flex'>
-      <Link to={GACHAGAMING_URL} target='_blank' className='hidden sm:block'>
+    <CommandGroup heading='Links'>
+      <CommandItem
+        className='flex gap-2'
+        onSelect={() => window.open(GITHUB_PROJECT_URL, '_blank')}
+      >
+        <Github className='h-5 w-5' />
+        <span>Github</span>
+      </CommandItem>
+      <CommandItem className='flex gap-2'>
+        <img src={iconsLibrary.REDDIT} alt='reddit logo' className='h-5 w-5' />
+        <span>Reddit</span>
+      </CommandItem>
+      <CommandItem className='flex gap-2'>
         <img
-          src={iconsLibrary['REDDIT']}
-          alt='r/gachagaming'
-          className='h-[26px] w-[26px] hover:opacity-60'
+          src={iconsLibrary.SENSOR_TOWER}
+          alt='sensortower logo'
+          className='h-5 w-5'
         />
-      </Link>
-      <Link to={SENSORTOWER_URL} target='_blank'>
-        <img
-          src={iconsLibrary['SENSOR_TOWER']}
-          alt='sensortower'
-          className='h-[22px] w-[22px] hover:opacity-60'
-        />
-      </Link>
-      <Link to={GITHUB_PROJECT_URL} target='_blank'>
-        <img
-          src={iconsLibrary['GITHUB']}
-          alt='github project'
-          className='h-[22px] w-[22px] hover:opacity-60'
-        />
-      </Link>
-    </section>
+        <span>SensorTower</span>
+      </CommandItem>
+    </CommandGroup>
   )
 }
 

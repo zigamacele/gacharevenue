@@ -1,5 +1,6 @@
 'use client'
 
+import { Mailbox, PieChart, Skull, Table2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,8 +15,11 @@ import {
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 import ImageComponent from '@/components/ImageComponent.tsx'
+import SocialLinks from '@/components/Navbar/SocialLinks.tsx'
 
 import useSupabaseStore from '@/stores/supabase-store.ts'
+
+import { CHARTS, FEEDBACK, GRAVEYARD, REVENUE } from '@/constants/links.ts'
 
 const CommandDialog = () => {
   const [open, setOpen] = useState(false)
@@ -49,7 +53,8 @@ const CommandDialog = () => {
         <CommandInput placeholder='Search' />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup>
+          <SocialLinks />
+          <CommandGroup heading='Games'>
             {storage.map((game) => (
               <CommandItem
                 key={`${game.name}_${game.region}`}
@@ -73,6 +78,48 @@ const CommandDialog = () => {
                 />
               </CommandItem>
             ))}
+          </CommandGroup>
+          <CommandGroup heading='Navigation'>
+            <CommandItem
+              className='flex gap-2'
+              onSelect={() => {
+                navigate(REVENUE)
+                setOpen(false)
+              }}
+            >
+              <Table2 className='h-5 w-5' />
+              <span>Revenue</span>
+            </CommandItem>
+            <CommandItem
+              className='flex gap-2'
+              onSelect={() => {
+                navigate(CHARTS)
+                setOpen(false)
+              }}
+            >
+              <PieChart className='h-5 w-5' />
+              <span>Charts</span>
+            </CommandItem>
+            <CommandItem
+              className='flex gap-2'
+              onSelect={() => {
+                navigate(GRAVEYARD)
+                setOpen(false)
+              }}
+            >
+              <Skull className='h-5 w-5' />
+              <span>Graveyard</span>
+            </CommandItem>
+            <CommandItem
+              className='flex gap-2'
+              onSelect={() => {
+                navigate(FEEDBACK)
+                setOpen(false)
+              }}
+            >
+              <Mailbox className='h-5 w-5' />
+              <span>Feedback</span>
+            </CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialogComponent>
