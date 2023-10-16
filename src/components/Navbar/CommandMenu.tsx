@@ -21,6 +21,21 @@ import useSupabaseStore from '@/stores/supabase-store.ts'
 
 import { CHARTS, FEEDBACK, GRAVEYARD, REVENUE } from '@/constants/links.ts'
 
+const NavigationCommandGroup = [
+  { name: 'Revenue', icon: <Table2 className='h-5 w-5' />, navigate: REVENUE },
+  { name: 'Charts', icon: <PieChart className='h-5 w-5' />, navigate: CHARTS },
+  {
+    name: 'Graveyard',
+    icon: <Skull className='h-5 w-5' />,
+    navigate: GRAVEYARD,
+  },
+  {
+    name: 'Feedback',
+    icon: <Mailbox className='h-5 w-5' />,
+    navigate: FEEDBACK,
+  },
+]
+
 const CommandDialog = () => {
   const [open, setOpen] = useState(false)
   const { storage } = useSupabaseStore()
@@ -80,46 +95,19 @@ const CommandDialog = () => {
             ))}
           </CommandGroup>
           <CommandGroup heading='Navigation'>
-            <CommandItem
-              className='flex gap-2'
-              onSelect={() => {
-                navigate(REVENUE)
-                setOpen(false)
-              }}
-            >
-              <Table2 className='h-5 w-5' />
-              <span>Revenue</span>
-            </CommandItem>
-            <CommandItem
-              className='flex gap-2'
-              onSelect={() => {
-                navigate(CHARTS)
-                setOpen(false)
-              }}
-            >
-              <PieChart className='h-5 w-5' />
-              <span>Charts</span>
-            </CommandItem>
-            <CommandItem
-              className='flex gap-2'
-              onSelect={() => {
-                navigate(GRAVEYARD)
-                setOpen(false)
-              }}
-            >
-              <Skull className='h-5 w-5' />
-              <span>Graveyard</span>
-            </CommandItem>
-            <CommandItem
-              className='flex gap-2'
-              onSelect={() => {
-                navigate(FEEDBACK)
-                setOpen(false)
-              }}
-            >
-              <Mailbox className='h-5 w-5' />
-              <span>Feedback</span>
-            </CommandItem>
+            {NavigationCommandGroup.map((item) => (
+              <CommandItem
+                key={item.name}
+                className='flex cursor-pointer gap-2'
+                onSelect={() => {
+                  navigate(item.navigate)
+                  setOpen(false)
+                }}
+              >
+                {item.icon}
+                <span>{item.name}</span>
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialogComponent>

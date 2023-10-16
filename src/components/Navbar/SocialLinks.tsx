@@ -3,30 +3,51 @@ import { Github } from 'lucide-react'
 import { CommandGroup, CommandItem } from '@/lib/shadcn/ui/command.tsx'
 
 import { iconsLibrary } from '@/constants/icons.ts'
-import { GITHUB_PROJECT_URL } from '@/constants/links'
+import {
+  GACHAGAMING_URL,
+  GITHUB_PROJECT_URL,
+  SENSORTOWER_URL,
+} from '@/constants/links'
+
+const LinksCommandGroup = [
+  {
+    name: 'Github',
+    navigate: GITHUB_PROJECT_URL,
+    icon: <Github className='h-5 w-5' />,
+  },
+  {
+    name: 'Reddit',
+    navigate: GACHAGAMING_URL,
+    icon: (
+      <img src={iconsLibrary.REDDIT} alt='reddit logo' className='h-5 w-5' />
+    ),
+  },
+  {
+    name: 'SensorTower',
+    navigate: SENSORTOWER_URL,
+    icon: (
+      <img
+        src={iconsLibrary.SENSOR_TOWER}
+        alt='sensortower logo'
+        className='h-5 w-5'
+      />
+    ),
+  },
+]
 
 const SocialLinks: React.FC = () => {
   return (
     <CommandGroup heading='Links'>
-      <CommandItem
-        className='flex gap-2'
-        onSelect={() => window.open(GITHUB_PROJECT_URL, '_blank')}
-      >
-        <Github className='h-5 w-5' />
-        <span>Github</span>
-      </CommandItem>
-      <CommandItem className='flex gap-2'>
-        <img src={iconsLibrary.REDDIT} alt='reddit logo' className='h-5 w-5' />
-        <span>Reddit</span>
-      </CommandItem>
-      <CommandItem className='flex gap-2'>
-        <img
-          src={iconsLibrary.SENSOR_TOWER}
-          alt='sensortower logo'
-          className='h-5 w-5'
-        />
-        <span>SensorTower</span>
-      </CommandItem>
+      {LinksCommandGroup.map((item) => (
+        <CommandItem
+          key={item.name}
+          className='flex cursor-pointer gap-2'
+          onSelect={() => window.open(item.navigate, '_blank')}
+        >
+          {item.icon}
+          <span>{item.name}</span>
+        </CommandItem>
+      ))}
     </CommandGroup>
   )
 }
