@@ -3,23 +3,11 @@ import { Dispatch, SetStateAction } from 'react'
 
 import { cn } from '@/lib/shadcn/utils.ts'
 
+import { ReviewPayload } from '@/types/supabase.ts'
+
 interface StarRatingProps {
-  reviewPayload: {
-    game_id: number
-    rating: number
-    review: string
-    investment: string
-    status: string
-  }
-  setReviewPayload: Dispatch<
-    SetStateAction<{
-      game_id: number
-      rating: number
-      review: string
-      investment: string
-      status: string
-    }>
-  >
+  reviewPayload: ReviewPayload
+  setReviewPayload: Dispatch<SetStateAction<ReviewPayload>>
 }
 const StarRating: React.FC<StarRatingProps> = ({
   reviewPayload,
@@ -37,7 +25,9 @@ const StarRating: React.FC<StarRatingProps> = ({
                 'text-amber-500 hover:text-amber-700',
             )}
             onClick={() =>
-              setReviewPayload({ ...reviewPayload, rating: index + 1 })
+              setReviewPayload((currentState) => {
+                return { ...currentState, rating: index + 1 }
+              })
             }
           />
         ))}
