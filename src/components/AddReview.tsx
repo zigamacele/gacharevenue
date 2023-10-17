@@ -10,12 +10,15 @@ import {
   DialogTrigger,
 } from '@/lib/shadcn/ui/dialog.tsx'
 import { Textarea } from '@/lib/shadcn/ui/textarea.tsx'
+import { useToast } from '@/lib/shadcn/ui/use-toast.ts'
 
 import ReviewSelectors from '@/components/AddReview/ReviewSelectors.tsx'
 import StarRating from '@/components/AddReview/StarRating.tsx'
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 import ImageComponent from '@/components/ImageComponent.tsx'
 import Tooltip from '@/components/Tooltip.tsx'
+
+import userStore from '@/stores/user-store.ts'
 
 import { QueryOutput, ReviewPayload } from '@/types/supabase.ts'
 
@@ -31,9 +34,23 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
     investment: '',
     text: '',
   })
+  const { user } = userStore()
+  const { toast } = useToast()
+
   return (
     <Dialog>
-      <DialogTrigger className={triggerClassName}>
+      <DialogTrigger
+        className={triggerClassName}
+        onClick={() => {
+          if (!user) {
+            toast({
+              title: 'You are not logged in',
+              description:
+                ' To prevent spam, only authenticated users can leave a review.',
+            })
+          }
+        }}
+      >
         <Tooltip text='Leave Review'>
           <div className='div-shrink flex h-8 w-24 items-center justify-center gap-2 rounded border border-neutral-800 bg-neutral-900 text-center text-sm transition-all hover:bg-neutral-800'>
             <Star className='h-4 w-4 text-amber-400 opacity-80' />
@@ -62,14 +79,14 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
           </div>
         </DialogHeader>
         <RegionTooltip gameRegion={game.region} className=' left-2 top-2' />
-        <span className='absolute top-0 z-10 h-24 w-full bg-gradient-to-t from-neutral-900 via-neutral-950/80 to-transparent md:rounded-t' />
+        <span className='absolute top-0 z-10 h-24 w-full bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent md:rounded-t' />
         <ImageComponent
           height={192}
           width={350}
           src={game.background}
           blurhash={game.blurhash}
           alt={game.name}
-          className='absolute top-0 h-24 w-full object-cover opacity-60 transition-opacity group-hover:opacity-100 md:rounded-t'
+          className='absolute top-0 h-24 w-full object-cover opacity-60 md:rounded-t'
         />
         <span className='flex flex-col justify-between gap-2 sm:flex-row sm:gap-0'>
           <StarRating
@@ -90,7 +107,7 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
             className='bg-neutral-800'
             placeholder='Share your thoughts, opinions and critiques (Optional)'
           />
-          <span className='absolute bottom-1 right-2 text-sm opacity-60'>
+          <span className='absolute bottom-1 right-2 text-sm opacity-40'>
             {reviewPayload.text.length}/500
           </span>
         </div>
