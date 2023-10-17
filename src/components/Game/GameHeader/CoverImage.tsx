@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { cn } from '@/lib/shadcn/utils'
 
+import AddReview from '@/components/AddReview.tsx'
 import BackButton from '@/components/Buttons/BackButton.tsx'
 import PinButton from '@/components/Buttons/PinButton'
 import RemoveButton from '@/components/Buttons/RemoveButton'
@@ -35,6 +36,10 @@ const CoverImage: React.FC<CoverImageProps> = ({
         className='h-40 w-full rounded-t-md object-cover'
       />
       <BackButton />
+      <AddReview
+        triggerClassName='absolute left-12 top-1 z-40'
+        gameId={currentGame.id}
+      />
       <RegionTooltip gameRegion={currentGame.region} />
       <span className='absolute top-0 h-full w-full rounded-t-md bg-gradient-to-t from-neutral-900 to-transparent opacity-100' />
       <div className='absolute right-0 top-10 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 py-1.5 pr-2'>

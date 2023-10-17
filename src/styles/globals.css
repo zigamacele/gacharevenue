@@ -110,11 +110,34 @@ body::-webkit-scrollbar {
   }
 }
 
-.LazyLoad {
-  opacity: 0;
-  transition: all 250ms ease-in-out;
+@keyframes fadeOut {
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    display: none;
+  }
 }
 
-.is-visible {
-  opacity: 1;
+.to-hidden {
+  animation: fadeOut 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes divShrink {
+  50% {
+    @apply w-24;
+  }
+  100% {
+    @apply w-10;
+  }
+}
+
+.div-shrink {
+  animation: divShrink 2.5s ease;
+  animation-fill-mode: forwards;
 }
