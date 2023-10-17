@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 
 import '@/styles/globals.css'
 
+import { Toaster } from '@/lib/shadcn/ui/toaster.tsx'
+
 import FallBackComponent from './layouts/ErrorBoundary'
 import ProgressBar from './layouts/ProgressBar'
 import AppRoutes from './routes/AppRoutes'
@@ -16,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
       <ErrorBoundary FallbackComponent={FallBackComponent}>
         <ProgressBar />
         <AppRoutes />
+        <Toaster />
       </ErrorBoundary>
     </BrowserRouter>
   </StrictMode>,
