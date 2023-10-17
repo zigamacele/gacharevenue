@@ -38,7 +38,7 @@ const CoverImage: React.FC<CoverImageProps> = ({
       <BackButton />
       <AddReview
         triggerClassName='absolute left-12 top-1 z-40'
-        gameId={currentGame.id}
+        game={currentGame}
       />
       <RegionTooltip gameRegion={currentGame.region} />
       <span className='absolute top-0 h-full w-full rounded-t-md bg-gradient-to-t from-neutral-900 to-transparent opacity-100' />
