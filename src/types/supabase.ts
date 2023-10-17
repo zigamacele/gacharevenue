@@ -56,3 +56,11 @@ export interface GraveyardOutput {
   trailer: string
   games: QueryOutput
 }
+
+export interface ReviewPayload {
+  game_id: number
+  rating: number
+  status: string
+  investment: string
+  text: string
+}

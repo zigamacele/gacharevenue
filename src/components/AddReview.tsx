@@ -9,33 +9,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/lib/shadcn/ui/dialog.tsx'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/lib/shadcn/ui/select.tsx'
 import { Textarea } from '@/lib/shadcn/ui/textarea.tsx'
 
+import ReviewSelectors from '@/components/AddReview/ReviewSelectors.tsx'
 import StarRating from '@/components/AddReview/StarRating.tsx'
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 import ImageComponent from '@/components/ImageComponent.tsx'
 import Tooltip from '@/components/Tooltip.tsx'
 
-import { QueryOutput } from '@/types/supabase.ts'
+import { QueryOutput, ReviewPayload } from '@/types/supabase.ts'
 
 interface DialogProps {
   triggerClassName?: string
   game: QueryOutput
 }
 const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
-  const [reviewPayload, setReviewPayload] = useState({
+  const [reviewPayload, setReviewPayload] = useState<ReviewPayload>({
     game_id: game.id,
     rating: 0,
-    review: '',
     status: '',
     investment: '',
+    text: '',
   })
   return (
     <Dialog>
@@ -50,7 +44,7 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
       <DialogContent>
         <DialogHeader className='z-50 mt-4'>
           <DialogTitle>{game.en_name}</DialogTitle>
-          <div className='flex gap-4 opacity-60'>
+          <div className='flex justify-center gap-4 opacity-60 sm:justify-normal'>
             <span>
               <p className='text-xs opacity-60'>Developer</p>
               <p className='max-w-[8em] truncate'>{game.developer}</p>
@@ -61,7 +55,9 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
             </span>
             <span>
               <p className='text-xs opacity-60'>Release Date</p>
-              <p>{game.release_date}</p>
+              <p className='max-w-[8em] truncate sm:max-w-full'>
+                {game.release_date}
+              </p>
             </span>
           </div>
         </DialogHeader>
@@ -75,42 +71,29 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
           alt={game.name}
           className='absolute top-0 h-24 w-full object-cover opacity-60 transition-opacity group-hover:opacity-100 md:rounded-t'
         />
-        <span className='flex justify-between'>
+        <span className='flex flex-col justify-between gap-2 sm:flex-row sm:gap-0'>
           <StarRating
             reviewPayload={reviewPayload}
             setReviewPayload={setReviewPayload}
           />
-          <div className='flex items-center gap-2'>
-            <Select>
-              <SelectTrigger className='h-8 w-32 bg-neutral-800'>
-                <SelectValue placeholder='Status' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='playing'>Playing</SelectItem>
-                <SelectItem value='dropped'>Dropped</SelectItem>
-                <SelectItem value='interested'>Interested</SelectItem>
-                <SelectItem value='never'>Never played</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className='h-8 w-36 bg-neutral-800'>
-                <SelectValue placeholder='Investment' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='0'>$0</SelectItem>
-                <SelectItem value='<100'>{'< $100'}</SelectItem>
-                <SelectItem value='100-500'>$100 - $500</SelectItem>
-                <SelectItem value='500-1000'>$500 - $1000</SelectItem>
-                <SelectItem value='1000-5000'>$1000 - $5000</SelectItem>
-                <SelectItem value='>5000'>{'> $5000'}</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          <ReviewSelectors setReviewPayload={setReviewPayload} />
         </span>
-        <Textarea
-          className='bg-neutral-800'
-          placeholder='Your thoughts (Optional)'
-        />
+        <div className='relative'>
+          <Textarea
+            value={reviewPayload.text}
+            onChange={(event) =>
+              setReviewPayload((currentState) => {
+                if (event.target.value.length > 500) return currentState
+                return { ...currentState, text: event.target.value }
+              })
+            }
+            className='bg-neutral-800'
+            placeholder='Share your thoughts, opinions and critiques (Optional)'
+          />
+          <span className='absolute bottom-1 right-2 text-sm opacity-60'>
+            {reviewPayload.text.length}/500
+          </span>
+        </div>
         <Button disabled={!reviewPayload.rating} className='bg-neutral-800'>
           Submit
         </Button>
