@@ -64,3 +64,14 @@ export interface ReviewPayload {
   investment: string
   text: string
 }
+
+export interface ReviewOutput {
+  id: number
+  game_id: string
+  user_id: string
+  rating: number
+  status: string
+  investment: string
+  text: string
+  created_at: string
+}
