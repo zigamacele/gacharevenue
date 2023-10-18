@@ -5,6 +5,8 @@ import {
   DropdownMenuTrigger,
 } from '@/lib/shadcn/ui/dropdown-menu.tsx'
 
+import MyReviews from '@/components/Login/MyReviews.tsx'
+
 import useUserStore from '@/stores/user-store.ts'
 
 import { signOut } from '@/utils/supabase.ts'
@@ -27,13 +29,17 @@ const IdentityPicture: React.FC = () => {
 
 const UserAvatar: React.FC = () => {
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger className='flex items-center justify-center transition-opacity hover:opacity-60'>
         <IdentityPicture />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
+        <MyReviews />
         <DropdownMenuItem disabled>Settings</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => void signOut()}>
+        <DropdownMenuItem
+          onClick={() => void signOut()}
+          className='cursor-pointer'
+        >
           Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
