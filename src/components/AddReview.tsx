@@ -20,6 +20,9 @@ import Tooltip from '@/components/Tooltip.tsx'
 
 import userStore from '@/stores/user-store.ts'
 
+import supabase from '@/config/supabase.ts'
+import { validateReviewPayload } from '@/utils/validation.ts'
+
 import { QueryOutput, ReviewPayload } from '@/types/supabase.ts'
 
 interface DialogProps {
@@ -27,6 +30,7 @@ interface DialogProps {
   game: QueryOutput
 }
 const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
+  const [open, setOpen] = useState(false)
   const [reviewPayload, setReviewPayload] = useState<ReviewPayload>({
     game_id: game.id,
     rating: 0,
@@ -36,9 +40,59 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
   })
   const { user } = userStore()
   const { toast } = useToast()
+  const isSubmitDisabled =
+    !reviewPayload.rating ||
+    !reviewPayload.status ||
+    !reviewPayload.investment ||
+    !user
+
+  const resetReviewPayload = () => {
+    setReviewPayload({
+      game_id: game.id,
+      rating: 0,
+      status: '',
+      investment: '',
+      text: '',
+    })
+    setOpen(false)
+  }
+
+  const insertReview = async () => {
+    if (isSubmitDisabled) return
+    const validation = await validateReviewPayload(reviewPayload, user)
+    if (validation.status) {
+      const { data, error } = await supabase
+        .from('reviews')
+        .insert({
+          ...reviewPayload,
+          user_id: user.id,
+        })
+        .select()
+
+      if (error) {
+        toast({
+          title: 'Error Occurred',
+          description: error.message,
+        })
+      }
+
+      if (data?.length) {
+        toast({
+          title: 'Review Submitted',
+          description: 'Thank you for your feedback!',
+        })
+        resetReviewPayload()
+      }
+    } else {
+      toast({
+        title: 'Validation Error',
+        description: validation.error,
+      })
+    }
+  }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={(open) => setOpen(open)}>
       <DialogTrigger
         className={triggerClassName}
         onClick={() => {
@@ -111,7 +165,11 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
             {reviewPayload.text.length}/500
           </span>
         </div>
-        <Button disabled={!reviewPayload.rating} className='bg-neutral-800'>
+        <Button
+          disabled={isSubmitDisabled}
+          onClick={() => void insertReview()}
+          className='bg-neutral-800'
+        >
           Submit
         </Button>
       </DialogContent>
