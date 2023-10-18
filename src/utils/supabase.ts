@@ -15,3 +15,7 @@ export const signInWithOAuth = async (provider: Provider) => {
 export const signOut = async () => {
   await supabase.auth.signOut()
 }
+
+export const deleteReview = async (id: number, user_id: string | undefined) => {
+  await supabase.from('reviews').delete().match({ id, user_id })
+}

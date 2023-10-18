@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/lib/shadcn/ui/button.tsx'
 import {
@@ -54,8 +54,11 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
       investment: '',
       text: '',
     })
-    setOpen(false)
   }
+
+  useEffect(() => {
+    resetReviewPayload()
+  }, [open])
 
   const insertReview = async () => {
     if (isSubmitDisabled) return
@@ -82,6 +85,7 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
           description: 'Thank you for your feedback!',
         })
         resetReviewPayload()
+        setOpen(false)
       }
     } else {
       toast({
