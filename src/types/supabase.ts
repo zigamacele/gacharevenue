@@ -73,5 +73,6 @@ export interface ReviewOutput {
   status: string
   investment: string
   text: string
+  game: GameSchema
   created_at: string
 }
