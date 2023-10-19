@@ -1,9 +1,12 @@
+import { CircleDollarSign, PlaySquare, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
+import { Separator } from '@/lib/shadcn/ui/separator.tsx'
 
 import supabase from '@/config/supabase.ts'
 import { unsubscribeReviewUpdates } from '@/utils/supabase.ts'
+import { formatTimestampz } from '@/utils/timeDate.ts'
 
 import { ReviewOutput } from '@/types/supabase.ts'
 
@@ -54,7 +57,39 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
       <div className=''>
         {reviews.map((review) => (
           <MotionInView key={review.id}>
-            <div className='rounded bg-neutral-800'>{review.rating}</div>
+            <div className='flex flex-col gap-1 rounded bg-neutral-800 px-2 py-1 text-sm'>
+              <div className='flex justify-between'>
+                <div className='flex gap-3'>
+                  <div className='flex items-center gap-1'>
+                    <Star className='h-4 w-4' />
+                    <p className='text-sm font-light opacity-60'>
+                      {review.rating}/5
+                    </p>
+                  </div>
+                  <div className='flex items-center gap-1'>
+                    <PlaySquare className='h-4 w-4' />
+                    <p className='text-sm font-light opacity-60'>
+                      {review.status}
+                    </p>
+                  </div>
+                  <div className='flex items-center gap-1'>
+                    <CircleDollarSign className='h-4 w-4' />
+                    <p className='text-sm font-light opacity-60'>
+                      {review.investment}
+                    </p>
+                  </div>
+                </div>
+                <span className='opacity-60'>
+                  {formatTimestampz(review.created_at)}
+                </span>
+              </div>
+              {review.text && (
+                <>
+                  <Separator />
+                  <p className='break-all text-sm'>{review.text}</p>
+                </>
+              )}
+            </div>
           </MotionInView>
         ))}
       </div>
