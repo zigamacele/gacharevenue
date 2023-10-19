@@ -1,9 +1,11 @@
 import { BarChart3, LineChart } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Bar from '@/lib/nivo/Bar'
 import Line from '@/lib/nivo/Line'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/lib/shadcn/ui/tabs'
+
+import Reviews from '@/components/Game/GameBody/Reviews.tsx'
 
 import { prepareBarChartData, prepareLineChartData } from '@/utils/charts'
 
@@ -30,26 +32,26 @@ const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
     return newTabs
   }
 
+  useEffect(() => {
+    setContent('charts')
+  }, [currentGame])
+
   return (
     <section className='relative'>
       <Tabs
-        defaultValue={content}
+        value={content}
         className='absolute z-50 flex w-40 flex-col items-start'
       >
         <TabsList className='center flex'>
           <TabsTrigger value='charts' onClick={() => setContent('charts')}>
             Charts
           </TabsTrigger>
-          <TabsTrigger
-            disabled
-            value='reviews'
-            onClick={() => setContent('reviews')}
-          >
+          <TabsTrigger value='reviews' onClick={() => setContent('reviews')}>
             Reviews
           </TabsTrigger>
         </TabsList>
       </Tabs>
-      {content === 'reviews' && <span>Coming soon</span>}
+      {content === 'reviews' && <Reviews gameId={currentGame.id} />}
       {content === 'charts' && (
         <Tabs
           defaultValue='bar'
