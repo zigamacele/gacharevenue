@@ -61,12 +61,12 @@ const MyReviews: React.FC = () => {
           </DialogDescription>
         </DialogHeader>
         {myReviews.length ? (
-          <section className='flex h-[20em] flex-col gap-2 overflow-scroll'>
+          <section className='no-scrollbar flex max-h-[20em] flex-col gap-2 overflow-scroll'>
             {myReviews.map(
               ({ id, rating, status, investment, text, game, created_at }) => (
                 <div
                   key={id}
-                  className='relative flex flex-col rounded border border-neutral-700 py-0.5'
+                  className='relative flex flex-col rounded border border-neutral-700 bg-neutral-800/60 py-0.5'
                 >
                   <RegionTooltip
                     gameRegion={game.region}
@@ -88,7 +88,7 @@ const MyReviews: React.FC = () => {
                         src={game.icon}
                         alt={game.name}
                         blurhash={game.blurhash}
-                        className='ml-1 h-10 w-10'
+                        className='ml-1 h-10 w-10 rounded-l'
                       />
                     </Link>
                     <div className='flex w-full flex-col'>
@@ -96,7 +96,7 @@ const MyReviews: React.FC = () => {
                         <p className='w-20 truncate font-bold sm:w-48'>
                           {game.en_name}
                         </p>
-                        <p className='mr-8 mt-1 text-sm'>
+                        <p className='mr-8 mt-0.5 text-sm'>
                           {formatTimestampz(created_at)}
                         </p>
                       </div>
@@ -130,7 +130,7 @@ const MyReviews: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  {text && <p className='break-all p-1'>{text}</p>}
+                  {text && <p className='break-all p-1 text-sm'>{text}</p>}
                 </div>
               ),
             )}
