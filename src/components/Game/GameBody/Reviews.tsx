@@ -18,7 +18,7 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
   const getGameReviews = async () => {
     const { data } = await supabase
       .from('reviews')
-      .select('*')
+      .select()
       .eq('game_id', gameId)
       .order('created_at', { ascending: false })
 
@@ -54,42 +54,43 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
           No reviews yet
         </span>
       )}
-      <div className=''>
+      <div className='flex flex-col gap-1'>
         {reviews.map((review) => (
-          <MotionInView key={review.id}>
-            <div className='flex flex-col gap-1 rounded bg-neutral-800 px-2 py-1 text-sm'>
-              <div className='flex justify-between'>
-                <div className='flex gap-3'>
-                  <div className='flex items-center gap-1'>
-                    <Star className='h-4 w-4' />
-                    <p className='text-sm font-light opacity-60'>
-                      {review.rating}/5
-                    </p>
-                  </div>
-                  <div className='flex items-center gap-1'>
-                    <PlaySquare className='h-4 w-4' />
-                    <p className='text-sm font-light opacity-60'>
-                      {review.status}
-                    </p>
-                  </div>
-                  <div className='flex items-center gap-1'>
-                    <CircleDollarSign className='h-4 w-4' />
-                    <p className='text-sm font-light opacity-60'>
-                      {review.investment}
-                    </p>
-                  </div>
+          <MotionInView
+            key={review.id}
+            styles='flex flex-col gap-1 rounded bg-neutral-800/80 px-2 py-1 text-sm'
+          >
+            <div className='flex justify-between'>
+              <div className='flex gap-3'>
+                <div className='flex items-center gap-1'>
+                  <Star className='h-4 w-4' />
+                  <p className='text-sm font-light opacity-60'>
+                    {review.rating}/5
+                  </p>
                 </div>
-                <span className='opacity-60'>
-                  {formatTimestampz(review.created_at)}
-                </span>
+                <div className='flex items-center gap-1'>
+                  <PlaySquare className='h-4 w-4' />
+                  <p className='text-sm font-light opacity-60'>
+                    {review.status}
+                  </p>
+                </div>
+                <div className='flex items-center gap-1'>
+                  <CircleDollarSign className='h-4 w-4' />
+                  <p className='text-sm font-light opacity-60'>
+                    {review.investment}
+                  </p>
+                </div>
               </div>
-              {review.text && (
-                <>
-                  <Separator />
-                  <p className='break-all text-sm'>{review.text}</p>
-                </>
-              )}
+              <span className='opacity-60'>
+                {formatTimestampz(review.created_at)}
+              </span>
             </div>
+            {review.text && (
+              <>
+                <Separator />
+                <p className='break-all text-sm'>{review.text}</p>
+              </>
+            )}
           </MotionInView>
         ))}
       </div>

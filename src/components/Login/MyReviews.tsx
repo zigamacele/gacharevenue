@@ -2,6 +2,7 @@ import { CircleDollarSign, PlaySquare, Star, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
 import {
   Dialog,
   DialogContent,
@@ -11,6 +12,7 @@ import {
   DialogTrigger,
 } from '@/lib/shadcn/ui/dialog.tsx'
 import { DropdownMenuItem } from '@/lib/shadcn/ui/dropdown-menu.tsx'
+import { Separator } from '@/lib/shadcn/ui/separator.tsx'
 import { cn } from '@/lib/shadcn/utils.ts'
 
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
@@ -61,23 +63,18 @@ const MyReviews: React.FC = () => {
           </DialogDescription>
         </DialogHeader>
         {myReviews.length ? (
-          <section className='no-scrollbar flex max-h-[20em] flex-col gap-2 overflow-scroll'>
+          <section className='no-scrollbar flex max-h-[20em] flex-col gap-1 overflow-scroll rounded border border-neutral-700 bg-neutral-950/40 p-1'>
             {myReviews.map(
               ({ id, rating, status, investment, text, game, created_at }) => (
-                <div
+                <MotionInView
                   key={id}
-                  className='relative flex flex-col rounded border border-neutral-700 bg-neutral-800/60 py-0.5'
+                  styles='relative flex flex-col rounded bg-neutral-800/80 p-1 gap-1'
                 >
                   <RegionTooltip
                     gameRegion={game.region}
                     className='right-0.5 top-0.5'
                   />
-                  <div
-                    className={cn(
-                      'flex items-center gap-3',
-                      text && 'border-b border-neutral-700',
-                    )}
-                  >
+                  <div className={cn('flex items-center gap-3')}>
                     <Link
                       to={`/game/${game.id}`}
                       onClick={() => setOpen(false)}
@@ -88,7 +85,7 @@ const MyReviews: React.FC = () => {
                         src={game.icon}
                         alt={game.name}
                         blurhash={game.blurhash}
-                        className='ml-1 h-10 w-10 rounded-l'
+                        className='h-10 w-10 rounded-l'
                       />
                     </Link>
                     <div className='flex w-full flex-col'>
@@ -96,7 +93,7 @@ const MyReviews: React.FC = () => {
                         <p className='w-20 truncate font-bold sm:w-48'>
                           {game.en_name}
                         </p>
-                        <p className='mr-8 mt-0.5 text-sm'>
+                        <p className='mb-0.5 mr-8 text-sm'>
                           {formatTimestampz(created_at)}
                         </p>
                       </div>
@@ -123,15 +120,20 @@ const MyReviews: React.FC = () => {
                         </div>
                         <Tooltip text='Delete Review'>
                           <Trash2
-                            className='mr-1.5 mt-0.5 h-4 w-4 cursor-pointer text-red-600 hover:opacity-60'
+                            className='mr-0.5 mt-0.5 h-3.5 w-3.5 cursor-pointer text-red-600 hover:opacity-60'
                             onClick={() => void deleteMyReview(id)}
                           />
                         </Tooltip>
                       </div>
                     </div>
                   </div>
-                  {text && <p className='break-all p-1 text-sm'>{text}</p>}
-                </div>
+                  {text && (
+                    <>
+                      <Separator />
+                      <p className='break-all text-sm'>{text}</p>
+                    </>
+                  )}
+                </MotionInView>
               ),
             )}
           </section>
