@@ -4,9 +4,12 @@ import { useEffect, useState } from 'react'
 import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
 import { Separator } from '@/lib/shadcn/ui/separator.tsx'
 
+import useCurrentDevice from '@/hooks/useCurrentDevice.tsx'
+
 import supabase from '@/config/supabase.ts'
+import { ReviewInvestment, ReviewStatus } from '@/constants/reviews.ts'
 import { unsubscribeReviewUpdates } from '@/utils/supabase.ts'
-import { formatTimestampz } from '@/utils/timeDate.ts'
+import { formatTimestampz, formatTimestampzShort } from '@/utils/timeDate.ts'
 
 import { ReviewOutput } from '@/types/supabase.ts'
 
@@ -15,6 +18,7 @@ interface ReviewsProps {
 }
 const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
   const [reviews, setReviews] = useState<ReviewOutput[]>([])
+  const isMobile = useCurrentDevice()
   const getGameReviews = async () => {
     const { data } = await supabase
       .from('reviews')
@@ -54,7 +58,7 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
           No reviews yet
         </span>
       )}
-      <div className='flex flex-col gap-1'>
+      <div className='flex flex-col gap-3'>
         {reviews.map((review) => (
           <MotionInView
             duration={0.6}
@@ -72,18 +76,24 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
                 <div className='flex items-center gap-1'>
                   <PlaySquare className='h-4 w-4' />
                   <p className='text-sm font-light opacity-60'>
-                    {review.status}
+                    {ReviewStatus[review.status as keyof typeof ReviewStatus]}
                   </p>
                 </div>
                 <div className='flex items-center gap-1'>
                   <CircleDollarSign className='h-4 w-4' />
                   <p className='text-sm font-light opacity-60'>
-                    {review.investment}
+                    {
+                      ReviewInvestment[
+                        review.investment as keyof typeof ReviewInvestment
+                      ]
+                    }
                   </p>
                 </div>
               </div>
               <span className='opacity-60'>
-                {formatTimestampz(review.created_at)}
+                {!isMobile
+                  ? formatTimestampz(review.created_at)
+                  : formatTimestampzShort(review.created_at)}
               </span>
             </div>
             {review.text && (

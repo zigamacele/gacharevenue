@@ -120,7 +120,7 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
         <DialogHeader className='z-50 mt-4'>
           <DialogTitle>{game.en_name}</DialogTitle>
           <div className='flex justify-center gap-4 opacity-60 sm:justify-normal'>
-            <span>
+            <span className='hidden sm:block'>
               <p className='text-xs opacity-60'>Developer</p>
               <p className='max-w-[8em] truncate'>{game.developer}</p>
             </span>

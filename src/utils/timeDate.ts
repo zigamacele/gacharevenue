@@ -27,6 +27,10 @@ export const formatTimestampz = (timestampz: string) => {
   return new Date(timestampz).toLocaleString()
 }
 
+export const formatTimestampzShort = (timestampz: string) => {
+  return dayjs(timestampz).format('MM/DD')
+}
+
 export const humanizeTable = (table: string) => {
   const splitTable = table.split('-')
 
