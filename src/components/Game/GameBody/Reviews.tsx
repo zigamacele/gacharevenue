@@ -57,8 +57,9 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
       <div className='flex flex-col gap-1'>
         {reviews.map((review) => (
           <MotionInView
+            duration={0.6}
             key={review.id}
-            styles='flex flex-col gap-1 rounded bg-neutral-800/80 px-2 py-1 text-sm'
+            styles='flex flex-col gap-1 rounded bg-neutral-800/80 px-2 py-1.5 text-sm'
           >
             <div className='flex justify-between'>
               <div className='flex gap-3'>
@@ -88,7 +89,9 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
             {review.text && (
               <>
                 <Separator />
-                <p className='break-all text-sm'>{review.text}</p>
+                <p className='hyphens-auto break-words px-2 text-sm'>
+                  {review.text}
+                </p>
               </>
             )}
           </MotionInView>
