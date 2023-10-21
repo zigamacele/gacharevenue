@@ -109,13 +109,13 @@ const MyReviews: React.FC = () => {
                           </div>
                           <div className='flex items-center gap-1'>
                             <PlaySquare className='h-4 w-4' />
-                            <p className='text-sm font-light opacity-60'>
+                            <p className='text-sm font-light capitalize opacity-60'>
                               {status}
                             </p>
                           </div>
                           <div className='flex items-center gap-1'>
                             <CircleDollarSign className='h-4 w-4' />
-                            <p className='text-sm font-light opacity-60'>
+                            <p className='text-sm font-light capitalize opacity-60'>
                               {investment}
                             </p>
                           </div>
