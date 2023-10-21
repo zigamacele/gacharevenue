@@ -58,7 +58,7 @@ const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
           No reviews yet
         </span>
       )}
-      <div className='flex flex-col gap-3'>
+      <div className='flex flex-col gap-1'>
         {reviews.map((review) => (
           <MotionInView
             duration={0.6}
