@@ -36,6 +36,7 @@ const MyReviews: React.FC = () => {
       .from('reviews')
       .select('*, game:games ( * )')
       .eq('user_id', user?.id)
+      .order('created_at', { ascending: true })
     if (data) setMyReviews(data)
   }
 
@@ -67,6 +68,7 @@ const MyReviews: React.FC = () => {
             {myReviews.map(
               ({ id, rating, status, investment, text, game, created_at }) => (
                 <MotionInView
+                  duration={0.6}
                   key={id}
                   styles='relative flex flex-col rounded bg-neutral-800/80 p-1 gap-1'
                 >
@@ -130,7 +132,7 @@ const MyReviews: React.FC = () => {
                   {text && (
                     <>
                       <Separator />
-                      <p className='break-all text-sm'>{text}</p>
+                      <p className='hyphens-auto break-words text-sm'>{text}</p>
                     </>
                   )}
                 </MotionInView>

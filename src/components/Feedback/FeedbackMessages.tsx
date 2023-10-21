@@ -33,7 +33,7 @@ const FeedbackMessages: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <span className='break-words opacity-60'>
+                <span className='hyphens-auto break-words opacity-60'>
                   {feedback.content}
                 </span>
               </MotionInView>

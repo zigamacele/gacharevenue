@@ -24,7 +24,7 @@ export const previousMonthYear = () => {
 }
 
 export const formatTimestampz = (timestampz: string) => {
-  return dayjs(timestampz).tz('UTC').format('YYYY-MM-DD HH:mm')
+  return new Date(timestampz).toLocaleString()
 }
 
 export const humanizeTable = (table: string) => {
