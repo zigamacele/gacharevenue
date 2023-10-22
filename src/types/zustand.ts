@@ -1,6 +1,6 @@
 import { User } from '@supabase/supabase-js'
 
-import { GraveyardOutput, QueryOutput } from './supabase'
+import { GraveyardOutput, QueryOutput, ReviewOutput } from './supabase'
 
 export interface TableControlsState {
   search: string
@@ -56,4 +56,10 @@ export interface GraveyardStore {
 export interface UserStore {
   user: User | undefined
   setUser: (user: User | undefined) => void
+}
+
+export interface ReviewStore {
+  reviews: ReviewOutput[]
+  rating: string | number
+  setReviews: (reviews: ReviewOutput[]) => void
 }

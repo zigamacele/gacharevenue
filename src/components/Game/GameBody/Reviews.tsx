@@ -1,55 +1,20 @@
 import { CircleDollarSign, PlaySquare, Star } from 'lucide-react'
-import { useEffect, useState } from 'react'
 
 import MotionInView from '@/lib/framer-motion/MotionInView.tsx'
 import { Separator } from '@/lib/shadcn/ui/separator.tsx'
 
 import useCurrentDevice from '@/hooks/useCurrentDevice.tsx'
 
-import supabase from '@/config/supabase.ts'
 import { ReviewInvestment, ReviewStatus } from '@/constants/reviews.ts'
-import { unsubscribeReviewUpdates } from '@/utils/supabase.ts'
 import { formatTimestampz, formatTimestampzShort } from '@/utils/timeDate.ts'
 
 import { ReviewOutput } from '@/types/supabase.ts'
 
 interface ReviewsProps {
-  gameId: number
+  reviews: ReviewOutput[]
 }
-const Reviews: React.FC<ReviewsProps> = ({ gameId }) => {
-  const [reviews, setReviews] = useState<ReviewOutput[]>([])
+const Reviews: React.FC<ReviewsProps> = ({ reviews }) => {
   const isMobile = useCurrentDevice()
-  const getGameReviews = async () => {
-    const { data } = await supabase
-      .from('reviews')
-      .select()
-      .eq('game_id', gameId)
-      .order('created_at', { ascending: false })
-
-    if (data) {
-      setReviews(data)
-    }
-  }
-
-  useEffect(() => {
-    const reviewChanges = supabase
-      .channel('reviews')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-        },
-        () => {
-          void getGameReviews()
-        },
-      )
-      .subscribe()
-
-    void getGameReviews()
-
-    return () => void unsubscribeReviewUpdates(reviewChanges)
-  }, [])
 
   return (
     <section className='relative mt-12 h-80 w-full rounded-md border border-neutral-700 bg-neutral-950/40 p-1'>

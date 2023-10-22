@@ -7,6 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/lib/shadcn/ui/tabs'
 
 import Reviews from '@/components/Game/GameBody/Reviews.tsx'
 
+import useReviewStore from '@/stores/review-store.ts'
+
 import { prepareBarChartData, prepareLineChartData } from '@/utils/charts'
 
 import Tooltip from '../Tooltip'
@@ -20,6 +22,7 @@ interface GameBodyProps {
 
 const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
   const [content, setContent] = useState<string>('charts')
+  const { reviews } = useReviewStore()
 
   const setTabsHelper = (tables: string[]) => {
     const newTabs = []
@@ -51,7 +54,7 @@ const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
           </TabsTrigger>
         </TabsList>
       </Tabs>
-      {content === 'reviews' && <Reviews gameId={currentGame.id} />}
+      {content === 'reviews' && <Reviews reviews={reviews} />}
       {content === 'charts' && (
         <Tabs
           defaultValue='bar'
