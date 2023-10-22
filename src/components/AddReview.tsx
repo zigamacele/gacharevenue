@@ -110,9 +110,9 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
         }}
       >
         <Tooltip text='Leave Review'>
-          <div className='div-shrink flex h-8 w-24 items-center justify-center gap-2 rounded border border-neutral-800 bg-neutral-900 text-center text-sm transition-all hover:bg-neutral-800'>
-            <Star className='h-4 w-4 text-amber-400 opacity-80' />
-            <p className='to-hidden'>Review</p>
+          <div className='flex h-8 w-[3em] items-center justify-center gap-2 rounded border border-neutral-800 bg-neutral-900 text-center text-sm transition-all hover:bg-neutral-800'>
+            <Star className='h-4 w-4 text-amber-400' />
+            {/*<span className='to-hidden'>Review</span>*/}
           </div>
         </Tooltip>
       </DialogTrigger>

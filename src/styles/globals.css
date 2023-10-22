@@ -146,7 +146,7 @@ body::-webkit-scrollbar {
     @apply w-24;
   }
   100% {
-    @apply w-10;
+    @apply w-[3em];
   }
 }
 
