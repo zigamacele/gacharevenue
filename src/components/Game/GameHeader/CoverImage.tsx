@@ -8,6 +8,7 @@ import BackButton from '@/components/Buttons/BackButton.tsx'
 import PinButton from '@/components/Buttons/PinButton'
 import RemoveButton from '@/components/Buttons/RemoveButton'
 import ImageComponent from '@/components/ImageComponent.tsx'
+import Rating from '@/components/Rating.tsx'
 import Tooltip from '@/components/Tooltip'
 
 import RegionTooltip from './CoverImage/RegionTooltip'
@@ -36,8 +37,9 @@ const CoverImage: React.FC<CoverImageProps> = ({
         className='h-40 w-full rounded-t-md border border-neutral-700 object-cover'
       />
       <BackButton />
+      <Rating className='absolute bottom-1 left-1 z-40' />
       <AddReview
-        triggerClassName='absolute left-12 top-1 z-40'
+        triggerClassName='absolute left-[3.15em] top-1 z-40'
         game={currentGame}
       />
       <RegionTooltip gameRegion={currentGame.region} />

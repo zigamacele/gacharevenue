@@ -8,24 +8,61 @@ import GameBody from '@/components/Game/GameBody'
 import GameHeader from '@/components/Game/GameHeader'
 
 import useBackgroundStore from '@/stores/background-store'
+import useReviewStore from '@/stores/review-store.ts'
 import useSupabaseStore from '@/stores/supabase-store'
 
+import supabase from '@/config/supabase.ts'
 import PageNotFound from '@/layouts/PageNotFound'
+import { unsubscribeReviewUpdates } from '@/utils/supabase.ts'
+
+import { ReviewOutput } from '@/types/supabase.ts'
 
 const Game: React.FC = () => {
   const { id } = useParams()
   const { setBackground } = useBackgroundStore()
-
   const { storage, loading, tables } = useSupabaseStore()
+  const { setReviews } = useReviewStore()
 
   const currentGame = useMemo(
     () => storage.find((game) => game.id === Number(id)),
     [storage, id],
   )
 
+  const getGameReviews = async () => {
+    const { data } = await supabase
+      .from('reviews')
+      .select()
+      .eq('game_id', currentGame?.id)
+      .order('created_at', { ascending: false })
+
+    if (data) {
+      setReviews(data as ReviewOutput[])
+    }
+  }
+
   useEffect(() => {
     if (currentGame) {
       setBackground(currentGame.background, currentGame.blurhash)
+    }
+
+    const reviewChanges = supabase
+      .channel('reviews')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+        },
+        () => {
+          void getGameReviews()
+        },
+      )
+      .subscribe()
+
+    void getGameReviews()
+
+    return () => {
+      void unsubscribeReviewUpdates(reviewChanges)
     }
   }, [currentGame])
 

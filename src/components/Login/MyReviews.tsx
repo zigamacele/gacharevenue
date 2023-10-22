@@ -87,7 +87,7 @@ const MyReviews: React.FC = () => {
                         src={game.icon}
                         alt={game.name}
                         blurhash={game.blurhash}
-                        className='h-10 w-10 rounded-l'
+                        className='h-10 w-10 rounded-l transition-opacity hover:opacity-60'
                       />
                     </Link>
                     <div className='flex w-full flex-col'>
