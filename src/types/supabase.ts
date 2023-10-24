@@ -12,6 +12,8 @@ export interface GameSchema {
   eos: boolean
   new_release: boolean
   hidden: boolean
+  same_name: boolean
+  same_slot: number[] | null
   blurhash: string | null
 }
 
