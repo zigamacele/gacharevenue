@@ -92,10 +92,10 @@ const MyReviews: React.FC = () => {
                     </Link>
                     <div className='flex w-full flex-col'>
                       <div className='flex items-center justify-between'>
-                        <p className='w-20 truncate font-bold sm:w-48'>
+                        <p className='w-48 truncate font-bold'>
                           {game.en_name}
                         </p>
-                        <p className='mb-0.5 mr-8 text-sm'>
+                        <p className='mb-0.5 mr-8 hidden text-sm sm:block'>
                           {formatTimestampz(created_at)}
                         </p>
                       </div>
