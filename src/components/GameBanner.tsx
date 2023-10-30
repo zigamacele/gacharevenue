@@ -31,6 +31,8 @@ const GameBanner: React.FC<OverviewCardProps> = ({
   const navigate = useNavigate()
   const isLoaded = !!game
 
+  if (!game?.[CURRENT_TABLE]?.totalRevenue) return null
+
   return (
     <MotionInView
       y={y}
@@ -40,13 +42,13 @@ const GameBanner: React.FC<OverviewCardProps> = ({
         'group relative flex h-16 w-full flex-col justify-between rounded-lg border border-neutral-800 bg-neutral-900 hover:border-neutral-700',
         !disabled && 'cursor-pointer',
       )}
-      onClick={!disabled ? () => navigate(`/game/${game?.id}`) : undefined}
+      onClick={!disabled ? () => navigate(`/game/${game.id}`) : undefined}
     >
       <span className='absolute z-10 h-full w-full rounded-lg bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent' />
       <ImageComponent
-        blurhash={game?.blurhash}
-        src={game?.background}
-        alt={game?.name}
+        blurhash={game.blurhash}
+        src={game.background}
+        alt={game.name}
         height={64}
         width={128}
         className='absolute h-full w-full rounded-lg object-cover opacity-60 transition-opacity group-hover:opacity-100'
@@ -56,12 +58,12 @@ const GameBanner: React.FC<OverviewCardProps> = ({
           <ImageComponent
             height={28}
             width={28}
-            src={game?.icon}
-            alt={game?.name}
-            blurhash={game?.blurhash}
+            src={game.icon}
+            alt={game.name}
+            blurhash={game.blurhash}
             className='h-7 w-7 rounded transition-all group-hover:scale-125'
           />
-          <RegionTooltip gameRegion={game?.region} className='right-2 top-1' />
+          <RegionTooltip gameRegion={game.region} className='right-2 top-1' />
         </div>
         <div className='flex w-full items-center justify-between'>
           <span className='flex flex-col'>
