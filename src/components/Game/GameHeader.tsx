@@ -42,10 +42,10 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
           </div>
           <div className='flex flex-col justify-between'>
             <div className='flex flex-col'>
-              <span className='w-60 truncate text-xl font-semibold sm:w-80'>
+              <span className='w-60 truncate text-xl font-semibold sm:w-72'>
                 {currentGame.name}
               </span>
-              <span className='w-60 truncate text-sm font-light opacity-40 sm:w-80'>
+              <span className='w-60 truncate text-sm font-light opacity-40 sm:w-72'>
                 {currentGame.name !== currentGame.en_name &&
                   currentGame.en_name}
               </span>

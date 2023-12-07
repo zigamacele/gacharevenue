@@ -71,7 +71,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
             alt={data.name}
             height={32}
             width={240}
-            className='flex h-8 w-[17.2em] items-center object-cover'
+            className='flex h-8 w-[16em] items-center object-cover'
           />
         </TableCell>
       )}
