@@ -78,10 +78,12 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
                 <Separator orientation='vertical' className='h-16 opacity-40' />
               </>
             )}
-            <MonthlyStatistics
-              currentGame={currentGame}
-              table={CURRENT_TABLE}
-            />
+            {currentGame[CURRENT_TABLE]?.totalRevenue && (
+              <MonthlyStatistics
+                currentGame={currentGame}
+                table={CURRENT_TABLE}
+              />
+            )}
           </div>
         </div>
       </div>
