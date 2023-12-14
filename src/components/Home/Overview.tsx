@@ -4,12 +4,11 @@ import GameBanner from '@/components/GameBanner.tsx'
 
 import useSupabaseStore from '@/stores/supabase-store'
 
-import { CURRENT_TABLE } from '@/constants/tables'
+import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { formatCurrency } from '@/utils/currency'
 import {
   compareMonths,
   compareRevenue,
-  findInStorage,
   formatNumber,
   getTotalStatistics,
 } from '@/utils/overview'
@@ -17,7 +16,7 @@ import {
 import OverviewCard from './Overview/OverviewCard'
 
 const Overview: React.FC = () => {
-  const { storage, newReleases } = useSupabaseStore()
+  const { storage } = useSupabaseStore()
   const sortedByPercentage = useMemo(() => compareRevenue(storage), [storage])
 
   return (
@@ -58,9 +57,12 @@ const Overview: React.FC = () => {
           game={sortedByPercentage[sortedByPercentage.length - 1]}
         />
       </div>
-      {newReleases.map((id) => (
-        <GameBanner game={findInStorage(storage, id)} key={id} />
-      ))}
+      {storage.map((game) => {
+        if (game.new_release && !game[PREVIOUS_TABLE]?.totalRevenue) {
+          return <GameBanner game={game} key={game.id} />
+        }
+        return null
+      })}
     </section>
   )
 }

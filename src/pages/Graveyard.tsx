@@ -11,7 +11,7 @@ const Graveyard: React.FC = () => {
   const { setBackground } = useBackgroundStore()
 
   useEffect(() => {
-    void getGraveyardData()
+    getGraveyardData()
     setBackground(graveyardBackground)
   }, [])
   return (

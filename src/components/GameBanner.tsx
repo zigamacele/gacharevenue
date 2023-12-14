@@ -63,7 +63,10 @@ const GameBanner: React.FC<OverviewCardProps> = ({
             blurhash={game.blurhash}
             className='h-7 w-7 rounded transition-all group-hover:scale-125'
           />
-          <RegionTooltip gameRegion={game.region} className='right-2 top-1' />
+          <RegionTooltip
+            gameRegion={game.region}
+            className='right-1.5 top-1.5'
+          />
         </div>
         <div className='flex w-full items-center justify-between'>
           <span className='flex flex-col'>
@@ -102,18 +105,20 @@ const GameBanner: React.FC<OverviewCardProps> = ({
             </div>
           </span>
           <div className='mr-8 hidden items-center gap-4 xl:flex'>
-            <div className='flex flex-col'>
-              <p className='text-right text-sm font-light opacity-60'>
-                Downloads
-              </p>
-              {isLoaded ? (
-                <p className='text-right'>
-                  {formatCurrencyCompact(game[CURRENT_TABLE]?.totalDownloads)}
+            {game[CURRENT_TABLE]?.totalDownloads && (
+              <div className='flex flex-col'>
+                <p className='text-right text-sm font-light opacity-60'>
+                  Downloads
                 </p>
-              ) : (
-                <Skeleton className='h-4 w-24' />
-              )}
-            </div>
+                {isLoaded ? (
+                  <p className='text-right'>
+                    {formatCurrencyCompact(game[CURRENT_TABLE]?.totalDownloads)}
+                  </p>
+                ) : (
+                  <Skeleton className='h-4 w-24' />
+                )}
+              </div>
+            )}
             <div>
               <p className='text-right text-sm font-light opacity-60'>
                 Revenue

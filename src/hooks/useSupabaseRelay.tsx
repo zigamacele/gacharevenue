@@ -32,7 +32,6 @@ const useSupabaseRelay = () => {
         lastUpdated,
         currentTable,
         previousTable,
-        newReleases,
         tables,
         graveyardBackground,
       } = data[0] as ConfigData
@@ -51,7 +50,6 @@ const useSupabaseRelay = () => {
       setProperty('lastUpdated', lastUpdated)
       setProperty('currentTable', currentTable)
       setProperty('previousTable', previousTable)
-      setProperty('newReleases', newReleases)
       setProperty('tables', tables)
       setGraveyardBackground(graveyardBackground)
       if (pathname === GRAVEYARD) setBackground(graveyardBackground)
