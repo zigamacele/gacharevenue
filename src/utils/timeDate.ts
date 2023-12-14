@@ -37,6 +37,12 @@ export const humanizeTable = (table: string) => {
   return dayjs(`${splitTable[1]}-${splitTable[0]}-01`).format('MMM YYYY')
 }
 
+export const humanizeTableShort = (table: string) => {
+  const splitTable = table.split('-')
+
+  return dayjs(`${splitTable[1]}-${splitTable[0]}-01`).format('MMM YY')
+}
+
 export const formatDate = (date: string) => {
   return dayjs(date).format('MMMM Do, YYYY')
 }

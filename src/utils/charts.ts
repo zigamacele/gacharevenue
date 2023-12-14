@@ -1,6 +1,6 @@
 import { CURRENT_TABLE } from '@/constants/tables'
 
-import { humanizeTable } from './timeDate'
+import { humanizeTable, humanizeTableShort } from './timeDate'
 
 import { BarDatum } from '@/types/nivo'
 import { QueryOutput } from '@/types/supabase'
@@ -52,7 +52,7 @@ export const prepareBarChartData = (data: QueryOutput[], tables: string[]) => {
       }
       output[table] = {
         ...output[table],
-        month: humanizeTable(table),
+        month: humanizeTableShort(table),
         [`${game.en_name} (${game.region})`]: game[table]?.totalRevenue ?? 0,
       }
     }
