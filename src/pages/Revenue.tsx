@@ -1,10 +1,11 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
 import RevenueControls from '@/components/Revenue/RevenueControls'
 import RevenueTable from '@/components/Revenue/RevenueTable'
 
+import useGraveyardStore from '@/stores/graveyard-store'
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
 
@@ -22,6 +23,11 @@ const Revenue: React.FC = () => {
     showCombinedRevenue,
   } = useRevenueTableControls()
   const { loading, storage } = useSupabaseStore()
+  const { eos, maintenance, getGraveyardData } = useGraveyardStore()
+
+  useEffect(() => {
+    getGraveyardData()
+  }, [])
 
   const combinedRevenue = useMemo(() => {
     return combineSameGameRevenue(storage)
@@ -38,6 +44,8 @@ const Revenue: React.FC = () => {
           <RevenueTable
             data={queryFilterSort({
               data: TableData,
+              eos,
+              maintenance,
               search,
               pinned,
               removed,

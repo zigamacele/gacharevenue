@@ -23,6 +23,7 @@ interface RevenueTableRowProps {
   isMobile: boolean
   previousMonth: { [key: string]: number }
   showEditSection: boolean
+  eosIds: number[]
 }
 
 const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
@@ -31,6 +32,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
   isMobile,
   previousMonth,
   showEditSection,
+  eosIds,
 }) => {
   const region = getRegion(data['region'])
   const currentRevenue = data[CURRENT_TABLE]?.totalRevenue ?? 0
@@ -90,9 +92,14 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
         className={cn(
           'border-l border-neutral-800 bg-red-600 text-right',
           currentRevenue >= previousRevenue && 'bg-green-600',
+          eosIds.includes(data.id) &&
+            !currentRevenue &&
+            'bg-neutral-600 text-center',
         )}
       >
-        {!isMobile
+        {eosIds.includes(data.id) && !currentRevenue
+          ? '☠️'
+          : !isMobile
           ? formatCurrency(currentRevenue)
           : formatCurrencyCompact(currentRevenue)}
       </TableCell>

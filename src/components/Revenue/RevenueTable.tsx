@@ -4,6 +4,7 @@ import { Table, TableBody, TableHeader } from '@/lib/shadcn/ui/table'
 
 import useCurrentDevice from '@/hooks/useCurrentDevice'
 
+import useGraveyardStore from '@/stores/graveyard-store'
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { previousMonthSort } from '@/utils/sorting'
@@ -23,11 +24,13 @@ const RevenueTable: React.FC<RevenueTableProps> = ({
   showEditSection,
 }) => {
   const { sortAscending } = useRevenueTableControls()
+  const { eos } = useGraveyardStore()
   const previousMonth = useMemo(
     () => previousMonthSort(data, sortAscending),
     [data],
   )
   const isMobile = useCurrentDevice()
+  const eosIds = useMemo(() => eos.map((game) => game.id), [eos])
 
   return (
     <section className='pb-4 pt-2 sm:px-2'>
@@ -42,6 +45,7 @@ const RevenueTable: React.FC<RevenueTableProps> = ({
               data={game}
               index={index}
               isMobile={isMobile}
+              eosIds={eosIds}
               previousMonth={previousMonth}
               showEditSection={showEditSection}
             />

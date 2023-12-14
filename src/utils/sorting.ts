@@ -1,6 +1,6 @@
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 
-import { QueryOutput } from '@/types/supabase'
+import { GraveyardOutput, QueryOutput } from '@/types/supabase'
 
 export interface PreviousMonthIndexes {
   [key: string]: number
@@ -27,6 +27,8 @@ export const previousMonthSort = (
 
 interface QueryFilterSortProps {
   data: QueryOutput[]
+  eos: GraveyardOutput[]
+  maintenance: GraveyardOutput[]
   search: string
   pinned: number[]
   removed: number[]
@@ -37,6 +39,8 @@ interface QueryFilterSortProps {
 
 export const queryFilterSort = ({
   data,
+  eos,
+  maintenance,
   search,
   pinned,
   removed,
@@ -48,6 +52,8 @@ export const queryFilterSort = ({
     const gameId = game.id
     const isPinned = pinned.includes(gameId)
     const isRemoved = removed.includes(gameId)
+    const maintenanceIds = maintenance.map((item) => item.id)
+    const eosIds = eos.map((item) => item.id)
 
     if (search.length) {
       const gameName = game.en_name.toLowerCase()
@@ -58,7 +64,15 @@ export const queryFilterSort = ({
       }
     }
 
-    if (!game[CURRENT_TABLE]?.totalRevenue || (isRemoved && !showEditSection)) {
+    if (game[PREVIOUS_TABLE]?.totalRevenue && eosIds.includes(gameId)) {
+      return true
+    }
+
+    if (
+      !game[CURRENT_TABLE]?.totalRevenue ||
+      (isRemoved && !showEditSection) ||
+      maintenanceIds.includes(gameId)
+    ) {
       return false
     }
 
