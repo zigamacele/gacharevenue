@@ -1,6 +1,6 @@
 import { CURRENT_TABLE } from '@/constants/tables'
 
-import { humanizeTable, humanizeTableShort } from './timeDate'
+import { humanizeTableShort } from './timeDate'
 
 import { BarDatum } from '@/types/nivo'
 import { QueryOutput } from '@/types/supabase'
@@ -25,7 +25,7 @@ export const prepareLineChartData = (data: QueryOutput[], tables: string[]) => {
       }
 
       return {
-        x: humanizeTable(table),
+        x: humanizeTableShort(table),
         y: game[table]?.totalRevenue ?? 0,
       }
     })
