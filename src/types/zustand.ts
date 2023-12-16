@@ -8,6 +8,7 @@ export interface TableControlsState {
   removed: number[]
   sortAscending: boolean
   showPinned: boolean
+  showMaintenance: boolean
   showEditSection: boolean
   showCombinedRevenue: boolean
   updateSearch: (value: string) => void

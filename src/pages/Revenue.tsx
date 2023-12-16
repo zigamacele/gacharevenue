@@ -19,6 +19,7 @@ const Revenue: React.FC = () => {
     pinned,
     removed,
     showPinned,
+    showMaintenance,
     showEditSection,
     showCombinedRevenue,
   } = useRevenueTableControls()
@@ -50,6 +51,7 @@ const Revenue: React.FC = () => {
               pinned,
               removed,
               showPinned,
+              showMaintenance,
               showEditSection,
               sortAscending,
             })}

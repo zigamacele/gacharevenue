@@ -12,6 +12,7 @@ const useRevenueTableControls = create<TableControlsState>()((set) => ({
   showPinned: false,
   showEditSection: false,
   showCombinedRevenue: false,
+  showMaintenance: false,
 
   updateSearch: (value: string) => set(() => ({ search: value })),
 

@@ -1,4 +1,11 @@
-import { ArrowDown10, ArrowUp10, Combine, Pin, PinOff } from 'lucide-react'
+import {
+  ArrowDown10,
+  ArrowUp10,
+  Combine,
+  Construction,
+  Pin,
+  PinOff,
+} from 'lucide-react'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
@@ -9,11 +16,29 @@ import useRevenueTableControls from '@/stores/revenue-table-controls'
 import Toggle from '../Toggle'
 
 const RightControls: React.FC = () => {
-  const { sortAscending, showPinned, toggle, pinned, showCombinedRevenue } =
-    useRevenueTableControls()
+  const {
+    sortAscending,
+    showPinned,
+    showMaintenance,
+    toggle,
+    pinned,
+    showCombinedRevenue,
+  } = useRevenueTableControls()
   return (
     <>
       <MonthSwitcher />
+      <Separator orientation='vertical' className='h-5 opacity-60' />
+      <Toggle
+        onClick={() => toggle('showMaintenance')}
+        pressed={showMaintenance}
+        tooltip={
+          !showMaintenance
+            ? 'Show Games in Maintenance Mode'
+            : 'Hide Games in Maintenance Mode'
+        }
+      >
+        <Construction size={18} />
+      </Toggle>
       <Separator orientation='vertical' className='h-5 opacity-60' />
       <Toggle
         onClick={() => toggle('showPinned')}

@@ -33,6 +33,7 @@ interface QueryFilterSortProps {
   pinned: number[]
   removed: number[]
   showPinned: boolean
+  showMaintenance: boolean
   showEditSection: boolean
   sortAscending: boolean
 }
@@ -45,6 +46,7 @@ export const queryFilterSort = ({
   pinned,
   removed,
   showPinned,
+  showMaintenance,
   showEditSection,
   sortAscending,
 }: QueryFilterSortProps) => {
@@ -71,7 +73,7 @@ export const queryFilterSort = ({
     if (
       !game[CURRENT_TABLE]?.totalRevenue ||
       (isRemoved && !showEditSection) ||
-      maintenanceIds.includes(gameId)
+      (!showMaintenance && maintenanceIds.includes(gameId))
     ) {
       return false
     }
