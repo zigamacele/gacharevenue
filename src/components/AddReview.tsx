@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { Button } from '@/lib/shadcn/ui/button.tsx'
 import {
@@ -11,6 +11,7 @@ import {
 } from '@/lib/shadcn/ui/dialog.tsx'
 import { Textarea } from '@/lib/shadcn/ui/textarea.tsx'
 import { useToast } from '@/lib/shadcn/ui/use-toast.ts'
+import { cn } from '@/lib/shadcn/utils'
 
 import ReviewSelectors from '@/components/AddReview/ReviewSelectors.tsx'
 import StarRating from '@/components/AddReview/StarRating.tsx'
@@ -18,6 +19,7 @@ import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip
 import ImageComponent from '@/components/ImageComponent.tsx'
 import Tooltip from '@/components/Tooltip.tsx'
 
+import useReviewStore from '@/stores/review-store'
 import userStore from '@/stores/user-store.ts'
 
 import supabase from '@/config/supabase.ts'
@@ -39,6 +41,11 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
     text: '',
   })
   const { user } = userStore()
+  const { reviews } = useReviewStore()
+  const userReview = useMemo(
+    () => reviews.find((review) => review.user_id === user?.id),
+    [reviews, user],
+  )
   const { toast } = useToast()
   const isSubmitDisabled =
     !reviewPayload.rating ||
@@ -111,8 +118,12 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
       >
         <Tooltip text='Leave Review'>
           <div className='flex h-8 w-[3em] items-center justify-center gap-2 rounded border border-neutral-800 bg-neutral-900 text-center text-sm transition-all hover:bg-neutral-800'>
-            <Star className='h-4 w-4 text-amber-400' />
-            {/*<span className='to-hidden'>Review</span>*/}
+            <Star
+              className={cn(
+                'h-4 w-4 text-amber-400 transition-all',
+                !!userReview && 'fill-amber-400',
+              )}
+            />
           </div>
         </Tooltip>
       </DialogTrigger>
