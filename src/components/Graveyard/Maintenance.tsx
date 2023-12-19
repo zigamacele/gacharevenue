@@ -19,7 +19,6 @@ const Maintenance: React.FC = () => {
               y={0}
               glowingText='MAINTENANCE'
               glowingStyle={getRegion(games.region).textColor}
-              disabled
             />
           ))}
         </MotionInView>
