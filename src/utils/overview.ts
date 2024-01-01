@@ -39,6 +39,7 @@ export const compareMonths = (data: QueryOutput[], key: string) => {
 }
 
 export const compareRevenue = (data: QueryOutput[]) => {
+  const PERCENTAGE_LIMIT = 1000
   const output: CompareRevenueOutput[] = []
 
   data.forEach((game: QueryOutput) => {
@@ -50,7 +51,11 @@ export const compareRevenue = (data: QueryOutput[]) => {
     const percentage =
       ((currentRevenue - previousRevenue) / previousRevenue) * 100
 
-    if (percentage !== Infinity && previousRevenue) {
+    if (
+      percentage !== Infinity &&
+      previousRevenue &&
+      percentage < PERCENTAGE_LIMIT
+    ) {
       output.push({
         name: en_name,
         difference,
