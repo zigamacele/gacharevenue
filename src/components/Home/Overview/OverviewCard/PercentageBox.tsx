@@ -19,7 +19,12 @@ const PercentageBox: React.FC<PercentageBoxProps> = ({ percentage }) => {
       ) : (
         <TrendingDown width={16} className='text-red-500' />
       )}
-      <span className='text-sm'>{Math.abs(percentage).toFixed(2)}%</span>
+      <span className='text-sm'>
+        {Math.abs(percentage)
+          .toFixed(2)
+          .replace(/\.?0+$/, '')}
+        %
+      </span>
     </div>
   )
 }
