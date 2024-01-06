@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   return (
     <>
       {alerts.length > 0 && <Alerts />}
-      <main className='mb-4 mt-28 flex flex-col items-center gap-4 sm:mt-20'>
+      <main className='mb-4 mt-28 flex flex-col items-center gap-4 sm:mt-44'>
         <Hero />
         <Overview />
       </main>
