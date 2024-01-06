@@ -1,7 +1,7 @@
 import { TableCell, TableRow } from '@/lib/shadcn/ui/table'
 import { cn } from '@/lib/shadcn/utils'
 
-import ImageComponent from '@/components/ImageComponent.tsx'
+import ImageComponent from '@/components/ImageComponent'
 import TrendArrow from '@/components/Revenue/RevenueTable/TrendArrow'
 import Tooltip from '@/components/Tooltip'
 
@@ -66,14 +66,14 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
         )}
       </TableCell>
       {!isMobile && (
-        <TableCell className='border-l border-r border-neutral-800 p-0'>
+        <TableCell className='w-60 border-l border-r border-neutral-800 p-0'>
           <ImageComponent
             src={data.background}
             blurhash={data.blurhash}
             alt={data.name}
             height={32}
             width={240}
-            className='flex h-8 w-[16em] items-center object-cover'
+            className='flex h-8 w-full items-center object-cover'
           />
         </TableCell>
       )}
