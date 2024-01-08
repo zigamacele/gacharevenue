@@ -34,7 +34,7 @@ const Revenue: React.FC = () => {
 
   const STORAGE = useMemo(() => {
     return mode === Mode.MONTHLY ? storage : combineMonthlyRevenue(storage)
-  }, [storage])
+  }, [storage, mode])
 
   const combinedRevenue = useMemo(() => {
     return combineSameGameRevenue(STORAGE)

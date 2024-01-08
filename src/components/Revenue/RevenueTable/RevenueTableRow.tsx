@@ -10,15 +10,16 @@ import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
+import { Mode } from '@/utils/enums'
 import { getRegion } from '@/utils/region'
 
 import EditSection from './EditSection'
 import HoverCard from './HoverCard'
 
-import { QueryOutput } from '@/types/supabase'
+import { QueryYearlyOutput } from '@/types/supabase'
 
 interface RevenueTableRowProps {
-  data: QueryOutput
+  data: QueryYearlyOutput
   index: number
   isMobile: boolean
   previousMonth: { [key: string]: number }
@@ -37,7 +38,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
   const region = getRegion(data['region'])
   const currentRevenue = data[CURRENT_TABLE]?.totalRevenue ?? 0
   const previousRevenue = data[PREVIOUS_TABLE]?.totalRevenue ?? 0
-  const { removed, showPinned } = useRevenueTableControls()
+  const { removed, showPinned, mode } = useRevenueTableControls()
 
   const isSectionRemoved = removed.includes(data.id) && !showPinned
 
@@ -83,26 +84,35 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
       <TableCell className='text-xs sm:text-sm'>
         <HoverCard data={data} />
       </TableCell>
-      <TableCell className='text-right text-neutral-200/80'>
-        {!isMobile
-          ? formatCurrency(previousRevenue)
-          : formatCurrencyCompact(previousRevenue)}
-      </TableCell>
-      <TableCell
-        className={cn(
-          'border-l border-neutral-800 bg-red-600 text-right',
-          currentRevenue >= previousRevenue && 'bg-green-600',
-          eosIds.includes(data.id) &&
-            !currentRevenue &&
-            'bg-neutral-600 text-center',
-        )}
-      >
-        {eosIds.includes(data.id) && !currentRevenue
-          ? '☠️'
-          : !isMobile
-          ? formatCurrency(currentRevenue)
-          : formatCurrencyCompact(currentRevenue)}
-      </TableCell>
+      {mode === Mode.MONTHLY ? (
+        <>
+          <TableCell className='text-right text-neutral-200/80'>
+            {!isMobile
+              ? formatCurrency(previousRevenue)
+              : formatCurrencyCompact(previousRevenue)}
+          </TableCell>
+
+          <TableCell
+            className={cn(
+              'border-l border-neutral-800 bg-red-600 text-right',
+              currentRevenue >= previousRevenue && 'bg-green-600',
+              eosIds.includes(data.id) &&
+                !currentRevenue &&
+                'bg-neutral-600 text-center',
+            )}
+          >
+            {eosIds.includes(data.id) && !currentRevenue
+              ? '☠️'
+              : !isMobile
+              ? formatCurrency(currentRevenue)
+              : formatCurrencyCompact(currentRevenue)}
+          </TableCell>
+        </>
+      ) : (
+        <TableCell className={cn('w-52 text-right')}>
+          {formatCurrency(data.yearlyRevenue)}
+        </TableCell>
+      )}
     </TableRow>
   )
 }

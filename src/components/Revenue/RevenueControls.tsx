@@ -16,7 +16,7 @@ const RevenueControls: React.FC = () => {
     useRevenueTableControls()
 
   return (
-    <section className='mx-2 mt-2 flex items-center justify-between'>
+    <section className='mx-2 mt-2 flex items-center justify-between gap-2'>
       <div className='flex items-center gap-2'>
         <Toggle
           onClick={() => toggle('showEditSection')}
@@ -26,7 +26,7 @@ const RevenueControls: React.FC = () => {
           <ClipboardEdit size={20} />
         </Toggle>
         <Tabs value={mode}>
-          <TabsList className='center flex rounded-md border-neutral-700/80'>
+          <TabsList className='center flex rounded-md border-neutral-700/80 bg-neutral-950'>
             <TabsTrigger
               value={Mode.MONTHLY}
               onClick={() => updateMode(Mode.MONTHLY)}
@@ -42,7 +42,7 @@ const RevenueControls: React.FC = () => {
           </TabsList>
         </Tabs>
         <Input
-          className='w-52 rounded border-neutral-700/80 bg-neutral-950 sm:w-64'
+          className='w-full rounded border-neutral-700/80 bg-neutral-950 sm:w-64'
           placeholder='Search'
           value={search}
           onChange={(event) => updateSearch(event.target.value)}
