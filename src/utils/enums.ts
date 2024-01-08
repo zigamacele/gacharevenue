@@ -4,3 +4,8 @@ export enum SlideDirection {
   UP = 'up',
   DOWN = 'down',
 }
+
+export enum Mode {
+  MONTHLY = 'M',
+  YEARLY = 'Y',
+}

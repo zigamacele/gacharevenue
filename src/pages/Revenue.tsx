@@ -9,11 +9,13 @@ import useGraveyardStore from '@/stores/graveyard-store'
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 import useSupabaseStore from '@/stores/supabase-store'
 
-import { combineSameGameRevenue } from '@/utils/filters'
+import { Mode } from '@/utils/enums'
+import { combineMonthlyRevenue, combineSameGameRevenue } from '@/utils/filters'
 import { queryFilterSort } from '@/utils/sorting'
 
 const Revenue: React.FC = () => {
   const {
+    mode,
     sortAscending,
     search,
     pinned,
@@ -30,15 +32,19 @@ const Revenue: React.FC = () => {
     getGraveyardData()
   }, [])
 
-  const combinedRevenue = useMemo(() => {
-    return combineSameGameRevenue(storage)
+  const STORAGE = useMemo(() => {
+    return mode === Mode.MONTHLY ? storage : combineMonthlyRevenue(storage)
   }, [storage])
 
-  const TableData = showCombinedRevenue ? combinedRevenue : storage
+  const combinedRevenue = useMemo(() => {
+    return combineSameGameRevenue(STORAGE)
+  }, [STORAGE])
+
+  const TableData = showCombinedRevenue ? combinedRevenue : STORAGE
 
   return (
     <main className='flex justify-center'>
-      {!loading && storage.length > 0 && (
+      {!loading && STORAGE.length > 0 && (
         <section className='slide-from-bottom my-2 flex w-full flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 sm:w-[55em]'>
           <RevenueControls />
           <Separator className='mt-2 w-full opacity-40' />

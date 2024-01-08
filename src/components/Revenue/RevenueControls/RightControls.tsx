@@ -13,6 +13,8 @@ import MonthSwitcher from '@/components/Revenue/RevenueControls/MonthSwitcher.ts
 
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
+import { Mode } from '@/utils/enums'
+
 import Toggle from '../Toggle'
 
 const RightControls: React.FC = () => {
@@ -23,6 +25,7 @@ const RightControls: React.FC = () => {
     toggle,
     pinned,
     showCombinedRevenue,
+    mode,
   } = useRevenueTableControls()
   return (
     <>
@@ -49,6 +52,7 @@ const RightControls: React.FC = () => {
         {showPinned ? <PinOff size={18} /> : <Pin size={18} />}
       </Toggle>
       <Toggle
+        disabled={mode === Mode.YEARLY}
         onClick={() => toggle('showCombinedRevenue')}
         pressed={showCombinedRevenue}
         tooltip={

@@ -28,6 +28,9 @@ export interface StatisticsSchema {
 }
 
 export type QueryOutput = GameSchema & { [key: string]: StatisticsSchema }
+export type QueryYearlyOutput = GameSchema & { yearlyRevenue: number } & {
+  [key: string]: StatisticsSchema
+}
 
 export interface FeedbackOutput {
   id: number

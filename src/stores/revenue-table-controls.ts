@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+import { Mode } from '@/utils/enums'
+
 import { TableControlsState } from '@/types/zustand'
 
 const useRevenueTableControls = create<TableControlsState>()((set) => ({
@@ -13,13 +15,14 @@ const useRevenueTableControls = create<TableControlsState>()((set) => ({
   showEditSection: false,
   showCombinedRevenue: false,
   showMaintenance: false,
+  mode: Mode.MONTHLY,
 
   updateSearch: (value: string) => set(() => ({ search: value })),
-
+  updateMode: (mode: Mode) => set(() => ({ mode })),
   toggle: (prop: string) =>
     set((state) => ({ [prop]: !state[prop as keyof TableControlsState] })),
 
-  setState: (prop: string, value: number) =>
+  setState: (prop, value) =>
     set((state) => {
       const propType = prop as keyof TableControlsState
 
