@@ -12,7 +12,7 @@ import { previousMonthSort } from '@/utils/sorting'
 import RevenueTableHeader from './RevenueTable/RevenueTableHeader'
 import RevenueTableRow from './RevenueTable/RevenueTableRow'
 
-import { QueryOutput } from '@/types/supabase'
+import { QueryOutput, QueryYearlyOutput } from '@/types/supabase'
 
 interface RevenueTableProps {
   data: QueryOutput[]
@@ -42,7 +42,7 @@ const RevenueTable: React.FC<RevenueTableProps> = ({
           {data.map((game, index) => (
             <RevenueTableRow
               key={game.id}
-              data={game}
+              data={game as QueryYearlyOutput}
               index={index}
               isMobile={isMobile}
               eosIds={eosIds}
