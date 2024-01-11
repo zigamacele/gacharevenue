@@ -22,6 +22,17 @@ const Navbar: React.FC = () => {
         <Logo logoProps='mt-1' textProps='hidden sm:block' />
       </Link>
       <div className='flex items-center gap-5'>
+        <button
+          className='flex items-center gap-1.5 hover:opacity-60'
+          onClick={() =>
+            window.open('https://recap.gacharevenue.com/', '_blank')
+          }
+        >
+          <p>Recap</p>
+          <p className='flex h-5 items-center justify-center rounded border border-neutral-600 px-1.5 text-[10px]'>
+            NEW
+          </p>
+        </button>
         <CommandMenu />
         <NavigationMenu />
         <Login />
