@@ -42,7 +42,7 @@ const Charts: React.FC = () => {
 
   return (
     <MotionInView styles='mt-2 flex flex-col items-center gap-2'>
-      <div className='h-[70vh] w-full rounded-lg border border-neutral-700 bg-neutral-900 px-2 py-2 pb-16 sm:w-[70vw]'>
+      <div className='h-[70vh] w-full overflow-y-hidden overflow-x-scroll rounded-lg border border-neutral-700 bg-neutral-900 px-2 py-2 pb-16 sm:w-[70vw]'>
         <ChartControls
           selectedChart={selectedChart}
           setSelectedChart={setSelectedChart}
@@ -52,10 +52,10 @@ const Charts: React.FC = () => {
           <Pie data={preparePieChartData(ChartsData)} />
         )}
         {selectedChart === 'line' && (
-          <Line data={prepareLineChartData(ChartsData, tables)} />
+          <Line data={prepareLineChartData(ChartsData, tables)} height='100%' />
         )}
         {selectedChart === 'bar' && (
-          <Bar data={prepareBarChartData(ChartsData, tables)} />
+          <Bar data={prepareBarChartData(ChartsData, tables)} height='100%' />
         )}
       </div>
     </MotionInView>

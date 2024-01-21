@@ -72,12 +72,12 @@ const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
               </Tooltip>
             </TabsTrigger>
           </TabsList>
-          <TabsContent value='bar' className='h-80 w-full'>
+          <TabsContent value='bar' className='w-full overflow-x-scroll'>
             <Bar
               data={prepareBarChartData([currentGame], setTabsHelper(tables))}
             />
           </TabsContent>
-          <TabsContent value='line' className='h-80 w-full'>
+          <TabsContent value='line' className='w-full overflow-x-scroll'>
             <Line
               data={prepareLineChartData([currentGame], setTabsHelper(tables))}
             />

@@ -34,7 +34,7 @@ const NavigationMenu: React.FC = () => {
               <li className='row-span-3'>
                 <NavigationMenuLink asChild>
                   <Link
-                    className='from-muted/50 to-muted group relative flex h-full w-full select-none flex-col justify-end rounded-md border border-neutral-800 bg-[#121212] bg-gradient-to-b p-6 no-underline outline-none transition-all hover:scale-105 hover:border-neutral-700 hover:shadow-lg focus:shadow-md'
+                    className='from-muted/50 to-muted group relative flex h-full w-full select-none flex-col justify-end rounded-md border border-neutral-800 bg-[#121212] bg-gradient-to-b p-6 no-underline outline-none transition-all hover:border-neutral-700 hover:shadow-lg focus:shadow-md'
                     to={REVENUE}
                   >
                     <span className='via-neutral-[#121212]/80 absolute left-0 top-0 z-10 h-32 w-full rounded-t bg-gradient-to-t from-[#121212] to-transparent sm:h-28 lg:h-48' />
@@ -103,7 +103,7 @@ const ListItem: React.FC<ListItemProps> = ({
         <Link
           to={href}
           className={cn(
-            'from-muted/50 to-muted group relative flex h-full w-full select-none flex-col justify-end rounded-md border border-neutral-800 bg-[#121212] bg-gradient-to-b p-3 no-underline outline-none transition-all hover:scale-105 hover:border-neutral-700 hover:shadow-lg focus:shadow-md',
+            'from-muted/50 to-muted transition-allhover:border-neutral-700 group relative flex h-full w-full select-none flex-col justify-end rounded-md border border-neutral-800 bg-[#121212] bg-gradient-to-b p-3 no-underline outline-none hover:shadow-lg focus:shadow-md',
             className,
           )}
         >
