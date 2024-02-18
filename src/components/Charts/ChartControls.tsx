@@ -77,6 +77,7 @@ const ChartControls: React.FC<ChartControlsProps> = ({
         </Toggle>
         {selectedChart === 'pie' && (
           <Toggle
+            disabled
             onClick={() => toggle('showCombinedRevenue')}
             pressed={showCombinedRevenue}
             slideFrom={SlideDirection.LEFT}

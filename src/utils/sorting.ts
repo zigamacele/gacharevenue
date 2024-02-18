@@ -1,5 +1,7 @@
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 
+import { regionalMultiplier } from './globals'
+
 import { GraveyardOutput, QueryOutput } from '@/types/supabase'
 
 export interface PreviousMonthIndexes {
@@ -11,8 +13,14 @@ export const previousMonthSort = (
   sortAscending: boolean,
 ) => {
   const sortedPreviousMonth = [...data].sort((a, b) => {
-    const aRevenue: number = a[PREVIOUS_TABLE]?.totalRevenue ?? 0
-    const bRevenue: number = b[PREVIOUS_TABLE]?.totalRevenue ?? 0
+    const aRevenue: number = regionalMultiplier(
+      a[PREVIOUS_TABLE]?.totalRevenue,
+      a.region,
+    )
+    const bRevenue: number = regionalMultiplier(
+      b[PREVIOUS_TABLE]?.totalRevenue,
+      b.region,
+    )
 
     return sortAscending ? aRevenue - bRevenue : bRevenue - aRevenue
   })
@@ -86,8 +94,14 @@ export const queryFilterSort = ({
   })
 
   const sorting = [...filtered].sort((a, b) => {
-    const aRevenue = a[CURRENT_TABLE]?.totalRevenue ?? 0
-    const bRevenue = b[CURRENT_TABLE]?.totalRevenue ?? 0
+    const aRevenue = regionalMultiplier(
+      a[CURRENT_TABLE]?.totalRevenue,
+      a.region,
+    )
+    const bRevenue = regionalMultiplier(
+      b[CURRENT_TABLE]?.totalRevenue,
+      b.region,
+    )
 
     return sortAscending ? aRevenue - bRevenue : bRevenue - aRevenue
   })

@@ -10,6 +10,7 @@ import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
+import { regionalMultiplier } from '@/utils/globals'
 import { getRegion } from '@/utils/region'
 
 import EditSection from './EditSection'
@@ -35,8 +36,14 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
   eosIds,
 }) => {
   const region = getRegion(data['region'])
-  const currentRevenue = data[CURRENT_TABLE]?.totalRevenue ?? 0
-  const previousRevenue = data[PREVIOUS_TABLE]?.totalRevenue ?? 0
+  const currentRevenue = regionalMultiplier(
+    data[CURRENT_TABLE]?.totalRevenue,
+    data.region,
+  )
+  const previousRevenue = regionalMultiplier(
+    data[PREVIOUS_TABLE]?.totalRevenue,
+    data.region,
+  )
   const { removed, showPinned } = useRevenueTableControls()
 
   const isSectionRemoved = removed.includes(data.id) && !showPinned

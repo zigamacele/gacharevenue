@@ -49,6 +49,7 @@ const RightControls: React.FC = () => {
         {showPinned ? <PinOff size={18} /> : <Pin size={18} />}
       </Toggle>
       <Toggle
+        disabled
         onClick={() => toggle('showCombinedRevenue')}
         pressed={showCombinedRevenue}
         tooltip={

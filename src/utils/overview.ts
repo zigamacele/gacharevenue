@@ -1,5 +1,7 @@
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 
+import { regionalMultiplier } from './globals'
+
 import { CompareRevenueOutput } from '@/types/monthlyRevenue.ts'
 import { QueryOutput, StatisticsSchema } from '@/types/supabase'
 
@@ -44,8 +46,14 @@ export const compareRevenue = (data: QueryOutput[]) => {
 
   data.forEach((game: QueryOutput) => {
     const { en_name, id, icon, background, region, blurhash } = game
-    const currentRevenue = game[CURRENT_TABLE]?.totalRevenue ?? 0
-    const previousRevenue = game[PREVIOUS_TABLE]?.totalRevenue ?? 0
+    const currentRevenue = regionalMultiplier(
+      game[CURRENT_TABLE]?.totalRevenue,
+      game.region,
+    )
+    const previousRevenue = regionalMultiplier(
+      game[PREVIOUS_TABLE]?.totalRevenue,
+      game.region,
+    )
 
     const difference = Math.abs(currentRevenue - previousRevenue)
     const percentage =

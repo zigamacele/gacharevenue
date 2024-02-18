@@ -1,5 +1,6 @@
 import { CURRENT_TABLE } from '@/constants/tables'
 
+import { regionalMultiplier } from './globals'
 import { humanizeTableShort } from './timeDate'
 
 import { BarDatum } from '@/types/nivo'
@@ -26,7 +27,7 @@ export const prepareLineChartData = (data: QueryOutput[], tables: string[]) => {
 
       return {
         x: humanizeTableShort(table),
-        y: game[table]?.totalRevenue ?? 0,
+        y: regionalMultiplier(game[table]?.totalRevenue, game.region),
       }
     })
     return {
@@ -53,7 +54,10 @@ export const prepareBarChartData = (data: QueryOutput[], tables: string[]) => {
       output[table] = {
         ...output[table],
         month: humanizeTableShort(table),
-        [`${game.en_name} (${game.region})`]: game[table]?.totalRevenue ?? 0,
+        [`${game.en_name} (${game.region})`]: regionalMultiplier(
+          game[table]?.totalRevenue,
+          game.region,
+        ),
       }
     }
   }

@@ -35,6 +35,13 @@ export const getRegion = (region: string | undefined) => {
         textColor: 'text-blue-700',
         text: 'America',
       }
+    case 'CHINA':
+      return {
+        emoji: '🇨🇳',
+        color: 'bg-yellow-400',
+        textColor: 'text-yellow-500',
+        text: 'China',
+      }
     default:
       return {
         emoji: '',

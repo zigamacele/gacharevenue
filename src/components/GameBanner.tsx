@@ -10,6 +10,7 @@ import ImageComponent from '@/components/ImageComponent.tsx'
 
 import { CURRENT_TABLE } from '@/constants/tables.ts'
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency.ts'
+import { regionalMultiplier } from '@/utils/globals'
 
 import { QueryOutput } from '@/types/supabase.ts'
 
@@ -112,7 +113,12 @@ const GameBanner: React.FC<OverviewCardProps> = ({
                 </p>
                 {isLoaded ? (
                   <p className='text-right'>
-                    {formatCurrencyCompact(game[CURRENT_TABLE]?.totalDownloads)}
+                    {formatCurrencyCompact(
+                      regionalMultiplier(
+                        game[CURRENT_TABLE]?.totalDownloads,
+                        game.region,
+                      ),
+                    )}
                   </p>
                 ) : (
                   <Skeleton className='h-4 w-24' />
@@ -125,7 +131,12 @@ const GameBanner: React.FC<OverviewCardProps> = ({
               </p>
               {isLoaded ? (
                 <p className='text-right'>
-                  {formatCurrency(game[CURRENT_TABLE]?.totalRevenue)}
+                  {formatCurrency(
+                    regionalMultiplier(
+                      game[CURRENT_TABLE]?.totalRevenue,
+                      game.region,
+                    ),
+                  )}
                 </p>
               ) : (
                 <Skeleton className='h-4 w-24' />

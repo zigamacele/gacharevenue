@@ -68,7 +68,6 @@ const useSupabaseRelay = () => {
     const { data, error } = await supabase
       .from(config.database.GAMES_TABLE)
       .select(`*, ${tables.join(', ')}}`)
-      .neq('region', 'CHINA')
 
     if (data) {
       const dataType = data as unknown as QueryOutput[]

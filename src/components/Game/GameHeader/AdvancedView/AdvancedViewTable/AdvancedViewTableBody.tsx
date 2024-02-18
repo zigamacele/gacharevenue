@@ -6,6 +6,7 @@ import { TableBody, TableCell, TableRow } from '@/lib/shadcn/ui/table'
 import useSupabaseStore from '@/stores/supabase-store'
 
 import { formatCurrency, formatCurrencyCompact } from '@/utils/currency'
+import { regionalMultiplier } from '@/utils/globals'
 import { humanizeTable } from '@/utils/timeDate'
 
 const AdvancedViewTableBody: React.FC = () => {
@@ -41,10 +42,20 @@ const AdvancedViewTableBody: React.FC = () => {
               {formatCurrency(currentGame[table]?.iosRevenue)}
             </TableCell>
             <TableCell>
-              {formatCurrencyCompact(currentGame[table]?.totalDownloads)}
+              {formatCurrencyCompact(
+                regionalMultiplier(
+                  currentGame[table]?.totalDownloads,
+                  currentGame.region,
+                ),
+              )}
             </TableCell>
             <TableCell>
-              {formatCurrency(currentGame[table]?.totalRevenue)}
+              {formatCurrency(
+                regionalMultiplier(
+                  currentGame[table]?.totalRevenue,
+                  currentGame.region,
+                ),
+              )}
             </TableCell>
           </TableRow>
         )
