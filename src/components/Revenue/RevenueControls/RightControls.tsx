@@ -9,10 +9,13 @@ import {
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
+import useCurrentDevice from '@/hooks/useCurrentDevice'
+
 import MonthSwitcher from '@/components/Revenue/RevenueControls/MonthSwitcher.tsx'
 
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
+import AndroidMultiplier from './AndroidMultiplier'
 import Toggle from '../Toggle'
 
 const RightControls: React.FC = () => {
@@ -24,8 +27,12 @@ const RightControls: React.FC = () => {
     pinned,
     showCombinedRevenue,
   } = useRevenueTableControls()
+
+  const isMobile = useCurrentDevice()
   return (
     <>
+      <AndroidMultiplier />
+      <Separator orientation='vertical' className='h-5 opacity-60' />
       <MonthSwitcher />
       <Separator orientation='vertical' className='h-5 opacity-60' />
       <Toggle
@@ -48,18 +55,20 @@ const RightControls: React.FC = () => {
       >
         {showPinned ? <PinOff size={18} /> : <Pin size={18} />}
       </Toggle>
-      <Toggle
-        disabled
-        onClick={() => toggle('showCombinedRevenue')}
-        pressed={showCombinedRevenue}
-        tooltip={
-          !showCombinedRevenue
-            ? 'Combine Region Revenue'
-            : 'Separate Region Revenue'
-        }
-      >
-        <Combine size={18} />
-      </Toggle>
+      {!isMobile && (
+        <Toggle
+          disabled
+          onClick={() => toggle('showCombinedRevenue')}
+          pressed={showCombinedRevenue}
+          tooltip={
+            !showCombinedRevenue
+              ? 'Combine Region Revenue'
+              : 'Separate Region Revenue'
+          }
+        >
+          <Combine size={18} />
+        </Toggle>
+      )}
       <Toggle
         onClick={() => toggle('sortAscending')}
         pressed={sortAscending}

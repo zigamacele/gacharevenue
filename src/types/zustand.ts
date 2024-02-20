@@ -11,7 +11,9 @@ export interface TableControlsState {
   showMaintenance: boolean
   showEditSection: boolean
   showCombinedRevenue: boolean
+  androidMultiplier: number
   updateSearch: (value: string) => void
+  updateAndroidMultiplier: (value: number) => void
   toggle: (prop: string) => void
   setState: (prop: string, value: number) => void
 }

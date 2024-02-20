@@ -11,7 +11,7 @@ export const preparePieChartData = (data: QueryOutput[]) => {
     return {
       id: `${game.en_name} (${game.region})`,
       label: game.name,
-      value: game[CURRENT_TABLE]?.totalRevenue ?? 0,
+      value: regionalMultiplier(game[CURRENT_TABLE]?.totalRevenue, game.region),
     }
   })
 
