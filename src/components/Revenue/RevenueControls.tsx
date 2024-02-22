@@ -39,7 +39,18 @@ const RevenueControls: React.FC = () => {
     showMaintenance,
     pinned,
     updateSelectedRegion,
+    selectedRegion,
   } = useRevenueTableControls()
+
+  const regions = ['GLOBAL', 'JAPAN', 'COMBINED', 'CHINA', 'KOREA', 'USA']
+
+  if (showCombinedRevenue) {
+    regions.push('COMBINED_REGIONS')
+  }
+
+  if (selectedRegion === 'COMBINED_REGIONS' && !showCombinedRevenue) {
+    updateSelectedRegion('ALL')
+  }
 
   return (
     <section className='mx-2 mb-1 mt-3'>
@@ -77,24 +88,16 @@ const RevenueControls: React.FC = () => {
               <Combine size={18} />
             </Toggle>
             <Select
-              defaultValue='ALL'
+              value={selectedRegion}
               onValueChange={(value) => updateSelectedRegion(value)}
             >
               <SelectTrigger className='w-12 overflow-x-scroll rounded border-neutral-700/80 bg-neutral-950 md:w-52'>
                 <SelectValue placeholder='Region' />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className='border-neutral-700/80 bg-neutral-900'>
                 <SelectGroup>
                   <SelectItem value='ALL'>All</SelectItem>
-                  {[
-                    'GLOBAL',
-                    'JAPAN',
-                    'COMBINED',
-                    'CHINA',
-                    'KOREA',
-                    'USA',
-                    'COMBINED_REGIONS',
-                  ].map((region) => {
+                  {regions.map((region) => {
                     const { text, emoji } = getRegion(region)
                     return (
                       <SelectItem key={region} value={region}>
