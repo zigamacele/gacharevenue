@@ -9,6 +9,7 @@ import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { previousMonthSort } from '@/utils/sorting'
 
+import NoResults from './RevenueTable/NoResults'
 import RevenueTableHeader from './RevenueTable/RevenueTableHeader'
 import RevenueTableRow from './RevenueTable/RevenueTableRow'
 
@@ -34,24 +35,28 @@ const RevenueTable: React.FC<RevenueTableProps> = ({
 
   return (
     <section className='pb-4 pt-2 sm:px-2'>
-      <Table>
-        <TableHeader>
-          <RevenueTableHeader isMobile={isMobile} />
-        </TableHeader>
-        <TableBody>
-          {data.map((game, index) => (
-            <RevenueTableRow
-              key={game.id}
-              data={game}
-              index={index}
-              isMobile={isMobile}
-              eosIds={eosIds}
-              previousMonth={previousMonth}
-              showEditSection={showEditSection}
-            />
-          ))}
-        </TableBody>
-      </Table>
+      {data.length ? (
+        <Table>
+          <TableHeader>
+            <RevenueTableHeader isMobile={isMobile} />
+          </TableHeader>
+          <TableBody>
+            {data.map((game, index) => (
+              <RevenueTableRow
+                key={game.id}
+                data={game}
+                index={index}
+                isMobile={isMobile}
+                eosIds={eosIds}
+                previousMonth={previousMonth}
+                showEditSection={showEditSection}
+              />
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        <NoResults />
+      )}
     </section>
   )
 }
