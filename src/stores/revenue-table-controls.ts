@@ -14,13 +14,16 @@ const useRevenueTableControls = create<TableControlsState>()((set) => ({
   showCombinedRevenue: false,
   showMaintenance: false,
   androidMultiplier: 1.75,
+  selectedRegion: 'ALL',
 
   updateSearch: (value: string) => set(() => ({ search: value })),
 
   updateAndroidMultiplier: (value: number) => {
     set(() => ({ androidMultiplier: value }))
   },
-
+  updateSelectedRegion: (value: string) => {
+    set(() => ({ selectedRegion: value }))
+  },
   toggle: (prop: string) =>
     set((state) => ({ [prop]: !state[prop as keyof TableControlsState] })),
 

@@ -40,7 +40,7 @@ const MonthSwitcher: React.FC = () => {
       <Button
         disabled={isDisabled(previousTable)}
         onClick={() => updateTable(currentTable, false)}
-        className={cn('text-opacity-60 hover:text-opacity-100')}
+        className={cn('w-12 text-opacity-60 hover:text-opacity-100')}
         tooltip='Previous Month'
       >
         <ArrowBigLeft size={20} />
@@ -48,7 +48,7 @@ const MonthSwitcher: React.FC = () => {
       <Button
         disabled={isDisabled(currentTable)}
         onClick={() => updateTable(currentTable, true)}
-        className={cn('text-opacity-60 hover:text-opacity-100')}
+        className={cn('w-12 text-opacity-60 hover:text-opacity-100')}
         tooltip='Next Month'
       >
         <ArrowBigRight size={20} />

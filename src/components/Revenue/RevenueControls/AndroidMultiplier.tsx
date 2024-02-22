@@ -41,9 +41,9 @@ const AndroidMultiplier: React.FC = () => {
                 id='multiplier'
                 value={androidMultiplier}
                 className='col-span-2 h-8 w-24 bg-neutral-800 pl-8 pr-4 text-center'
-                onChange={(event) => {
+                onChange={(event) =>
                   updateAndroidMultiplier(Number(event.target.value))
-                }}
+                }
               />
             </div>
           </div>

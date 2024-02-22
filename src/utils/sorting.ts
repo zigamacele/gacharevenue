@@ -44,6 +44,7 @@ interface QueryFilterSortProps {
   showEditSection: boolean
   sortAscending: boolean
   showCombinedRevenue: boolean
+  selectedRegion: string
 }
 
 export const queryFilterSort = ({
@@ -58,6 +59,7 @@ export const queryFilterSort = ({
   showEditSection,
   sortAscending,
   showCombinedRevenue,
+  selectedRegion,
 }: QueryFilterSortProps) => {
   const filtered = data.filter((game) => {
     const gameId = game.id
@@ -65,6 +67,10 @@ export const queryFilterSort = ({
     const isRemoved = removed.includes(gameId)
     const maintenanceIds = maintenance.map((item) => item.id)
     const eosIds = eos.map((item) => item.id)
+
+    if (selectedRegion !== 'ALL' && game.region !== selectedRegion) {
+      return false
+    }
 
     if (search.length) {
       const gameName = game.en_name.toLowerCase()

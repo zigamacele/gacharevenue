@@ -22,6 +22,7 @@ const Revenue: React.FC = () => {
     showMaintenance,
     showEditSection,
     showCombinedRevenue,
+    selectedRegion,
   } = useRevenueTableControls()
   const { loading, storage } = useSupabaseStore()
   const { eos, maintenance, getGraveyardData } = useGraveyardStore()
@@ -55,6 +56,7 @@ const Revenue: React.FC = () => {
               showEditSection,
               sortAscending,
               showCombinedRevenue,
+              selectedRegion,
             })}
             showEditSection={showEditSection}
           />
