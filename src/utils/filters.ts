@@ -11,35 +11,45 @@ export const combineSameGameRevenue = (data: QueryOutput[]) => {
     const key = game.en_name
 
     if (output[key]) {
-      if (output[key]?.region !== 'COMBINED') {
-        const gameObject = { ...output[key] } as QueryOutput
-        const currentTable = {
-          ...output[key]?.[CURRENT_TABLE],
-        } as StatisticsSchema
-        const previousTable = {
-          ...output[key]?.[PREVIOUS_TABLE],
-        } as StatisticsSchema
+      const gameObject = { ...output[key] } as QueryOutput
+      const currentTable = {
+        ...output[key]?.[CURRENT_TABLE],
+      } as StatisticsSchema
+      const previousTable = {
+        ...output[key]?.[PREVIOUS_TABLE],
+      } as StatisticsSchema
 
-        gameObject.region = 'COMBINED'
+      currentTable.totalRevenue =
+        currentTable.totalRevenue +
+        regionalMultiplier(game[CURRENT_TABLE]?.totalRevenue ?? 0, game.region)
 
-        currentTable.totalRevenue = regionalMultiplier(
-          currentTable.totalRevenue + (game[CURRENT_TABLE]?.totalRevenue ?? 0),
-          game.region,
-        )
+      previousTable.totalRevenue =
+        previousTable.totalRevenue +
+        regionalMultiplier(game[PREVIOUS_TABLE]?.totalRevenue ?? 0, game.region)
 
-        previousTable.totalRevenue = regionalMultiplier(
-          previousTable.totalRevenue +
-            (game[PREVIOUS_TABLE]?.totalRevenue ?? 0),
-          game.region,
-        )
+      gameObject[CURRENT_TABLE] = currentTable
+      gameObject[PREVIOUS_TABLE] = previousTable
+      gameObject.region = 'COMBINED_REGIONS'
 
-        gameObject[CURRENT_TABLE] = currentTable
-        gameObject[PREVIOUS_TABLE] = previousTable
-
-        output[key] = gameObject
-      }
+      output[key] = gameObject
     } else {
-      output[key] = game
+      output[key] = {
+        ...game,
+        [CURRENT_TABLE]: {
+          ...game[CURRENT_TABLE],
+          totalRevenue: regionalMultiplier(
+            game[CURRENT_TABLE]?.totalRevenue ?? 0,
+            game.region,
+          ),
+        },
+        [PREVIOUS_TABLE]: {
+          ...game[PREVIOUS_TABLE],
+          totalRevenue: regionalMultiplier(
+            game[PREVIOUS_TABLE]?.totalRevenue ?? 0,
+            game.region,
+          ),
+        },
+      } as QueryOutput
     }
   }
 

@@ -11,16 +11,15 @@ export interface PreviousMonthIndexes {
 export const previousMonthSort = (
   data: QueryOutput[],
   sortAscending: boolean,
+  showCombinedRevenue: boolean,
 ) => {
   const sortedPreviousMonth = [...data].sort((a, b) => {
-    const aRevenue: number = regionalMultiplier(
-      a[PREVIOUS_TABLE]?.totalRevenue,
-      a.region,
-    )
-    const bRevenue: number = regionalMultiplier(
-      b[PREVIOUS_TABLE]?.totalRevenue,
-      b.region,
-    )
+    const aRevenue: number = showCombinedRevenue
+      ? a[PREVIOUS_TABLE]?.totalRevenue ?? 0
+      : regionalMultiplier(a[PREVIOUS_TABLE]?.totalRevenue, a.region)
+    const bRevenue: number = showCombinedRevenue
+      ? b[PREVIOUS_TABLE]?.totalRevenue ?? 0
+      : regionalMultiplier(b[PREVIOUS_TABLE]?.totalRevenue, b.region)
 
     return sortAscending ? aRevenue - bRevenue : bRevenue - aRevenue
   })
@@ -44,6 +43,7 @@ interface QueryFilterSortProps {
   showMaintenance: boolean
   showEditSection: boolean
   sortAscending: boolean
+  showCombinedRevenue: boolean
 }
 
 export const queryFilterSort = ({
@@ -57,6 +57,7 @@ export const queryFilterSort = ({
   showMaintenance,
   showEditSection,
   sortAscending,
+  showCombinedRevenue,
 }: QueryFilterSortProps) => {
   const filtered = data.filter((game) => {
     const gameId = game.id
@@ -94,14 +95,12 @@ export const queryFilterSort = ({
   })
 
   const sorting = [...filtered].sort((a, b) => {
-    const aRevenue = regionalMultiplier(
-      a[CURRENT_TABLE]?.totalRevenue,
-      a.region,
-    )
-    const bRevenue = regionalMultiplier(
-      b[CURRENT_TABLE]?.totalRevenue,
-      b.region,
-    )
+    const aRevenue = showCombinedRevenue
+      ? a[CURRENT_TABLE]?.totalRevenue ?? 0
+      : regionalMultiplier(a[CURRENT_TABLE]?.totalRevenue, a.region)
+    const bRevenue = showCombinedRevenue
+      ? b[CURRENT_TABLE]?.totalRevenue ?? 0
+      : regionalMultiplier(b[CURRENT_TABLE]?.totalRevenue, b.region)
 
     return sortAscending ? aRevenue - bRevenue : bRevenue - aRevenue
   })

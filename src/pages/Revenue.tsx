@@ -54,6 +54,7 @@ const Revenue: React.FC = () => {
               showMaintenance,
               showEditSection,
               sortAscending,
+              showCombinedRevenue,
             })}
             showEditSection={showEditSection}
           />

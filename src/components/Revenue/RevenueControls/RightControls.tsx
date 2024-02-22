@@ -57,7 +57,6 @@ const RightControls: React.FC = () => {
       </Toggle>
       {!isMobile && (
         <Toggle
-          disabled
           onClick={() => toggle('showCombinedRevenue')}
           pressed={showCombinedRevenue}
           tooltip={

@@ -35,20 +35,18 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
   showEditSection,
   eosIds,
 }) => {
+  const { removed, showPinned, showCombinedRevenue } = useRevenueTableControls()
+  const { setBackground } = useBackgroundStore()
+
   const region = getRegion(data['region'])
-  const currentRevenue = regionalMultiplier(
-    data[CURRENT_TABLE]?.totalRevenue,
-    data.region,
-  )
-  const previousRevenue = regionalMultiplier(
-    data[PREVIOUS_TABLE]?.totalRevenue,
-    data.region,
-  )
-  const { removed, showPinned } = useRevenueTableControls()
+  const currentRevenue = showCombinedRevenue
+    ? data[CURRENT_TABLE]?.totalRevenue ?? 0
+    : regionalMultiplier(data[CURRENT_TABLE]?.totalRevenue, data.region)
+  const previousRevenue = showCombinedRevenue
+    ? data[PREVIOUS_TABLE]?.totalRevenue ?? 0
+    : regionalMultiplier(data[PREVIOUS_TABLE]?.totalRevenue, data.region)
 
   const isSectionRemoved = removed.includes(data.id) && !showPinned
-
-  const { setBackground } = useBackgroundStore()
 
   const positionChange = () => {
     if (!previousRevenue) {
@@ -85,7 +83,12 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
         </TableCell>
       )}
       <TableCell className={cn('text-center', region.color)}>
-        <Tooltip text={region.text}>{region.emoji}</Tooltip>
+        <Tooltip
+          text={region.text}
+          className='transition-opacity hover:opacity-60'
+        >
+          {region.emoji}
+        </Tooltip>
       </TableCell>
       <TableCell className='text-xs sm:text-sm'>
         <HoverCard data={data} />

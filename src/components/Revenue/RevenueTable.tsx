@@ -23,10 +23,10 @@ const RevenueTable: React.FC<RevenueTableProps> = ({
   data,
   showEditSection,
 }) => {
-  const { sortAscending } = useRevenueTableControls()
+  const { sortAscending, showCombinedRevenue } = useRevenueTableControls()
   const { eos } = useGraveyardStore()
   const previousMonth = useMemo(
-    () => previousMonthSort(data, sortAscending),
+    () => previousMonthSort(data, sortAscending, showCombinedRevenue),
     [data],
   )
   const isMobile = useCurrentDevice()
