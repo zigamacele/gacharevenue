@@ -13,7 +13,7 @@ const useRevenueTableControls = create<TableControlsState>()((set) => ({
   showEditSection: false,
   showCombinedRevenue: false,
   showMaintenance: false,
-  androidMultiplier: 2,
+  androidMultiplier: 1.75,
 
   updateSearch: (value: string) => set(() => ({ search: value })),
 

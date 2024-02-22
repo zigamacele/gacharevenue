@@ -37,7 +37,7 @@ const AndroidMultiplier: React.FC = () => {
                 type='number'
                 min='0'
                 max='5'
-                step='.5'
+                step='.25'
                 id='multiplier'
                 value={androidMultiplier}
                 className='col-span-2 h-8 w-24 bg-neutral-800 pl-8 pr-4 text-center'
