@@ -91,8 +91,12 @@ const RevenueControls: React.FC = () => {
               value={selectedRegion}
               onValueChange={(value) => updateSelectedRegion(value)}
             >
-              <SelectTrigger className='w-12 overflow-x-scroll rounded border-neutral-700/80 bg-neutral-950 md:w-52'>
-                <SelectValue placeholder='Region' />
+              <SelectTrigger className='w-12 rounded border-neutral-700/80 bg-neutral-950 md:w-52'>
+                <SelectValue placeholder='Region' aria-label={selectedRegion}>
+                  {regions.includes(selectedRegion)
+                    ? getRegion(selectedRegion).emoji
+                    : 'All'}
+                </SelectValue>
               </SelectTrigger>
               <SelectContent className='border-neutral-700/80 bg-neutral-900'>
                 <SelectGroup>
