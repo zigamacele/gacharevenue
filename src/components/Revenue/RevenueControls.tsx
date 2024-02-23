@@ -19,6 +19,8 @@ import {
 } from '@/lib/shadcn/ui/select'
 import { Separator } from '@/lib/shadcn/ui/separator'
 
+import useCurrentDevice from '@/hooks/useCurrentDevice'
+
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { getRegion } from '@/utils/region'
@@ -41,6 +43,8 @@ const RevenueControls: React.FC = () => {
     updateSelectedRegion,
     selectedRegion,
   } = useRevenueTableControls()
+
+  const isMobile = useCurrentDevice()
 
   const regions = ['GLOBAL', 'JAPAN', 'COMBINED', 'CHINA', 'KOREA', 'USA']
 
@@ -93,9 +97,18 @@ const RevenueControls: React.FC = () => {
             >
               <SelectTrigger className='w-12 rounded border-neutral-700/80 bg-neutral-950 md:w-52'>
                 <SelectValue placeholder='Region' aria-label={selectedRegion}>
-                  {regions.includes(selectedRegion)
-                    ? getRegion(selectedRegion).emoji
-                    : 'All'}
+                  {regions.includes(selectedRegion) ? (
+                    isMobile ? (
+                      getRegion(selectedRegion).emoji
+                    ) : (
+                      <div className='flex items-center gap-2 whitespace-nowrap'>
+                        <div>{getRegion(selectedRegion).emoji}</div>
+                        <div>{getRegion(selectedRegion).text}</div>
+                      </div>
+                    )
+                  ) : (
+                    'All'
+                  )}
                 </SelectValue>
               </SelectTrigger>
               <SelectContent className='border-neutral-700/80 bg-neutral-900'>
