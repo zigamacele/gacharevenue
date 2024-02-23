@@ -1,24 +1,24 @@
-import { CalendarDaysIcon } from 'lucide-react'
+import { BookCheck } from 'lucide-react'
 
 import { cn } from '@/lib/shadcn/utils'
 
-interface ReleaseDateProps {
-  releaseDate: string
+interface PublisherProps {
+  publisher: string
   iconSize?: number
   className?: string
 }
 
-const ReleaseDate: React.FC<ReleaseDateProps> = ({
+const Publisher: React.FC<PublisherProps> = ({
   iconSize = 16,
   className,
-  releaseDate,
+  publisher,
 }) => (
   <div className='flex items-center gap-2'>
-    <CalendarDaysIcon size={iconSize} />
+    <BookCheck size={iconSize} />
     <p className={cn('text-xs font-light opacity-60', className)}>
-      {releaseDate}
+      {publisher}
     </p>
   </div>
 )
 
-export default ReleaseDate
+export default Publisher

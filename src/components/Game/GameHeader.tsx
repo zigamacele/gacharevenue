@@ -11,6 +11,7 @@ import ReleaseDate from '@/components/ReleaseDate.tsx'
 import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 
 import AdvancedView from './GameHeader/AdvancedView'
+import Publisher from '../Publisher'
 
 import { QueryOutput } from '@/types/supabase'
 
@@ -51,13 +52,8 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
               </span>
             </div>
             <div className='flex flex-col gap-1'>
-              <span className='text-sm font-light opacity-40'>
-                {currentGame.publisher}
-              </span>
-              <ReleaseDate
-                releaseDate={currentGame.release_date}
-                className='truncate text-sm'
-              />
+              <Publisher publisher={currentGame.publisher} />
+              <ReleaseDate releaseDate={currentGame.release_date} />
             </div>
           </div>
         </div>
