@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar.tsx'
 import useUserStore from '@/stores/user-store.ts'
 
 import Charts from '@/pages/Charts'
+import Faq from '@/pages/Faq'
 import Feedback from '@/pages/Feedback'
 import Game from '@/pages/Game'
 import Graveyard from '@/pages/Graveyard.tsx'
@@ -17,6 +18,7 @@ import Revenue from '@/pages/Revenue'
 import supabase from '@/config/supabase.ts'
 import {
   CHARTS,
+  FAQ,
   FEEDBACK,
   GRAVEYARD,
   HOME,
@@ -59,6 +61,7 @@ const AppRoutes: React.FC = () => {
           <Route path={REVENUE} element={<Revenue />} />
           <Route path={FEEDBACK} element={<Feedback />} />
           <Route path={GRAVEYARD} element={<Graveyard />} />
+          <Route path={FAQ} element={<Faq />} />
           <Route path='/game/:id' element={<Game />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
