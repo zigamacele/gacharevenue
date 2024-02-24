@@ -35,7 +35,14 @@ const FaqQuestion: React.FC<FaqQuestionProps> = ({
         <Separator className='opacity-80' />
       )}
       {showAnswer && (
-        <p className='slide-from-top mb-8 px-2 text-sm opacity-60'>{answer}</p>
+        <p
+          className={cn(
+            'slide-from-top px-2 text-sm opacity-60',
+            FAQ.length - 1 !== index && 'mb-8',
+          )}
+        >
+          {answer}
+        </p>
       )}
     </section>
   )

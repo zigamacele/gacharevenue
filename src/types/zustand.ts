@@ -1,6 +1,11 @@
 import { User } from '@supabase/supabase-js'
 
-import { GraveyardOutput, QueryOutput, ReviewOutput } from './supabase'
+import {
+  GameResponse,
+  GraveyardOutput,
+  QueryOutput,
+  ReviewOutput,
+} from './supabase'
 
 export interface TableControlsState {
   search: string
@@ -29,6 +34,7 @@ export interface SupabaseStoreState {
   alerts: SetAlerts[]
   tables: string[]
   storage: QueryOutput[]
+  game: GameResponse[]
   lastUpdated: string
   currentTable: string
   previousTable: string

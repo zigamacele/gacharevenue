@@ -5,6 +5,7 @@ import { SupabaseStore, SupabaseStoreState } from '@/types/zustand'
 const useSupabaseStore = create<SupabaseStore>()((set) => ({
   tables: [],
   alerts: [],
+  game: [],
   storage: [],
   lastUpdated: '',
   currentTable: '',

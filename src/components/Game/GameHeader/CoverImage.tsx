@@ -11,7 +11,7 @@ import ImageComponent from '@/components/ImageComponent.tsx'
 import Rating from '@/components/Rating.tsx'
 import Tooltip from '@/components/Tooltip'
 
-import RegionTooltip from './CoverImage/RegionTooltip'
+import RegionSelector from './CoverImage/RegionSelector'
 
 import { QueryOutput } from '@/types/supabase'
 
@@ -42,8 +42,7 @@ const CoverImage: React.FC<CoverImageProps> = ({
         triggerClassName='absolute left-[3.15em] top-1 z-40'
         game={currentGame}
       />
-      <RegionTooltip gameRegion={currentGame.region} />
-      {/*<span className='absolute top-0 h-full w-full rounded-t-md bg-gradient-to-t from-neutral-900 to-transparent opacity-100' />*/}
+      <RegionSelector id={currentGame.id} region={currentGame.region} />
       <div className='absolute right-0 top-10 flex w-24 items-center justify-end gap-2 bg-gradient-to-r from-transparent via-neutral-900/60 to-neutral-900 py-1.5 pr-2'>
         <PinButton data={currentGame} iconSize={20} />
         <RemoveButton data={currentGame} iconSize={20} />

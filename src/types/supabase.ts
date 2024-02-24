@@ -77,3 +77,22 @@ export interface ReviewOutput {
   game: GameSchema
   created_at: string
 }
+
+export enum Region {
+  CHINA = 'CHINA',
+  GLOBAL = 'GLOBAL',
+  COMBINED = 'COMBINED',
+  JAPAN = 'JAPAN',
+  AMERICA = 'AMERICA',
+  KOREA = 'KOREA',
+}
+
+export interface GameResponse {
+  uuid: string
+  [Region.CHINA]: number | null
+  [Region.GLOBAL]: number | null
+  [Region.COMBINED]: number | null
+  [Region.JAPAN]: number | null
+  [Region.AMERICA]: number | null
+  [Region.KOREA]: number | null
+}

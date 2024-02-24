@@ -11,7 +11,7 @@ import supabase from '@/config/supabase'
 import { GRAVEYARD } from '@/constants/links.ts'
 import { generateRandomNumber } from '@/utils/globals'
 
-import { ConfigData, QueryOutput } from '@/types/supabase'
+import { ConfigData, GameResponse, QueryOutput } from '@/types/supabase'
 import { SetAlerts } from '@/types/zustand'
 
 const useSupabaseRelay = () => {
@@ -24,6 +24,9 @@ const useSupabaseRelay = () => {
   const getConfig = async () => {
     const localOutput: string[] = []
     const { data, error } = await supabase.from('config').select().eq('id', 1)
+    const { data: gameData } = await supabase.from('game').select('*')
+
+    setProperty('game', gameData as GameResponse[])
 
     if (data) {
       const {
