@@ -23,6 +23,7 @@ const Revenue: React.FC = () => {
     showEditSection,
     showCombinedRevenue,
     selectedRegion,
+    androidMultiplier,
   } = useRevenueTableControls()
   const { loading, storage } = useSupabaseStore()
   const { eos, maintenance, getGraveyardData } = useGraveyardStore()
@@ -33,7 +34,7 @@ const Revenue: React.FC = () => {
 
   const combinedRevenue = useMemo(() => {
     return combineSameGameRevenue(storage)
-  }, [storage])
+  }, [storage, androidMultiplier])
 
   const TableData = showCombinedRevenue ? combinedRevenue : storage
 
