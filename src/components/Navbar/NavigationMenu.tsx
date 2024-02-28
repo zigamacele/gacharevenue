@@ -78,7 +78,7 @@ const NavigationMenu: React.FC = () => {
                         Charts
                       </div>
                       <p className='text-sm leading-tight opacity-40'>
-                        Monthly interactive line, bar, pie charts and more.
+                        Monthly interactive charts.
                       </p>
                     </div>
                   </Link>

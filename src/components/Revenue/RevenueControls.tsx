@@ -60,25 +60,6 @@ const RevenueControls: React.FC = () => {
   return (
     <section className='mx-2 mb-1 mt-3'>
       <div className='flex flex-col gap-2'>
-        <div className='flex w-full items-center gap-2'>
-          <div className='flex w-full items-center gap-2'>
-            <Toggle
-              onClick={() => toggle('showEditSection')}
-              pressed={showEditSection}
-              tooltip={!showEditSection ? 'Edit Chart' : 'Close Editor'}
-            >
-              <ClipboardEdit size={20} />
-            </Toggle>
-            <Input
-              className='w-full rounded border-neutral-700/80 bg-neutral-950'
-              placeholder='Search'
-              value={search}
-              onChange={(event) => updateSearch(event.target.value)}
-            />
-          </div>
-          <Separator orientation='vertical' className='h-6' />
-          <MonthSwitcher />
-        </div>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <Toggle
@@ -165,6 +146,25 @@ const RevenueControls: React.FC = () => {
               )}
             </Toggle>
           </div>
+        </div>
+        <div className='flex w-full items-center gap-2'>
+          <div className='flex w-full items-center gap-2'>
+            <Toggle
+              onClick={() => toggle('showEditSection')}
+              pressed={showEditSection}
+              tooltip={!showEditSection ? 'Edit Chart' : 'Close Editor'}
+            >
+              <ClipboardEdit size={20} />
+            </Toggle>
+            <Input
+              className='w-full rounded border-neutral-700/80 bg-neutral-950'
+              placeholder='Search'
+              value={search}
+              onChange={(event) => updateSearch(event.target.value)}
+            />
+          </div>
+          <Separator orientation='vertical' className='h-6' />
+          <MonthSwitcher />
         </div>
       </div>
     </section>
