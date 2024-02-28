@@ -17,13 +17,14 @@ import { SetAlerts } from '@/types/zustand'
 const useSupabaseRelay = () => {
   const { setProperty } = useSupabaseStore()
   const { setBackground } = useBackgroundStore()
-  const { setGraveyardBackground } = useGraveyardStore()
+  const { setGraveyardBackground, getGraveyardData } = useGraveyardStore()
   const { showBoundary } = useErrorBoundary()
   const { pathname } = useLocation()
 
   const getConfig = async () => {
     const localOutput: string[] = []
     const { data, error } = await supabase.from('config').select().eq('id', 1)
+
     const { data: gameData } = await supabase.from('game').select('*')
 
     setProperty('game', gameData as GameResponse[])
@@ -93,6 +94,7 @@ const useSupabaseRelay = () => {
     const tables = await getConfig()
 
     void getGachaInformation(tables)
+    getGraveyardData()
 
     setProperty('loading', false)
   }

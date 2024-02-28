@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
@@ -26,11 +26,7 @@ const Revenue: React.FC = () => {
     androidMultiplier,
   } = useRevenueTableControls()
   const { loading, storage } = useSupabaseStore()
-  const { eos, maintenance, getGraveyardData } = useGraveyardStore()
-
-  useEffect(() => {
-    getGraveyardData()
-  }, [])
+  const { eos, maintenance } = useGraveyardStore()
 
   const combinedRevenue = useMemo(() => {
     return combineSameGameRevenue(storage)

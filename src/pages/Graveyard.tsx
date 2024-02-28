@@ -7,11 +7,10 @@ import useBackgroundStore from '@/stores/background-store.ts'
 import useGraveyardStore from '@/stores/graveyard-store.ts'
 
 const Graveyard: React.FC = () => {
-  const { getGraveyardData, graveyardBackground, loading } = useGraveyardStore()
+  const { graveyardBackground, loading } = useGraveyardStore()
   const { setBackground } = useBackgroundStore()
 
   useEffect(() => {
-    getGraveyardData()
     setBackground(graveyardBackground)
   }, [])
   return (

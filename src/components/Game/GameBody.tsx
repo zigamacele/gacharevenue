@@ -75,6 +75,8 @@ const GameBody: React.FC<GameBodyProps> = ({ currentGame, tables }) => {
           <TabsContent value='bar' className='w-full overflow-x-scroll'>
             <Bar
               data={prepareBarChartData([currentGame], setTabsHelper(tables))}
+              axisBottom
+              axisLeft
             />
           </TabsContent>
           <TabsContent value='line' className='w-full overflow-x-scroll'>

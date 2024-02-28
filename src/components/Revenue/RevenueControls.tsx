@@ -23,6 +23,7 @@ import useCurrentDevice from '@/hooks/useCurrentDevice'
 
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
+import { regions as regionsConstant } from '@/constants/regions'
 import { getRegion } from '@/utils/region'
 
 import AndroidMultiplier from './RevenueControls/AndroidMultiplier'
@@ -46,7 +47,7 @@ const RevenueControls: React.FC = () => {
 
   const isMobile = useCurrentDevice()
 
-  const regions = ['GLOBAL', 'JAPAN', 'COMBINED', 'CHINA', 'KOREA', 'USA']
+  const regions = [...regionsConstant]
 
   if (showCombinedRevenue) {
     regions.push('COMBINED_REGIONS')

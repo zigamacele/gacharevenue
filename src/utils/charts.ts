@@ -1,10 +1,10 @@
 import { CURRENT_TABLE } from '@/constants/tables'
 
+import { QueryOutput, StatisticsSchema } from './../types/supabase'
 import { regionalMultiplier } from './globals'
 import { humanizeTableShort } from './timeDate'
 
 import { BarDatum } from '@/types/nivo'
-import { QueryOutput } from '@/types/supabase'
 
 export const preparePieChartData = (data: QueryOutput[]) => {
   const pieData = data.map((game) => {
@@ -67,4 +67,38 @@ export const prepareBarChartData = (data: QueryOutput[], tables: string[]) => {
   }) as unknown as BarDatum[]
 
   return { barData, allKeys }
+}
+
+export const prepareTotalBarData = (
+  data: QueryOutput[],
+  tables: string[],
+  property: string,
+) => {
+  const output: { [key: string]: BarDatum } = {}
+
+  for (const game of data) {
+    for (const table of tables) {
+      const gameProperty = game[table]?.[
+        property as keyof StatisticsSchema
+      ] as number
+
+      if (gameProperty === 0) {
+        continue
+      }
+
+      output[table] = {
+        month: humanizeTableShort(table),
+        ...(table !== CURRENT_TABLE && {
+          [`${property}Color`]: '#444444',
+        }),
+        [property]:
+          ((output[table]?.[property] ?? 0) as number) +
+          regionalMultiplier(gameProperty, game.region),
+      }
+    }
+  }
+
+  const barData = Object.values(output) as unknown as BarDatum[]
+
+  return { allKeys: [property], barData: barData.slice(-3) }
 }

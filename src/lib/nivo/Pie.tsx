@@ -13,7 +13,7 @@ const Pie: React.FC<PieProps> = ({ data }) => (
   <ResponsivePie
     data={data}
     theme={theme}
-    margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+    margin={{ top: 40, right: 20, bottom: 20, left: 20 }}
     innerRadius={0.5}
     padAngle={0.7}
     cornerRadius={3}

@@ -23,7 +23,10 @@ export const getTotalStatistics = (
   key: string,
 ) => {
   const totalStatistics = data.reduce((acc, game) => {
-    const value = game[table]?.[key as keyof StatisticsSchema] ?? 0
+    const value = regionalMultiplier(
+      game[table]?.[key as keyof StatisticsSchema],
+      game.region,
+    )
     return acc + value
   }, 0)
 
