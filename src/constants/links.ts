@@ -1,6 +1,7 @@
 export const GITHUB_PROJECT_URL = 'https://github.com/zigamacele/gacharevenue'
 export const SENSORTOWER_URL = 'https://sensortower.com/'
 export const GACHAGAMING_URL = 'https://www.reddit.com/r/gachagaming/'
+export const KOFI_URL = 'https://ko-fi.com/zigamacele'
 
 export const HOME = '/'
 export const REVENUE = '/revenue'
