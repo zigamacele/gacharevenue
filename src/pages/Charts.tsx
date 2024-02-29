@@ -15,7 +15,11 @@ import { CURRENT_TABLE } from '@/constants/tables'
 import { preparePieChartData, prepareTotalBarData } from '@/utils/charts'
 import { formatCurrency } from '@/utils/currency'
 import { combineSameGameRevenue } from '@/utils/filters'
-import { compareMonths, getTotalStatistics } from '@/utils/overview'
+import {
+  compareMonths,
+  formatNumber,
+  getTotalStatistics,
+} from '@/utils/overview'
 import { queryFilter } from '@/utils/sorting'
 import { humanizeTable } from '@/utils/timeDate'
 
@@ -88,9 +92,13 @@ const Charts: React.FC = () => {
               <span>
                 <p className='opacity-80'>{chart.title}</p>
                 <p className='max-w-sm truncate text-2xl font-bold'>
-                  {formatCurrency(
-                    getTotalStatistics(storage, CURRENT_TABLE, chart.value),
-                  )}
+                  {chart.value === 'totalRevenue'
+                    ? formatCurrency(
+                        getTotalStatistics(storage, CURRENT_TABLE, chart.value),
+                      )
+                    : formatNumber(
+                        getTotalStatistics(storage, CURRENT_TABLE, chart.value),
+                      )}
                 </p>
               </span>
               <PercentageBox
