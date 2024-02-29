@@ -47,7 +47,13 @@ const Charts: React.FC = () => {
     showPinned,
   })
 
-  const barCharts = useMemo(() => ['totalRevenue', 'totalDownloads'], [])
+  const barCharts = useMemo(
+    () => [
+      { title: 'Total Revenue', value: 'totalRevenue' },
+      { title: 'Total Downloads', value: 'totalDownloads' },
+    ],
+    [],
+  )
   const middleSection = useMemo(
     () => [
       {
@@ -75,24 +81,24 @@ const Charts: React.FC = () => {
       <section className='grid w-full grid-cols-1 gap-3 xl:w-[40rem] xl:grid-cols-2'>
         {barCharts.map((chart) => (
           <div
-            key={chart}
+            key={chart.value}
             className='h-60 overflow-y-hidden overflow-x-scroll rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-4'
           >
             <div className='flex items-start justify-between'>
               <span>
-                <p className='opacity-80'>Total Revenue</p>
+                <p className='opacity-80'>{chart.title}</p>
                 <p className='max-w-sm truncate text-2xl font-bold'>
                   {formatCurrency(
-                    getTotalStatistics(storage, CURRENT_TABLE, chart),
+                    getTotalStatistics(storage, CURRENT_TABLE, chart.value),
                   )}
                 </p>
               </span>
               <PercentageBox
-                percentage={compareMonths(storage, chart).percentage}
+                percentage={compareMonths(storage, chart.value).percentage}
               />
             </div>
             <Bar
-              data={prepareTotalBarData(ChartsData, tables, chart)}
+              data={prepareTotalBarData(ChartsData, tables, chart.value)}
               height='100%'
               margin={{ top: 20, right: 10, bottom: 60, left: 10 }}
             />
