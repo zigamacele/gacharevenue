@@ -48,7 +48,7 @@ export const compareRevenue = (data: QueryOutput[]) => {
   const output: CompareRevenueOutput[] = []
 
   data.forEach((game: QueryOutput) => {
-    const { en_name, id, icon, background, region, blurhash } = game
+    const { en_name, id, icon, background, region, blurhash, eos } = game
     const currentRevenue = regionalMultiplier(
       game[CURRENT_TABLE]?.totalRevenue,
       game.region,
@@ -65,7 +65,8 @@ export const compareRevenue = (data: QueryOutput[]) => {
     if (
       percentage !== Infinity &&
       previousRevenue &&
-      percentage < PERCENTAGE_LIMIT
+      percentage < PERCENTAGE_LIMIT &&
+      !eos
     ) {
       output.push({
         name: en_name,
