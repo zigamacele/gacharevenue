@@ -21,6 +21,8 @@ interface GameHeaderProps {
 
 const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
   const [showAdvancedView, setShowAdvancedView] = useState(false)
+  const currentRevenue = currentGame[CURRENT_TABLE]?.totalRevenue
+  const previousRevenue = currentGame[PREVIOUS_TABLE]?.totalRevenue
 
   return (
     <section>
@@ -29,6 +31,11 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
         showAdvancedView={showAdvancedView}
         setShowAdvancedView={setShowAdvancedView}
       />
+      {currentGame.eos && (
+        <div className='eos-pattern mt-2 flex justify-center rounded-b border border-neutral-700/80 py-2 text-lg font-bold uppercase tracking-widest'>
+          Game Service Ended
+        </div>
+      )}
       <div className='my-2 flex justify-between'>
         <div className='flex gap-3'>
           <div className='flex h-24 w-24 rounded-lg border border-neutral-700 bg-neutral-950 group-hover:border-neutral-600'>
@@ -65,16 +72,18 @@ const GameHeader: React.FC<GameHeaderProps> = ({ currentGame }) => {
             </div>
           )}
           <div className='flex items-center justify-end gap-4'>
-            {currentGame[PREVIOUS_TABLE]?.totalRevenue && (
+            {previousRevenue && (
               <>
                 <MonthlyStatistics
                   currentGame={currentGame}
                   table={PREVIOUS_TABLE}
                 />
-                <Separator orientation='vertical' className='h-16 opacity-40' />
               </>
             )}
-            {currentGame[CURRENT_TABLE]?.totalRevenue && (
+            {previousRevenue && currentRevenue && (
+              <Separator orientation='vertical' className='h-16 opacity-40' />
+            )}
+            {currentRevenue && (
               <MonthlyStatistics
                 currentGame={currentGame}
                 table={CURRENT_TABLE}

@@ -154,3 +154,51 @@ body::-webkit-scrollbar {
   animation: divShrink 2.5s ease;
   animation-fill-mode: forwards;
 }
+
+.eos-pattern {
+  --color-1: #171717;
+  --color-2: #262626;
+  background-image: linear-gradient(
+    45deg,
+    var(--color-1) 0%,
+    var(--color-1) 5%,
+    var(--color-2) 5%,
+    var(--color-2) 10%,
+    var(--color-1) 10%,
+    var(--color-1) 15%,
+    var(--color-2) 15%,
+    var(--color-2) 20%,
+    var(--color-1) 20%,
+    var(--color-1) 25%,
+    var(--color-2) 25%,
+    var(--color-2) 30%,
+    var(--color-1) 30%,
+    var(--color-1) 35%,
+    var(--color-2) 35%,
+    var(--color-2) 40%,
+    var(--color-1) 40%,
+    var(--color-1) 45%,
+    var(--color-2) 45%,
+    var(--color-2) 50%,
+    var(--color-1) 50%,
+    var(--color-1) 55%,
+    var(--color-2) 55%,
+    var(--color-2) 60%,
+    var(--color-1) 60%,
+    var(--color-1) 65%,
+    var(--color-2) 65%,
+    var(--color-2) 70%,
+    var(--color-1) 70%,
+    var(--color-1) 75%,
+    var(--color-2) 75%,
+    var(--color-2) 80%,
+    var(--color-1) 80%,
+    var(--color-1) 85%,
+    var(--color-2) 85%,
+    var(--color-2) 90%,
+    var(--color-1) 90%,
+    var(--color-1) 95%,
+    var(--color-2) 95%,
+    var(--color-2) 100%
+  );
+}
