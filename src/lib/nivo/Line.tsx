@@ -18,7 +18,7 @@ const Line: React.FC<LineProps> = ({ data, height = '20rem' }) => {
       style={{
         height,
         width:
-          (!isMobile && dataLength < 12) || dataLength < 8
+          (!isMobile && dataLength <= 12) || dataLength < 8
             ? '100%'
             : `${dataLength * 3}rem`,
       }}

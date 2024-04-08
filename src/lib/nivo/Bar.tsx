@@ -31,7 +31,7 @@ const Bar: React.FC<BarProps> = ({
       style={{
         height,
         width:
-          (!isMobile && dataLength < 12) || dataLength < 8
+          (!isMobile && dataLength <= 12) || dataLength < 8
             ? '100%'
             : `${dataLength * 3}rem`,
       }}
