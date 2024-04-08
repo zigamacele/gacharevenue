@@ -19,13 +19,25 @@ interface DialogProps {
 
 const GraveyardDialog: React.FC<DialogProps> = ({
   children,
-  game: { trailer, games },
+  game: { trailer, regions, games },
 }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className='group sm:max-w-[425px]'>
-        <RegionTooltip gameRegion={games.region} className=' left-2 top-2' />
+        {!regions ? (
+          <RegionTooltip gameRegion={games.region} className='left-2 top-2' />
+        ) : (
+          <span className='absolute left-2 top-2 flex gap-1.5'>
+            {regions.map((region) => (
+              <RegionTooltip
+                key={region}
+                gameRegion={region}
+                className='relative'
+              />
+            ))}
+          </span>
+        )}
         <span className='absolute top-0 z-10 h-48 w-full bg-gradient-to-t from-neutral-900 via-neutral-950/80 to-transparent md:rounded-t' />
         <span className='absolute top-[14.44em] z-50 w-full border-b border-neutral-800 group-hover:border-neutral-700' />
         <ImageComponent
