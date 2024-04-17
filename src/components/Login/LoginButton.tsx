@@ -17,7 +17,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
   return (
     <button
       onClick={() => void signInWithOAuth(provider)}
-      className='group/button flex h-10 w-36 items-center justify-center rounded border border-neutral-700/60 bg-neutral-800/40 transition-all hover:border-neutral-800 hover:bg-neutral-900'
+      className='group/button flex h-[2.75rem] w-full items-center justify-center gap-4 rounded border border-neutral-700/40 bg-neutral-800/80 px-6 transition-all hover:border-neutral-800 hover:bg-neutral-900'
     >
       <img
         src={iconsLibrary[provider.toUpperCase() as keyof typeof iconsLibrary]}
@@ -27,6 +27,9 @@ const LoginButton: React.FC<LoginButtonProps> = ({
           iconClassName,
         )}
       />
+      <span className='whitespace-nowrap text-sm capitalize opacity-70'>
+        Login with {provider}
+      </span>
     </button>
   )
 }
