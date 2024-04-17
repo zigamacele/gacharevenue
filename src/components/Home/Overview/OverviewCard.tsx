@@ -37,20 +37,20 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
         y={100}
         duration={0.8}
         delay={0.2}
-        styles='flex flex-col gap-1 cursor-pointer hover:border-neutral-700 tranistion-all hover:to-neutral-800/80 h-24 w-80 xl:w-72 rounded-lg px-4 py-4 border border-neutral-800 bg-gradient-to-t from-neutral-900 to-neutral-800/50'
+        styles='flex items-start gap-1 justify-between cursor-pointer hover:border-neutral-700 tranistion-all hover:to-neutral-800/80 h-24 w-80 rounded-lg px-4 py-4 border border-neutral-800 bg-gradient-to-t from-neutral-900 to-neutral-800/50'
         onClick={() => navigate(REVENUE)}
       >
-        <p className='opacity-80'>{title}</p>
-        <div className='flex h-10 items-center gap-5'>
+        <div className='flex flex-col gap-1.5'>
+          <p className='opacity-80'>{title}</p>
           {Number(body) !== 0 ? (
             <p className='max-w-sm truncate text-2xl font-bold'>{body}</p>
           ) : (
             <Skeleton className='h-4 w-32' />
           )}
-          {!!difference?.percentage && (
-            <PercentageBox percentage={difference.percentage} />
-          )}
         </div>
+        {!!difference?.percentage && (
+          <PercentageBox percentage={difference.percentage} />
+        )}
       </MotionInView>
     )
   }
