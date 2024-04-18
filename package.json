@@ -45,7 +45,7 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "blurhash": "^2.0.5",
     "clsx": "^2.0.0",
-    "cmdk": "^0.2.0",
+    "cmdk": "^1.0.0",
     "dayjs": "^1.11.9",
     "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
