@@ -13,6 +13,7 @@ import {
   CommandList,
 } from '@/lib/shadcn/ui/command'
 
+import EosTooltip from '@/components/Game/GameHeader/CoverImage/EosTooltip.tsx'
 import RegionTooltip from '@/components/Game/GameHeader/CoverImage/RegionTooltip.tsx'
 import ImageComponent from '@/components/ImageComponent.tsx'
 import SocialLinks from '@/components/Navbar/SocialLinks.tsx'
@@ -87,6 +88,7 @@ const CommandDialog = () => {
                   className='h-6 w-6 rounded border border-neutral-700'
                 />
                 <p>{game.en_name}</p>
+                <EosTooltip className='right-10' isEos={game.eos} />
                 <RegionTooltip
                   gameRegion={game.region}
                   className='right-2 border-neutral-700'
