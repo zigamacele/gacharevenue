@@ -82,7 +82,12 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
           />
         </TableCell>
       )}
-      <TableCell className={cn('text-center', region.color)}>
+      <TableCell
+        className={cn(
+          'revenue_chart_region border-neutral-800 text-center',
+          region.color,
+        )}
+      >
         <Tooltip
           text={region.text}
           className='transition-opacity hover:opacity-60'
@@ -100,7 +105,7 @@ const RevenueTableRow: React.FC<RevenueTableRowProps> = ({
       </TableCell>
       <TableCell
         className={cn(
-          'border-l border-neutral-800 bg-red-600 text-right',
+          'revenue_chart_current_table border-l border-neutral-800 bg-red-600 text-right',
           currentRevenue >= previousRevenue && 'bg-green-600',
           eosIds.includes(data.id) &&
             !currentRevenue &&
