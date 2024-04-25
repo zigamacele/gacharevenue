@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  img {
+    @apply inline-block;
+  }
+}
+
 @layer utilities {
   @variants responsive {
     .no-scrollbar::-webkit-scrollbar {

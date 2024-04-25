@@ -51,6 +51,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "framer-motion": "^10.16.4",
+    "html2canvas-pro": "^1.4.3",
     "lint-staged": "^14.0.1",
     "lucide-react": "^0.303.0",
     "react": "^18.2.0",

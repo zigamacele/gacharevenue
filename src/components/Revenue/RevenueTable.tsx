@@ -34,30 +34,32 @@ const RevenueTable: React.FC<RevenueTableProps> = ({
   const eosIds = useMemo(() => eos.map((game) => game.id), [eos])
 
   return (
-    <section className='pb-4 pt-2 sm:px-2'>
-      {data.length ? (
-        <Table>
-          <TableHeader>
-            <RevenueTableHeader isMobile={isMobile} />
-          </TableHeader>
-          <TableBody>
-            {data.map((game, index) => (
-              <RevenueTableRow
-                key={game.id}
-                data={game}
-                index={index}
-                isMobile={isMobile}
-                eosIds={eosIds}
-                previousMonth={previousMonth}
-                showEditSection={showEditSection}
-              />
-            ))}
-          </TableBody>
-        </Table>
-      ) : (
-        <NoResults />
-      )}
-    </section>
+    <>
+      <section id='revenue_chart' className='bg-neutral-900 pb-4 pt-2 sm:px-2'>
+        {data.length ? (
+          <Table>
+            <TableHeader>
+              <RevenueTableHeader isMobile={isMobile} />
+            </TableHeader>
+            <TableBody>
+              {data.map((game, index) => (
+                <RevenueTableRow
+                  key={game.id}
+                  data={game}
+                  index={index}
+                  isMobile={isMobile}
+                  eosIds={eosIds}
+                  previousMonth={previousMonth}
+                  showEditSection={showEditSection}
+                />
+              ))}
+            </TableBody>
+          </Table>
+        ) : (
+          <NoResults />
+        )}
+      </section>
+    </>
   )
 }
 

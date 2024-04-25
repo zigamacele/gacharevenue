@@ -32,6 +32,8 @@ import useCurrentDevice from '@/hooks/useCurrentDevice'
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { regions as regionsConstant } from '@/constants/regions'
+import { CURRENT_TABLE } from '@/constants/tables.ts'
+import { capture } from '@/utils/canvas.ts'
 import { getRegion } from '@/utils/region'
 
 import AndroidMultiplier from './RevenueControls/AndroidMultiplier'
@@ -119,10 +121,17 @@ const RevenueControls: React.FC = () => {
             <Button
               tooltip='Take a screenshot'
               className='w-12 text-opacity-60'
+              onClick={() =>
+                void capture('revenue_chart', `GACHAREVENUE-${CURRENT_TABLE}`)
+              }
             >
               <Fullscreen size={18} />
             </Button>
-            <Button tooltip='Hide' className='w-12 text-opacity-60'>
+            <Button
+              tooltip='Hide controls'
+              className='w-12 text-opacity-60'
+              disabled
+            >
               <Eye size={18} />
             </Button>
           </div>
