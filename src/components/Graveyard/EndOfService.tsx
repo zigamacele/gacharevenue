@@ -8,7 +8,7 @@ import useGraveyardStore from '@/stores/graveyard-store.ts'
 const EndOfService: React.FC = () => {
   const { eos } = useGraveyardStore()
   return (
-    <section className='flex flex-wrap items-center justify-center gap-6'>
+    <section className='grid grid-cols-2 items-center justify-center gap-6 px-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6'>
       {eos.length > 0 &&
         eos.map((game) => {
           return (

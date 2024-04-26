@@ -14,7 +14,7 @@ const Graveyard: React.FC = () => {
     setBackground(graveyardBackground)
   }, [])
   return (
-    <section className='my-2 flex flex-col items-center gap-4'>
+    <section className='my-2 flex flex-col items-center gap-6'>
       {!loading && (
         <>
           <Maintenance />
