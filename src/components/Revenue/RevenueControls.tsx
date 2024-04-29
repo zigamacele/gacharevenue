@@ -32,7 +32,7 @@ import useCurrentDevice from '@/hooks/useCurrentDevice'
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { regions as regionsConstant } from '@/constants/regions'
-import { capture } from '@/utils/canvas.ts'
+import { capture } from '@/utils/canvas'
 import { getRegion } from '@/utils/region'
 
 import AndroidMultiplier from './RevenueControls/AndroidMultiplier'
@@ -58,6 +58,7 @@ const RevenueControls: React.FC = () => {
   const isMobile = useCurrentDevice()
 
   const [currentTab, setCurrentTab] = useState<string>('controls')
+  const [loading, setLoading] = useState<boolean>(false)
 
   const regions = [...regionsConstant]
 
@@ -67,6 +68,12 @@ const RevenueControls: React.FC = () => {
 
   if (selectedRegion === 'COMBINED_REGIONS' && !showCombinedRevenue) {
     updateSelectedRegion('ALL')
+  }
+
+  const takeAScreenshot = async () => {
+    setLoading(true)
+    await capture()
+    setLoading(false)
   }
 
   return (
@@ -118,11 +125,16 @@ const RevenueControls: React.FC = () => {
           </Tabs>
           <div className='flex gap-2'>
             <Button
+              disabled={loading}
               tooltip='Take a screenshot'
               className='w-12 text-opacity-60'
-              onClick={() => void capture()}
+              onClick={() => void takeAScreenshot()}
             >
-              <Fullscreen size={18} />
+              {!loading ? (
+                <Fullscreen size={18} />
+              ) : (
+                <span className='inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]' />
+              )}
             </Button>
             <Button
               tooltip='Hide controls'
