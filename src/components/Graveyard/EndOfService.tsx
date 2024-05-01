@@ -11,6 +11,10 @@ const EndOfService: React.FC = () => {
     <section className='grid grid-cols-2 items-center justify-center gap-6 px-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6'>
       {eos.length > 0 &&
         eos.map((game) => {
+          if (game.hidden) {
+            return null
+          }
+
           return (
             <MotionInView delay={0.5} key={game.id}>
               <GraveyardDialog game={game}>

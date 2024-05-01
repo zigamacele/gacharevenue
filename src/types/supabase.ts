@@ -57,6 +57,7 @@ export interface GraveyardOutput {
   trailer: string
   games: QueryOutput
   regions: Region[] | null
+  hidden: boolean
 }
 
 export interface ReviewPayload {
