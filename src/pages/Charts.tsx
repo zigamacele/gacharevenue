@@ -14,7 +14,6 @@ import { regions } from '@/constants/regions'
 import { CURRENT_TABLE } from '@/constants/tables'
 import { preparePieChartData, prepareTotalBarData } from '@/utils/charts'
 import { formatCurrency } from '@/utils/currency'
-import { combineSameGameRevenue } from '@/utils/filters'
 import {
   compareMonths,
   formatNumber,
@@ -26,17 +25,7 @@ import { humanizeTable } from '@/utils/timeDate'
 const Charts: React.FC = () => {
   const { storage, tables, game } = useSupabaseStore()
   const { eos } = useGraveyardStore()
-  const {
-    showCombinedRevenue,
-    pinned,
-    removed,
-    showPinned,
-    androidMultiplier,
-  } = useRevenueTableControls()
-
-  const combinedRevenue = useMemo(() => {
-    return combineSameGameRevenue(storage)
-  }, [storage, androidMultiplier])
+  const { pinned, removed, showPinned } = useRevenueTableControls()
 
   const randomBackgroundImage = () => {
     const storageLength = storage.length
@@ -45,7 +34,7 @@ const Charts: React.FC = () => {
   }
 
   const ChartsData = queryFilter({
-    data: showCombinedRevenue ? combinedRevenue : storage,
+    data: storage,
     pinned,
     removed,
     showPinned,
