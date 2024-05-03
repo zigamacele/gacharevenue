@@ -20,7 +20,7 @@ const FAQ = [
   {
     question: 'What do region colors mean?',
     answer:
-      'If you hover region icon on website a tooltip should pop up with the region name.',
+      'If you hover region icon on website a tooltip should pop up with the region name. Mobile users can press on region(revenue table tab) -> dropdown, and see all the region names.',
   },
   {
     question:

@@ -1,8 +1,3 @@
-export const regions: string[] = [
-  'GLOBAL',
-  'JAPAN',
-  'COMBINED',
-  'CHINA',
-  'KOREA',
-  'USA',
-]
+import { Region } from '@/types/supabase.ts'
+
+export const regions: string[] = Object.values(Region)

@@ -6,6 +6,8 @@ import {
   PopoverTrigger,
 } from '@/lib/shadcn/ui/popover'
 
+import Tooltip from '@/components/Tooltip.tsx'
+
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { getRegion } from '@/utils/region'
@@ -16,7 +18,7 @@ const AndroidMultiplier: React.FC = () => {
   return (
     <Popover>
       <PopoverTrigger className='group h-9 rounded border border-neutral-700/80 bg-neutral-950 px-3 text-xl grayscale transition-all hover:bg-neutral-800 hover:grayscale-0'>
-        {getRegion('CHINA').emoji}
+        <Tooltip text='Chinese Revenue'>{getRegion('CHINA').emoji}</Tooltip>
       </PopoverTrigger>
       <PopoverContent className='mt-2 w-80 rounded-lg border-neutral-700/80 bg-neutral-900 px-5 py-4 text-white'>
         <div className='grid gap-4'>

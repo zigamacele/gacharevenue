@@ -22,7 +22,7 @@ const Revenue: React.FC = () => {
     showMaintenance,
     showEditSection,
     showCombinedRevenue,
-    selectedRegion,
+    selectedRegions,
     androidMultiplier,
   } = useRevenueTableControls()
   const { loading, storage } = useSupabaseStore()
@@ -53,7 +53,7 @@ const Revenue: React.FC = () => {
               showEditSection,
               sortAscending,
               showCombinedRevenue,
-              selectedRegion,
+              selectedRegions,
             })}
             showEditSection={showEditSection}
           />

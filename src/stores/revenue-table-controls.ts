@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+import { regions } from '@/constants/regions.ts'
+
 import { TableControlsState } from '@/types/zustand'
 
 const useRevenueTableControls = create<TableControlsState>()((set) => ({
@@ -14,15 +16,23 @@ const useRevenueTableControls = create<TableControlsState>()((set) => ({
   showCombinedRevenue: false,
   showMaintenance: false,
   androidMultiplier: 1.75,
-  selectedRegion: 'ALL',
+  selectedRegions: [...regions],
 
   updateSearch: (value: string) => set(() => ({ search: value })),
 
   updateAndroidMultiplier: (value: number) => {
     set(() => ({ androidMultiplier: value }))
   },
-  updateSelectedRegion: (value: string) => {
-    set(() => ({ selectedRegion: value }))
+  updateSelectedRegions: (value) => {
+    set((state) => {
+      if (state.selectedRegions.includes(value)) {
+        return {
+          selectedRegions: state.selectedRegions.filter((r) => r !== value),
+        }
+      }
+
+      return { selectedRegions: [...state.selectedRegions, value] }
+    })
   },
   toggle: (prop: string) =>
     set((state) => ({ [prop]: !state[prop as keyof TableControlsState] })),

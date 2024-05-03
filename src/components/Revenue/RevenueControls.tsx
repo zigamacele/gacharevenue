@@ -16,24 +16,17 @@ import {
 import { useState } from 'react'
 
 import { Input } from '@/lib/shadcn/ui/input'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/lib/shadcn/ui/select'
 import { Separator } from '@/lib/shadcn/ui/separator'
 import { Tabs, TabsList, TabsTrigger } from '@/lib/shadcn/ui/tabs'
 
 import useCurrentDevice from '@/hooks/useCurrentDevice'
 
+import { RegionSelector } from '@/components/Revenue/RevenueControls/RegionSelector.tsx'
+
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
 import { regions as regionsConstant } from '@/constants/regions'
 import { capture } from '@/utils/canvas'
-import { getRegion } from '@/utils/region'
 
 import AndroidMultiplier from './RevenueControls/AndroidMultiplier'
 import MonthSwitcher from './RevenueControls/MonthSwitcher'
@@ -51,8 +44,6 @@ const RevenueControls: React.FC = () => {
     showPinned,
     showMaintenance,
     pinned,
-    updateSelectedRegion,
-    selectedRegion,
   } = useRevenueTableControls()
 
   const isMobile = useCurrentDevice()
@@ -64,10 +55,6 @@ const RevenueControls: React.FC = () => {
 
   if (showCombinedRevenue) {
     regions.push('COMBINED_REGIONS')
-  }
-
-  if (selectedRegion === 'COMBINED_REGIONS' && !showCombinedRevenue) {
-    updateSelectedRegion('ALL')
   }
 
   const takeAScreenshot = async () => {
@@ -220,43 +207,7 @@ const RevenueControls: React.FC = () => {
             <Separator orientation='vertical' className='h-6' />
             <div className='flex items-center gap-2'>
               <AndroidMultiplier />
-              <Select
-                value={selectedRegion}
-                onValueChange={(value) => updateSelectedRegion(value)}
-              >
-                <SelectTrigger className='w-16 rounded border-neutral-700/80 bg-neutral-950 md:w-52'>
-                  <SelectValue placeholder='Region' aria-label={selectedRegion}>
-                    {regions.includes(selectedRegion) ? (
-                      isMobile ? (
-                        getRegion(selectedRegion).emoji
-                      ) : (
-                        <div className='flex items-center gap-2 whitespace-nowrap'>
-                          <div>{getRegion(selectedRegion).emoji}</div>
-                          <div>{getRegion(selectedRegion).text}</div>
-                        </div>
-                      )
-                    ) : (
-                      'All'
-                    )}
-                  </SelectValue>
-                </SelectTrigger>
-                <SelectContent className='border-neutral-700/80 bg-neutral-900'>
-                  <SelectGroup>
-                    <SelectItem value='ALL'>All</SelectItem>
-                    {regions.map((region) => {
-                      const { text, emoji } = getRegion(region)
-                      return (
-                        <SelectItem key={region} value={region}>
-                          <div className='flex items-center gap-2 whitespace-nowrap'>
-                            <div>{emoji}</div>
-                            <div>{text}</div>
-                          </div>
-                        </SelectItem>
-                      )
-                    })}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <RegionSelector />
             </div>
           </div>
         )}

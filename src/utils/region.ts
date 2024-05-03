@@ -47,7 +47,7 @@ export const getRegion = (region: string | undefined) => {
         emoji: '🌍',
         color: 'bg-gradient-to-b from-blue-500 via-yellow-400 to-red-600',
         textColor: 'text-white',
-        text: 'Combined Regions',
+        text: 'Combined',
       }
     default:
       return {

@@ -44,7 +44,7 @@ interface QueryFilterSortProps {
   showEditSection: boolean
   sortAscending: boolean
   showCombinedRevenue: boolean
-  selectedRegion: string
+  selectedRegions: string[]
 }
 
 export const queryFilterSort = ({
@@ -59,7 +59,7 @@ export const queryFilterSort = ({
   showEditSection,
   sortAscending,
   showCombinedRevenue,
-  selectedRegion,
+  selectedRegions,
 }: QueryFilterSortProps) => {
   const filtered = data.filter((game) => {
     const gameId = game.id
@@ -68,7 +68,7 @@ export const queryFilterSort = ({
     const maintenanceIds = maintenance.map((item) => item.id)
     const eosIds = eos.map((item) => item.id)
 
-    if (selectedRegion !== 'ALL' && game.region !== selectedRegion) {
+    if (!selectedRegions.includes(game.region)) {
       return false
     }
 

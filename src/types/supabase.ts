@@ -85,16 +85,15 @@ export enum Region {
   GLOBAL = 'GLOBAL',
   COMBINED = 'COMBINED',
   JAPAN = 'JAPAN',
-  AMERICA = 'AMERICA',
+  USA = 'USA',
   KOREA = 'KOREA',
+  COMBINED_REGIONS = 'COMBINED_REGIONS',
 }
 
-export interface GameResponse {
+type RegionData = {
+  [key in Region]?: number | null
+}
+
+export interface GameResponse extends RegionData {
   uuid: string
-  [Region.CHINA]: number | null
-  [Region.GLOBAL]: number | null
-  [Region.COMBINED]: number | null
-  [Region.JAPAN]: number | null
-  [Region.AMERICA]: number | null
-  [Region.KOREA]: number | null
 }

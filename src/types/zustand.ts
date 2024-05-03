@@ -17,10 +17,10 @@ export interface TableControlsState {
   showEditSection: boolean
   showCombinedRevenue: boolean
   androidMultiplier: number
-  selectedRegion: string
+  selectedRegions: string[]
   updateSearch: (value: string) => void
   updateAndroidMultiplier: (value: number) => void
-  updateSelectedRegion: (value: string) => void
+  updateSelectedRegions: (value: string) => void
   toggle: (prop: string) => void
   setState: (prop: string, value: number) => void
 }
