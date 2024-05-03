@@ -126,7 +126,7 @@ const RevenueControls: React.FC = () => {
             <Button
               tooltip='Hide controls'
               className='w-12 text-opacity-60'
-              disabled
+              onClick={() => toggle('hideControls')}
             >
               <Eye size={18} />
             </Button>

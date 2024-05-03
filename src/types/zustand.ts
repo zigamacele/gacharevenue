@@ -18,6 +18,7 @@ export interface TableControlsState {
   showCombinedRevenue: boolean
   androidMultiplier: number
   selectedRegions: string[]
+  hideControls: boolean
   updateSearch: (value: string) => void
   updateAndroidMultiplier: (value: number) => void
   updateSelectedRegions: (value: string) => void

@@ -17,6 +17,7 @@ const useRevenueTableControls = create<TableControlsState>()((set) => ({
   showMaintenance: false,
   androidMultiplier: 1.75,
   selectedRegions: [...regions],
+  hideControls: false,
 
   updateSearch: (value: string) => set(() => ({ search: value })),
 

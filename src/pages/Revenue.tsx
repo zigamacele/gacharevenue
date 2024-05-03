@@ -1,7 +1,9 @@
+import { ChevronUp } from 'lucide-react'
 import { useMemo } from 'react'
 
 import { Separator } from '@/lib/shadcn/ui/separator'
 
+import Button from '@/components/Button'
 import RevenueControls from '@/components/Revenue/RevenueControls'
 import RevenueTable from '@/components/Revenue/RevenueTable'
 
@@ -26,6 +28,7 @@ const Revenue: React.FC = () => {
     androidMultiplier,
   } = useRevenueTableControls()
   const { loading, storage } = useSupabaseStore()
+  const { hideControls, toggle } = useRevenueTableControls()
   const { eos, maintenance } = useGraveyardStore()
 
   const combinedRevenue = useMemo(() => {
@@ -38,7 +41,17 @@ const Revenue: React.FC = () => {
     <main className='flex justify-center'>
       {!loading && storage.length > 0 && (
         <section className='slide-from-bottom my-2 flex w-full flex-col rounded-md border border-neutral-700/80 bg-neutral-900 px-2 sm:w-[55em]'>
-          <RevenueControls />
+          {!hideControls ? (
+            <RevenueControls />
+          ) : (
+            <Button
+              tooltip='Show table controls'
+              onClick={() => toggle('hideControls')}
+              className='mt-2 h-8 w-full bg-neutral-950/80'
+            >
+              <ChevronUp size={16} />
+            </Button>
+          )}
           <Separator className='mt-2 w-full opacity-40' />
           <RevenueTable
             data={queryFilterSort({
