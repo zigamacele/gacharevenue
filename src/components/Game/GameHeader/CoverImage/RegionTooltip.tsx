@@ -7,11 +7,13 @@ import { getRegion } from '@/utils/region'
 interface RegionTooltipProps {
   gameRegion?: string
   className?: string
+  onClick?: () => void
 }
 
 const RegionTooltip: React.FC<RegionTooltipProps> = ({
   gameRegion,
   className = 'right-1 top-1',
+  onClick,
 }) => {
   const region = getRegion(gameRegion)
 
@@ -22,6 +24,7 @@ const RegionTooltip: React.FC<RegionTooltipProps> = ({
         region.color,
         className,
       )}
+      onClick={onClick}
     >
       <Tooltip text={region.text}>{region.emoji}</Tooltip>
     </div>

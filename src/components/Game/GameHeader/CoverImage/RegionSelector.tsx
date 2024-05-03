@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import useSupabaseStore from '@/stores/supabase-store'
 
@@ -13,6 +13,7 @@ interface RegionSelectorProps {
 
 const RegionSelector: React.FC<RegionSelectorProps> = ({ id, region }) => {
   const { game } = useSupabaseStore()
+  const navigate = useNavigate()
 
   const relatedRegions = game.filter((game) => Object.values(game).includes(id))
 
@@ -25,12 +26,12 @@ const RegionSelector: React.FC<RegionSelectorProps> = ({ id, region }) => {
           {Object.entries(relatedRegion).map(([key, value]) => {
             if (id === value || !value || key === 'uuid') return null
             return (
-              <Link to={`/game/${value}`} key={key}>
-                <RegionTooltip
-                  gameRegion={key}
-                  className='static opacity-60 transition-opacity hover:opacity-100'
-                />
-              </Link>
+              <RegionTooltip
+                key={key}
+                gameRegion={key}
+                className='static opacity-60 transition-opacity hover:opacity-100'
+                onClick={() => navigate(`/game/${value}`, { replace: true })}
+              />
             )
           })}
         </>
