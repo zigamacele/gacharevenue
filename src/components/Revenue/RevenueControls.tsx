@@ -69,7 +69,7 @@ const RevenueControls: React.FC = () => {
         <div className='flex justify-between'>
           <Tabs
             value={currentTab}
-            className='flex flex-col items-start bg-neutral-950'
+            className='flex flex-col items-start rounded-md bg-neutral-950'
           >
             <TabsList className='center flex rounded-md'>
               <TabsTrigger
