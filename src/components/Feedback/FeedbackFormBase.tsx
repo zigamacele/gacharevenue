@@ -42,7 +42,7 @@ const FeedbackFormBase: React.FC = () => {
         <Tabs
           value={currentTab}
           onValueChange={(value) => handleSearchTabsSwitch(value)}
-          className='flex items-start justify-between rounded-md'
+          className='flex items-start justify-between rounded-md bg-neutral-950'
         >
           <TabsList className='center flex rounded-md'>
             <TabsTriggerWrapper
