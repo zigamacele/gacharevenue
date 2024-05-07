@@ -69,13 +69,13 @@ const RevenueControls: React.FC = () => {
         <div className='flex justify-between'>
           <Tabs
             value={currentTab}
+            onValueChange={(value) => setCurrentTab(value)}
             className='flex flex-col items-start rounded-md bg-neutral-950'
           >
             <TabsList className='center flex rounded-md'>
               <TabsTrigger
                 value='controls'
                 className='flex items-center gap-2 font-normal'
-                onClick={() => setCurrentTab('controls')}
               >
                 <SlidersHorizontal size={18} />
                 {!isMobile ? (
@@ -87,7 +87,6 @@ const RevenueControls: React.FC = () => {
               <TabsTrigger
                 value='region'
                 className='flex items-center gap-2 font-normal'
-                onClick={() => setCurrentTab('region')}
               >
                 <Globe size={18} />
                 {!isMobile ? (
@@ -99,7 +98,6 @@ const RevenueControls: React.FC = () => {
               <TabsTrigger
                 value='filters'
                 className='flex items-center gap-2 font-normal'
-                onClick={() => setCurrentTab('filters')}
               >
                 <Filter size={18} />
                 {!isMobile ? (

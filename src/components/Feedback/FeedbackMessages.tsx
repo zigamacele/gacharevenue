@@ -1,4 +1,5 @@
 import { Clock } from 'lucide-react'
+import { useSearchParams } from 'react-router-dom'
 
 import MotionInView from '@/lib/framer-motion/MotionInView'
 
@@ -6,13 +7,21 @@ import useFeedbackChanges from '@/hooks/useFeedbackChanges'
 
 import { formatTimestampz } from '@/utils/timeDate'
 
+import { FeedbackType } from '@/types/feedback'
+
 const FeedbackMessages: React.FC = () => {
   const { data, loading } = useFeedbackChanges()
+  const [searchParams] = useSearchParams()
+  const currentFeedbackType = searchParams.get('type') ?? FeedbackType.FEEDBACK
   return (
     <section>
       {!loading && (
         <div className='flex w-screen flex-col justify-between gap-2 text-sm sm:w-[40em]'>
           {data.map((feedback) => {
+            if (currentFeedbackType !== (feedback.type as string)) {
+              return null
+            }
+
             return (
               <MotionInView
                 key={feedback.id}
@@ -33,8 +42,14 @@ const FeedbackMessages: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <span className='hyphens-auto break-words opacity-60'>
-                  {feedback.content}
+                <span className='hyphens-auto break-words py-1 opacity-60'>
+                  {feedback.type === FeedbackType.SUGGESTIONS ? (
+                    <pre className='rounded-md bg-neutral-800 p-4'>
+                      <code className='text-white'>{feedback.content}</code>
+                    </pre>
+                  ) : (
+                    feedback.content
+                  )}
                 </span>
               </MotionInView>
             )

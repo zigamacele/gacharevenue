@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import supabase from '@/config/supabase'
+import { FEEDBACK_TABLE } from '@/constants/feedback'
 
 import { FeedbackOutput } from '@/types/supabase'
 
@@ -12,7 +13,7 @@ const useFeedbackChanges = () => {
     setLoading(true)
 
     const { data, error } = await supabase
-      .from('feedback')
+      .from(FEEDBACK_TABLE)
       .select('*')
       .order('created_at', { ascending: false })
 

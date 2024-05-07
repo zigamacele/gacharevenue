@@ -38,6 +38,14 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
+  overrides: [
+    {
+      files: ['**/lib/shadcn/ui/*.tsx'],
+      rules: {
+        'react-refresh/only-export-components': 'off',
+      },
+    },
+  ],
   rules: {
     'import/no-unresolved': 'error',
     'unused-imports/no-unused-imports': 'error',

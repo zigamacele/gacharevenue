@@ -1,3 +1,5 @@
+import { FeedbackType } from './feedback'
+
 export interface GameSchema {
   id: number
   name: string
@@ -36,6 +38,7 @@ export interface FeedbackOutput {
   response: string | null
   name: string | null
   seen: boolean | null
+  type: FeedbackType
 }
 
 export interface ConfigData {

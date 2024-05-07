@@ -8,7 +8,7 @@ import { ReviewPayload } from '@/types/supabase.ts'
 export const formSchema = z.object({
   name: z.string(),
   content: z.string().min(4, {
-    message: 'Message needs to be atleast 4 characters long.',
+    message: 'Message needs to be at least 4 characters long.',
   }),
 })
 
