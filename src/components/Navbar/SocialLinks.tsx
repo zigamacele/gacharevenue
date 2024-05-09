@@ -1,4 +1,4 @@
-import { Coffee, Github } from 'lucide-react'
+import { Github } from 'lucide-react'
 
 import { CommandGroup, CommandItem } from '@/lib/shadcn/ui/command.tsx'
 
@@ -6,16 +6,15 @@ import { iconsLibrary } from '@/constants/icons.ts'
 import {
   GACHAGAMING_URL,
   GITHUB_PROJECT_URL,
-  KOFI_URL,
   SENSORTOWER_URL,
 } from '@/constants/links'
 
 const LinksCommandGroup = [
-  {
-    name: 'Ko-fi',
-    navigate: KOFI_URL,
-    icon: <Coffee className='h-5 w-5' />,
-  },
+  // {
+  //   name: 'Ko-fi',
+  //   navigate: KOFI_URL,
+  //   icon: <Coffee className='h-5 w-5' />,
+  // },
   {
     name: 'Github',
     navigate: GITHUB_PROJECT_URL,
