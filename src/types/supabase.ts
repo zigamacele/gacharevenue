@@ -7,7 +7,7 @@ export interface GameSchema {
   publisher: string
   developer: string
   release_date: string
-  region: string
+  region: Region
   icon: string
   background: string
   pc_client: boolean | null

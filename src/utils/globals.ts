@@ -1,12 +1,14 @@
 import useRevenueTableControls from '@/stores/revenue-table-controls'
 
+import { Region } from '@/types/supabase'
+
 export const generateRandomNumber = (min: number, max: number) => {
   return Math.floor(min + Math.random() * (max - min + 1))
 }
 
 export const regionalMultiplier = (
   totalRevenue: number | undefined,
-  region: string,
+  region: Region,
 ) => {
   const { androidMultiplier } = useRevenueTableControls.getState()
   let ANDROID_MULTIPLIER = androidMultiplier
@@ -20,7 +22,7 @@ export const regionalMultiplier = (
     return 0
   }
 
-  if (region === 'CHINA') {
+  if (region === Region.CHINA) {
     return totalRevenue + Number(ANDROID_MULTIPLIER) * totalRevenue
   }
 

@@ -2,7 +2,7 @@ import { CURRENT_TABLE, PREVIOUS_TABLE } from '@/constants/tables'
 
 import { regionalMultiplier } from './globals'
 
-import { QueryOutput, StatisticsSchema } from '@/types/supabase'
+import { QueryOutput, Region, StatisticsSchema } from '@/types/supabase'
 
 export const combineSameGameRevenue = (data: QueryOutput[]) => {
   const output: { [key: string]: QueryOutput } = {}
@@ -29,7 +29,7 @@ export const combineSameGameRevenue = (data: QueryOutput[]) => {
 
       gameObject[CURRENT_TABLE] = currentTable
       gameObject[PREVIOUS_TABLE] = previousTable
-      gameObject.region = 'COMBINED_REGIONS'
+      gameObject.region = Region.COMBINED_REGIONS
 
       output[key] = gameObject
     } else {
