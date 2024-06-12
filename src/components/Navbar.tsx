@@ -29,9 +29,9 @@ const Navbar: React.FC = () => {
           }
         >
           <p>Recap</p>
-          <p className='flex h-5 items-center justify-center rounded border border-neutral-600 px-1.5 text-[10px]'>
+          {/* <p className='flex h-5 items-center justify-center rounded border border-neutral-600 px-1.5 text-[10px]'>
             NEW
-          </p>
+          </p> */}
         </button>
         <CommandMenu />
         <NavigationMenu />
