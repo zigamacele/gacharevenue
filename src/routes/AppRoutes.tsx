@@ -1,5 +1,6 @@
+import { posthog } from 'posthog-js'
 import { useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 import useSupabaseRelay from '@/hooks/useSupabaseRelay'
 
@@ -31,6 +32,12 @@ import PageNotFound from '@/layouts/PageNotFound'
 const AppRoutes: React.FC = () => {
   const { setUser } = useUserStore()
   useSupabaseRelay()
+
+  const location = useLocation()
+
+  useEffect(() => {
+    posthog.capture('$pageview')
+  }, [location])
 
   const getSession = async () => {
     await supabase.auth.getSession().then(({ data: { session } }) => {

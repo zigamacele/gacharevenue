@@ -4,6 +4,10 @@ const config = {
     ANON_KEY: getConfig('VITE_SUPABASE_ANON_KEY'),
     GAMES_TABLE: getConfig('VITE_SUPABASE_GAMES_TABLE'),
   },
+  posthog: {
+    API_KEY: getConfig('VITE_POSTHOG_KEY'),
+    HOST: getConfig('VITE_POSTHOG_HOST'),
+  },
 }
 
 function getConfig(envKey: string): string {
