@@ -33,6 +33,7 @@ interface DialogProps {
 }
 const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
   const [open, setOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [reviewPayload, setReviewPayload] = useState<ReviewPayload>({
     game_id: game.id,
     rating: 0,
@@ -69,9 +70,11 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
 
   const insertReview = async () => {
     if (isSubmitDisabled) return
+
     const validation = await validateReviewPayload(reviewPayload, user)
     if (validation.status) {
-      const { data, error } = await supabase
+      setIsSubmitting(true)
+      const { error } = await supabase
         .from('reviews')
         .insert({
           ...reviewPayload,
@@ -84,16 +87,18 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
           title: 'Error Occurred',
           description: error.message,
         })
+
+        setIsSubmitting(false)
+        return
       }
 
-      if (data?.length) {
-        toast({
-          title: 'Review Submitted',
-          description: 'Thank you for your feedback!',
-        })
-        resetReviewPayload()
-        setOpen(false)
-      }
+      toast({
+        title: 'Review Submitted',
+        description: 'Thank you for your feedback!',
+      })
+      resetReviewPayload()
+      setIsSubmitting(false)
+      setOpen(false)
     } else {
       toast({
         title: 'Validation Error',
@@ -181,7 +186,7 @@ const AddReview: React.FC<DialogProps> = ({ triggerClassName, game }) => {
           </span>
         </div>
         <Button
-          disabled={isSubmitDisabled}
+          disabled={isSubmitDisabled || isSubmitting}
           onClick={() => void insertReview()}
           className='bg-neutral-800'
         >
