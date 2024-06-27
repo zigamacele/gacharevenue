@@ -26,6 +26,7 @@ import {
   REVENUE,
 } from '@/constants/links.ts'
 import Background from '@/layouts/Background'
+import Kofi from '@/layouts/Kofi'
 import LastUpdated from '@/layouts/LastUpdated.tsx'
 import PageNotFound from '@/layouts/PageNotFound'
 
@@ -60,7 +61,7 @@ const AppRoutes: React.FC = () => {
   return (
     <>
       <Navbar />
-      {/* <Kofi /> */}
+      <Kofi />
       <LastUpdated />
       <div className='absolute left-0 right-0 z-40 pt-14'>
         <Routes>
