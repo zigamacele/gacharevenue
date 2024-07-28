@@ -11,7 +11,7 @@ const Maintenance: React.FC = () => {
   return (
     <>
       {maintenance.length > 0 && (
-        <MotionInView styles='w-[95vw] rounded-lg border border-neutral-700 bg-neutral-900 px-2 py-2 sm:w-[70vw]'>
+        <MotionInView styles='w-[95vw] rounded-lg border border-neutral-700 bg-neutral-900 px-2 py-2 sm:w-[70vw] flex flex-col gap-1.5'>
           {maintenance.map(({ id, games }) => (
             <GameBanner
               key={id}

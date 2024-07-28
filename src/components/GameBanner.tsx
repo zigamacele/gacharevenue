@@ -91,9 +91,7 @@ const GameBanner: React.FC<OverviewCardProps> = ({
 
             <div className='flex items-center gap-2 text-sm opacity-60'>
               {isLoaded ? (
-                <p className='max-w-[6em] truncate xl:w-full'>
-                  {game.publisher}
-                </p>
+                <p className='w-fit truncate'>{game.publisher}</p>
               ) : (
                 <Skeleton className='h-4 w-10 bg-neutral-500/60' />
               )}
