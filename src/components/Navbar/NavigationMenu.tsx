@@ -31,7 +31,7 @@ const NavigationMenu: React.FC = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Explore</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className='grid w-72 grid-cols-2 gap-3 overflow-scroll p-3 md:w-[400px] lg:w-[650px] lg:grid-cols-[0.75fr_0.75fr_1fr]'>
+            <ul className='grid w-72 grid-cols-2 gap-3 overflow-auto p-3 md:w-[400px] lg:w-[650px] lg:grid-cols-[0.75fr_0.75fr_1fr]'>
               <li className='row-span-3'>
                 <NavigationMenuLink asChild>
                   <Link

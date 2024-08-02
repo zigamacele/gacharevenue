@@ -75,7 +75,7 @@ const Charts: React.FC = () => {
         {barCharts.map((chart) => (
           <div
             key={chart.value}
-            className='h-60 overflow-y-hidden overflow-x-scroll rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-4'
+            className='h-60 overflow-x-auto overflow-y-hidden rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-4'
           >
             <div className='flex items-start justify-between'>
               <span>
@@ -106,7 +106,7 @@ const Charts: React.FC = () => {
         {middleSection.map((section) => (
           <div
             key={section.title}
-            className='relative h-28 overflow-y-hidden overflow-x-scroll rounded-lg border border-neutral-700 bg-neutral-900 px-6 py-4'
+            className='relative h-28 overflow-x-auto overflow-y-hidden rounded-lg border border-neutral-700 bg-neutral-900 px-6 py-4'
           >
             <img
               src={randomBackgroundImage()}
@@ -123,7 +123,7 @@ const Charts: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className='relative h-96 w-full overflow-y-hidden overflow-x-scroll rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-4 xl:w-[40rem]'>
+      <div className='relative h-96 w-full overflow-x-auto overflow-y-hidden rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-4 xl:w-[40rem]'>
         <span className='absolute bottom-2 right-4 text-right'>
           <p className='xl:text-md text-sm opacity-80'>Breakdown</p>
           <p className='max-w-sm truncate text-xl font-bold xl:text-2xl'>

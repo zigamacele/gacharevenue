@@ -17,7 +17,7 @@ const Reviews: React.FC<ReviewsProps> = ({ reviews }) => {
   const isMobile = useCurrentDevice()
 
   return (
-    <section className='relative mt-12 h-80 w-full overflow-scroll rounded-md border border-neutral-700 bg-neutral-950/40 p-1'>
+    <section className='relative mt-12 h-80 w-full overflow-auto rounded-md border border-neutral-700 bg-neutral-950/40 p-1'>
       {!reviews.length && (
         <span className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm opacity-60'>
           No reviews yet

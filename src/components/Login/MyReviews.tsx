@@ -64,7 +64,7 @@ const MyReviews: React.FC = () => {
           </DialogDescription>
         </DialogHeader>
         {myReviews.length ? (
-          <section className='no-scrollbar flex max-h-[20em] flex-col gap-1 overflow-scroll rounded border border-neutral-700 bg-neutral-950/40 p-1'>
+          <section className='no-scrollbar flex max-h-[20em] flex-col gap-1 overflow-auto rounded border border-neutral-700 bg-neutral-950/40 p-1'>
             {myReviews.map(
               ({ id, rating, status, investment, text, game, created_at }) => (
                 <MotionInView

@@ -39,7 +39,7 @@ body {
 
   -ms-overflow-style: none;
   scrollbar-width: none;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 body::-webkit-scrollbar {
