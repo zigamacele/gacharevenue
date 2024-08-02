@@ -60,10 +60,7 @@ const CommandDialog = () => {
         onClick={() => setOpen(true)}
         className='text-muted-foreground flex cursor-pointer gap-2 text-sm hover:opacity-60'
       >
-        Search{' '}
-        <kbd className='bg-muted text-muted-foreground pointer-events-none hidden h-5 select-none items-center gap-1 rounded border border-neutral-600 px-1.5 font-mono text-[10px] font-medium opacity-100 sm:inline-flex'>
-          <span className='text-xs'>⌘</span>K
-        </kbd>
+        Search
       </p>
       <CommandDialogComponent open={open} onOpenChange={setOpen}>
         <CommandInput placeholder='Search' />
